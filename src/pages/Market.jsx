@@ -92,31 +92,35 @@ useEffect(() => {
   const fallbackBestSellers = [
     {
       id: 'default-1',
-      imageUrl: '/images/pottery2-image2.png',
+      imageUrl: '/images/maasai-milkgourd.png',
       name: t('market.bestSellers.item1.name'),
-      price: 45,
+      price: 49,
       tribe: 'Maasai',
+      description: t('market.bestSellers.item1.description')
     },
     {
       id: 'default-2',
-      imageUrl: '/images/pottery3-image3.png',
+      imageUrl: '/images/kikuyu-calabash.png',
       name: t('market.bestSellers.item2.name'),
-      price: 76,
-      tribe: 'Kikuyu'
+      price: 35,
+      tribe: 'Kikuyu',
+      description: t('market.bestSellers.item2.description')
     },
     {
       id: 'default-3',
-      imageUrl: '/images/pottery4-image5.png',
+      imageUrl: '/images/luo-bul.png',
       name: t('market.bestSellers.item3.name'),
       price: 25,
-      tribe: 'kamba'
+      tribe: 'Luo',
+      description: t('market.bestSellers.item3.description')
     },
     {
       id: 'default-4',
-      imageUrl: '/images/pottery5-image6.png',
+      imageUrl: '/images/kamba-carving.png',
       name: t('market.bestSellers.item4.name'),
       price: 30,
-      tribe: 'Igbo'
+      tribe: 'Kamba',
+      description: t('market.bestSellers.item4.description')
     }
   ]
 
@@ -214,32 +218,7 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
       </div>
 
 
-      {/* Best Sellers
-      <div className='best-sellers-div'>
-        <h1>{t('market.bestSellers.title')}</h1>
-        <p>{t('market.bestSellers.subtitle')}</p>
-
-        <div className='best-seller-wrapper'>
-          {bestSellerItems.map((item, index) => (
-            <div key={item.id || index} className={`best-seller1 sel${(index % 4) + 1}`}>
-              <img src={item.imageUrl || '/images/pottery2-image2.png'} alt={item.name || 'Marketplace product'} />
-              <div className='best-seller1-content'>
-                <p>{item.name || 'Untitled Product'}</p>
-                 <span className="tribe-text">
-    Tribe: {item.tribe || 'Unknown'}
-  </span>
-                <button>{t('market.bestSellers.addToCart')}</button>
-              </div>
-              <div className='seller-price'>
-                <p>{t('market.bestSellers.price')} : {formatMarketPrice(item.price)}</p>
-              </div>
-            </div>
-          ))}
-
-        </div>
-      </div>
-
-       */}
+     
 
 
        {/* Best Sellers */}
@@ -291,7 +270,7 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
           <p className='best-seller-name'>{item.name || 'Untitled Product'}</p>
 
           {/* Short description */}
-          <p className='best-seller-desc'>Hand-crafted by skilled artisans using traditional techniques passed down through generations.</p>
+          <p className='best-seller-desc'>{item.description || "Hand-crafted by skilled artisans using traditional techniques passed down through generations."}</p>
 
           {/* Divider */}
           <div className='best-seller-divider'></div>

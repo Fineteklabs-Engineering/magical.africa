@@ -27,6 +27,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import Music from './pages/Music';
 import AcademyPage from './pages/AcademyPage';
 import Blogs from './pages/Blogs';
+import BlogPost from './pages/BlogPost'
 import ContactWidget from './components/ContactWidget';
 import Technology from './pages/Technology';
 
@@ -57,8 +58,11 @@ function App() {
         <Route path="/academy"element={<AcademyPage />}
          />
          <Route path="/blogs" element={<Blogs />}
+         
         
          />
+
+         <Route path="/blogs/:key" element={<BlogPost />} />
 
          <Route path="/technology" element=
          {<Technology />}

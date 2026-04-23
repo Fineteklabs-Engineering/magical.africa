@@ -924,10 +924,18 @@
     "subtitle": "Handpicked favourites from across the continent",
     "addToCart": "Add to Cart",
     "price": "Price",
-    "item1": { "name": "Golden Mask" },
-    "item2": { "name": "Vase" },
-    "item3": { "name": "Mug" },
-    "item4": { "name": "Bowl" }
+    "item1": { "name": "Maaai Beaded Milk Gourd",
+    "description": "Beautifully beaded using traditional Maasai techniques preserved across generations."
+  },
+    "item2": { "name": "Kikuyu Calabash Gourd",
+    "description": "Carefully shaped and finished using timeless Kikuyu craftsmanship and heritage."
+   },
+    "item3": { "name": "Luo Bul Drum",
+   "description": "Expertly crafted to carry the rich rhythms of Luo ceremonies and culture."
+  },
+    "item4": { "name": "Kamba Wood Carving",
+   "description" : "Skillfully carved from local wood, celebrating enduring Kamba artistry and tradition."
+  }
   },
   "shop": {
     "title": "Shop The Collection",
@@ -1281,6 +1289,7 @@
       "categories": {
         "heading": "Categories",
         "items": {
+          "all": "All",
           "language": "Language & Learning",
           "heritage": "Cultural Heritage",
           "crafts": "Crafts & Art",

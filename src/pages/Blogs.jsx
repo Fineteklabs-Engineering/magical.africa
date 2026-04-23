@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import '../styles/blogs.css'
 import Navbar from '../components/Navbar'
@@ -7,43 +6,52 @@ import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import PageSeo from '../components/PageSeo'
 import { SEO_CONTENT } from '../utils/seoContent'
+import { blogData } from '../data/blogData'
 
-const featuredPost = {
-  image: '/images/African-storytelling2.jpg',
-}
+const featuredPostKey = 'storytelling'
+const latestPostKeys  = ['beadwork', 'maasai', 'fashion', 'masks', 'swahili', 'cuisine', 'zulu', 'drumming', 'festivals']
+const sidebarPostKeys = ['swahili', 'cuisine']
+const popularPostKeys = ['zulu', 'drumming', 'festivals']
 
-const latestPosts = [
-  { id: 1, image: '/images/beaded-jewelery2.jpg',  key: 'beadwork' },
-  { id: 2, image: '/images/maasai-migration.jpg',   key: 'maasai' },
-  { id: 3, image: '/images/kitenge-latest.jpg',     key: 'fashion' },
-  { id: 4, image: '/images/african-atire.jpg',      key: 'masks' },
-]
-
-const sidebarPosts = [
-  { id: 1, image: '/images/learn-language-kids.jpg', key: 'swahili' },
-  { id: 2, image: '/images/nyama-choma2.jpg',         key: 'cuisine' },
-]
-
-const categoryKeys = ['language', 'heritage', 'crafts', 'food', 'travel']
-
-const popularPosts = [
-  { key: 'zulu',      image: '/images/zulu2.jpg' },
-  { key: 'drumming',  image: '/images/drums-latest.jpg' },
-  { key: 'festivals', image: '/images/kitenge-latest.jpg' },
+// Each category maps to the tags used in blogData
+const categoryKeys = [
+  { key: 'all',      tag: null       },
+  { key: 'language',  tag: 'Language'  },
+  { key: 'heritage',  tag: 'Heritage'  },
+  { key: 'crafts',    tag: 'Crafts'    },
+  { key: 'food',      tag: 'Food'      },
+  { key: 'travel',    tag: 'Travel'    },
 ]
 
 const Blogs = () => {
   const { t } = useTranslation()
-  const [email, setEmail] = useState('')
-  const [subscribed, setSubscribed] = useState(false)
+  const [email, setEmail]               = useState('')
+  const [subscribed, setSubscribed]     = useState(false)
+  const [activeCategory, setActiveCategory] = useState(null) // null = show all
   const navigate = useNavigate()
 
+  const goToPost = (key) => navigate(`/blogs/${key}`)
+
+  const featuredPost = blogData[featuredPostKey]
+
+  // When a category is active, filter all posts by that tag
+  // When null, show the default latestPostKeys set
+  const filteredLatest = latestPostKeys
+    .map((key) => ({ key, ...blogData[key] }))
+    .filter((post) =>
+      activeCategory === null ? true : post.tags.includes(activeCategory)
+    )
+
+  const sidebarPosts = sidebarPostKeys.map((key) => ({ key, ...blogData[key] }))
+  const popularPosts = popularPostKeys.map((key) => ({ key, ...blogData[key] }))
+
   const handleSubscribe = () => {
-    if (email) {
-      setSubscribed(true)
-      setEmail('')
-    }
+    if (email) { setSubscribed(true); setEmail('') }
   }
+  
+const handleCategoryClick = (tag) => {
+  setActiveCategory(tag)
+}
 
   return (
     <>
@@ -68,10 +76,10 @@ const Blogs = () => {
         {/* ── MAIN LAYOUT ── */}
         <div className="blogs-layout">
 
-          {/* ── LEFT / MAIN ── */}
+          {/* ── MAIN ── */}
           <main className="blogs-main">
 
-            {/* Featured Post */}
+            {/* Featured */}
             <div className="blogs-featured">
               <div
                 className="blogs-featured-img"
@@ -79,34 +87,48 @@ const Blogs = () => {
               >
                 <div className="blogs-featured-overlay" />
                 <div className="blogs-featured-content">
-                  <span className="blogs-category-tag">{t('blogs.featured.category')}</span>
-                  <h2>{t('blogs.featured.title')}</h2>
-                  <p className="blogs-featured-date">{t('blogs.featured.date')}</p>
+                  <span className="blogs-category-tag">{featuredPost.category}</span>
+                  <h2 style={{ cursor: 'pointer' }} onClick={() => goToPost(featuredPostKey)}>
+                    {t('blogs.featured.title')}
+                  </h2>
+                  <p className="blogs-featured-date">{featuredPost.date}</p>
                   <p className="blogs-featured-excerpt">{t('blogs.featured.excerpt')}</p>
-                  <button className="blogs-read-more">{t('blogs.featured.readMore')}</button>
+                  <button className="blogs-read-more" onClick={() => goToPost(featuredPostKey)}>
+                    {t('blogs.featured.readMore')}
+                  </button>
                 </div>
               </div>
             </div>
 
             {/* Latest Posts */}
             <div className="blogs-latest-section">
-              <h2 className="blogs-section-title">{t('blogs.latest.heading')}</h2>
-              <div className="blogs-grid">
-                {latestPosts.map((post) => (
-                  <div className="blogs-card" key={post.id}>
-                    <div
-                      className="blogs-card-img"
-                      style={{ backgroundImage: `url('${post.image}')` }}
-                    >
-                      <div className="blogs-card-overlay" />
-                      <div className="blogs-card-body">
-                        <h3>{t(`blogs.latest.posts.${post.key}.title`)}</h3>
-                        <p>{t(`blogs.latest.posts.${post.key}.subtitle`)}</p>
+              <h2 className="blogs-section-title">
+                {activeCategory
+                  ? `${t('blogs.latest.heading')}: ${activeCategory}`
+                  : t('blogs.latest.heading')
+                }
+              </h2>
+
+              {filteredLatest.length > 0 ? (
+                <div className="blogs-grid">
+                  {filteredLatest.map((post) => (
+                    <div className="blogs-card" key={post.key} onClick={() => goToPost(post.key)}>
+                      <div
+                        className="blogs-card-img"
+                        style={{ backgroundImage: `url('${post.image}')` }}
+                      >
+                        <div className="blogs-card-overlay" />
+                        <div className="blogs-card-body">
+                          <h3>{post.title}</h3>
+                          <p>{post.subtitle}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="blogs-no-results">No posts in this category yet.</p>
+              )}
             </div>
 
           </main>
@@ -117,26 +139,32 @@ const Blogs = () => {
             {/* Recent Posts */}
             <div className="sidebar-section">
               {sidebarPosts.map((post) => (
-                <div className="sidebar-post" key={post.id}>
-                  <div
-                    className="sidebar-post-img"
-                    style={{ backgroundImage: `url('${post.image}')` }}
-                  />
+                <div
+                  className="sidebar-post"
+                  key={post.key}
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => goToPost(post.key)}
+                >
+                  <div className="sidebar-post-img" style={{ backgroundImage: `url('${post.image}')` }} />
                   <div className="sidebar-post-info">
                     <h4>{t(`blogs.sidebar.recent.${post.key}.title`)}</h4>
-                    <p className="sidebar-post-date">{t(`blogs.sidebar.recent.${post.key}.date`)}</p>
+                    <p className="sidebar-post-date">{post.date}</p>
                     <p className="sidebar-post-sub">{t(`blogs.sidebar.recent.${post.key}.subtitle`)}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Categories */}
+            {/* Categories — clicking filters the latest posts grid */}
             <div className="sidebar-section">
               <h3 className="sidebar-heading">{t('blogs.sidebar.categories.heading')}</h3>
               <ul className="sidebar-categories">
-                {categoryKeys.map((key) => (
-                  <li key={key}>
+                {categoryKeys.map(({ key, tag }) => (
+                  <li
+                    key={key}
+                    onClick={() => handleCategoryClick(tag)}
+                    className={activeCategory === tag ? 'sidebar-cat-active' : ''}
+                  >
                     <span className="sidebar-cat-arrow">▶</span>
                     {t(`blogs.sidebar.categories.items.${key}`)}
                   </li>
@@ -149,11 +177,8 @@ const Blogs = () => {
               <h3 className="sidebar-heading">{t('blogs.sidebar.popular.heading')}</h3>
               <div className="sidebar-popular">
                 {popularPosts.map((post) => (
-                  <div className="sidebar-popular-item" key={post.key}>
-                    <div
-                      className="sidebar-popular-img"
-                      style={{ backgroundImage: `url('${post.image}')` }}
-                    />
+                  <div className="sidebar-popular-item" key={post.key} onClick={() => goToPost(post.key)}>
+                    <div className="sidebar-popular-img" style={{ backgroundImage: `url('${post.image}')` }} />
                     <p>{t(`blogs.sidebar.popular.posts.${post.key}`)}</p>
                   </div>
                 ))}
@@ -181,7 +206,6 @@ const Blogs = () => {
 
           </aside>
         </div>
-
       </div>
 
       <Footer />
