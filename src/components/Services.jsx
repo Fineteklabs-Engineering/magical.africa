@@ -1,6 +1,6 @@
 
 
- import { useState } from 'react';
+ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import useAcademyNavigation from "../hooks/useAcademyNavigation";
@@ -44,6 +44,14 @@ const Services = () => {
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % services.length);
   };
+
+  useEffect(() => {
+  const timer = setInterval(() => {
+    setCurrentIndex((prev) => (prev + 1) % services.length);
+  }, 7000); // changes every 4 seconds — adjust to taste
+
+  return () => clearInterval(timer);
+}, [services.length]);
 
   const service = services[currentIndex];
 
