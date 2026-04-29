@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageSeo from '../components/PageSeo'
@@ -9,6 +10,7 @@ import '../styles/impact.css';
 import '../styles/team.css';
 import '../styles/AI.css';
 import AccordionPrinciples from '../components/AccordianPrinciples';
+import ContactModal from '../components/ContactModal';
 
 
 
@@ -18,7 +20,15 @@ const About = () => {
   const [solutionSlide, setSolutionSlide] = useState(0);
   const [hoveredMember, setHoveredMember] = useState(null);
   const [teamSlide, setTeamSlide] = useState(0);
+  const [contactOpen, setContactOpen] = useState(false);
   const [membersPerSlide, setMembersPerSlide] = useState(3);
+
+    const navigate = useNavigate(); // 👈 1. create navigate
+        
+          // 👈 2. define the handler
+          const handleNavigation = (path) => {
+            navigate(path);
+          };
 
 
   const problemRef = useRef(null);
@@ -595,15 +605,19 @@ const toggleMute = () => {
           <p>{t('about.cta.description')}</p>
 
           <div className="about-footer-buttons">
-            <button className="btn1">{t('about.cta.buttons.contribute')}</button>
+            <button className="btn1" onClick={()=> navigate('/blogs')}>{t('about.cta.buttons.contribute')}</button>
             <button className="btn2">{t('about.cta.buttons.explore')}</button>
           </div>
 
-          <button className="btn3">{t('about.cta.buttons.contact')}</button>
+         
+
+<button className="btn3" onClick={() => setContactOpen(true)}>{t('about.cta.buttons.contact')}</button>
         </div>
       </section>
 
       <Footer />
+
+      <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
     </>
   );
 };

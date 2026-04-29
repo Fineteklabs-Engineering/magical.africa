@@ -3,13 +3,16 @@
 
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 import '../styles/footer.css';
 import { useNavigate } from 'react-router-dom';
 import useAcademyNavigation from "../hooks/useAcademyNavigation";
+import ContactModal from './ContactModal'; // adjust path if needed
 
 const Footer = () => {
   const { t } = useTranslation();
   const goToAcademy = useAcademyNavigation();
+  const [contactOpen, setContactOpen] = useState(false);
 
       const navigate = useNavigate(); // 👈 1. create navigate
   
@@ -72,7 +75,9 @@ const Footer = () => {
             <Link to="/events">{t('footer.links.events')}</Link>
 
             <Link to="/music">{t('footer.links.music')}</Link>
-            <Link to="#">{t('footer.links.contact')}</Link>
+            <span className="footer-link" onClick={() => setContactOpen(true)}>
+  {t('footer.links.contact')}
+</span>
             
 
           </div>
@@ -89,6 +94,9 @@ const Footer = () => {
       <hr className="footer-hr" />
 
       <p className="copyright">{t('footer.copyright')}</p>
+
+      <ContactModal isOpen={contactOpen} onClose={() => setContactOpen(false)} />
+   
     </footer>
   );
 };

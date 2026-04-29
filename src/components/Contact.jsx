@@ -20,7 +20,7 @@ const Contact = () => {
           </div>
 
           <div className="contact2">
-            <img src="/images/magivcal-logo2-removebg-preview.png" alt="logo" />
+            <img src="/images/magical-colored-fav.png" alt="logo" />
             
             <div className="contact-links">
               <a href="mailto:gloria@magical.africa">
