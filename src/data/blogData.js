@@ -15,7 +15,7 @@ export const blogData = {
       `The next time you hear a story — really hear it — consider what it carries. It may be older than you think.`,
     ],
     tags: ['Heritage', 'Culture', 'Oral Tradition'],
-    author: 'Magical Africa Editorial',
+    author: 'Steve Kombo',
   },
 
   beadwork: {
@@ -34,7 +34,7 @@ export const blogData = {
       `Behind every beaded piece is a maker, a tradition, and a story. Knowing that story changes how you wear it.`,
     ],
     tags: ['Crafts', 'Jewellery', 'Maasai'],
-    author: 'Magical Africa Editorial',
+    author: 'Faith Mwabe ',
   },
 
   maasai: {
@@ -53,7 +53,7 @@ export const blogData = {
       `Their story is not a relic. It is ongoing.`,
     ],
     tags: ['Heritage', 'Maasai', 'History'],
-    author: 'Magical Africa Editorial',
+    author: 'Ian Cheruiyot',
   },
 
   fashion: {
@@ -72,7 +72,7 @@ export const blogData = {
       `That is the mark of a truly great fabric — it grows with you.`,
     ],
     tags: ['Fashion', 'Kitenge', 'Culture'],
-    author: 'Magical Africa Editorial',
+    author: 'Edwait Eric',
   },
 
   masks: {
@@ -91,7 +91,7 @@ export const blogData = {
       `To dress for a ceremony is to remember who you are.`,
     ],
     tags: ['Heritage', 'Ceremony', 'Tradition'],
-    author: 'Magical Africa Editorial',
+    author: 'Lorna Wanderi',
   },
 
   swahili: {
@@ -109,7 +109,7 @@ export const blogData = {
       `Learning Swahili opens doors — to culture, to connection, and to a continent's history written in sound. Jambo ni zaidi ya salamu. A greeting is more than a greeting.`,
     ],
     tags: ['Language', 'Swahili', 'Culture'],
-    author: 'Magical Africa Editorial',
+    author: 'Joel Makori',
   },
 
   cuisine: {
@@ -128,7 +128,7 @@ export const blogData = {
       `The best nyama choma you will ever eat is always at someone's home. Always.`,
     ],
     tags: ['Food', 'Kenya', 'Culture'],
-    author: 'Magical Africa Editorial',
+    author: 'Victor Karani',
   },
 
   zulu: {
@@ -147,7 +147,7 @@ export const blogData = {
       `Power is not always permanent. But its impression on history is.`,
     ],
     tags: ['Heritage', 'History', 'South Africa'],
-    author: 'Magical Africa Editorial',
+    author: 'Samuel Weto',
   },
 
   drumming: {
@@ -166,7 +166,7 @@ export const blogData = {
       `The drum does not just beat. It speaks.`,
     ],
     tags: ['Music', 'Culture', 'Heritage'],
-    author: 'Magical Africa Editorial',
+    author: 'Steven Mbogah',
   },
 
   festivals: {
@@ -185,8 +185,45 @@ export const blogData = {
       `The continent's calendar of celebration is too rich to fully catalogue. But the spirit running through all of it is the same: we are here, together, and that is worth marking.`,
     ],
     tags: ['Culture', 'Festivals', 'Community'],
-    author: 'Magical Africa Editorial',
+    author: 'Peter Karanja',
   },
+
+
+  artisans: {
+  image: '/images/beaded-jewelery2.jpg',
+  category: 'Crafts',
+  date: 'June 20, 2025',
+  readTime: '5 min read',
+  title: 'Supporting Local Artisans',
+  subtitle: 'Connecting African craftspeople with the world',
+  body: [
+    `Across Africa, millions of skilled craftspeople create extraordinary work — beaded jewellery, hand-woven textiles, carved wood, forged metal — that carries centuries of knowledge and tradition. Yet for most of history, the markets available to them were local and limited.`,
+    `Magical Africa was built in part to change that. By connecting artisans directly with global buyers, we remove the layers of middlemen that have historically captured most of the value in African craft supply chains. When you buy from our marketplace, the maker receives a fair share.`,
+    `Fair compensation is not just an economic issue. When artisans can earn a sustainable living from their craft, they have reason to continue practising it and reason to teach it. The economic and the cultural are inseparable.`,
+    `We work with artisan cooperatives across Kenya, Tanzania, Ghana, Nigeria, and South Africa — communities where craft traditions run deep and where digital market access is genuinely transformative. Our platform handles logistics, payments, and international shipping so that the artisan can focus on what they do best.`,
+    `The pieces you find in our marketplace are not mass produced. Each one is made by hand, by a person with a name and a story. We believe that story is part of the value.`,
+  ],
+  tags: ['Crafts', 'Heritage', 'Culture'],
+  author: 'James Waweru',
+},
+
+heritage: {
+  image: '/images/African-storytelling2.jpg',
+  category: 'Heritage',
+  date: 'June 18, 2025',
+  readTime: '5 min read',
+  title: 'Preserving Heritage',
+  subtitle: 'Keeping endangered traditions alive for future generations',
+  body: [
+    `Every two weeks, a language dies somewhere in the world. With it goes a way of seeing, a body of oral literature, a set of concepts that existed in no other tongue. Africa, home to over 2,000 languages, is not immune to this loss.`,
+    `At Magical Africa, we believe that digital tools offer one of the most powerful means of preservation available today. Audio recordings, video documentation, interactive language-learning tools, and digital archives can capture living traditions and make them accessible to future generations — including members of those communities who grow up in cities far from their ancestral homes.`,
+    `Our digital archive project works with community elders, linguists, and cultural practitioners to document languages, oral histories, ceremonial practices, and traditional knowledge systems that are at risk. The archive is freely accessible to community members and researchers alike.`,
+    `Preservation is not freezing. Cultures grow and change — that is healthy. What we seek to prevent is involuntary loss: the disappearance of a tradition not because a community chose to move on, but because the knowledge was never recorded and the last person who held it is gone.`,
+    `The work is urgent. But it is also hopeful — because everywhere we look, we find communities that care deeply about their heritage and are actively working to carry it forward.`,
+  ],
+  tags: ['Heritage', 'Culture', 'Language'],
+  author: 'Yusuf Ali',
+}
 }
 
 export const relatedMap = {

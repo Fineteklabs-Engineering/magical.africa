@@ -1,25 +1,49 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import '../styles/culture-card.css';
 import useAcademyNavigation from "../hooks/useAcademyNavigation";
 
+const SLIDES_COUNT = 3;
+const AUTO_ROTATE_INTERVAL = 8000;
+
 const CultureCard = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-
-  const [proverbLang, setProverbLang] = useState('eng'); // Track proverb language
+  const [proverbLang, setProverbLang] = useState('eng');
   const { t } = useTranslation();
   const goToAcademy = useAcademyNavigation();
-  const navigate = useNavigate(); // 👈 1. create navigate
+  const navigate = useNavigate();
+  const intervalRef = useRef(null);
+  const cardRef = useRef(null);
 
-  // 👈 2. define the handler
   const handleNavigation = (path) => {
     navigate(path);
   };
 
+  const startAutoRotate = () => {
+    intervalRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % SLIDES_COUNT);
+    }, AUTO_ROTATE_INTERVAL);
+  };
 
+  const stopAutoRotate = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  };
 
-  // Proverb content in both languages
+  useEffect(() => {
+    startAutoRotate();
+    return () => stopAutoRotate();
+  }, []);
+
+  const handleDotClick = (i) => {
+    setActiveIndex(i);
+    stopAutoRotate();
+    startAutoRotate();
+  };
+
   const proverbContent = {
     eng: {
       proverb: "Curiosity killed the cat",
@@ -34,30 +58,35 @@ const CultureCard = () => {
   };
 
   return (
-    <div className="culture-card">
+    <div
+      className="culture-card"
+      ref={cardRef}
+      onMouseEnter={stopAutoRotate}
+      onMouseLeave={startAutoRotate}
+    >
 
       {/* SLIDER */}
       <div
         className="slider"
-        style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+        style={{ transform: `translateX(-${activeIndex * (100 / 3)}%)` }}
       >
-        {/* SECTION 1 */}
+
+        {/* SECTION 1 — Proverbs */}
         <div className='slide'>
           <h1><i className="fa-solid fa-lightbulb"></i>{t('cultureCard.phrases.title')}</h1>
 
           <div className='phrase'>
-            <p>  
-              <p className='phrase-head'> 
+            <p>
+              <p className='phrase-head'>
                 <i className="fa-solid fa-check"></i>{t('cultureCard.phrases.proverbLabel')}
-
                 <div className='phrase-language'>
-                  <button 
+                  <button
                     className={proverbLang === 'eng' ? 'active' : ''}
                     onClick={() => setProverbLang('eng')}
                   >
                     Eng
                   </button>
-                  <button 
+                  <button
                     className={proverbLang === 'kisw' ? 'active' : ''}
                     onClick={() => setProverbLang('kisw')}
                   >
@@ -65,14 +94,13 @@ const CultureCard = () => {
                   </button>
                 </div>
               </p>
-
               <span className='proverb-itself'>
                 {proverbContent[proverbLang].proverb}
               </span>
             </p>
 
-            <p> 
-              <p className='phrase-head'> 
+            <p>
+              <p className='phrase-head'>
                 <i className="fa-solid fa-check"></i>{t('cultureCard.phrases.descriptionLabel')}
               </p>
               <span className='provern-explanation'>
@@ -80,8 +108,8 @@ const CultureCard = () => {
               </span>
             </p>
 
-            <p> 
-              <p className='phrase-head'> 
+            <p>
+              <p className='phrase-head'>
                 <i className="fa-solid fa-check"></i>{t('cultureCard.phrases.teachingLabel')}
               </p>
               <span className='proverb-teaching'>
@@ -93,51 +121,54 @@ const CultureCard = () => {
           <button className='get-more' onClick={goToAcademy}>{t('cultureCard.phrases.learnMore')}</button>
         </div>
 
-        {/* SECTION 2 */}
+        {/* SECTION 2 — Academy */}
         <div className='slide'>
-          <h1> <i className="fa-solid fa-music"></i> {t('cultureCard.music.title')}</h1>
+          <h1><i className="fa-solid fa-graduation-cap"></i> Our Courses</h1>
 
-          <p className='music-text'>{t('cultureCard.music.intro')}</p> 
+          <p className='academy-intro'>
+            Discover hands-on African craft courses taught by master artisans — learn at your own pace, from anywhere.
+          </p>
 
-          <p className='some-music'>{t('cultureCard.music.popularGenres')} <span>{t('cultureCard.music.musicGenres')}</span></p>
-
-          <div className='music-genres'>
-            <span>{t('cultureCard.music.genres.djembe')} <p></p></span>
-            <span>{t('cultureCard.music.genres.maasai')} <p></p></span>
-            <span>{t('cultureCard.music.genres.isicathamiya')} <p></p></span>
-            <span>{t('cultureCard.music.genres.benga')} <p></p></span>
+          <div className='academy-course-tag'>
+            <span>Pottery</span>
+            <span>Cooking</span>
+            <span>Woodwork</span>
+            <span>Drumming</span>
           </div>
 
-          <p className='listen-music'>{t('cultureCard.music.listenTitle')}</p>
+          <p className='academy-video-label'>
+            <i className="fa-solid fa-circle-play"></i> Featured lesson
+          </p>
 
-          <div className='audio'>
-            <div className='audio-item'>
-              <p className='audio-title'>{t('cultureCard.music.tracks.djembe')}</p>
-              <audio controls className='audio-player'>
-                <source src="/audio/djembe-rhythm.mp3" type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
-            </div>
-
-            <div className='audio-item'>
-              <p className='audio-title'>{t('cultureCard.music.tracks.afrobeat')}</p>
-              <audio controls className='audio-player'>
-                <source src="/audio/afrobeat.mp3" type="audio/mpeg" />
-                Your browser does not support the audio element.
-              </audio>
+          <div className='academy-video-wrapper'>
+            <video
+              className='academy-video'
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster="/images/pottery-thumb.jpg"
+            >
+              <source src="/images/pottery-video.mp4" type="video/mp4" />
+            </video>
+            <div className='academy-video-overlay'>
+              <span className='academy-video-title'>The Art of African Pottery</span>
             </div>
           </div>
-          <p className='see-more2' onClick={()=> handleNavigation('/music')}>{t('cultureCard.music.learnMore')} <i className="fa-solid fa-arrow-right"></i></p>
+
+          <button className='academy-cta2' onClick={goToAcademy}>
+            Try it now <i className="fa-solid fa-arrow-right"></i>
+          </button>
         </div>
 
-        {/* SECTION 3 */}
+        {/* SECTION 3 — Events */}
         <div className='slide'>
-          <h1> <i className="fa-solid fa-masks-theater"></i>{t('cultureCard.events.title')}</h1>
+          <h1><i className="fa-solid fa-masks-theater"></i>{t('cultureCard.events.title')}</h1>
 
           <p className='event-text'>{t('cultureCard.events.intro')}</p>
 
           <div className='event'>
-            <span className='event-head'> 🎪 <p>{t('cultureCard.events.festivalTitle')}</p></span> 
+            <span className='event-head'> 🎪 <p>{t('cultureCard.events.festivalTitle')}</p></span>
 
             <span className='date-span'>📅 <p>{t('cultureCard.events.festivalDate')}</p></span>
 
@@ -153,8 +184,11 @@ const CultureCard = () => {
               <button className='book-event'>{t('cultureCard.events.bookNow')}</button>
             </div>
           </div>
-          <p className='see-more' onClick={()=> handleNavigation('/events')}>{t('cultureCard.events.seeMore')} <i className="fa-solid fa-arrow-right"></i></p>
+          <p className='see-more' onClick={() => handleNavigation('/events')}>
+            {t('cultureCard.events.seeMore')} <i className="fa-solid fa-arrow-right"></i>
+          </p>
         </div>
+
       </div>
 
       {/* DOTS */}
@@ -163,15 +197,13 @@ const CultureCard = () => {
           <span
             key={i}
             className={`nav-dot ${activeIndex === i ? 'active' : ''}`}
-            onClick={() => setActiveIndex(i)}
+            onClick={() => handleDotClick(i)}
           />
         ))}
       </div>
 
     </div>
-  )
-}
-
-{/* export default CultureCard; */}
+  );
+};
 
 export default React.memo(CultureCard);

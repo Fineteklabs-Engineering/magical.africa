@@ -1,137 +1,159 @@
-*{
+* {
   margin: 0;
   padding: 0;
-  box-sizing: border-box ;
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0.025rem;
 }
 
-
-.culture-section{
-background-color: #0f0f0f;
-height: fit-content;
-display: flex;
-flex-direction: column;
-position: relative;
-padding-top: 4rem;
-padding-left: 3rem;
-padding-right: 3rem;
-padding-bottom: 4rem;
+/* ── Section wrapper ── */
+.culture-section {
+  background-color: #0f0f0f;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 0 3rem 0;
+  overflow: hidden;
 }
 
-.culture-section::before{
+/* ── Kente-stripe accent bars (top & bottom edge) ── */
+.kente-stripe {
+  width: 100%;
+  height: 6px;
+  display: none;
+  background: repeating-linear-gradient(
+    90deg,
+    rgb(210, 123, 53)   0px,
+    rgb(210, 123, 53)   18px,
+    #145a34             18px,
+    #145a34             36px,
+    rgb(181, 161, 145)  36px,
+    rgb(181, 161, 145)  54px,
+    #0f0f0f             54px,
+    #0f0f0f             64px
+  );
+  margin-bottom: 3.5rem;
+}
+
+.kente-stripe--bottom {
+  margin-top: 3.5rem;
+  margin-bottom: 0;
+}
+
+/* ── Subtle diagonal grid background ── */
+.culture-section::before {
   content: '';
   position: absolute;
   inset: 0;
-
   background-image:
-  repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 50px,
-    rgba(234,88,12,0.03) 50px,
-    rgba(234,88,12,0.03) 51px
-  ),
-  repeating-linear-gradient(
-    -45deg,
-    transparent,
-    transparent 50px,
-    rgba(234,88,12,0.03) 50px,
-    rgba(234,88,12,0.03) 51px
-  );
-
-   pointer-events: none;
-    z-index: 0;
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 50px,
+      rgba(234, 88, 12, 0.03) 50px,
+      rgba(234, 88, 12, 0.03) 51px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 50px,
+      rgba(234, 88, 12, 0.03) 50px,
+      rgba(234, 88, 12, 0.03) 51px
+    );
+  pointer-events: none;
+  z-index: 0;
 }
 
-.culture-section1{
+/* ── Section 1: heading block ── */
+.culture-section1 {
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
-.culture-section-heading{
+.culture-section-heading {
   display: flex;
   flex-direction: row;
   gap: 10px;
   align-items: center;
   padding-bottom: 2rem;
-  
+  margin-top: 3.5rem;
 }
 
-.culture-section-heading hr{
+.culture-section-heading hr {
   border: none;
   border-top: 2.5px solid rgb(181, 161, 145);
   width: 50px;
 }
 
-.culture-section-heading h3{
+.culture-section-heading h3 {
   color: rgb(181, 161, 145);
   font-size: 1rem;
   font-weight: 400;
 }
 
-.culture-section1 h1{
-color: white;
-
+.culture-section1 h1 {
+  color: white;
 }
 
-.culture-section1 h1 span{
+.culture-section1 h1 span {
   color: rgb(210, 123, 53);
 }
 
-.culture-section1 p{
-color: #888;
-max-width: 560px;
-padding-top: 1.5rem;
-font-size: 0.875rem;
+.culture-section1 p {
+  color: #888;
+  max-width: 560px;
+  padding-top: 1.5rem;
+  font-size: 0.875rem;
 }
 
-.culture-section2{
+/* ── Section 2: cards row ── */
+.culture-section2 {
   display: flex;
   flex-direction: row;
   margin-top: 3rem;
-  align-items: center;
- 
+  align-items: stretch;
   width: 100%;
   gap: 1.4rem;
+  position: relative;
+  z-index: 1;
 }
 
-.culture-section2-a{
+/* ── Card bases ── */
+.culture-section2-a {
   width: 100%;
-  
-  height: 450px;
-  background-color: #1a1a1a;
-
-  border: 1px solid rgba(234,88,12,0.25);
-/*
-  border:1px solid rgb(181, 161, 145);
-  */
+  height: 380px;
+  background-color: #161616;
+  border: 1px solid rgba(210, 123, 53, 0.3);
+  border-top: 3px solid rgb(210, 123, 53);
+  border-radius: 10px;
 }
 
-.culture-section2-b{
-    width: 100%;
- background: rgb(181, 161, 145);
-  height: 450px;
- 
-  border: 1px solid rgb(181, 161, 145);
+.culture-section2-b {
+  width: 100%;
+  height: 380px;
+  background-color: #145a34;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+   border-radius: 10px;
+  border-top: 3px solid rgb(181, 161, 145);
 }
 
-.culture-section2-c{
-    width: 100%;
-  
-  height: 450px;
-  background-color: #1e1e1e;
-  border: 1px solid rgba(255,255,255,0.08);
+.culture-section2-c {
+  width: 100%;
+  height: 380px;
+  background-color: #1a1410;
+  border: 1px solid rgba(210, 123, 53, 0.15);
+   border-radius: 10px;
+  border-top: 3px solid rgb(181, 161, 145);
 }
 
-
-/* ── Card inner content ── */
-
+/* ── Shared card styles + animation ── */
 .culture-section2-a,
 .culture-section2-b,
 .culture-section2-c {
   padding: 1.8rem 1.6rem;
-  
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
@@ -144,197 +166,223 @@ font-size: 0.875rem;
   transform: translateY(0) !important;
 }
 
+.culture-section2-a:hover { box-shadow: 0 0 30px rgba(210, 123, 53, 0.12); }
+.culture-section2-b:hover { box-shadow: 0 0 30px rgba(181, 161, 145, 0.15); }
+.culture-section2-c:hover { box-shadow: 0 0 30px rgba(210, 123, 53, 0.08); }
 
-
-
-.culture-section2-b::after {
-  content: '';
-  position: absolute;
-  top: -30px; left: -30px;
-  width: 160px; height: 160px;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
+/* ── Decorative corner mark on each card ── 
+.culture-section2-a::after,
+.culture-section2-b::after,
 .culture-section2-c::after {
   content: '';
   position: absolute;
-  top: -40px; right: -40px;
-  width: 140px; height: 140px;
-  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
+  bottom: 1rem;
+  right: 1rem;
+  width: 28px;
+  height: 28px;
+  border-right: 2px solid rgba(210, 123, 53, 0.3);
+  border-bottom: 2px solid rgba(210, 123, 53, 0.3);
+}
+  */
+
+/* ── SVG icon wrapper ── */
+.card-svg-icon {
+  width: 48px;
+  height: 48px;
 }
 
-/* Icon badge */
-.card-icon {
-  font-size: 1.4rem;
-  width: 50px;
-  height: 50px;
-  border-radius: 13px;
+.card-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.1rem;
-  background: rgba(255,255,255,0.07);
-}
-.card-icon-orange {
-  background: rgba(255,255,255,0.18);
+  margin-bottom: 1.2rem;
 }
 
-/* Card headings */
+.card-icon-wrap--a {
+  background: rgba(210, 123, 53, 0.1);
+  border: 1px solid rgba(210, 123, 53, 0.25);
+}
+
+.card-icon-wrap--b {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.card-icon-wrap--c {
+  background: rgba(181, 161, 145, 0.08);
+  border: 1px solid rgba(181, 161, 145, 0.2);
+}
+
+/* ── Card headings ── */
 .culture-section2-a h2,
 .culture-section2-b h2,
 .culture-section2-c h2 {
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.3;
   margin-bottom: 0.4rem;
   color: #fff;
- 
 }
 
 .card-title-accent {
-  color: rgb(181, 161, 145);
-  font-style: italic;
-}
-.card-title-block {
-  color: #1a1a1a;
+  color: rgb(210, 123, 53);
   font-style: italic;
 }
 
-/* Divider */
+.card-title-block {
+  color: rgb(181, 161, 145);
+  font-style: italic;
+}
+
+/* ── Dividers ── */
 .card-divider {
   width: 32px;
   height: 3px;
   border-radius: 2px;
   margin-bottom: 1.2rem;
 }
+
 .card-divider-orange { background: rgb(210, 123, 53); }
-.card-divider-white  { background: rgba(234, 88, 12, 0.25); }
+.card-divider-dark   { background: rgba(255, 255, 255, 0.3); }
 
+/* ── Festival lists ── */
+.festivals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding-top: 0.8rem;
+}
 
+.festivals-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 
-/* Button */
+.festivals-info h4 {
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.festivals-info p {
+  color: #888;
+  font-size: 0.7rem;
+}
+
+.festivals-info hr {
+  border: none;
+  border-top: 1px solid rgba(210, 123, 53, 0.2);
+  margin-top: 4px;
+}
+
+.festivals-info2 {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.festivals-info2 h4 {
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.festivals-info2 p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.7rem;
+}
+
+.festivals-info2 hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin-top: 4px;
+}
+
+.art-hr {
+  border: none;
+  border-top: 1px solid rgba(181, 161, 145, 0.2);
+  margin-top: 4px;
+}
+
+/* ── CTA button ── */
 .culture-page-button {
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+  position: relative;
+  z-index: 1;
+  
 }
+
 .culture-page-button button {
   background: transparent;
   border: 1px solid rgb(210, 123, 53);
   color: rgb(210, 123, 53);
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2rem;
   font-family: 'Poppins', sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   cursor: pointer;
-  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  transition: background 0.25s ease, color 0.25s ease;
+  margin-bottom: 3.5rem;
 }
+
 .culture-page-button button:hover {
   background: rgb(210, 123, 53);
   color: #ffffff;
- 
 }
 
-.festivals-info{
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.festivals-info h4{
-  color: white;
-  font-size: 0.75rem;
-  padding-bottom: 0rem;
-}
-
-.festivals-info p{
-  color: #888;
-  font-size: 0.7rem;
- 
-}
-
-.festivals-info hr{
-  border: none;
-  border-top:1px solid #888;
-}
-
-.festivals-list{
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding-top: 1rem;
-}
-
-
-.festivals-info2{
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.festivals-info2 h4{
-color: white;
-  font-size: 0.75rem;
-  
-}
-
-.festivals-info2 p{
-  color: #1a1a1a;
-  font-size: 0.7rem;
- 
-}
-
-.festivals-info2 hr{
-  
-}
-
-.art-hr{
- border-top: 1px solid rgba(255, 255, 255, 0.4);
- border: none;
-}
-
-
-@media screen and (max-width:768px) {
-  .culture-section2{
+/* ── Responsive ── */
+@media screen and (max-width: 768px) {
+  .culture-section2 {
     flex-direction: column;
   }
+
+  .culture-section2-a,
+  .culture-section2-b,
+  .culture-section2-c {
+    height: fit-content;
+  }
 }
 
-@media screen and (max-width:480px) {
-  .culture-section1 h1{
+@media screen and (max-width: 480px) {
+  .culture-section1 h1 {
     line-height: 2rem;
   }
-  .culture-section2{
+
+  .culture-section2 {
     gap: 30px;
   }
 
-  .culture-section{
+  .culture-section {
     padding-left: 1rem;
     padding-right: 1rem;
   }
 }
 
-@media screen and (min-width:1440px) {
-
-  .culture-section{
+@media screen and (min-width: 1440px) {
+  .culture-section {
     padding-left: 3rem;
     padding-right: 3rem;
-    
-    padding-top: 6rem;
+    padding-top: 0;
   }
-  .culture-section2{
+
+  .culture-section2 {
     height: 100%;
     margin-top: 4rem;
   }
-  .culture-section h1{
+
+  .culture-section h1 {
     padding-top: 2rem;
   }
-  .culture-page-button{
-  margin-top: 4rem;
-  margin-bottom: 1rem;
+
+  .culture-page-button {
+    margin-top: 4rem;
+    margin-bottom: 1rem;
   }
 }

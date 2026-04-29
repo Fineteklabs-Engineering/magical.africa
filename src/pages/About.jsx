@@ -398,11 +398,14 @@ const toggleMute = () => {
                 <div className="solution-text">
                   <h2>{t('about.whatWeDo.slides.datastewardship.title')}</h2>
                   <p>{t('about.whatWeDo.slides.datastewardship.description')}</p>
+
                   <ul>
                     {t('about.whatWeDo.slides.datastewardship.items', { returnObjects: true }).map((item, idx) => (
                       <li key={idx}><span></span>{item}</li>
                     ))}
                   </ul>
+
+                  
                 </div>
                 <div 
                   className="solution-image"

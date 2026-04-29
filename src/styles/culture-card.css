@@ -1,5 +1,3 @@
-
-
 * {
   margin: 0;
   padding: 0;
@@ -16,9 +14,6 @@
  
  display: flex;
  flex-direction: column;
- /*
- background-image:url(/images/afrcan-pattern3.png);
- */
  background-position: center;
  background-repeat: no-repeat;
  background-size: cover;
@@ -30,11 +25,6 @@
 overflow: hidden; 
  z-index: 2;
 
-  /* Initial state - hidden and positioned off-screen 
-  opacity: 0;
-  transform: translateX(100%);
- transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
- */
    animation: slideInFromRight 0.8s ease-out 0.3s both;
 }
 
@@ -49,16 +39,6 @@ overflow: hidden;
   }
 }
 
-.culture-card {
-  /* replace opacity/transform/transition with this */
-  animation: slideInFromRight 0.8s ease-out 0.3s both;
-}
-
-/* remove .culture-card.slide-in entirely */
-
-
-
-
 .culture-card::before {
   content: '';
   position: absolute;
@@ -72,7 +52,6 @@ overflow: hidden;
 
 .culture-card h1{
   color: white;
- 
   font-size: 1.5rem;
   font-weight: 400;
   display: flex;
@@ -95,32 +74,32 @@ overflow: hidden;
 .phrase p{
   display: flex;
   flex-direction: column;
- font-size: 1rem;
+  font-size: 1rem;
   font-weight: 400;
   color: white;
   width: 100%;
-
-  
 }
 
 .phrase p span{
-font-size: 0.875rem;
-display: flex;
-flex-direction: row;
-gap: 10px;
-align-items: center;
-padding-left: 1.5rem;
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  padding-left: 1.5rem;
 }
+
 .phrase-head{
   display: flex;
   flex-direction: row !important;
   align-items: center;
   gap: 10px;
-  
 }
+
 .phrase-head i{
   color: rgb(181,161,145);
 }
+
 .get-more{
   padding: 0.5rem 2rem;
   border: none;
@@ -129,99 +108,121 @@ padding-left: 1.5rem;
   position: absolute;
   bottom: 2rem;
   font-weight: 600;
+  cursor: pointer;
 }
+
 .get-more:hover{
   background-color: #1f6f43;
 }
 
-.dot{
-width: 10px !important;
-height: 10px !important;
-background-color: rgb(181, 161, 145) !important;
-border-radius: 50%;
-}
+/* ── ACADEMY SLIDE ── */
 
-.music-text{
+.academy-intro {
   color: white;
+  font-size: 0.78rem;
   padding-top: 2rem;
-  font-size: 0.875rem;
+  line-height: 1.4;
+  opacity: 0.9;
 }
 
-.some-music{
-  color: white;
-  padding-top: 1rem;
-  padding-bottom: 0.5rem;
-}
-.some-music span{
-  color: rgb(181, 161,145);
-}
-
-.music-genres{
+.academy-course-tag {
   display: flex;
   flex-direction: row;
- gap: 10px;
- flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 0.6rem;
 }
 
-.music-genres span{
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  padding: 0.5rem;
-  color: white;
+.academy-course-tag span {
+  padding: 0.25rem 0.6rem;
   background-color: #145a34;
-  border: none;
-  font-size: 0.8rem;
+  color: white;
+  font-size: 0.72rem;
+  border-radius: 2px;
+  cursor: default;
+  transition: background-color 0.2s ease;
 }
 
-.music-genres span:hover{
+.academy-course-tag span:hover {
   background-color: #1f6f43;
 }
-.listen-music{
-  color: white;
-  padding-top: 1rem;
-}
 
-
-
-
-
-.audio {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.audio-item {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.audio-title {
-  color: rgb(181,161,145);
+.academy-video-label {
+  color: rgb(181, 161, 145);
   font-size: 0.8rem;
-  font-weight: 500;
+  padding-top: 0.6rem;
+  padding-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 1rem;
 }
 
-.audio-player {
-  width: 100% !important;
-  max-width: 400px;
-  height: 40px;
-  border-radius: 25px;
-  outline: none;
+.academy-video-label i {
+  color: rgb(210, 123, 53);
+  font-size: 0.9rem;
 }
 
-.audio-player::-webkit-media-controls-panel {
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: 25px;
+.academy-video-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
 }
+
+.academy-video {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+}
+
+.academy-video-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.9));
+  padding: 0.5rem;
+}
+
+.academy-video-title {
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.academy-cta2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2rem;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  background-color: rgb(210, 123, 53);
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
+  width: fit-content;
+
+}
+
+.academy-cta2:hover {
+  background-color: rgb(230, 143, 73);
+}
+
+/* ── END ACADEMY SLIDE ── */
 
 .event-text{
   color: white;
   padding-top: 2rem;
   font-size: 0.875rem;
 }
+
 .event{
   display: flex;
   flex-direction: column;
@@ -232,6 +233,7 @@ border-radius: 50%;
   gap: 0.5rem;
   padding: 0.5rem;
 }
+
 .event-head{
   display: flex;
   flex-direction: row;
@@ -240,43 +242,51 @@ border-radius: 50%;
   font-size: 1rem;
   align-items: center;
 }
+
 .date-span{
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 10px;
   padding: 0.5rem;
-   font-size: 0.875rem;
-   background-color: rgb(210,123,53);
-   color: white;
-   width: fit-content;
+  font-size: 0.875rem;
+  background-color: rgb(210,123,53);
+  color: white;
+  width: fit-content;
 }
+
 .event-description{
   font-size: 0.875rem;
 }
+
 .event-buttons{
   display: flex;
   flex-direction: row;
- justify-content: space-between;
+  justify-content: space-between;
 }
+
 .event-type{
   display: flex;
   flex-direction: row;
   gap: 10px;
 }
+
 .event-type button{
   border: none;
- padding-left: 0.3rem;
- padding-right: 0.3rem;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
   font-size: 0.6rem;
 }
+
 .book-event{
   background-color: #145a34;
   color: white;
   padding: 0rem 0.5rem !important;
   font-weight: 600;
   border: none;
+  cursor: pointer;
 }
+
 .see-more{
   font-size: 0.875rem;
   font-weight: 600;
@@ -290,7 +300,6 @@ border-radius: 50%;
   justify-content: center;
   cursor: pointer;
 }
-
 
 .see-more2{
   font-size: 0.875rem;
@@ -308,24 +317,24 @@ border-radius: 50%;
 
 .slider {
   display: flex;
-  width: 100%;
-  height: 100%;
+  width: 300%;
+  flex: 1;
+  min-height: 0;
   transition: transform 0.5s ease-in-out;
 }
 
 .slide {
-  width: 100%;
+  width: calc(100% / 3);
   flex-shrink: 0;
   padding: 1rem;
-  
+  overflow: hidden;
 }
-
 
 .nav-dots {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: auto; /* 👈 push dots to bottom */
+  margin-top: auto;
   padding-top: 1rem;
 }
 
@@ -337,7 +346,6 @@ border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 
 .nav-dot.active {
   background-color: rgb(210,123,53);
@@ -354,26 +362,20 @@ border-radius: 50%;
   border: none;
   background-color: #145a34;
   color: white;
-
+  cursor: pointer;
 }
 
 .phrase-language button.active {
-  background-color: #1f6f43; /* or your preferred color */
+  background-color: #1f6f43;
   color: white;
-  
 }
 
 .phrase-language button {
-  cursor: pointer;
   transition: all 0.3s ease;
 }
-
-
 
 @media screen and (max-width:768px) {
   .culture-card{
     display: none;
   }
 }
-
-

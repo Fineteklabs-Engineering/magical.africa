@@ -1,155 +1,248 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0.025rem;
   line-height: 1.5rem;
-  
 }
 
-.FAQ{
-  background-image:url(/images/pattern4.jpg) !important;
+/* ── Section wrapper ── */
+.FAQ {
+  background-image: url(/images/pattern4.jpg) !important;
   height: fit-content;
-  padding-top: 2rem;
   position: relative;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
-.FAQ::before{
+.FAQ::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8); 
+  background-color: rgba(255, 255, 255, 0.88);
   z-index: 1;
 }
 
-
-.FAQ h1{
-  font-size: 1.5rem;
-  font-weight: 400;
-  text-align: center;
-  z-index: 2;
+/* ── Kente stripe (top & bottom) ── */
+.faq-kente-stripe {
+  width: 100%;
+  height: 6px;
   position: relative;
-  font-weight: 600;
-}
-.FAQ h1 span{
-  color: rgb(181, 161, 145);
+  z-index: 3;
+  background: repeating-linear-gradient(
+    90deg,
+    rgb(210, 123, 53)   0px,
+    rgb(210, 123, 53)   18px,
+    #145a34             18px,
+    #145a34             36px,
+    rgb(181, 161, 145)  36px,
+    rgb(181, 161, 145)  54px,
+    #0f0f0f             54px,
+    #0f0f0f             64px
+  );
 }
 
-.FAQ p{
-  text-align: center;
-  z-index: 2;
+/* ── Inner content (above the ::before overlay) ── */
+.faq-inner {
   position: relative;
-  padding-top: 1.5rem;
+  z-index: 2;
+  padding: 4rem 3rem;
 }
 
-.questions-section{
-  padding-top: 4rem;
-  padding-bottom: 4rem;
-   padding-left: 11rem;
-  padding-right: 11rem;
+/* ── Heading block ── */
+.faq-heading-block {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  justify-content: center;
-height: 100%;
-z-index: 10 !important;
-position: relative;
+  gap: 1.2rem;
+  padding-bottom: 1rem;
 }
 
-.question{
-  padding-top: 1.7rem;
-  padding-bottom: 1.7rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-border: 2px solid rgba(110, 170, 140, 0.8);
- 
-  width: 100%;
-  max-width: 900px;
+.FAQ h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.FAQ h1 span {
+  color: rgb(210, 123, 53);
+}
+
+.FAQ p {
+  text-align: center;
+  color: #555;
+  font-size: 0.875rem;
+  max-width: 520px;
+}
+
+/* ── Divider with icon ── */
+.faq-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 260px;
+}
+
+.faq-divider-line {
+  flex: 1;
+  height: 1px;
+  background-color: rgb(181, 161, 145);
+}
+
+/* ── Adinkra SVG divider (legacy, unused) ── */
+.faq-divider-svg {
+  width: 240px;
+  height: 36px;
+}
+
+/* ── Questions grid ── */
+.questions-section {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  background-color: white;
+  align-items: center;
+  gap: 14px;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+  padding-left: 8rem;
+  padding-right: 8rem;
 }
 
-.question1{
+/* ── Single question card ── */
+.question {
+  width: 100%;
+  max-width: 900px;
+  background-color: #ffffff;
+  border: 1px solid rgba(181, 161, 145, 0.4);
+  border-left: 4px solid rgb(210, 123, 53);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.question--open {
+  border-left-color: #145a34;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.question:hover {
+  border-color: rgba(210, 123, 53, 0.5);
+  border-left-color: rgb(210, 123, 53);
+}
+
+/* ── Question row ── */
+.question1 {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  font-size: 1rem;
+  padding: 1.2rem 1.2rem;
+  cursor: pointer;
+  gap: 1rem;
+}
+
+.question1-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.question-number {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgb(210, 123, 53);
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+  min-width: 20px;
+}
+
+.question-text {
+  font-size: 0.95rem;
   font-weight: 600;
-  cursor: pointer;
+  color: #1a1a1a;
+  line-height: 1.4;
 }
-.question1 i{
-  font-size: 0.875rem;
+
+/* ── Tri-mark toggle icon ── */
+.faq-tri-mark {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
   transition: transform 0.3s ease;
-  cursor: pointer;
- color: rgb(159, 94, 41);
-}
-.answer1{
- display: none;
- font-size: 0.875rem;
- transition: all 0.3s ease;
 }
 
-@media screen and (min-width:1440px) {
-  .FAQ{
-    
-   padding-top: 6rem;
+/* ── Answer panel ── */
+.answer1 {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
 
+.answer1--open {
+  max-height: 300px;
+}
+
+.answer1-inner {
+  padding: 0 1.2rem 1.2rem 3.4rem;
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.7;
+  border-top: 1px solid rgba(181, 161, 145, 0.25);
+  padding-top: 1rem;
+}
+
+/* ── Responsive ── */
+@media screen and (min-width: 1440px) {
+  .faq-inner {
+    padding: 5rem 3rem;
   }
-  .FAQ h1{
+
+  .FAQ h1 {
     font-size: 2rem;
   }
-  .FAQ p{
-    padding-top: 2rem;
+
+  .questions-section {
+    padding-top: 4rem;
+    padding-bottom: 2rem;
   }
 
-  .questions-section{
-    padding-bottom: 6rem;
-    align-items: center;
-    height: 100%;
-    justify-content: center;
-    padding-top: 5rem;
-   
-  }
-
-  .question{
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-  }
- 
-}
-
-@media screen and (max-width:1024px) {
-   .questions-section{
-    padding-left: 4rem;
-    padding-right: 4rem;
+  .question1 {
+    padding: 1.5rem 1.5rem;
   }
 }
 
-@media screen and (max-width:768px) {
-  .questions-section{
+@media screen and (max-width: 1024px) {
+  .questions-section {
     padding-left: 3rem;
     padding-right: 3rem;
   }
+}
 
-  .FAQ{
-    padding-top: 4rem;
+@media screen and (max-width: 768px) {
+  .questions-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .faq-inner {
+    padding: 3rem 1.5rem;
   }
 }
 
-@media screen and (max-width:480px) {
-    .questions-section{
+@media screen and (max-width: 480px) {
+  .questions-section {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+  }
+
+  .question-number {
+    display: none;
   }
 }

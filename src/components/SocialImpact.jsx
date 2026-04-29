@@ -56,7 +56,15 @@ const SocialImpact = () => {
           <div className="impact-text">
             <h1>{t('socialImpact.artisans.title')}</h1>
             <p>{t('socialImpact.artisans.description')}</p>
+
+            {/* 
             <button className="read-more" onClick={()=> navigate('/market')}>{t('socialImpact.readMore')}</button>
+            */}
+
+            <button className="read-more" onClick={() => navigate('/blogs/artisans')}>
+  {t('socialImpact.readMore')}
+</button>
+
           </div>
         </div>
 
@@ -64,7 +72,13 @@ const SocialImpact = () => {
           <div className="impact-text">
             <h1>{t('socialImpact.heritage.title')}</h1>
             <p>{t('socialImpact.heritage.description')}</p>
+            {/* 
             <button className="read-more">{t('socialImpact.readMore')}</button>
+            */}
+
+            <button className="read-more" onClick={() => navigate('/blogs/heritage')}>
+  {t('socialImpact.readMore')}
+</button>
           </div>
         </div>
       </div>

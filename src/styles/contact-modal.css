@@ -1,0 +1,200 @@
+/* contact-modal.css — matches magical.africa theme */
+
+.cm-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 6, 2, 0.6);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: cm-fade-in 0.2s ease;
+}
+
+@keyframes cm-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.cm-modal {
+  background: #fff;
+  width: 100%;
+  max-width: 480px;
+  padding: 2.5rem;
+  position: relative;
+  animation: cm-slide-up 0.25s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes cm-slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Close button */
+.cm-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #767676;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cm-close:hover {
+  color: #1f6f43;
+}
+
+/* Header */
+.cm-header {
+  margin-bottom: 1.8rem;
+}
+
+.cm-tag {
+  display: inline-block;
+  background: rgb(181, 161, 145);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  padding: 3px 12px;
+  margin-bottom: 0.8rem;
+}
+
+.cm-header h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.4rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cm-header p {
+  font-size: 0.82rem;
+  color: #767676;
+  line-height: 1.6;
+}
+
+/* Form */
+.cm-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.cm-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cm-field label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #333;
+  letter-spacing: 0.02rem;
+}
+
+.cm-field input,
+.cm-field textarea {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  color: #1a1a1a;
+  border: 1px solid rgb(220, 213, 203);
+  padding: 0.6rem 0.9rem;
+  outline: none;
+  resize: none;
+  transition: border-color 0.2s ease;
+  background: #faf9f7;
+}
+
+.cm-field input:focus,
+.cm-field textarea:focus {
+  border-color: #1f6f43;
+  background: #fff;
+}
+
+.cm-field input::placeholder,
+.cm-field textarea::placeholder {
+  color: #bbb;
+  font-size: 0.82rem;
+}
+
+/* Submit button */
+.cm-submit {
+  margin-top: 0.4rem;
+  padding: 0.65rem 1.5rem;
+  background: #1f6f43;
+  color: #fff;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.03rem;
+  transition: background 0.2s ease;
+  width: 100%;
+}
+
+.cm-submit:hover {
+  background: #145a34;
+}
+
+.cm-submit:disabled {
+  background: #a0c4b0;
+  cursor: not-allowed;
+}
+
+/* Success state */
+.cm-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 0;
+  gap: 1rem;
+}
+
+.cm-success-icon {
+  width: 56px;
+  height: 56px;
+  background: #1f6f43;
+  color: #fff;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cm-success h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  font-family: 'Poppins', sans-serif;
+}
+
+.cm-success p {
+  font-size: 0.85rem;
+  color: #767676;
+  line-height: 1.6;
+}
+
+.cm-success strong {
+  color: rgb(210, 123, 58);
+}
+
+/* Responsive */
+@media screen and (max-width: 480px) {
+  .cm-modal {
+    padding: 2rem 1.5rem;
+  }
+}
