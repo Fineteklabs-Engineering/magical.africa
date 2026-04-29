@@ -4,28 +4,28 @@ import '../styles/carvings.css'
 const carvingsData = {
   "Wood Sculpture": [
     {
-      img: "https://i.etsystatic.com/isla/e3b89b/4577707265/isla_fullxfull.4577707265_7bm9kkxf.jpg",
+      img: "/images/wood-image1.png",
       tribe: "Makonde",
       name: "Shetani wa Msitu",
       price: "$120",
       desc: "Hand-carved ebony spirit figure from the Makonde of Tanzania. Shetani figures represent otherworldly beings from Makonde spiritual belief."
     },
     {
-      img: "https://a.1stdibscdn.com/ashanti-carved-wood-stool-ghana-west-africa-for-sale/f_97099/f_388964821700501196624/f_38896482_1700501197115_bg_processed.jpg",
+      img: "/images/wood-image2.png",
       tribe: "Ashanti",
       name: "Dwa Kofi Stool",
       price: "$95",
       desc: "Miniature version of the Ashanti ceremonial stool carved from mahogany. Every Ashanti chief receives a stool at enstoolment — it holds his soul."
     },
     {
-      img: "https://a.1stdibscdn.com/carved-twin-figure-ibeji-yoruba-people-nigeria-for-sale/f_97099/f_362945521688477067296/f_36294552_1688477067660_bg_processed.jpg",
+      img: "/images/wood-image3.png",
       tribe: "Yoruba",
       name: "Ere Ibeji Twin Figure",
       price: "$110",
       desc: "Carved wooden figure representing a deceased twin. The Yoruba have the world's highest rate of twin births and honour them with sacred Ibeji sculptures."
     },
     {
-      img: "https://asianafricanart.com/wp-content/uploads/2022/03/Ancestor-figure-Wood-Dogon-Mali-1.jpg",
+      img: "/images/wood-image4.png",
       tribe: "Dogon",
       name: "Nommo Ancestor Post",
       price: "$145",
@@ -33,6 +33,7 @@ const carvingsData = {
     }
   ],
  
+  /*
   "Stone Sculpture": [
     {
       img: "https://a.1stdibscdn.com/african-shona-art-sculpture-from-zimbabwes-shona-tribe-for-sale/f_97099/f_395132921703184620527/f_39513292_1703184621266_bg_processed.jpg",
@@ -63,6 +64,8 @@ const carvingsData = {
       desc: "Carved in dark opalstone, this piece references the Ngozi — a restless spirit in Shona belief that arises from unresolved injustice."
     }
   ],
+
+ 
  
   "Metallic Sculpture": [
     {
@@ -93,7 +96,10 @@ const carvingsData = {
       price: "$175",
       desc: "Forged iron double-headed axe representing Shango, the Yoruba god of thunder and lightning. Carried by Shango priests during Egungun ceremonies."
     }
+
+
   ]
+     */
 }
 
 const Carvings = ({ subCategory }) => {
