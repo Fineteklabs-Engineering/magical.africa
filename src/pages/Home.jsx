@@ -15,6 +15,7 @@ import Pattern2 from '../components/Pattern2'
 import PopularCourses from '../components/PopularCourses';
 import PageSeo from '../components/PageSeo'
 import { SEO_CONTENT } from '../utils/seoContent'
+import HomeAiSection from '../components/Homeaisection';
 
 const Home = () => {
 
@@ -31,7 +32,9 @@ const Home = () => {
 
 
       <HeroSection />
+      
       <Services />
+      <HomeAiSection />
       <Languages />
       <AboutSection />
       <Marketplace />

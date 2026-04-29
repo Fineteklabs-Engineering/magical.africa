@@ -1,0 +1,466 @@
+/* ── Section shell ── */
+.has-section {
+  position: relative;
+  overflow: hidden;
+  min-height: 560px;
+  display: flex;
+  justify-content: center;
+  padding: 5rem 5rem;
+}
+
+/* ── Background video ── */
+.has-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Plain gradient shown when no video is provided */
+.has-video-fallback {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #3b1f0e 0%, #1f6f43 100%);
+  z-index: 0;
+}
+
+/* ── Darkening overlay ── */
+.has-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgb(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+/* ── Inner content wrapper ── */
+.has-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+/* ── Eyebrow pill ── */
+.has-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tech-sand, rgb(181, 161, 145));
+  border: 1px solid rgba(181, 161, 145, 0.35);
+  padding: 5px 14px;
+  margin-bottom: 1.1rem;
+}
+
+.has-eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--tech-orange, rgb(210, 123, 58));
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* ── Heading ── */
+.has-heading {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--tech-white, #ffffff);
+  line-height: 1.2;
+  font-family: 'Poppins', sans-serif;
+  margin: 0 0 0.75rem;
+  text-align: center;
+}
+
+.has-heading span {
+  color: var(--tech-orange, rgb(210, 123, 58));
+}
+
+/* ── Subtitle ── */
+.has-sub {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.75;
+  max-width: 580px;
+  margin: 0 0 2.5rem;
+  text-align: center;
+}
+
+/* ─────────────────────────────
+   CAROUSEL
+───────────────────────────── */
+.has-carousel {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 1.6rem;
+}
+
+.has-carousel-track {
+  width: 100%;
+  transition: opacity 0.32s ease, transform 0.32s ease;
+}
+
+.has-carousel-track--exit {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.has-carousel-track--enter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─────────────────────────────
+   SLIDE 0 — three feature cards
+───────────────────────────── */
+.has-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  width: 100%;
+}
+
+.has-card {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1.6rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.has-card:hover {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(210, 123, 58, 0.45);
+  transform: translateY(-4px);
+}
+
+/* ── Card icon circle ── */
+.has-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.has-card-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.has-card-icon--orange {
+  background: rgba(210, 123, 58, 0.22);
+  color: var(--tech-orange, rgb(210, 123, 58));
+}
+
+.has-card-icon--green {
+  background: rgba(31, 111, 67, 0.28);
+  color: #3db370;
+}
+
+/* ── Card text ── */
+.has-card-title {
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--tech-white, #ffffff);
+  margin: 0;
+}
+
+.has-card-desc {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.7;
+  flex: 1;
+  margin: 0;
+}
+
+/* ── Card stat box ── */
+.has-card-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 9px 13px;
+  margin-top: 4px;
+}
+
+.has-card-stat--orange {
+  background: rgba(210, 123, 58, 0.14);
+  border-left: 3px solid var(--tech-orange, rgb(210, 123, 58));
+}
+
+.has-card-stat--green {
+  background: rgba(31, 111, 67, 0.18);
+  border-left: 3px solid #3db370;
+}
+
+.has-card-stat strong {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--tech-white, #ffffff);
+  line-height: 1;
+}
+
+.has-card-stat span {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* ─────────────────────────────
+   SLIDE 1 — story regeneration
+───────────────────────────── */
+.has-story-slide {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(210, 123, 58, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 2.2rem 2rem;
+
+}
+
+/* left column */
+.has-story-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+ 
+}
+
+.has-card-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(210, 123, 58, 0.2);
+  color: var(--tech-orange, rgb(210, 123, 58));
+  padding: 3px 10px;
+  display: inline-block;
+  width: fit-content;
+}
+
+.has-story-title {
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  font-weight: 700;
+  color: var(--tech-white, #ffffff);
+  line-height: 1.3;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.has-story-body {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.8;
+  margin: 0;
+  flex: 1;
+}
+
+.has-story-stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.has-story-stats .has-card-stat {
+  flex: 1;
+  min-width: 110px;
+}
+
+/* right column */
+.has-story-right {
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.has-story-steps-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0 0 1rem 0;
+}
+
+/* individual step */
+.has-story-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.has-story-step-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.has-story-step-icon--orange {
+  background: rgba(210, 123, 58, 0.22);
+  color: var(--tech-orange, rgb(210, 123, 58));
+}
+
+.has-story-step-icon--green {
+  background: rgba(31, 111, 67, 0.28);
+  color: #3db370;
+}
+
+.has-story-step-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--tech-white, #ffffff);
+  margin: 0 0 2px;
+}
+
+.has-story-step-desc {
+  font-size: 0.74rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* connector line between steps */
+.has-story-connector {
+  width: 2px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 6px 0 6px 17px;
+}
+
+/* ─────────────────────────────
+   DOT INDICATORS
+───────────────────────────── */
+.has-dots {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2rem;
+}
+
+.has-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.28);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease, transform 0.25s ease, width 0.25s ease;
+}
+
+.has-dot--active {
+  background: var(--tech-orange, rgb(210, 123, 58));
+  width: 24px;
+  border-radius: 4px;
+  transform: none;
+}
+
+/* ─────────────────────────────
+   CTA ROW
+───────────────────────────── */
+.has-cta-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.has-btn {
+  padding: 0.7rem 1.9rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid;
+  outline: none;
+}
+
+.has-btn--primary {
+  background: var(--tech-orange, rgb(210, 123, 58));
+  color: var(--tech-white, #ffffff);
+  border-color: var(--tech-orange, rgb(210, 123, 58));
+}
+
+.has-btn--primary:hover {
+  background: var(--tech-orange-dark, #b85e1a);
+  border-color: var(--tech-orange-dark, #b85e1a);
+  transform: translateY(-2px);
+}
+
+.has-btn--ghost {
+  background: transparent;
+  color: var(--tech-white, #ffffff);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.has-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.10);
+}
+
+/* ─────────────────────────────
+   RESPONSIVE
+───────────────────────────── */
+@media screen and (min-width: 1440px) {
+  .has-section {
+    height: 90vh;
+  }
+
+  .has-story-left{
+     padding-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .has-section { padding: 4rem 3rem; }
+  .has-story-slide { gap: 2rem; padding: 1.8rem 1.6rem; }
+}
+
+@media screen and (max-width: 768px) {
+  .has-section { padding: 3.5rem 1.5rem; }
+
+  .has-cards {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .has-story-slide {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+    padding: 1.6rem 1.2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .has-heading { font-size: 1.4rem; }
+  .has-btn { width: 100%; text-align: center; }
+  .has-cta-row { flex-direction: column; }
+  .has-story-stats { flex-direction: column; }
+}
