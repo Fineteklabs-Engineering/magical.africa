@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import '../styles/homeAiSection.css'
+import '../styles/homeAisection.css'
 
 /* ── Slide definitions ── */
 const SLIDES = [
