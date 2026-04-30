@@ -1,7 +1,10 @@
 import React from 'react'
 import '../styles/carvings.css'
+import { useNavigate } from 'react-router-dom';
+import { toSlug } from '../components/ProductDetail';
 
-const carvingsData = {
+
+export const carvingsData = {
   "Wood Sculpture": [
     {
       img: "/images/wood-image1.png",
@@ -33,7 +36,7 @@ const carvingsData = {
     }
   ],
  
-  /*
+ 
   "Stone Sculpture": [
     {
       img: "https://a.1stdibscdn.com/african-shona-art-sculpture-from-zimbabwes-shona-tribe-for-sale/f_97099/f_395132921703184620527/f_39513292_1703184621266_bg_processed.jpg",
@@ -99,11 +102,11 @@ const carvingsData = {
 
 
   ]
-     */
+     
 }
 
 const Carvings = ({ subCategory }) => {
-
+ const navigate = useNavigate();
   const items = carvingsData[subCategory] || carvingsData["Wood Sculpture"]
 
   return (
@@ -113,6 +116,7 @@ const Carvings = ({ subCategory }) => {
           key={index}
           className='carving'
           style={{ backgroundImage: `url(${item.img})` }}
+        onClick={() => navigate(`/market/carvings/${toSlug(item.name)}`)}
         >
        <div className='carving-description'>
   <p className='carving-pill'>{item.tribe}</p>

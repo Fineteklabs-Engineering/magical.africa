@@ -30,6 +30,8 @@ import Blogs from './pages/Blogs';
 import BlogPost from './pages/BlogPost'
 import ContactWidget from './components/ContactWidget';
 import Technology from './pages/Technology';
+import ProductDetail from './components/ProductDetail';
+import CategoryPage from './components/CategoryPage';
 
 function App() {
   return (
@@ -68,8 +70,10 @@ function App() {
          {<Technology />}
          
          />
-
-
+         
+      <Route path="/market/:category" element={<CategoryPage />} />
+      <Route path="/market/:productSlug" element={<ProductDetail />} />
+<Route path="/market/:category/:productSlug" element={<ProductDetail />} />
 
 
           {/* ── Teacher-only routes ── */}

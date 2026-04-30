@@ -5,6 +5,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import Navbar from '../components/Navbar';
 import PageSeo from '../components/PageSeo'
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { toSlug } from '../components/ProductDetail';
 import { collection, onSnapshot } from 'firebase/firestore'
 import { db } from '../context/AuthContext'
 import '../styles/market.css'
@@ -28,6 +30,8 @@ import { SEO_CONTENT } from '../utils/seoContent'
 
 const Market = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
   const [communityBestSellers, setCommunityBestSellers] = useState([])
 
   const marketHeroImages = [
@@ -89,6 +93,7 @@ useEffect(() => {
     return unsubscribe
   }, [])
 
+  {/* 
   const fallbackBestSellers = [
     {
       id: 'default-1',
@@ -123,6 +128,46 @@ useEffect(() => {
       description: t('market.bestSellers.item4.description')
     }
   ]
+    */}
+
+    const fallbackBestSellers = [
+  {
+    id: 'default-1',
+    imageUrl: '/images/maasai-milkgourd.png',
+    name: t('market.bestSellers.item1.name'),
+    price: 49,
+    tribe: 'Maasai',
+    category: 'carvings',   // ← add this
+    description: t('market.bestSellers.item1.description')
+  },
+  {
+    id: 'default-2',
+    imageUrl: '/images/kikuyu-calabash.png',
+    name: t('market.bestSellers.item2.name'),
+    price: 35,
+    tribe: 'Kikuyu',
+    category: 'pottery',    // ← add this
+    description: t('market.bestSellers.item2.description')
+  },
+  {
+    id: 'default-3',
+    imageUrl: '/images/luo-bul.png',
+    name: t('market.bestSellers.item3.name'),
+    price: 25,
+    tribe: 'Luo',
+    category: 'carvings',    // ← add this
+    description: t('market.bestSellers.item3.description')
+  },
+  {
+    id: 'default-4',
+    imageUrl: '/images/kamba-carving.png',
+    name: t('market.bestSellers.item4.name'),
+    price: 30,
+    tribe: 'Kamba',
+    category: 'carvings',   // ← add this
+    description: t('market.bestSellers.item4.description')
+  }
+]
 
   const bestSellerItems = communityBestSellers.length ? communityBestSellers : fallbackBestSellers
 
@@ -180,6 +225,9 @@ const [artefactSubCategory, setArtefactSubCategory] = useState('Oil Paintings');
 
 const [fashionCategory, setFashionCategory] = useState("Clothing");
 
+
+
+
   return (
     <>
       <PageSeo {...SEO_CONTENT.market} />
@@ -228,7 +276,12 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
 
   <div className='best-seller-wrapper'>
     {bestSellerItems.map((item, index) => (
-      <div key={item.id || index} className={`best-seller1 sel${(index % 4) + 1}`}>
+      <div
+       key={item.id || index}
+  className={`best-seller1 sel${(index % 4) + 1}`}
+ onClick={() => navigate(`/market/${item.category || 'jewellery'}/${toSlug(item.name)}`)}
+  style={{ cursor: 'pointer' }}
+      >
 
         {/* Image area */}
         <div className='best-seller-image-area'>

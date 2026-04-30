@@ -1,7 +1,10 @@
 import React from 'react'
 import '../styles/artefacts.css'
+import { useNavigate } from 'react-router-dom';
+import { toSlug } from '../components/ProductDetail';
 
-const artefactsData = {
+
+export const artefactsData = {
   "Oil Paintings": {
     coverImage: "/images/pottery1-image1.jpg", // swap to your preferred image
     items: [
@@ -33,6 +36,7 @@ const artefactsData = {
 
 // ✅ FIX: use same prop name as parent
 const Artefacts = ({ subCategory = "Oil Paintings" }) => {
+const navigate = useNavigate(); 
 const category = artefactsData[subCategory] || {}
   const items = category.items || []
   const coverImage = category.coverImage || "/images/pottery1-image1.jpg"
@@ -50,7 +54,13 @@ const category = artefactsData[subCategory] || {}
 
       <div className='artefacts2'>
         {items.map((item, index) => (
-          <div key={index} className={`artefacts-grid art${index + 1}`}>
+          <div 
+        
+           key={index}
+  className={`artefacts-grid art${index + 1}`}
+onClick={() => navigate(`/market/artefacts/${toSlug(item.name)}`)}
+  style={{ cursor: 'pointer' }}
+         >
 
             <img src={item.img} alt={item.name} />
 

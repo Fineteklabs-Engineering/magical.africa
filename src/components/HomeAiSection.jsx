@@ -189,7 +189,7 @@ const HomeAiSection = ({ videoSrc = '/images/child.mp4' }) => {
         <p className="has-sub">
           {t(
             'home.aiSection.subtitle',
-            'Magical Africa combines cutting-edge artificial intelligence with deep Pan-African cultural knowledge — making indigenous languages learnable, searchable, and alive.',
+            'Magical Africa combines cutting edge artificial intelligence with deep Pan-African cultural knowledge making indigenous languages learnable, searchable, and alive.',
           )}
         </p>
 

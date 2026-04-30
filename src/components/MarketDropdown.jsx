@@ -8,18 +8,18 @@ const marketData = [
     col: 'auctions',
     title: 'Auctions',
     items: [
-      { label: 'Live Auctions', sub: 'Bid in real time' },
-      { label: 'Upcoming', sub: 'Reserve your spot' },
-      { label: 'Past Sales', sub: 'Browse sold items' },
+      { label: 'Live Auctions', sub: 'Bid in real time', route: '/market' },
+      { label: 'Upcoming', sub: 'Reserve your spot', route: '/market' },
+      { label: 'Past Sales', sub: 'Browse sold items', route: '/market' },
     ]
   },
   {
     col: 'shop',
     title: 'Shop',
     items: [
-      { label: 'Pottery', sub: 'Handcrafted pieces' },
-      { label: 'Jewellery', sub: 'Beads & metalwork' },
-      { label: 'Carvings', sub: 'Wood & stone art' },
+      { label: 'Pottery', sub: 'Handcrafted pieces', route: '/market/pottery' },
+      { label: 'Jewellery', sub: 'Beads & metalwork', route: '/market/jewellery' },
+      { label: 'Carvings', sub: 'Wood & stone art', route: '/market/carvings' },
     ]
   }
 ]
@@ -50,7 +50,11 @@ const MarketDropdown = () => {
                   <div key={item.label} className='mk-item'>
                     <span className='mk-dot' />
                     <div>
-                      <div className='mk-item-label'>{item.label}</div>
+                      <div className='mk-item-label'
+                      onClick={() => navigate(item.route)}
+// carvings → '/market/carvings'
+// artefacts → '/market/artefacts'
+                      >{item.label}</div>
                       <div className='mk-item-sub'>{item.sub}</div>
                     </div>
                   </div>

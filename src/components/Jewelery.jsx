@@ -1,7 +1,10 @@
 import React from 'react'
 import '../styles/jewelery.css'
+import { useNavigate } from 'react-router-dom';
+import { toSlug } from '../components/ProductDetail';
 
-const jewelleryData = {
+
+ export const jewelleryData = {
   'Beadwork Jewellery': [
     {
       id: 1,
@@ -190,6 +193,7 @@ const categoryHeroImage = {
 const Jewelery = ({ subCategory }) => {
   const items = jewelleryData[subCategory] || jewelleryData['Beadwork Jewellery'];
   const heroImage = categoryHeroImage[subCategory] || categoryHeroImage['Beadwork Jewellery'];
+  const navigate = useNavigate();
 
   return (
     <div className='African-jewelery'>
@@ -208,7 +212,9 @@ const Jewelery = ({ subCategory }) => {
       {/* Right grid */}
       <div className='African-jewelery2'>
         {items.map((item) => (
-          <div key={item.id} className='grid-item' style={{ backgroundImage: `url(${item.image})` }}>
+          <div key={item.id} className='grid-item' style={{ backgroundImage: `url(${item.image})` }}
+       onClick={() => navigate(`/market/jewellery/${toSlug(item.name)}`)}
+          >
 
             <div className='seller-price2'>
               <p>Price: ${item.price}</p>
