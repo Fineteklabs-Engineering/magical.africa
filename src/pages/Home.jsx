@@ -17,6 +17,7 @@ import PageSeo from '../components/PageSeo'
 import { SEO_CONTENT } from '../utils/seoContent'
 import HomeAiSection from '../components/Homeaisection';
 
+
 const Home = () => {
 
   /*
