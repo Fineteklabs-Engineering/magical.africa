@@ -108,7 +108,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 20px;
   padding-top: 3rem;
   padding-bottom: 1rem;
   padding-left: 8rem;
@@ -212,10 +212,14 @@
     padding-top: 4rem;
     padding-bottom: 2rem;
   }
+  .question{
+    max-width: 1000px;
+  }
 
   .question1 {
     padding: 1.5rem 1.5rem;
   }
+
 }
 
 @media screen and (max-width: 1024px) {

@@ -6,7 +6,6 @@
   letter-spacing: 0.025rem;
 }
 
-/* ── Section wrapper ── */
 .culture-section {
   background-color: #0f0f0f;
   height: fit-content;
@@ -17,7 +16,6 @@
   overflow: hidden;
 }
 
-/* ── Kente-stripe accent bars (top & bottom edge) ── */
 .kente-stripe {
   width: 100%;
   height: 6px;
@@ -41,7 +39,7 @@
   margin-bottom: 0;
 }
 
-/* ── Subtle diagonal grid background ── */
+
 .culture-section::before {
   content: '';
   position: absolute;
@@ -375,6 +373,10 @@
   .culture-section2 {
     height: 100%;
     margin-top: 4rem;
+  }
+
+  .culture-section2-a, .culture-section2-b, .culture-section2-c{
+    height: 410px;
   }
 
   .culture-section h1 {

@@ -97,9 +97,7 @@
   text-align: center;
 }
 
-/* ─────────────────────────────
-   CAROUSEL
-───────────────────────────── */
+/* CAROUSEL */
 .has-carousel {
   width: 100%;
   overflow: hidden;
@@ -121,9 +119,9 @@
   transform: translateY(0);
 }
 
-/* ─────────────────────────────
+/* 
    SLIDE 0 — three feature cards
-───────────────────────────── */
+*/
 .has-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -224,9 +222,9 @@
   letter-spacing: 0.07em;
 }
 
-/* ─────────────────────────────
+/*
    SLIDE 1 — story regeneration
-───────────────────────────── */
+*/
 .has-story-slide {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -430,11 +428,11 @@
 ───────────────────────────── */
 @media screen and (min-width: 1440px) {
   .has-section {
-    height: 90vh;
+    min-height: 90vh;
   }
 
   .has-story-left{
-     padding-bottom: 1rem;
+     
   }
 }
 
