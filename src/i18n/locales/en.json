@@ -54,9 +54,9 @@
   "price": "Price",
   "viewAll": "View All",
   "categories": {
-    "jewelery": "Jewelery",
-    "garments": "Garments",
-    "toolsArtefacts": "Tools & Artefacts",
+    "jewelery": "Jewellery",
+    "garments": "Artefacts",
+    "toolsArtefacts": "Carvings",
     "musicalInstruments": "Musical Instruments"
   },
   "items": {
@@ -111,7 +111,7 @@
   }
 },
 
-
+ 
 "sideMenu": {
   "close": "Close",
   "search": "Search",
