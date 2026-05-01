@@ -8,17 +8,17 @@ const marketData = [
     col: 'auctions',
     title: 'Auctions',
     items: [
-      { label: 'Live Auctions', sub: 'Bid in real time', route: '/market' },
-      { label: 'Upcoming', sub: 'Reserve your spot', route: '/market' },
-      { label: 'Past Sales', sub: 'Browse sold items', route: '/market' },
+      { label: 'Live Auctions', sub: 'Bid in real time', route: '/market/auctions/live' },
+      { label: 'Upcoming', sub: 'Reserve your spot', route: '/market/auctions/upcoming' },
+      { label: 'Past Sales', sub: 'Browse sold items', route: '/market/auctions/past' },
     ]
   },
   {
     col: 'shop',
     title: 'Shop',
     items: [
-      { label: 'Pottery', sub: 'Handcrafted pieces', route: '/market/pottery' },
       { label: 'Jewellery', sub: 'Beads & metalwork', route: '/market/jewellery' },
+      { label: 'Pottery', sub: 'Handcrafted pieces', route: '/market/pottery' },
       { label: 'Carvings', sub: 'Wood & stone art', route: '/market/carvings' },
     ]
   }

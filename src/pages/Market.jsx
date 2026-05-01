@@ -528,7 +528,10 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
 
         <div className='Auction-boxes'>
 
-          <div className='Auction-box1'>
+          <div className='Auction-box1'
+        onClick={() => navigate(`/market/auctions/live/${toSlug(t('market.auctions.item1.name'))}`)}
+
+          >
             <div className='Auction-box1-a'></div>
             <div className='Auction-box1-b'>
               <h3>{t('market.auctions.item1.category')}</h3>
@@ -545,7 +548,9 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
             </div>
           </div>
 
-          <div className='Auction-box1'>
+          <div className='Auction-box1'
+         onClick={() => navigate(`/market/auctions/live/${toSlug(t('market.auctions.item2.name'))}`)}
+          >
             <div className='Auction-box2-a'></div>
             <div className='Auction-box1-b'>
               <h3>{t('market.auctions.item2.category')}</h3>
@@ -561,7 +566,9 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
             </div>
           </div>
 
-          <div className='Auction-box1'>
+          <div className='Auction-box1'
+        onClick={() => navigate(`/market/auctions/live/${toSlug(t('market.auctions.item3.name'))}`)}
+          >
             <div className='Auction-box3-a'></div>
             <div className='Auction-box1-b'>
               <h3>{t('market.auctions.item3.category')}</h3>

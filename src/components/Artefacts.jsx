@@ -34,7 +34,7 @@ export const artefactsData = {
   }
 }
 
-// ✅ FIX: use same prop name as parent
+
 const Artefacts = ({ subCategory = "Oil Paintings" }) => {
 const navigate = useNavigate(); 
 const category = artefactsData[subCategory] || {}

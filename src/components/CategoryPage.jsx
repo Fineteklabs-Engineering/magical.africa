@@ -8,14 +8,14 @@ import '../styles/category-page.css';
 import { carvingsData } from '../components/Carvings';
 import { artefactsData } from '../components/Artefacts';
 
-// Map of all category data — add more as you build them
+
 const allCategoryData = {
+
   jewellery: jewelleryData,
  carvings: carvingsData,    
   artefacts: artefactsData,  
 };
 
-// Human-readable category names
 const categoryMeta = {
   jewellery: {
     label: 'Jewellery',
@@ -46,7 +46,7 @@ const CategoryPage = () => {
   const meta = categoryMeta[category] || { label: category, hero: '/images/side-view-people-garage-sale2.jpg', tagline: '' };
   const rawData = allCategoryData[category] || {};
 
-  // Flatten all subcategories into one list, keeping subcategory label
+ 
   const allItems = Object.entries(rawData).flatMap(([subCat, items]) =>
     (Array.isArray(items) ? items : items?.items || []).map((item) => ({
       ...item,
@@ -56,7 +56,7 @@ const CategoryPage = () => {
     }))
   );
 
-  // Get unique subcategory tabs
+ 
   const subCategories = ['All', ...Object.keys(rawData)];
   const [activeTab, setActiveTab] = useState('All');
 
@@ -71,7 +71,7 @@ const CategoryPage = () => {
   return (
     <>
       <div className="cp-page">
-        <Navbar solid />
+        <Navbar />
 
         {/* Hero */}
         <div className="cp-hero" style={{ backgroundImage: `url(${meta.hero})` }}>

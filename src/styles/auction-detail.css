@@ -1,0 +1,415 @@
+/* ── AUCTION DETAIL PAGE ── */
+
+.ad-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #faf9f7;
+}
+
+/* ── NOT FOUND ── */
+.ad-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  gap: 1rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.ad-not-found h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: rgb(30, 30, 30);
+}
+
+.ad-not-found p {
+  color: #888;
+  font-size: 0.95rem;
+}
+
+.ad-not-found button {
+  margin-top: 1rem;
+  background: rgb(48, 48, 48);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: opacity 0.2s;
+}
+
+.ad-not-found button:hover {
+  opacity: 0.8;
+}
+
+/* ── BREADCRUMB ── */
+.ad-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 1.2rem 4rem;
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-top: 4.5rem;
+}
+
+.ad-crumb {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.ad-crumb:hover {
+  color: rgb(210, 123, 53);
+}
+
+.ad-crumb-sep {
+  color: #ccc;
+}
+
+.ad-crumb-active {
+  color: rgb(30, 30, 30);
+  font-weight: 500;
+  cursor: default;
+}
+
+.ad-crumb-active:hover {
+  color: rgb(30, 30, 30);
+}
+
+/* ── MAIN LAYOUT ── */
+.ad-main {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+  padding: 2rem 4rem 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+/* ── IMAGE SIDE ── */
+.ad-image-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  flex-shrink: 0;
+}
+
+.ad-image-frame {
+  background: #f2ede8;
+  border: 1px solid #e8e3de;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 380px;
+  height: 380px;
+  overflow: hidden;
+}
+
+.ad-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Live badge — mirrors pd-tribe-badge */
+.ad-live-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid #ede8e8;
+  padding: 0.6rem 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #EA580C;
+}
+
+.ad-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #EA580C;
+  animation: ad-pulse 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes ad-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.75); }
+}
+
+/* ── INFO SIDE ── */
+.ad-info-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-top: 0.5rem;
+}
+
+/* Category pill — mirrors pd-pill but orange */
+.ad-pill {
+  display: inline-block;
+  background: rgba(234, 88, 12, 0.1);
+  color: #EA580C;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 12px;
+  border: 1px solid rgba(234, 88, 12, 0.3);
+  margin-bottom: 0.75rem;
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ad-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgb(20, 20, 20);
+  line-height: 1.2;
+  margin-bottom: 1.2rem;
+}
+
+/* Bid row */
+.ad-bid-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 2.5rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.ad-bid-block,
+.ad-time-block {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ad-bid-label {
+  font-size: 0.75rem;
+  color: rgb(210, 123, 53);
+  text-transform: uppercase;
+  letter-spacing: 0.06rem;
+}
+
+.ad-bid-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: rgb(30, 30, 30);
+}
+
+.ad-time-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #EA580C;
+}
+
+.ad-divider {
+  height: 1px;
+  background: #ede8e8;
+  margin: 1.2rem 0;
+}
+
+/* Description */
+.ad-description-block h3 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.08rem;
+  margin-bottom: 0.6rem;
+}
+
+.ad-description {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.75;
+}
+
+/* Meta rows */
+.ad-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.6rem;
+}
+
+.ad-meta-key {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.06rem;
+  min-width: 90px;
+}
+
+.ad-meta-val {
+  font-size: 0.9rem;
+  color: rgb(30, 30, 30);
+  font-weight: 500;
+}
+
+/* Actions */
+.ad-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.ad-btn-bid {
+  flex: 1;
+  background: #1f6f43;
+  color: white;
+  border: 1px solid #1f6f43;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.2s, color 0.2s;
+}
+
+.ad-btn-bid:hover {
+  background: transparent;
+  color: #1f6f43;
+}
+
+.ad-btn-watch {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #fff;
+  color: rgb(48, 48, 48);
+  border: 1px solid #e5e5e5;
+  padding: 0.75rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.2s;
+}
+
+.ad-btn-watch:hover {
+  border-color: #aaa;
+}
+
+/* Back link */
+.ad-back-link {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.2s;
+  width: fit-content;
+}
+
+.ad-back-link:hover {
+  color: rgb(210, 123, 53);
+}
+
+/* ── LARGE SCREENS ── */
+@media screen and (min-width: 1440px) {
+  .ad-breadcrumb {
+    padding: 1.5rem 8rem;
+    font-size: 0.9rem;
+  }
+
+  .ad-main {
+    max-width: 1600px;
+    padding: 3rem 8rem 7rem;
+    gap: 8rem;
+  }
+
+  .ad-image-frame {
+    width: 560px;
+    height: 560px;
+  }
+
+  .ad-title {
+    font-size: 2.8rem;
+  }
+
+  .ad-bid-value {
+    font-size: 2.4rem;
+  }
+
+  .ad-description {
+    font-size: 1.1rem;
+  }
+}
+
+/* ── RESPONSIVE ── */
+@media screen and (max-width: 1024px) {
+  .ad-main {
+    gap: 3rem;
+    padding: 2rem 2.5rem 4rem;
+  }
+
+  .ad-image-frame {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ad-breadcrumb {
+    padding: 1rem 1.5rem;
+  }
+
+  .ad-main {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem 1.5rem 4rem;
+  }
+
+  .ad-image-side {
+    width: 100%;
+  }
+
+  .ad-image-frame {
+    width: 100%;
+    height: 280px;
+  }
+
+  .ad-title {
+    font-size: 1.5rem;
+  }
+
+  .ad-bid-value {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ad-breadcrumb {
+    padding: 0.8rem 1rem;
+    font-size: 0.72rem;
+  }
+
+  .ad-main {
+    padding: 1rem 1rem 3rem;
+  }
+
+  .ad-image-frame {
+    height: 240px;
+  }
+
+  .ad-actions {
+    flex-direction: column;
+  }
+}

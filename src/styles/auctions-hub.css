@@ -1,0 +1,396 @@
+/* ── AUCTIONS HUB PAGE ── */
+
+.ah-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #faf9f7;
+}
+
+/* ── HERO — mirrors cp-hero ── */
+.ah-hero {
+  position: relative;
+  height: 52vh;
+  min-height: 320px;
+  background-image: url('/images/african-painting2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+}
+
+.ah-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+}
+
+.ah-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 4rem 3rem;
+  color: white;
+}
+
+/* Breadcrumb inside hero */
+.ah-breadcrumb-hero {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  margin-bottom: 0.8rem;
+  opacity: 0.85;
+}
+
+.ah-crumb-light {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.ah-crumb-light:hover {
+  opacity: 0.7;
+}
+
+.ah-crumb-sep {
+  opacity: 0.5;
+}
+
+.ah-crumb-active {
+  font-weight: 600;
+  cursor: default;
+}
+
+.ah-crumb-active:hover {
+  opacity: 1;
+}
+
+.ah-hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02rem;
+}
+
+.ah-hero-tagline {
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin-bottom: 0.8rem;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
+.ah-hero-count {
+  display: inline-block;
+  background: rgba(210, 123, 53, 0.85);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 20px;
+  letter-spacing: 0.03rem;
+}
+
+/* pulsing live dot */
+.ah-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #EA580C;
+  display: inline-block;
+  flex-shrink: 0;
+  margin-right: 5px;
+  animation: ah-pulse 1.4s ease-in-out infinite;
+}
+
+.ah-live-dot-sm {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fff;
+  display: inline-block;
+  flex-shrink: 0;
+  margin-right: 4px;
+  animation: ah-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes ah-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.75); }
+}
+
+/* ── TABS — mirrors cp-tabs ── */
+.ah-tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0;
+  padding: 0 4rem;
+  border-bottom: 1px solid #ede8e8;
+  background: white;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.ah-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.ah-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 1rem 1.6rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #999;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+  margin-bottom: -1px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.ah-tab:hover {
+  color: rgb(30, 30, 30);
+}
+
+.ah-tab-active {
+  color: rgb(30, 30, 30);
+  border-bottom-color: rgb(210, 123, 53);
+  font-weight: 600;
+}
+
+/* ── GRID SECTION — mirrors cp-grid-section ── */
+.ah-grid-section {
+  padding: 3rem 4rem;
+  flex: 1;
+}
+
+.ah-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* ── CARD — mirrors cp-card ── */
+.ah-card {
+  background: white;
+  border: 1px solid #ede8e8;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  overflow: hidden;
+}
+
+.ah-card:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.09);
+  transform: translateY(-3px);
+}
+
+.ah-card--past {
+  cursor: default;
+}
+
+.ah-card-image {
+  position: relative;
+  height: 200px;
+  background: #f2ede8;
+  overflow: hidden;
+}
+
+.ah-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.ah-card:hover .ah-card-image img {
+  transform: scale(1.04);
+}
+
+.ah-card-img--sold {
+  filter: grayscale(55%);
+}
+
+.ah-card-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.15), transparent);
+}
+
+/* Sub badges — mirrors cp-card-sub */
+.ah-card-sub {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: white;
+  padding: 3px 9px;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+}
+
+.ah-card-sub--live {
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+.ah-card-sub--time {
+  background: #EA580C;
+  left: auto;
+  right: 10px;
+}
+
+.ah-card-sub--upcoming {
+  background: rgba(31, 111, 67, 0.85);
+}
+
+.ah-card-sub--sold {
+  background: rgba(80, 80, 80, 0.75);
+}
+
+/* Card body */
+.ah-card-body {
+  padding: 14px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* Origin pill — mirrors cp-tribe-pill */
+.ah-origin-pill {
+  display: inline-block;
+  background: #e6f5ec;
+  color: #1f6f43;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid #a3d9b1;
+  width: fit-content;
+  margin-bottom: 8px;
+}
+
+.ah-card-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgb(20, 20, 20);
+  margin: 0 0 4px;
+}
+
+.ah-card-category {
+  font-size: 0.72rem;
+  color: #888;
+  margin: 0 0 12px;
+  flex: 1;
+}
+
+/* Card footer */
+.ah-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #ede8e8;
+  padding-top: 10px;
+  margin-top: auto;
+}
+
+.ah-price-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.ah-price-label {
+  font-size: 9px;
+  color: rgb(210, 123, 53);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.ah-price-value {
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgb(30, 30, 30);
+}
+
+/* View button — mirrors cp-view-btn */
+.ah-view-btn {
+  background: rgb(48, 48, 48);
+  color: white;
+  border: 1px solid rgb(48, 48, 48);
+  border-radius: 6px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.2s, color 0.2s;
+}
+
+.ah-view-btn:hover {
+  background: transparent;
+  color: rgb(48, 48, 48);
+}
+
+.ah-date-tag {
+  font-size: 0.72rem;
+  color: #aaa;
+  font-weight: 500;
+}
+
+/* Back button — mirrors cp-back */
+.ah-back {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 0 4rem 3rem;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+  transition: color 0.2s;
+  width: fit-content;
+}
+
+.ah-back:hover {
+  color: rgb(210, 123, 53);
+}
+
+/* ── LARGE SCREENS ── */
+@media screen and (min-width: 1440px) {
+  .ah-hero-content { padding: 0 8rem 4rem; }
+  .ah-hero-title { font-size: 4rem; }
+  .ah-tabs { padding: 0 8rem; }
+  .ah-grid-section { padding: 3rem 8rem; }
+  .ah-grid { grid-template-columns: repeat(5, 1fr); }
+  .ah-back { padding: 0 8rem 3rem; }
+}
+
+/* ── RESPONSIVE ── */
+@media screen and (max-width: 1024px) {
+  .ah-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media screen and (max-width: 768px) {
+  .ah-hero-content { padding: 0 1.5rem 2rem; }
+  .ah-hero-title { font-size: 2rem; }
+  .ah-tabs { padding: 0 1.5rem; }
+  .ah-grid-section { padding: 2rem 1.5rem; }
+  .ah-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .ah-back { padding: 0 1.5rem 2rem; }
+}
+
+@media screen and (max-width: 480px) {
+  .ah-hero-title { font-size: 1.6rem; }
+  .ah-grid { grid-template-columns: 1fr; }
+  .ah-card-image { height: 220px; }
+}

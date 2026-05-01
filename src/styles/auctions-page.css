@@ -1,0 +1,408 @@
+/* ── AUCTIONS LISTING PAGE ── */
+
+.ap-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #faf9f7;
+}
+
+/* HERO */
+.ap-hero {
+  background: url('/images/live-auction-image.png');
+  padding: 8rem 4rem 4rem;
+  display: flex;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  justify-content: center;
+  position: relative;
+}
+.ap-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  z-index: 0;
+ 
+
+}
+.ap-hero-inner {
+  max-width: 700px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.ap-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 5px 14px;
+}
+
+.ap-hero-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.ap-hero-title span {
+  color: #EA580C;
+}
+
+.ap-hero-sub {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.75;
+  max-width: 520px;
+  margin: 0;
+}
+
+/* pulsing live dot — reused across page */
+.ap-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #EA580C;
+  display: inline-block;
+  flex-shrink: 0;
+  animation: ap-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes ap-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.75); }
+}
+
+/* ── BREADCRUMB ── */
+.ap-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 1.2rem 4rem;
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.ap-crumb {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.ap-crumb:hover {
+  color: rgb(210, 123, 53);
+}
+
+.ap-crumb-sep {
+  color: #ccc;
+}
+
+.ap-crumb-active {
+  color: rgb(30, 30, 30);
+  font-weight: 500;
+  cursor: default;
+}
+
+.ap-crumb-active:hover {
+  color: rgb(30, 30, 30);
+}
+
+/* ── MAIN ── */
+.ap-main {
+  padding: 0 4rem 5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ap-count {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── GRID ── */
+.ap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* ── CARD ── */
+.ap-card {
+  background: #fff;
+  border: 1px solid #ede8e8;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.ap-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  border-color: rgba(234, 88, 12, 0.35);
+}
+
+/* Image */
+.ap-card-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+}
+
+.ap-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.ap-card:hover .ap-card-image {
+  transform: scale(1.04);
+}
+
+.ap-card-live-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  backdrop-filter: blur(4px);
+}
+
+.ap-card-time {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #EA580C;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  letter-spacing: 0.06em;
+}
+
+/* Content */
+.ap-card-content {
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.ap-card-pill {
+  display: inline-block;
+  background: rgba(234, 88, 12, 0.1);
+  color: #EA580C;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border: 1px solid rgba(234, 88, 12, 0.25);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.6rem;
+  width: fit-content;
+}
+
+.ap-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: rgb(20, 20, 20);
+  line-height: 1.3;
+  margin: 0 0 0.5rem;
+}
+
+.ap-card-desc {
+  font-size: 0.8rem;
+  color: #888;
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+
+  /* clamp to 3 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ap-card-divider {
+  height: 1px;
+  background: #ede8e8;
+  margin: 1rem 0;
+}
+
+/* Meta */
+.ap-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0;
+}
+
+.ap-card-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.ap-card-meta-key {
+  font-size: 0.7rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  min-width: 65px;
+}
+
+.ap-card-meta-val {
+  font-size: 0.8rem;
+  color: rgb(30, 30, 30);
+  font-weight: 500;
+}
+
+/* Card footer */
+.ap-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.ap-card-bid-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ap-card-bid-label {
+  font-size: 0.68rem;
+  color: rgb(210, 123, 53);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.ap-card-bid-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: rgb(20, 20, 20);
+}
+
+.ap-card-btn {
+  background: #1f6f43;
+  color: #fff;
+  border: 1px solid #1f6f43;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.ap-card-btn:hover {
+  background: transparent;
+  color: #1f6f43;
+}
+
+/* ── LARGE SCREENS ── */
+@media screen and (min-width: 1440px) {
+  .ap-hero {
+    padding: 10rem 8rem 5rem;
+  }
+
+  .ap-breadcrumb {
+    padding: 1.5rem 8rem;
+  }
+
+  .ap-main {
+    max-width: 1600px;
+    padding: 0 8rem 7rem;
+  }
+
+  .ap-card-image-wrap {
+    height: 300px;
+  }
+}
+
+/* ── RESPONSIVE ── */
+@media screen and (max-width: 1024px) {
+  .ap-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ap-hero {
+    padding: 7rem 3rem 3.5rem;
+  }
+
+  .ap-breadcrumb,
+  .ap-main {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ap-hero {
+    padding: 6rem 1.5rem 3rem;
+  }
+
+  .ap-breadcrumb {
+    padding: 1rem 1.5rem;
+  }
+
+  .ap-main {
+    padding: 0 1.5rem 4rem;
+  }
+
+  .ap-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ap-breadcrumb {
+    padding: 0.8rem 1rem;
+    font-size: 0.72rem;
+  }
+
+  .ap-main {
+    padding: 0 1rem 3rem;
+  }
+
+  .ap-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ap-card-btn {
+    width: 100%;
+    text-align: center;
+  }
+}

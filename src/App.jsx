@@ -32,6 +32,9 @@ import ContactWidget from './components/ContactWidget';
 import Technology from './pages/Technology';
 import ProductDetail from './components/ProductDetail';
 import CategoryPage from './components/CategoryPage';
+import AuctionDetail from './components/AuctionDetail';
+import Auctions from './components/Auctions';
+import AuctionsHub from './components/AuctionsHub';
 
 function App() {
   return (
@@ -74,6 +77,13 @@ function App() {
       <Route path="/market/:category" element={<CategoryPage />} />
       <Route path="/market/:productSlug" element={<ProductDetail />} />
 <Route path="/market/:category/:productSlug" element={<ProductDetail />} />
+
+<Route path="/market" element={<Market />} />
+<Route path="/market/auctions" element={<AuctionsHub />} />
+<Route path="/market/auctions/live" element={<Auctions />} />
+<Route path="/market/auctions/live/:slug" element={<AuctionDetail />} />
+<Route path="/market/auctions/upcoming" element={<Auctions />} />
+<Route path="/market/auctions/past" element={<Auctions />} />
 
 
           {/* ── Teacher-only routes ── */}
