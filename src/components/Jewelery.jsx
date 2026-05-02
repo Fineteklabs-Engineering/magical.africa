@@ -75,6 +75,8 @@ import { toSlug } from '../components/ProductDetail';
     },
   ],
 
+  
+
   'Brass Jewellery': [
     {
       id: 1,
@@ -145,6 +147,7 @@ import { toSlug } from '../components/ProductDetail';
     },
   ],
 
+  
   'Silver Jewellery': [
     {
       id: 1,

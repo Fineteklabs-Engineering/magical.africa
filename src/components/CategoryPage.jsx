@@ -10,10 +10,9 @@ import { artefactsData } from '../components/Artefacts';
 
 
 const allCategoryData = {
-
   jewellery: jewelleryData,
- carvings: carvingsData,    
-  artefacts: artefactsData,  
+  carvings: carvingsData,
+  artefacts: artefactsData,
 };
 
 const categoryMeta = {
@@ -43,10 +42,16 @@ const CategoryPage = () => {
   const { category } = useParams();
   const navigate = useNavigate();
 
-  const meta = categoryMeta[category] || { label: category, hero: '/images/side-view-people-garage-sale2.jpg', tagline: '' };
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeTab, setActiveTab] = useState('All');
+
+  const meta = categoryMeta[category] || {
+    label: category,
+    hero: '/images/side-view-people-garage-sale2.jpg',
+    tagline: '',
+  };
   const rawData = allCategoryData[category] || {};
 
- 
   const allItems = Object.entries(rawData).flatMap(([subCat, items]) =>
     (Array.isArray(items) ? items : items?.items || []).map((item) => ({
       ...item,
@@ -56,16 +61,28 @@ const CategoryPage = () => {
     }))
   );
 
- 
   const subCategories = ['All', ...Object.keys(rawData)];
-  const [activeTab, setActiveTab] = useState('All');
 
-  const filtered = activeTab === 'All'
-    ? allItems
-    : allItems.filter((item) => item.subCategory === activeTab);
+  // Filter by tab first, then by search query
+  const filtered = allItems
+    .filter((item) => activeTab === 'All' || item.subCategory === activeTab)
+    .filter((item) => {
+      const q = searchQuery.toLowerCase().trim();
+      if (!q) return true;
+      return (
+        item.name?.toLowerCase().includes(q) ||
+        item.description?.toLowerCase().includes(q) ||
+        item.tribe?.toLowerCase().includes(q) ||
+        item.subCategory?.toLowerCase().includes(q)
+      );
+    });
 
   const handleProductClick = (item) => {
     navigate(`/market/${category}/${toSlug(item.name)}`);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -87,6 +104,33 @@ const CategoryPage = () => {
             <h1 className="cp-hero-title">{meta.label}</h1>
             <p className="cp-hero-tagline">{meta.tagline}</p>
             <div className="cp-hero-count">{allItems.length} pieces available</div>
+
+            {/* Search bar */}
+            <form className="cp-search-form" onSubmit={handleSearchSubmit}>
+              <div className="cp-search-bar">
+                <svg className="cp-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2"/>
+                  <path d="M16.5 16.5L21 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+                <input
+                  type="text"
+                  className="cp-search-input"
+                  placeholder={`Search ${meta.label.toLowerCase()}...`}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                {searchQuery && (
+                  <button
+                    type="button"
+                    className="cp-search-clear"
+                    onClick={() => setSearchQuery('')}
+                    aria-label="Clear search"
+                  >
+                    ✕
+                  </button>
+                )}
+              </div>
+            </form>
           </div>
         </div>
 
@@ -105,12 +149,29 @@ const CategoryPage = () => {
           </div>
         )}
 
+        {/* Search result count */}
+        {searchQuery && (
+          <div className="cp-search-result-info">
+            {filtered.length === 0
+              ? `No results for "${searchQuery}"`
+              : `${filtered.length} result${filtered.length !== 1 ? 's' : ''} for "${searchQuery}"`}
+          </div>
+        )}
+
         {/* Grid */}
         <div className="cp-grid-section">
           {filtered.length === 0 ? (
             <div className="cp-empty">
-              <p>No items found in this category yet.</p>
-              <button onClick={() => navigate('/market')}>← Back to Marketplace</button>
+              <p>
+                {searchQuery
+                  ? `No products found matching "${searchQuery}".`
+                  : 'No items found in this category yet.'}
+              </p>
+              {searchQuery ? (
+                <button onClick={() => setSearchQuery('')}>Clear search</button>
+              ) : (
+                <button onClick={() => navigate('/market')}>← Back to Marketplace</button>
+              )}
             </div>
           ) : (
             <div className="cp-grid">
@@ -137,9 +198,7 @@ const CategoryPage = () => {
                       <div className="cp-price-block">
                         <span className="cp-price-label">Price</span>
                         <span className="cp-price-value">
-                          {typeof item.price === 'number'
-                            ? `$${item.price}`
-                            : item.price}
+                          {typeof item.price === 'number' ? `$${item.price}` : item.price}
                         </span>
                       </div>
                       <button className="cp-view-btn">View →</button>

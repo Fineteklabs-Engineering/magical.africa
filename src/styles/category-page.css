@@ -10,8 +10,8 @@
 /* ── HERO ── */
 .cp-hero {
   position: relative;
-  height: 52vh;
-  min-height: 320px;
+  height: 62vh;
+  min-height: 380px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -22,7 +22,7 @@
 .cp-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.3) 55%, transparent 100%);
 }
 
 .cp-hero-content {
@@ -30,6 +30,7 @@
   z-index: 2;
   padding: 0 4rem 3rem;
   color: white;
+  width: 100%;
 }
 
 .cp-breadcrumb-hero {
@@ -88,6 +89,76 @@
   padding: 4px 14px;
   border-radius: 20px;
   letter-spacing: 0.03rem;
+  margin-bottom: 1.4rem;
+}
+
+/* ── SEARCH BAR ── */
+.cp-search-form {
+  width: 100%;
+  max-width: 520px;
+}
+
+.cp-search-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50px;
+  padding: 0 1.2rem;
+  gap: 10px;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.cp-search-bar:focus-within {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.65);
+}
+
+.cp-search-icon {
+  color: rgba(255, 255, 255, 0.75);
+  flex-shrink: 0;
+}
+
+.cp-search-input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 0.88rem;
+  padding: 0.75rem 0;
+  font-family: inherit;
+}
+
+.cp-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.cp-search-clear {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 4px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.cp-search-clear:hover {
+  color: white;
+}
+
+/* ── SEARCH RESULT INFO ── */
+.cp-search-result-info {
+  padding: 0.75rem 4rem;
+  font-size: 0.82rem;
+  color: #888;
+  background: white;
+  border-bottom: 1px solid #ede8e8;
 }
 
 /* ── TABS ── */
@@ -141,7 +212,6 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  
 }
 
 /* ── CARD ── */
@@ -344,6 +414,10 @@
   .cp-back {
     padding: 0 8rem 3rem;
   }
+
+  .cp-search-result-info {
+    padding: 0.75rem 8rem;
+  }
 }
 
 /* ── RESPONSIVE ── */
@@ -377,6 +451,14 @@
 
   .cp-back {
     padding: 0 1.5rem 2rem;
+  }
+
+  .cp-search-result-info {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .cp-search-form {
+    max-width: 100%;
   }
 }
 
