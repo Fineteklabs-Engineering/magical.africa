@@ -13,7 +13,8 @@
   flex-direction: column;
   align-items: center;
   padding-bottom: 4rem;
-
+  background-color: #faf9f7;
+ padding-top: 4rem;
 }
 
 .contribute-text{

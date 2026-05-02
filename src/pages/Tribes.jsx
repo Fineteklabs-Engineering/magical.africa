@@ -1,84 +1,77 @@
-
-
-
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import PageSeo from '../components/PageSeo'
-import { SEO_CONTENT } from '../utils/seoContent'
+import PageSeo from '../components/PageSeo';
+import { SEO_CONTENT } from '../utils/seoContent';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import SearchSection from '../components/SearchSection';
-
 import '../styles/tribes2.css';
 import '../styles/contribute.css';
 
 const Tribes = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedRegion, setSelectedRegion] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [hoveredPin, setHoveredPin] = useState(null);
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  
   const communitiesData = [
-    [
-      { name: t('tribesPage.communities.maasai.name'), image: 'maasai', location: t('tribesPage.communities.maasai.location'), population: t('tribesPage.communities.maasai.population'), language: t('tribesPage.communities.maasai.language'), desc: t('tribesPage.communities.maasai.desc') },
-      { name: t('tribesPage.communities.ashanti.name'), image: 'ashanti', location: t('tribesPage.communities.ashanti.location'), population: t('tribesPage.communities.ashanti.population'), language: t('tribesPage.communities.ashanti.language'), desc: t('tribesPage.communities.ashanti.desc') },
-      { name: t('tribesPage.communities.hausa.name'), image: 'hausa', location: t('tribesPage.communities.hausa.location'), population: t('tribesPage.communities.hausa.population'), language: t('tribesPage.communities.hausa.language'), desc: t('tribesPage.communities.hausa.desc') }
-    ],
-    [
-      { name: t('tribesPage.communities.zulu.name'), image: 'zulu', location: t('tribesPage.communities.zulu.location'), population: t('tribesPage.communities.zulu.population'), language: t('tribesPage.communities.zulu.language'), desc: t('tribesPage.communities.zulu.desc') },
-      { name: t('tribesPage.communities.yoruba.name'), image: 'yoruba', location: t('tribesPage.communities.yoruba.location'), population: t('tribesPage.communities.yoruba.population'), language: t('tribesPage.communities.yoruba.language'), desc: t('tribesPage.communities.yoruba.desc') },
-      { name: t('tribesPage.communities.kikuyu.name'), image: 'kikuyu', location: t('tribesPage.communities.kikuyu.location'), population: t('tribesPage.communities.kikuyu.population'), language: t('tribesPage.communities.kikuyu.language'), desc: t('tribesPage.communities.kikuyu.desc') }
-    ],
-    [
-      { name: t('tribesPage.communities.igbo.name'), image: 'igbo', location: t('tribesPage.communities.igbo.location'), population: t('tribesPage.communities.igbo.population'), language: t('tribesPage.communities.igbo.language'), desc: t('tribesPage.communities.igbo.desc') },
-      { name: t('tribesPage.communities.amhara.name'), image: 'amhara', location: t('tribesPage.communities.amhara.location'), population: t('tribesPage.communities.amhara.population'), language: t('tribesPage.communities.amhara.language'), desc: t('tribesPage.communities.amhara.desc') },
-      { name: t('tribesPage.communities.berber.name'), image: 'berber', location: t('tribesPage.communities.berber.location'), population: t('tribesPage.communities.berber.population'), language: t('tribesPage.communities.berber.language'), desc: t('tribesPage.communities.berber.desc') }
-    ],
-    [
-      { name: t('tribesPage.communities.swahili.name'), image: 'swahili', location: t('tribesPage.communities.swahili.location'), population: t('tribesPage.communities.swahili.population'), language: t('tribesPage.communities.swahili.language'), desc: t('tribesPage.communities.swahili.desc') },
-      { name: t('tribesPage.communities.wolof.name'), image: 'wolof', location: t('tribesPage.communities.wolof.location'), population: t('tribesPage.communities.wolof.population'), language: t('tribesPage.communities.wolof.language'), desc: t('tribesPage.communities.wolof.desc') },
-      { name: t('tribesPage.communities.fulani.name'), image: 'fulani', location: t('tribesPage.communities.fulani.location'), population: t('tribesPage.communities.fulani.population'), language: t('tribesPage.communities.fulani.language'), desc: t('tribesPage.communities.fulani.desc') }
-    ]
+    { name: t('tribesPage.communities.maasai.name'), image: 'maasai', region: 'East Africa', location: t('tribesPage.communities.maasai.location'), population: t('tribesPage.communities.maasai.population'), language: t('tribesPage.communities.maasai.language'), desc: t('tribesPage.communities.maasai.desc'), color: '#8B4513' },
+    { name: t('tribesPage.communities.ashanti.name'), image: 'ashanti', region: 'West Africa', location: t('tribesPage.communities.ashanti.location'), population: t('tribesPage.communities.ashanti.population'), language: t('tribesPage.communities.ashanti.language'), desc: t('tribesPage.communities.ashanti.desc'), color: '#D4A017' },
+    { name: t('tribesPage.communities.hausa.name'), image: 'hausa', region: 'West Africa', location: t('tribesPage.communities.hausa.location'), population: t('tribesPage.communities.hausa.population'), language: t('tribesPage.communities.hausa.language'), desc: t('tribesPage.communities.hausa.desc'), color: '#2E7D32' },
+    { name: t('tribesPage.communities.zulu.name'), image: 'zulu', region: 'Southern Africa', location: t('tribesPage.communities.zulu.location'), population: t('tribesPage.communities.zulu.population'), language: t('tribesPage.communities.zulu.language'), desc: t('tribesPage.communities.zulu.desc'), color: '#C62828' },
+    { name: t('tribesPage.communities.yoruba.name'), image: 'yoruba', region: 'West Africa', location: t('tribesPage.communities.yoruba.location'), population: t('tribesPage.communities.yoruba.population'), language: t('tribesPage.communities.yoruba.language'), desc: t('tribesPage.communities.yoruba.desc'), color: '#6A1B9A' },
+    { name: t('tribesPage.communities.kikuyu.name'), image: 'kikuyu', region: 'East Africa', location: t('tribesPage.communities.kikuyu.location'), population: t('tribesPage.communities.kikuyu.population'), language: t('tribesPage.communities.kikuyu.language'), desc: t('tribesPage.communities.kikuyu.desc'), color: '#1565C0' },
+    { name: t('tribesPage.communities.igbo.name'), image: 'igbo', region: 'West Africa', location: t('tribesPage.communities.igbo.location'), population: t('tribesPage.communities.igbo.population'), language: t('tribesPage.communities.igbo.language'), desc: t('tribesPage.communities.igbo.desc'), color: '#00695C' },
+    { name: t('tribesPage.communities.amhara.name'), image: 'amhara', region: 'East Africa', location: t('tribesPage.communities.amhara.location'), population: t('tribesPage.communities.amhara.population'), language: t('tribesPage.communities.amhara.language'), desc: t('tribesPage.communities.amhara.desc'), color: '#E65100' },
+    { name: t('tribesPage.communities.berber.name'), image: 'berber', region: 'North Africa', location: t('tribesPage.communities.berber.location'), population: t('tribesPage.communities.berber.population'), language: t('tribesPage.communities.berber.language'), desc: t('tribesPage.communities.berber.desc'), color: '#4E342E' },
+    { name: t('tribesPage.communities.swahili.name'), image: 'swahili', region: 'East Africa', location: t('tribesPage.communities.swahili.location'), population: t('tribesPage.communities.swahili.population'), language: t('tribesPage.communities.swahili.language'), desc: t('tribesPage.communities.swahili.desc'), color: '#1B5E20' },
+    { name: t('tribesPage.communities.wolof.name'), image: 'wolof', region: 'West Africa', location: t('tribesPage.communities.wolof.location'), population: t('tribesPage.communities.wolof.population'), language: t('tribesPage.communities.wolof.language'), desc: t('tribesPage.communities.wolof.desc'), color: '#BF360C' },
+    { name: t('tribesPage.communities.fulani.name'), image: 'fulani', region: 'West Africa', location: t('tribesPage.communities.fulani.location'), population: t('tribesPage.communities.fulani.population'), language: t('tribesPage.communities.fulani.language'), desc: t('tribesPage.communities.fulani.desc'), color: '#283593' },
   ];
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % communitiesData.length);
+  const regions = ['All', 'East Africa', 'West Africa', 'North Africa', 'Southern Africa', 'Central Africa'];
+
+  const filtered = communitiesData.filter((c) => {
+    const matchRegion = selectedRegion === 'All' || c.region === selectedRegion;
+    const matchSearch =
+      c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      c.location.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchRegion && matchSearch;
+  });
+
+  const regionColors = {
+    'East Africa': '#1B5E20',
+    'West Africa': '#E65100',
+    'North Africa': '#4E342E',
+    'Southern Africa': '#C62828',
   };
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + communitiesData.length) % communitiesData.length);
-  };
-
-/*
-    useEffect(() => {
-    document.title = 'African Tribes and Communities';
-  }, []);
-
-  */
+  // Pin positions corrected to match actual SVG map rendering
+  const mapPins = [
+    { name: 'Berber',  region: 'North Africa',    top: '12%', left: '38%' }, // Algeria/Morocco — north of map
+    { name: 'Wolof',   region: 'West Africa',     top: '33%', left: '26%' }, // Senegal — far west coast
+    { name: 'Fulani',  region: 'West Africa',     top: '38%', left: '36%' }, // Guinea/Mali — inland west
+    { name: 'Hausa',   region: 'West Africa',     top: '36%', left: '43%' }, // Nigeria north / Niger
+    { name: 'Ashanti', region: 'West Africa',     top: '40%', left: '34%' }, // Ghana — south west
+    { name: 'Yoruba',  region: 'West Africa',     top: '43%', left: '40%' }, // Nigeria south west
+    { name: 'Igbo',    region: 'West Africa',     top: '46%', left: '42%' }, // Nigeria south east
+    { name: 'Amhara',  region: 'East Africa',     top: '36%', left: '64%' }, // Ethiopia highlands
+    { name: 'Kikuyu',  region: 'East Africa',     top: '50%', left: '75%' }, // Central Kenya
+    { name: 'Maasai',  region: 'East Africa',     top: '53%', left: '73%' }, // Kenya/Tanzania border
+    { name: 'Swahili', region: 'East Africa',     top: '55%', left: '78%' }, // Tanzania coast
+    { name: 'Zulu',    region: 'Southern Africa', top: '82%', left: '58%' }, // South Africa
+  ];
 
   return (
     <>
-
-
       <PageSeo {...SEO_CONTENT.tribes} />
 
-
-
+      {/*  HERO  */}
       <div className="heroSection2">
-
-    <video
-    autoPlay
-    
-    loop
-    playsInline
-    className="hero-video"
-    src="/images/african-tribes-video.mp4"
-  />
-
-
+        <video autoPlay muted loop playsInline className="hero-video" src="/images/african-tribes-video.mp4" />
         <Navbar />
-        
         <div className="tribes-hero-content">
           <div className="tribes-hero-content-text">
             <h1>{t('tribesPage.hero.title')}</h1>
@@ -87,65 +80,152 @@ const Tribes = () => {
         </div>
       </div>
 
-      <SearchSection />
-
-      <section className="communities-section">
-        <h1 className="community-heading">{t('tribesPage.section.title')}</h1>
-        <p className="community-sub">{t('tribesPage.section.subtitle')}</p>
-
-        <div className="community">
-          <div className="prev-button" onClick={prevSlide}>
-            <i className="fa-solid fa-chevron-left"></i>
-          </div>
-
-          <div className="carousel-container2">
-            <div 
-              className="the-communities"
-              style={{ transform: `translateX(-${currentSlide * 25}%)` }}
-            >
-              {communitiesData.map((slide, slideIndex) => (
-                <div className="community-slide" key={slideIndex}>
-                  {slide.map((community, index) => (
-                    <div className="community1" key={index}>
-                      <div className={`community-image ${community.image}`}></div>
-                      <div className="community-content">
-                        <h1>{community.name}</h1>
-                        <p>{community.desc}</p>
-                        <div className="community-content-spans">
-                          <span className="info1">📍<p className="info-p">{community.location}</p></span>
-                          <span className="info1">👥<p className="info-p">{community.population}</p></span>
-                          <span className="info1">📖<p className="info-p">{t('tribesPage.language')}: {community.language}</p></span>
-                        </div>
-                        <button 
-                          className="info-button"
-                          onClick={() => navigate('/maasai')}
-                        >
-                          {t('tribesPage.exploreCulture')}
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="next-button" onClick={nextSlide}>
-            <i className="fa-solid fa-chevron-right"></i>
-          </div>
+      {/* COMMUNITIES SECTION  */}
+      <section className="tribes-communities-section">
+        <div className="tribes-section-header">
+          <p className="tribes-section-label">ACROSS THE CONTINENT</p>
+          <h2 className="tribes-section-title">{t('tribesPage.section.title')}</h2>
+          <p className="tribes-section-sub">{t('tribesPage.section.subtitle')}</p>
         </div>
 
-        <div className="pagination-dots">
-          {communitiesData.map((_, index) => (
-            <div 
-              key={index}
-              className={`dot ${currentSlide === index ? 'active' : ''}`}
-              onClick={() => setCurrentSlide(index)}
-            ></div>
-          ))}
+        {/* Filter bar */}
+        <div className="tribes-filter-bar">
+          <div className="tribes-search-wrap">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2"/>
+              <path d="M16.5 16.5L21 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+            <input
+              type="text"
+              placeholder="Search communities..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="tribes-search-input"
+            />
+          </div>
+
+          <div className="tribes-dropdown-wrap">
+            <button
+              className="tribes-dropdown-btn"
+              onClick={() => setDropdownOpen((o) => !o)}
+            >
+              <span>{selectedRegion}</span>
+              <svg
+                width="12" height="12" viewBox="0 0 24 24" fill="none"
+                style={{ transform: dropdownOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
+              >
+                <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            {dropdownOpen && (
+              <div className="tribes-dropdown-menu">
+                {regions.map((r) => (
+                  <button
+                    key={r}
+                    className={`tribes-dropdown-item ${selectedRegion === r ? 'active' : ''}`}
+                    onClick={() => { setSelectedRegion(r); setDropdownOpen(false); }}
+                  >
+                    {r}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <span className="tribes-count">{filtered.length} communities</span>
+        </div>
+
+        {/* Community cards grid */}
+        <div className="tribes-grid">
+          {filtered.length === 0 ? (
+            <div className="tribes-empty">
+              <p>No communities found. <button onClick={() => { setSearchQuery(''); setSelectedRegion('All'); }}>Clear filters</button></p>
+            </div>
+          ) : (
+            filtered.map((community, index) => (
+              <div key={index} className="tribe-card" onClick={() => navigate('/maasai')}>
+                <div className={`tribe-card-image community-image ${community.image}`}>
+                  <div className="tribe-card-region-badge">{community.region}</div>
+                </div>
+                <div className="tribe-card-body">
+                  <div className="tribe-card-accent" style={{ background: community.color }} />
+                  <h3 className="tribe-card-name">{community.name}</h3>
+                  <p className="tribe-card-desc">{community.desc}</p>
+                  <div className="tribe-card-meta">
+                    <span>📍 {community.location}</span>
+                    <span>👥 {community.population}</span>
+                    <span>📖 {community.language}</span>
+                  </div>
+                  <button className="tribe-card-btn">{t('tribesPage.exploreCulture')} →</button>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </section>
 
+      {/* ── AFRICA MAP ── */}
+      <section className="tribes-map-section">
+        <div className="tribes-section-header">
+          <p className="tribes-section-label">WHERE THEY LIVE</p>
+          <h2 className="tribes-section-title">Communities Across Africa</h2>
+          <p className="tribes-section-sub">Hover over a pin to see the community</p>
+        </div>
+
+        <div className="tribes-map-outer">
+          <div className="tribes-map-container">
+
+            {/* Map + pins */}
+            <div className="tribes-map-wrap">
+              <img
+                src="/images/africa-map.svg"
+                alt="Map of Africa"
+                className="tribes-map-img"
+              />
+
+              {mapPins.map((pin, i) => (
+                <div
+                  key={i}
+                  className="map-pin-wrap"
+                  style={{ top: pin.top, left: pin.left }}
+                  onMouseEnter={() => setHoveredPin(pin.name)}
+                  onMouseLeave={() => setHoveredPin(null)}
+                >
+                  <div className="map-pin">
+                    <div
+                      className="map-pin-dot"
+                      style={{ background: regionColors[pin.region] || '#B5A191' }}
+                    />
+                    <div className="map-pin-pulse" style={{ background: `${regionColors[pin.region]}44` }} />
+                  </div>
+                  {hoveredPin === pin.name && (
+                    <div className="map-pin-tooltip">
+                      <strong>{pin.name}</strong>
+                      <span>{pin.region}</span>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Legend */}
+            <div className="tribes-map-legend">
+              <h4>Regions</h4>
+              {Object.entries(regionColors).map(([label, color]) => (
+                <div key={label} className="legend-item">
+                  <span className="legend-dot" style={{ background: color }} />
+                  <span>{label}</span>
+                </div>
+              ))}
+              <div className="legend-divider" />
+              <p className="legend-note">Hover a pin to identify the community</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ── CONTRIBUTE ── */}
       <section className="contribute-story">
         <div className="contribute-text">
           <h1>{t('tribesPage.contribute.title')}</h1>

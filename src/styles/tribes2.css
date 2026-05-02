@@ -1,13 +1,13 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0.025rem;
   line-height: 1.5rem;
-  
 }
 
+/* ── HERO ── */
 .hero-video {
   position: absolute;
   top: 0;
@@ -17,6 +17,7 @@
   object-fit: cover;
   z-index: 0;
 }
+
 .heroSection2::before {
   content: '';
   position: absolute;
@@ -24,13 +25,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); 
+  background-color: rgba(0, 0, 0, 0.45);
   z-index: 1;
 }
 
-.heroSection2{
+.heroSection2 {
   height: 100vh;
-  
+  position: relative;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -38,448 +39,527 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
 }
 
-
-
-.tribes-hero-content{
+.tribes-hero-content {
   display: flex;
   flex-direction: column;
   position: absolute;
   bottom: 10%;
-  z-index: 1;
+  z-index: 2;
   left: 3rem;
   gap: 30px;
 }
 
-.tribes-hero-content-text{
+.tribes-hero-content-text {
   gap: 30px;
   display: flex;
   flex-direction: column;
 }
-.tribes-hero-content h1{
+
+.tribes-hero-content h1 {
   font-size: 3rem;
   font-weight: 600;
   color: white;
- 
 }
 
-.tribes-hero-content p{
+.tribes-hero-content p {
   font-size: 1rem;
   color: white;
   font-weight: 400;
   width: 70%;
 }
 
-
-   .communities-section {
-      display: flex;
-      height: fit-content;
-      padding-top: 4rem;
-      padding-bottom: 4rem;
-      flex-direction: column;
-      padding-left: 3rem;
-      padding-right: 3rem;
-      
-    }
-
-    .community-heading {
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: black;
-      text-align: center;
-    }
-
-    .community-sub {
-      font-size: 1rem;
-      color: black;
-      font-weight: 400;
-      text-align: center;
-      padding-top: 2rem;
-      
-    }
-
-    .community{
-      display: flex;
-      flex-direction: row;
-      gap: 50px;
-      width: 100%;
-      margin-top: 4rem;
-      align-items: center;
-      
-    }
-
-    .carousel-container2 {
-      width: 100%;
-     overflow: hidden;
-     
-    }
-
-    .the-communities {
-      display: flex;
-      flex-direction: row;
-      /*
-      gap: 30px;
-      */
-     
-      transition: transform 0.5s ease-in-out;
-      width: 400% ; 
-    }
-
-    .community-slide {
-      display: flex;
-      flex-direction: row;
-      gap: 40px;
-      width: 25%; /* Each slide takes 1/4 of the container */
-      flex-shrink: 0;
-    }
-
-    .prev-button {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-    }
-
-    .next-button {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-    }
-
-    .community1{
-      height: 500px;
-       flex: 1;
-     
-      border-bottom: 0.5px solid #e5e3e3;
-      border-left: 0.5px solid #e5e3e3;
-      border-right: 0.5px solid #e5e3e3;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .community-image {
-      flex: 1;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    /* Different background images for each community */
-    .community-image.zulu {
-      background-image: url('/images/maasai-women-latest.jpg');
-    }
-    .community-image.yoruba {
-      background-image: url('/images/African-latest.jpg');
-    }
-    .community-image.kikuyu {
-      background-image: url('/images/African-storytelling2.jpg');
-    }
-    .community-image.maasai {
-      background-image: url('/images/drums-latest.jpg');
-    }
-    .community-image.ashanti {
-      background-image: url('/images/Oromo2.jpg');
-    }
-    .community-image.hausa {
-      background-image: url('/images/kitenge-latest.jpg');
-    }
-    .community-image.igbo {
-      background-image: url('/images/kitenge2-latest.jpg');
-    }
-    .community-image.amhara {
-      background-image: url('/images/learn-language.jpg');
-    }
-    .community-image.berber {
-      background-image: url('/images/Learn-Language3.jpg');
-    }
-    .community-image.swahili {
-      background-image: url('/images/maasai-wear2.jpg');
-    }
-    .community-image.wolof {
-      background-image: url('/images/wind-instrument2.jpg');
-    }
-    .community-image.fulani {
-      background-image: url('/images/Igbo2.jpg');
-    }
-
-    .community-content {
-      flex: 1.3;
-      display: flex;
-      flex-direction: column;
-      padding-top: 1rem;
-      padding-left: 1rem;
-      padding-right: 1rem;
-      padding-bottom: 1rem;
-    }
-
-    .community-content h1 {
-      font-size: 1.3rem;
-    }
-
-    .community-content p {
-      font-size: 0.875rem;
-      padding-top: 10px;
-    }
-
-    .community-content-spans {
-      display: flex;
-      flex-direction: column;
-      margin-top: 10px;
-    }
-
-    .info1 {
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
-      align-items: center;
-      
-    }
-
-    .info-p {
-      font-size: 0.875rem;
-    }
-
-    .info-button {
-      margin-top: 10px;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-      background-color: rgb(181, 161, 145);
-      color: white;
-      border: none;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .info-button:hover {
-      background-color: rgb(160, 140, 125);
-    }
-
-    /* Pagination dots */
-    .pagination-dots {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 2rem;
-      
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: #ddd !important;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .dot.active {
-      background-color: rgb(181, 161, 145) !important;
-      width: 30px;
-      border-radius: 5px;
-    }
-
-    .dot:hover {
-      background-color: rgb(181, 161, 145);
-    }
-
-    /* Responsive Styles */
-
-    /* Tablet - 2 cards per slide */
-
-
-@media screen and (min-width:1440px) {
-  .communities-section{
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-  .community{
-    margin-top: 6rem;
-  }
-  .pagination-dots{
-    margin-top: 4rem;
-  }
-  .community-slide{
-    gap: 60px;
-  }
+/* ── SHARED SECTION HEADER ── */
+.tribes-section-header {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
-    @media (max-width: 1024px) {
-      .communities-section {
-        padding-left: 2rem;
-        padding-right: 2rem;
-      }
+.tribes-section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18rem;
+  color: rgb(181, 161, 145);
+  margin-bottom: 0.6rem;
+  display: block;
+}
 
-      .community {
-        gap: 30px;
-      }
+.tribes-section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
 
-      .community1 {
-        height: 450px;
-      }
+.tribes-section-sub {
+  font-size: 0.9rem;
+  color: #888;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
 
-      .community-content h1 {
-        font-size: 1.1rem;
-      }
+/* ── COMMUNITIES SECTION ── */
+.tribes-communities-section {
+  padding: 5rem 4rem;
+  background: #faf9f7;
+}
 
-      .community-content p {
-        font-size: 0.8rem;
-      }
+/* ── FILTER BAR ── */
+.tribes-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
 
-      .info-p {
-        font-size: 0.8rem;
-      }
+.tribes-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  border: 1px solid #e5e3e3;
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  flex: 1;
+  max-width: 320px;
+  color: #aaa;
+}
 
-      .info-button {
-        font-size: 0.9rem;
-        padding-top: 0.8rem;
-        padding-bottom: 0.8rem;
-      }
-    }
+.tribes-search-input {
+  border: none;
+  outline: none;
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: #333;
+  width: 100%;
+  background: transparent;
+}
 
-    /* Small Tablet / Large Mobile - 1 card per slide */
-    @media (max-width: 768px) {
-      .communities-section {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-      }
+.tribes-search-input::placeholder {
+  color: #bbb;
+}
 
-      .community {
-        gap: 20px;
-      }
+.tribes-dropdown-wrap {
+  position: relative;
+}
 
-      .community-heading {
-        font-size: 1.3rem;
-      }
+.tribes-dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid #e5e3e3;
+  border-radius: 8px;
+  padding: 0.65rem 1.1rem;
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: #333;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.2s;
+}
 
-      .community-sub {
-        font-size: 0.9rem;
-      }
+.tribes-dropdown-btn:hover {
+  border-color: rgb(181, 161, 145);
+}
 
-      .community-slide {
-        flex-direction: column;
-        gap: 20px;
-      }
+.tribes-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: white;
+  border: 1px solid #e5e3e3;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  z-index: 100;
+  min-width: 180px;
+  overflow: hidden;
+}
 
-      .community1 {
-        height: 450px;
-        flex: none;
-      }
+.tribes-dropdown-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0.65rem 1.1rem;
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: #555;
+  cursor: pointer;
+  transition: background 0.15s;
+}
 
-      .community-image {
-        min-height: 150px;
-      }
+.tribes-dropdown-item:hover {
+  background: #faf9f7;
+}
 
-      .prev-button i,
-      .next-button i {
-        font-size: 0.9rem;
-      }
-      .tribes-hero-content h1{
-        line-height: 1.7rem;
-      }
-        .tribes-hero-content{
-       left: 1rem;
-        
-      }
-    }
+.tribes-dropdown-item.active {
+  color: rgb(181, 161, 145);
+  font-weight: 600;
+  background: #fdf5ee;
+}
 
-    /* Mobile */
-    @media (max-width: 480px) {
-      .communities-section {
-        padding-left: 1rem;
-        padding-right: 1rem;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-      }
+.tribes-count {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-left: auto;
+}
 
-      .community {
-        gap: 15px;
-        margin-top: 1.5rem;
-      }
+/* ── COMMUNITY CARDS GRID ── */
+.tribes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
 
-      .community-heading {
-        font-size: 1.5rem;
-      }
+.tribe-card {
+  background: white;
+  border: 1px solid #ede8e8;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
 
-      .community-sub {
-        font-size: 0.85rem;
-        padding-top: 1rem;
-      }
+.tribe-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.09);
+}
 
-      .community-slide {
-        gap: 30px;
-      }
+.tribe-card-image {
+  height: 190px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
 
-      .community1 {
-        height: 450px;
-      }
+.tribe-card-region-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  font-size: 0.62rem;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.04rem;
+  text-transform: uppercase;
+}
 
-      .community-content {
-        padding: 0.8rem;
-      }
+.tribe-card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 
-      .community-content h1 {
-        font-size: 1.2rem;
-      }
+.tribe-card-accent {
+  width: 32px;
+  height: 3px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
 
-      .community-content p {
-        font-size: 0.875rem;
-        padding-top: 8px;
-      }
+.tribe-card-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
 
-      .community-content-spans {
-        margin-top: 8px;
-      }
+.tribe-card-desc {
+  font-size: 0.75rem;
+  color: #888;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
 
-      .info1 {
-        gap: 8px;
-      }
+.tribe-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 14px;
+}
 
-      .info-p {
-        font-size: 0.75rem;
-      }
+.tribe-card-meta span {
+  font-size: 0.72rem;
+  color: #999;
+  line-height: 1.4;
+}
 
-      .info-button {
-        margin-top: 8px;
-        padding-top: 0.7rem;
-        padding-bottom: 0.7rem;
-        font-size: 0.85rem;
-      }
+.tribe-card-btn {
+  background: rgb(48, 48, 48);
+  color: white;
+  border: none;
+  padding: 0.55rem 1rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s;
+  align-self: flex-start;
+}
 
-      .prev-button i,
-      .next-button i {
-        font-size: 0.8rem;
-      }
+.tribe-card-btn:hover {
+  background: rgb(181, 161, 145);
+}
 
-      .pagination-dots {
-        margin-top: 2rem;
-        gap: 8px;
-      }
+.tribes-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem;
+  color: #aaa;
+  font-size: 0.9rem;
+}
 
-      .dot {
-        width: 8px;
-        height: 8px;
-      }
+.tribes-empty button {
+  background: none;
+  border: none;
+  color: rgb(181, 161, 145);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
 
-      .dot.active {
-        width: 24px;
-      }
-      .tribes-hero-content h1{
-        line-height: 1.7rem;
-        font-size: 1.4rem;
-      }
-      .tribes-hero-content p{
-        font-size: 1rem;
-        width: 90%;
-      }
+/* ── MAP SECTION ── */
+.tribes-map-section {
+  padding: 5rem 4rem;
+  background: white;
+}
 
-      .tribes-hero-content{
-        bottom: 5%;
-      }
-    
-    }
+.tribes-map-outer {
+  display: flex;
+  justify-content: center;
+}
+
+.tribes-map-container {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* The map image wrapper — MUST be position:relative for pins to work */
+.tribes-map-wrap {
+  position: relative;
+  flex: 1;
+}
+
+.tribes-map-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Give the SVG countries a fill so the map is visible */
+  filter: invert(8%) sepia(10%) saturate(500%) hue-rotate(340deg) brightness(95%);
+}
+
+/* ── MAP PINS ── */
+.map-pin-wrap {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.map-pin {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-pin-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+  position: relative;
+  z-index: 2;
+  transition: transform 0.2s;
+}
+
+.map-pin-wrap:hover .map-pin-dot {
+  transform: scale(1.5);
+}
+
+.map-pin-pulse {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pinPulse 2.2s ease-out infinite;
+}
+
+@keyframes pinPulse {
+  0%   { transform: translate(-50%, -50%) scale(0.6); opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(2.2); opacity: 0; }
+}
+
+.map-pin-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgb(30, 30, 30);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.map-pin-tooltip strong {
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+
+.map-pin-tooltip span {
+  font-size: 0.65rem;
+  opacity: 0.7;
+  font-family: 'Poppins', sans-serif;
+}
+
+.map-pin-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgb(30, 30, 30);
+}
+
+/* ── MAP LEGEND ── */
+.tribes-map-legend {
+  background: #faf9f7;
+  border: 1px solid #ede8e8;
+  border-radius: 12px;
+  padding: 1.5rem;
+  min-width: 190px;
+  flex-shrink: 0;
+}
+
+.tribes-map-legend h4 {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-size: 0.82rem;
+  color: #444;
+}
+
+.legend-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-divider {
+  border: none;
+  border-top: 1px solid #ede8e8;
+  margin: 1rem 0;
+}
+
+.legend-note {
+  font-size: 0.72rem;
+  color: #bbb;
+  line-height: 1.5;
+}
+
+/* ── COMMUNITY IMAGE CLASSES ── */
+.community-image.zulu     { background-image: url('/images/maasai-women-latest.jpg'); }
+.community-image.yoruba   { background-image: url('/images/African-latest.jpg'); }
+.community-image.kikuyu   { background-image: url('/images/African-storytelling2.jpg'); }
+.community-image.maasai   { background-image: url('/images/drums-latest.jpg'); }
+.community-image.ashanti  { background-image: url('/images/Oromo2.jpg'); }
+.community-image.hausa    { background-image: url('/images/kitenge-latest.jpg'); }
+.community-image.igbo     { background-image: url('/images/kitenge2-latest.jpg'); }
+.community-image.amhara   { background-image: url('/images/learn-language.jpg'); }
+.community-image.berber   { background-image: url('/images/Learn-Language3.jpg'); }
+.community-image.swahili  { background-image: url('/images/maasai-wear2.jpg'); }
+.community-image.wolof    { background-image: url('/images/wind-instrument2.jpg'); }
+.community-image.fulani   { background-image: url('/images/Igbo2.jpg'); }
+
+/* ── LARGE SCREENS ── */
+@media screen and (min-width: 1440px) {
+  .tribes-communities-section { padding: 7rem 8rem; }
+  .tribes-map-section { padding: 7rem 8rem; }
+  .tribes-grid { grid-template-columns: repeat(4, 1fr); gap: 30px; }
+}
+
+/* ── RESPONSIVE ── */
+@media screen and (max-width: 1200px) {
+  .tribes-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media screen and (max-width: 1024px) {
+  .tribes-communities-section { padding: 4rem 2rem; }
+  .tribes-map-section { padding: 4rem 2rem; }
+  .tribes-grid { grid-template-columns: repeat(2, 1fr); }
+  .tribes-map-container { flex-direction: column; align-items: center; }
+  .tribes-map-legend {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+  .tribes-map-legend h4 { width: 100%; margin-bottom: 0; }
+  .legend-divider, .legend-note { display: none; }
+}
+
+@media screen and (max-width: 768px) {
+  .tribes-communities-section { padding: 3rem 1.5rem; }
+  .tribes-map-section { padding: 3rem 1.5rem; }
+  .tribes-section-title { font-size: 1.5rem; }
+  .tribes-filter-bar { flex-wrap: wrap; }
+  .tribes-search-wrap { max-width: 100%; flex: 1 1 100%; }
+  .tribes-count { margin-left: 0; }
+  .tribes-hero-content { left: 1rem; }
+  .tribes-hero-content h1 { line-height: 1.7rem; }
+}
+
+@media screen and (max-width: 480px) {
+  .tribes-grid { grid-template-columns: 1fr; }
+  .tribes-hero-content h1 { font-size: 1.4rem; line-height: 1.7rem; }
+  .tribes-hero-content p { font-size: 1rem; width: 90%; }
+  .tribes-hero-content { bottom: 5%; }
+}
