@@ -180,14 +180,21 @@ const ProductDetail = () => {
             <div className="pd-image-frame">
               <img src={product.imageUrl || '/images/pottery2-image2.png'} alt={product.name} />
             </div>
-            <div className="pd-tribe-badge">
+            <div className="pd-tribe-badge"
+            
+            onClick={() => product.tribe && navigate(`/tribes/${product.tribe.toLowerCase()}`)}
+            style={{ cursor: product.tribe ? 'pointer' : 'default' }}
+            >
               <span className="pd-tribe-label">Community</span>
               <span className="pd-tribe-value">{product.tribe || 'African Artisan'}</span>
             </div>
           </div>
 
           <div className="pd-info-side">
-            <span className="pd-pill">{product.tribe || 'Handcrafted'}</span>
+            <span className="pd-pill"
+            onClick={() => product.tribe && navigate(`/tribes/${product.tribe.toLowerCase()}`)}
+            style={{ cursor: product.tribe ? 'pointer' : 'default' }}
+            >{product.tribe || 'Handcrafted'}</span>
             <h1 className="pd-title">{product.name}</h1>
 
             <div className="pd-price-row">

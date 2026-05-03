@@ -87,6 +87,8 @@ function App() {
 <Route path="/market/auctions/past" element={<Auctions />} />
 
 <Route path="/tribes/:tribeName" element={<TribePage />} />
+<Route path="/tribes/:tribeName/:tab" element={<TribePage />} />
+<Route path="/tribes/:tribeName/:tab/:section" element={<TribePage />} />
 
 
           {/* ── Teacher-only routes ── */}
