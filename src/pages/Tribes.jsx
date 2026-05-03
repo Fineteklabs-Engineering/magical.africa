@@ -143,7 +143,9 @@ const Tribes = () => {
             </div>
           ) : (
             filtered.map((community, index) => (
-              <div key={index} className="tribe-card" onClick={() => navigate('/maasai')}>
+              <div key={index} className="tribe-card" 
+              onClick={() => navigate(`/tribes/${community.name.toLowerCase()}`)}
+              >
                 <div className={`tribe-card-image community-image ${community.image}`}>
                   <div className="tribe-card-region-badge">{community.region}</div>
                 </div>
@@ -156,7 +158,9 @@ const Tribes = () => {
                     <span>👥 {community.population}</span>
                     <span>📖 {community.language}</span>
                   </div>
-                  <button className="tribe-card-btn">{t('tribesPage.exploreCulture')} →</button>
+                  <button className="tribe-card-btn"
+                  onClick={() => navigate(`/tribes/${community.name.toLowerCase()}`)}
+                  >{t('tribesPage.exploreCulture')} →</button>
                 </div>
               </div>
             ))
@@ -230,7 +234,7 @@ const Tribes = () => {
         <div className="contribute-text">
           <h1>{t('tribesPage.contribute.title')}</h1>
           <p>{t('tribesPage.contribute.description')}</p>
-          <button className="contribute-btn">{t('tribesPage.contribute.button')}</button>
+          <button className="contribute-btn" onClick={()=> navigate('/blogs')}>{t('tribesPage.contribute.button')}</button>
         </div>
       </section>
 

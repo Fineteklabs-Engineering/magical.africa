@@ -35,6 +35,7 @@ import CategoryPage from './components/CategoryPage';
 import AuctionDetail from './components/AuctionDetail';
 import Auctions from './components/Auctions';
 import AuctionsHub from './components/AuctionsHub';
+import TribePage from './components/TribesPage';
 
 function App() {
   return (
@@ -84,6 +85,8 @@ function App() {
 <Route path="/market/auctions/live/:slug" element={<AuctionDetail />} />
 <Route path="/market/auctions/upcoming" element={<Auctions />} />
 <Route path="/market/auctions/past" element={<Auctions />} />
+
+<Route path="/tribes/:tribeName" element={<TribePage />} />
 
 
           {/* ── Teacher-only routes ── */}

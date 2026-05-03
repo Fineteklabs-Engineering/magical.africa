@@ -192,6 +192,12 @@ const Navbar = ({ solid }) => {
 
           <MarketDropdown />
 
+
+          <NavLink to="/tribes" className={({ isActive }) => isActive ? 'active-link' : ''}>
+           {t('footer.links.tribes')}
+          </NavLink>
+        
+
           <NavLink to="/blogs" className={({ isActive }) => isActive ? 'active-link' : ''}>
             {t('sideMenu.blog')}
           </NavLink>
@@ -199,6 +205,9 @@ const Navbar = ({ solid }) => {
          <NavLink to="/technology" className={({ isActive }) => isActive ? 'active-link' : ''}>
            {t('nav.technology')}
           </NavLink>
+
+
+      
 
 
         </div>

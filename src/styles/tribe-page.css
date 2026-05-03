@@ -1,0 +1,563 @@
+/* TRIBE PAGE  */
+.tp-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #faf9f7;
+}
+
+/* HERO */
+.tp-hero {
+  position: relative;
+  height: 65vh;
+  min-height: 420px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+}
+
+.tp-hero-overlay {
+  position: absolute;
+  inset: 0;
+ background: rgba(0,0,0,0.6);
+}
+
+.tp-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 4rem 3.5rem;
+  color: white;
+  width: 100%;
+}
+
+/* Breadcrumb */
+.tp-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.tp-crumb {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.tp-crumb:hover { opacity: 0.6; }
+
+.tp-crumb-sep { opacity: 0.4; }
+
+.tp-crumb-active {
+  font-weight: 600;
+  cursor: default;
+}
+
+.tp-hero-region {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  color: rgb(210, 123, 53);
+  margin-bottom: 0.5rem;
+}
+
+.tp-hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.02rem;
+}
+
+.tp-hero-tagline {
+  font-size: 1rem;
+  opacity: 0.8;
+  max-width: 540px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.tp-hero-stats {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.tp-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tp-stat-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  opacity: 0.6;
+}
+
+.tp-stat-value {
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.tp-stat-value {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── TABS ── */
+.tp-tabs {
+  display: flex;
+  background: white;
+  border-bottom: 1px solid #ede8e8;
+  padding: 0 4rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  position: sticky;
+  justify-content: center;
+  top: 0;
+  z-index: 50;
+}
+
+.tp-tabs::-webkit-scrollbar { display: none; }
+
+.tp-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 1.1rem 1.6rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #999;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: inherit;
+  transition: color 0.2s, border-color 0.2s;
+  margin-bottom: -1px;
+}
+
+.tp-tab:hover { color: #333; }
+
+.tp-tab-active {
+  color: rgb(30, 30, 30);
+  border-bottom-color: rgb(210, 123, 53);
+  font-weight: 600;
+}
+
+/* ── TAB CONTENT WRAPPER ── */
+.tp-content {
+  padding: 3.5rem 4rem;
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ── HISTORY TAB ── */
+.tp-history {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.tp-history-overview h2,
+.tp-timeline h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgb(210, 123, 53);
+  display: inline-block;
+}
+
+.tp-history-overview p {
+  font-size: 0.92rem;
+  color: #555;
+  line-height: 1.9;
+  max-width: 100%;
+}
+
+/* Timeline */
+.tp-timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.tp-timeline-list::before {
+  content: '';
+  position: absolute;
+  left: 80px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #ede8e8;
+}
+
+.tp-timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  position: relative;
+}
+
+.tp-timeline-year {
+  min-width: 60px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: rgb(210, 123, 53);
+  text-align: right;
+  padding-top: 2px;
+}
+
+.tp-timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgb(210, 123, 53);
+  border: 2px solid white;
+  box-shadow: 0 0 0 2px rgb(210, 123, 53);
+  flex-shrink: 0;
+  margin-top: 3px;
+  position: relative;
+  z-index: 1;
+}
+
+.tp-timeline-event {
+  font-size: 0.88rem;
+  color: #555;
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* ── CULTURE TAB ── */
+.tp-culture {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+/* Left accordion list */
+.tp-culture-list {
+  display: flex;
+  flex-direction: column;
+  min-width: 220px;
+  flex-shrink: 0;
+  border: 1px solid #ede8e8;
+  border-radius: 10px;
+  overflow: hidden;
+  background: white;
+}
+
+.tp-culture-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #ede8e8;
+  padding: 1rem 1.2rem;
+  font-size: 0.85rem;
+  font-family: inherit;
+  color: #555;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s, color 0.15s;
+  width: 100%;
+}
+
+.tp-culture-item:last-child {
+  border-bottom: none;
+}
+
+.tp-culture-item:hover {
+  background: #faf9f7;
+  color: #1a1a1a;
+}
+
+.tp-culture-item.active {
+  background: #fdf5ee;
+  color: rgb(210, 123, 53);
+  font-weight: 600;
+}
+
+.tp-culture-arrow {
+  font-size: 0.6rem;
+  color: rgb(210, 123, 53);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+/* Right content panel */
+.tp-culture-content {
+  flex: 1;
+  background: white;
+  border: 1px solid #ede8e8;
+  border-radius: 10px;
+  padding: 2rem 2.5rem;
+  min-height: 320px;
+}
+
+.tp-culture-content h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid rgb(210, 123, 53);
+  display: inline-block;
+}
+
+.tp-culture-content p {
+  font-size: 0.92rem;
+  color: #555;
+  line-height: 2;
+}
+
+/* ── LANGUAGE TAB ── */
+.tp-language {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.tp-language-overview h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.8rem;
+}
+
+.tp-lang-meta {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.tp-lang-meta span {
+  font-size: 0.82rem;
+  color: #777;
+}
+
+.tp-lang-meta strong {
+  color: #444;
+}
+
+.tp-language-overview p {
+  font-size: 0.92rem;
+  color: #555;
+  line-height: 1.9;
+  max-width: 100%;
+}
+
+.tp-phrases h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+}
+
+.tp-phrases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.tp-phrase-card {
+  background: white;
+  border: 1px solid #ede8e8;
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tp-phrase-word {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgb(210, 123, 53);
+}
+
+.tp-phrase-meaning {
+  font-size: 0.78rem;
+  color: #888;
+}
+
+/* ── MARKET TAB ── */
+.tp-market {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.tp-market-overview h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.8rem;
+}
+
+.tp-market-overview p {
+  font-size: 0.92rem;
+  color: #555;
+  line-height: 1.9;
+  max-width: 760px;
+}
+
+.tp-market-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.tp-product-card {
+  background: white;
+  border: 1px solid #ede8e8;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tp-product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.tp-product-image {
+  height: 160px;
+  background: #f2ede8;
+}
+
+.tp-product-body {
+  padding: 14px;
+}
+
+.tp-product-body h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+.tp-product-body p {
+  font-size: 0.75rem;
+  color: #888;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.tp-product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #ede8e8;
+  padding-top: 10px;
+}
+
+.tp-product-price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.tp-product-btn {
+  background: rgb(48, 48, 48);
+  color: white;
+  border: none;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.tp-product-btn:hover {
+  background: rgb(210, 123, 53);
+}
+
+/* ── NOT FOUND ── */
+.tp-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 60vh;
+  text-align: center;
+  color: #aaa;
+}
+
+.tp-not-found h1 { color: #333; font-size: 1.5rem; }
+.tp-not-found p { font-size: 0.9rem; }
+.tp-not-found button {
+  background: rgb(48,48,48);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ── BACK BUTTON ── */
+.tp-back {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 0 4rem 3rem;
+  text-align: left;
+  transition: color 0.2s;
+  font-family: inherit;
+}
+
+.tp-back:hover { color: rgb(210, 123, 53); }
+
+/* ── LARGE SCREENS ── */
+@media screen and (min-width: 1440px) {
+  .tp-hero-content { padding: 0 8rem 4rem; }
+  .tp-tabs { padding: 0 8rem; }
+  .tp-content { padding: 4rem 8rem; max-width: 1400px; }
+  .tp-back { padding: 0 8rem 4rem; }
+}
+
+/* ── RESPONSIVE ── */
+@media screen and (max-width: 1024px) {
+  .tp-phrases-grid { grid-template-columns: repeat(2, 1fr); }
+  .tp-market-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media screen and (max-width: 768px) {
+  .tp-hero-content { padding: 0 1.5rem 2.5rem; }
+  .tp-hero-title { font-size: 2.2rem; }
+  .tp-tabs { padding: 0 1.5rem; }
+  .tp-content { padding: 2rem 1.5rem; }
+  .tp-culture { flex-direction: column; }
+  .tp-culture-list { min-width: unset; width: 100%; }
+  .tp-back { padding: 0 1.5rem 2rem; }
+  .tp-hero-stats { gap: 1.5rem; }
+  .tp-timeline-list::before { left: 70px; }
+}
+
+@media screen and (max-width: 480px) {
+  .tp-hero-title { font-size: 1.8rem; }
+  .tp-phrases-grid { grid-template-columns: 1fr; }
+  .tp-market-grid { grid-template-columns: 1fr; }
+  .tp-hero-stats { flex-direction: column; gap: 0.8rem; }
+}

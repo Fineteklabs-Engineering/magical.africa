@@ -51,6 +51,7 @@
 @media screen and (min-width:1440px) {
   .contribute-story{
     padding-bottom: 6rem;
+    padding-top: 6rem;
   }
 .contribute-text{
   max-width: 800px;
