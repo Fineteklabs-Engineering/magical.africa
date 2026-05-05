@@ -18,17 +18,33 @@ const Tribes = () => {
 
   const communitiesData = [
     { name: t('tribesPage.communities.maasai.name'), image: 'maasai', region: 'East Africa', location: t('tribesPage.communities.maasai.location'), population: t('tribesPage.communities.maasai.population'), language: t('tribesPage.communities.maasai.language'), desc: t('tribesPage.communities.maasai.desc'), color: '#8B4513' },
-    { name: t('tribesPage.communities.ashanti.name'), image: 'ashanti', region: 'West Africa', location: t('tribesPage.communities.ashanti.location'), population: t('tribesPage.communities.ashanti.population'), language: t('tribesPage.communities.ashanti.language'), desc: t('tribesPage.communities.ashanti.desc'), color: '#D4A017' },
-    { name: t('tribesPage.communities.hausa.name'), image: 'hausa', region: 'West Africa', location: t('tribesPage.communities.hausa.location'), population: t('tribesPage.communities.hausa.population'), language: t('tribesPage.communities.hausa.language'), desc: t('tribesPage.communities.hausa.desc'), color: '#2E7D32' },
+     { name: t('tribesPage.communities.kikuyu.name'), image: 'kikuyu', region: 'East Africa', location: t('tribesPage.communities.kikuyu.location'), population: t('tribesPage.communities.kikuyu.population'), language: t('tribesPage.communities.kikuyu.language'), desc: t('tribesPage.communities.kikuyu.desc'), color: '#1565C0' },
+
     { name: t('tribesPage.communities.zulu.name'), image: 'zulu', region: 'Southern Africa', location: t('tribesPage.communities.zulu.location'), population: t('tribesPage.communities.zulu.population'), language: t('tribesPage.communities.zulu.language'), desc: t('tribesPage.communities.zulu.desc'), color: '#C62828' },
+
     { name: t('tribesPage.communities.yoruba.name'), image: 'yoruba', region: 'West Africa', location: t('tribesPage.communities.yoruba.location'), population: t('tribesPage.communities.yoruba.population'), language: t('tribesPage.communities.yoruba.language'), desc: t('tribesPage.communities.yoruba.desc'), color: '#6A1B9A' },
-    { name: t('tribesPage.communities.kikuyu.name'), image: 'kikuyu', region: 'East Africa', location: t('tribesPage.communities.kikuyu.location'), population: t('tribesPage.communities.kikuyu.population'), language: t('tribesPage.communities.kikuyu.language'), desc: t('tribesPage.communities.kikuyu.desc'), color: '#1565C0' },
+
+
+    { name: t('tribesPage.communities.luo.name'), image: 'luo', region: 'East Africa', location: t('tribesPage.communities.yoruba.location'), population: t('tribesPage.communities.luo.population'), language: t('tribesPage.communities.luo.language'), desc: t('tribesPage.communities.luo.desc'), color: '#E65100' },
+ 
+    { name: t('tribesPage.communities.swahili.name'), image: 'swahili', region: 'East Africa', location: t('tribesPage.communities.swahili.location'), population: t('tribesPage.communities.swahili.population'), language: t('tribesPage.communities.swahili.language'), desc: t('tribesPage.communities.swahili.desc'), color: '#1B5E20' },
+   
     { name: t('tribesPage.communities.igbo.name'), image: 'igbo', region: 'West Africa', location: t('tribesPage.communities.igbo.location'), population: t('tribesPage.communities.igbo.population'), language: t('tribesPage.communities.igbo.language'), desc: t('tribesPage.communities.igbo.desc'), color: '#00695C' },
+
+
+    { name: t('tribesPage.communities.ashanti.name'), image: 'ashanti', region: 'West Africa', location: t('tribesPage.communities.ashanti.location'), population: t('tribesPage.communities.ashanti.population'), language: t('tribesPage.communities.ashanti.language'), desc: t('tribesPage.communities.ashanti.desc'), color: '#D4A017' },
+
+    { name: t('tribesPage.communities.hausa.name'), image: 'hausa', region: 'West Africa', location: t('tribesPage.communities.hausa.location'), population: t('tribesPage.communities.hausa.population'), language: t('tribesPage.communities.hausa.language'), desc: t('tribesPage.communities.hausa.desc'), color: '#2E7D32' },
+   
+    
+    
     { name: t('tribesPage.communities.amhara.name'), image: 'amhara', region: 'East Africa', location: t('tribesPage.communities.amhara.location'), population: t('tribesPage.communities.amhara.population'), language: t('tribesPage.communities.amhara.language'), desc: t('tribesPage.communities.amhara.desc'), color: '#E65100' },
     { name: t('tribesPage.communities.berber.name'), image: 'berber', region: 'North Africa', location: t('tribesPage.communities.berber.location'), population: t('tribesPage.communities.berber.population'), language: t('tribesPage.communities.berber.language'), desc: t('tribesPage.communities.berber.desc'), color: '#4E342E' },
-    { name: t('tribesPage.communities.swahili.name'), image: 'swahili', region: 'East Africa', location: t('tribesPage.communities.swahili.location'), population: t('tribesPage.communities.swahili.population'), language: t('tribesPage.communities.swahili.language'), desc: t('tribesPage.communities.swahili.desc'), color: '#1B5E20' },
-    { name: t('tribesPage.communities.wolof.name'), image: 'wolof', region: 'West Africa', location: t('tribesPage.communities.wolof.location'), population: t('tribesPage.communities.wolof.population'), language: t('tribesPage.communities.wolof.language'), desc: t('tribesPage.communities.wolof.desc'), color: '#BF360C' },
+
     { name: t('tribesPage.communities.fulani.name'), image: 'fulani', region: 'West Africa', location: t('tribesPage.communities.fulani.location'), population: t('tribesPage.communities.fulani.population'), language: t('tribesPage.communities.fulani.language'), desc: t('tribesPage.communities.fulani.desc'), color: '#283593' },
+ 
+    { name: t('tribesPage.communities.wolof.name'), image: 'wolof', region: 'West Africa', location: t('tribesPage.communities.wolof.location'), population: t('tribesPage.communities.wolof.population'), language: t('tribesPage.communities.wolof.language'), desc: t('tribesPage.communities.wolof.desc'), color: '#BF360C' },
+  
   ];
 
   const regions = ['All', 'East Africa', 'West Africa', 'North Africa', 'Southern Africa', 'Central Africa'];

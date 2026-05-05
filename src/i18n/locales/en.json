@@ -370,6 +370,15 @@
       "language": "Hausa",
       "desc": "One of the largest ethnic groups in Africa, known for trade and commerce."
     },
+
+   "luo": {
+    "name": "Luo",
+    "location": "Kenya, Tanzania, Uganda",
+    "population": "6M+ people",
+    "language": "Dholuo",
+    "desc": "A Nilotic ethnic group known for fishing along Lake Victoria, rich musical traditions, storytelling, and strong influence in East African politics and education."
+},
+
     "zulu": {
       "name": "Zulu",
       "location": "South Africa",

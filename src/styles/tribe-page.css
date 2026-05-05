@@ -200,12 +200,14 @@
   top: 0;
   bottom: 0;
   width: 2px;
+ 
   background: #ede8e8;
 }
 
 .tp-timeline-item {
   display: flex;
   align-items: flex-start;
+  flex-direction: row;
   gap: 1.5rem;
   padding: 1rem 0;
   position: relative;
@@ -218,6 +220,7 @@
   color: rgb(210, 123, 53);
   text-align: right;
   padding-top: 2px;
+  
 }
 
 .tp-timeline-dot {

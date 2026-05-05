@@ -8,6 +8,8 @@ import Footer from '../components/Footer';
 import { jewelleryData } from '../components/Jewelery';
 import { carvingsData } from '../components/Carvings';
 import { artefactsData } from '../components/Artefacts';
+import PageSeo from '../components/PageSeo';
+import { SEO_CONTENT } from '../utils/seoContent';
 import '../styles/product-detail.css';
 
 // Helper: convert product name to URL slug
@@ -131,6 +133,7 @@ const ProductDetail = () => {
 
   if (loading) {
     return (
+     
       <div className="pd-loading-screen">
         <Navbar solid />
         <div className="pd-loading-content">
@@ -138,12 +141,19 @@ const ProductDetail = () => {
           <p>Loading product...</p>
         </div>
       </div>
+    
     );
   }
 
   if (!product) {
     return (
       <>
+
+   <PageSeo
+  title={`Marketplace | ${category ? category.charAt(0).toUpperCase() + category.slice(1) : 'Products'} | ${product.name}`}
+  description={product.description || 'Hand-crafted by skilled artisans using traditional techniques passed down through generations.'}
+  path={`/market/${category}/${productSlug}`}
+/>
         <Navbar solid />
         <div className="pd-not-found">
           <h1>Product not found</h1>
@@ -157,6 +167,11 @@ const ProductDetail = () => {
 
   return (
     <>
+  <PageSeo
+  title={`Marketplace | ${category ? category.charAt(0).toUpperCase() + category.slice(1) : 'Products'} | ${product.name}`}
+  description={product.description || 'Hand-crafted by skilled artisans using traditional techniques passed down through generations.'}
+  path={`/market/${category}/${productSlug}`}
+/>
       <div className="pd-page">
         <Navbar solid />
 

@@ -7,6 +7,8 @@ import Footer from '../components/Footer';
 import '../styles/category-page.css';
 import { carvingsData } from '../components/Carvings';
 import { artefactsData } from '../components/Artefacts';
+import PageSeo from '../components/PageSeo';
+import { SEO_CONTENT } from '../utils/seoContent';
 
 
 const allCategoryData = {
@@ -87,6 +89,13 @@ const CategoryPage = () => {
 
   return (
     <>
+
+    <PageSeo
+    title={`Marketplace | ${meta.label}`}
+    description={meta.tagline}
+    path={`/market/${category}`}
+    />
+
       <div className="cp-page">
         <Navbar />
 
