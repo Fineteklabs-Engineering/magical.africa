@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import '../styles/category-page.css';
 import { carvingsData } from '../components/Carvings';
 import { artefactsData } from '../components/Artefacts';
+import { potteryData } from '../components/Pottery';
 import PageSeo from '../components/PageSeo';
 import { SEO_CONTENT } from '../utils/seoContent';
 
@@ -15,6 +16,7 @@ const allCategoryData = {
   jewellery: jewelleryData,
   carvings: carvingsData,
   artefacts: artefactsData,
+  pottery: potteryData
 };
 
 const categoryMeta = {

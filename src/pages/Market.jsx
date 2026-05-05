@@ -23,6 +23,7 @@ import SculptureDropdown from '../components/SculptureDropdown';
 import ArtefactsDropdown from '../components/ArtefactsDropdown';
 import FashionDropdown from '../components/FashionDropdown';
 import FurnitureDropdown from '../components/FurnitureDropdown';
+import PotteryDropdown from '../components/PotteryDropdown';
 import Artefacts from '../components/Artefacts';
 import Fashion from '../components/Fashion';
 import { SEO_CONTENT } from '../utils/seoContent'
@@ -93,42 +94,6 @@ useEffect(() => {
     return unsubscribe
   }, [])
 
-  {/* 
-  const fallbackBestSellers = [
-    {
-      id: 'default-1',
-      imageUrl: '/images/maasai-milkgourd.png',
-      name: t('market.bestSellers.item1.name'),
-      price: 49,
-      tribe: 'Maasai',
-      description: t('market.bestSellers.item1.description')
-    },
-    {
-      id: 'default-2',
-      imageUrl: '/images/kikuyu-calabash.png',
-      name: t('market.bestSellers.item2.name'),
-      price: 35,
-      tribe: 'Kikuyu',
-      description: t('market.bestSellers.item2.description')
-    },
-    {
-      id: 'default-3',
-      imageUrl: '/images/luo-bul.png',
-      name: t('market.bestSellers.item3.name'),
-      price: 25,
-      tribe: 'Luo',
-      description: t('market.bestSellers.item3.description')
-    },
-    {
-      id: 'default-4',
-      imageUrl: '/images/kamba-carving.png',
-      name: t('market.bestSellers.item4.name'),
-      price: 30,
-      tribe: 'Kamba',
-      description: t('market.bestSellers.item4.description')
-    }
-  ]
-    */}
 
     const fallbackBestSellers = [
   {
@@ -216,6 +181,10 @@ useEffect(() => {
   const [showFashionDropdown, setShowFashionDropdown] = useState(false);
 
   const [showFurnitureDropdown, setShowFurnitureDropdown] = useState(false);
+
+  const [showPotteryDropdown, setShowPotteryDropdown] = useState(false);
+
+  const [potterySubCategory, setPotterySubCategory] = useState('Terracotta');
 
   const [jewellerySubCategory, setJewellerySubCategory] = useState('Beadwork Jewellery');
 
@@ -414,13 +383,31 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
 />
 </div>     
 
-{/* 
-          <button
-            className={activeCategory === 'pottery' ? 'active' : ''}
-            onClick={() => setActiveCategory('pottery')}
-          >{t('market.shop.categories.pottery')}</button>
-         
 
+{/* AFTER - with dropdown */}
+<div
+  className="dropdown-wrapper"
+  onMouseEnter={() => setShowPotteryDropdown(true)}
+  onMouseLeave={() => setShowPotteryDropdown(false)}
+>
+  <button
+    className={activeCategory === 'pottery' ? 'active' : ''}
+    onClick={() => setActiveCategory('pottery')}
+  >
+    {t('market.shop.categories.pottery')}
+  </button>
+
+  <PotteryDropdown
+    visible={showPotteryDropdown}
+    onSelect={(cat) => {
+      setPotterySubCategory(cat);
+      setActiveCategory('pottery');
+      setShowPotteryDropdown(false);
+    }}
+  />
+</div>
+         
+{/* 
           <button
             className={activeCategory === 'artefacts' ? 'active' : ''}
             onClick={() => setActiveCategory('artefacts')}
@@ -510,9 +497,10 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
 
        {activeCategory === 'jewellery' && <Jewelery subCategory={jewellerySubCategory} />}
        {activeCategory === 'carvings' && <Carvings subCategory={sculptureSubCategory} />}
-        {activeCategory === 'pottery' && <Pottery />}
+        {activeCategory === 'pottery' && <Pottery subCategory={potterySubCategory} />}
        {activeCategory === 'artefacts' && <Artefacts subCategory={artefactSubCategory} />} 
        {activeCategory === 'fashion' && <Fashion subCategory={fashionCategory} />}
+       
       </div>
 
 

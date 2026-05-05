@@ -6,158 +6,187 @@
   letter-spacing: 0.025rem;
 }
 
-.Pottery-div{
+/* MAIN LAYOUT */
+.pottery-div {
   display: flex;
   flex-direction: row;
   margin-top: 6rem;
   width: 100%;
   height: 92vh;
- 
 }
 
-.pottery1{
- width: 100%;
-height: 100%;
-background-image: url(/images/pottery1-image1.jpg);
- background-size: cover;
+/* LEFT COVER IMAGE */
+.pottery-cover {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-.pottery2{
-  background-color: yellow;
-width: 100%;
-height: 100%;
-
-display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 columns */
-  grid-template-rows: 1fr 1fr;    /* 2 rows */
-}
-
-.pottery-grid{
-  background-color: white;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
- 
 }
 
-.pot2, .pot1{
-     border-top: 0.5px solid #e5e3e3;
-}
-.pot1{
-  border-right: 0.5px solid #e5e3e3;
-}
-
-.pot3, .pot4{
-   border-top: 0.5px solid #e5e3e3;
-   border-bottom: 0.5px solid #e5e3e3;
-}
-.pot3{
-  border-right: 0.5px solid #e5e3e3;
-}
-.pottery-grid img{
-width: 250px !important;
-height: 250px !important;
-}
-
-
-.pot2 img, .pot4 img{
-  width: 150px !important;
-  height: 150px !important;
- 
-}
-
-.pottery-content{
+.pottery-cover::before {
+  content: '';
   position: absolute;
-  left: 2rem;
-  bottom: 5%;
-  display: flex;
-  flex-direction: column;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+}
+
+.pottery-cover-title {
+  position: absolute;
+  bottom: 3rem;
+  left: 3rem;
   z-index: 2;
-
 }
 
-.pottery-content h3{
-  color:  rgb(48, 48, 48);
-  text-align: start !important;
-}
-
-.pottery-content h3{
-  font-size: 1rem;
-}
-
-.pottery-content p{
-  font-size: 0.7rem;
-  text-align: start;
-  color: black;
-}
-
-
-.pottery-content button{
-  background-color: rgb(48, 48, 48);
+.pottery-cover-title h1 {
   color: white;
-  font-size: 0.7rem;
-  padding: 0.2rem 0.4rem;
-  border: none;
+  font-size: 2.5rem;
   font-weight: 600;
 }
 
-.pottery-content button:hover{
-  border: 1px solid rgb(48, 48, 48);
-  background-color: transparent;
-  color: rgb(48, 48, 48);
+/* RIGHT GRID */
+.pottery-grid-wrapper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
 }
 
-.seller4-price{
+/* CARD */
+.pottery-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* IMAGE FULL COVER */
+.pottery-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  transition: transform 0.4s ease;
+}
+
+.pottery-card:hover img {
+  transform: scale(1.1);
+}
+
+/* DARK OVERLAY */
+.pottery-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.15),
+    rgba(0,0,0,0.65)
+  );
+  z-index: 1;
+}
+
+/* CARD CONTENT */
+.pottery-card-content {
+  position: absolute;
+  left: 1.5rem;
+  bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  z-index: 2;
+  color: white;
+}
+
+/* TRIBE BADGE */
+.pottery-tribe {
+  display: inline-block;
+  width: fit-content;
+  background: rgba(210, 123, 53, 0.9);
+  color: white;
+  font-size: 0.65rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.pottery-tribe:hover {
+  background: rgba(211, 106, 20, 0.85);
+}
+
+/* NAME */
+.pottery-card-content h3 {
+  font-size: 1rem;
+  color: #fff;
+}
+
+/* DESCRIPTION */
+.pottery-desc {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 200px;
+  line-height: 1.3;
+}
+
+/* BUTTON */
+.pottery-card-content button {
+  margin-top: 0.3rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  width: fit-content;
+}
+
+.pottery-card-content button:hover {
+  background-color: rgb(210, 123, 53);
+  border-color: rgb(210, 123, 53);
+}
+
+/* PRICE BADGE */
+.pottery-price {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  z-index: 2;
 }
 
-.seller4-price p{
-  color: rgb(210, 123, 53);
+.pottery-price p {
+  color: white;
   font-size: 0.75rem;
+  background: rgba(0,0,0,0.4);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
 }
 
-@media screen and (max-width:1280px) {
-
-  .pottery-grid img{
-width: 200px;
-height: 200px;
-}
-
-
-.pot2 img, .pot4 img{
-  width: 100px;
-  height: 100px;
- 
-}
-  
-}
-
-@media screen and (max-width:768px) {
-  .Pottery-div{
+/* RESPONSIVE */
+@media screen and (max-width: 768px) {
+  .pottery-div {
     flex-direction: column;
-    height: 100vh;
   }
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width: 480px) {
+  .pottery-div {
+    height: fit-content;
+  }
 
-  .pottery-grid img{
-width: 120px;
-height: 120px;
-}
+  .pottery-cover {
+    height: 400px;
+  }
 
+  .pottery-grid-wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
 
-.pot2 img, .pot4 img{
-  width: 80px;
-  height: 80px;
- 
-}
-  
+  .pottery-card {
+    height: 400px;
+  }
 }
