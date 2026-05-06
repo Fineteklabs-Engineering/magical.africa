@@ -1,11 +1,7 @@
-import { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import '../styles/folklore-page.css';
+// ── FOLKLORE DATA ──
+// Import this in FolklorePage.jsx
 
-/* ─── All tribe folklore data lives here so this page is self-contained ─── */
-const folkloreData = {
+export const folkloreData = {
   maasai: {
     tribeName: 'Maasai',
     heroImage: '/images/drums-latest.jpg',
@@ -14,17 +10,17 @@ const folkloreData = {
       image: '/images/maasai-land2.jpg',
       theme: 'Creation & Divine Gift',
       readTime: '4 min read',
-      story: `In the beginning, when the world was still young and the sky hung close to the earth, Enkai — the great god who exists in both the black clouds of rain and the red of lightning — looked down upon all the people of the world. He saw them scattered across the land, hungry and uncertain.
+      story: `In the beginning, when the world was still young and the sky hung close to the earth, Enkai the great god who exists in both the black clouds of rain and the red of lightning looked down upon all the people of the world. He saw them scattered across the land, hungry and uncertain.
 
-Enkai called the Maasai to him and said: "I give you a sacred gift — all the cattle that roam upon this earth. They are yours to tend, to drink from, to cherish. In caring for them, you shall never hunger, and in their abundance, you shall know my blessing."
+Enkai called the Maasai to him and said: "I give you a sacred gift all the cattle that roam upon this earth. They are yours to tend, to drink from, to cherish. In caring for them, you shall never hunger, and in their abundance, you shall know my blessing."
 
 And so it was that the cattle descended from heaven on a long rope of bark, stepping one by one onto the red earth of the savannah. The Maasai received them with song and dance, and from that day forward, their lives were inseparable from their herds.
 
-To take a Maasai's cattle was to take his very soul — and this is why, when warriors rode against neighbouring peoples to reclaim stolen cattle, they did not see it as theft. They believed they were simply reclaiming what Enkai had given them at the dawn of time.
+To take a Maasai's cattle was to take his very soul and this is why, when warriors rode against neighbouring peoples to reclaim stolen cattle, they did not see it as theft. They believed they were simply reclaiming what Enkai had given them at the dawn of time.
 
 This belief runs so deep that it shaped Maasai law, Maasai warfare, and Maasai identity for centuries. The moran, the warrior class, trained not for conquest but for the sacred duty of protecting the herd. Every ceremony, every rite of passage, every prayer was offered in the presence of cattle. Their blood was drunk. Their milk sustained generations. Their numbers measured a man's worth and a family's status.
 
-Even today, when a Maasai child is born, a cow is slaughtered in celebration. When elders gather to make important decisions, they do so surrounded by the sound of cattle. The rope of bark down which the first herd descended is long gone — but the covenant it represented has never broken. The Maasai and their cattle remain, as Enkai intended, inseparable.`,
+Even today, when a Maasai child is born, a cow is slaughtered in celebration. When elders gather to make important decisions, they do so surrounded by the sound of cattle. The rope of bark down which the first herd descended is long gone but the covenant it represented has never broken. The Maasai and their cattle remain, as Enkai intended, inseparable.`,
     },
     stories: [
       {
@@ -48,7 +44,6 @@ Even today, when a Maasai child is born, a cow is slaughtered in celebration. Wh
     ],
     culturalContext: `The story of Enkai's gift is not merely a creation myth — it is the foundation of Maasai law, identity, and cosmology. Cattle are never simply livestock among the Maasai. They are living symbols of the divine covenant, and their care is a spiritual act.`,
     narrator: 'Passed down through elders (ilaibon) across generations in Kenya and Tanzania',
-    bookCover: '/images/storybook.png',
   },
 
   luo: {
@@ -95,7 +90,6 @@ To this day, the Luo say that the lake is alive — that its waters hold the mem
     ],
     culturalContext: `The story of Ramogi is central to Luo identity because it explains not just where the Luo came from, but why they belong where they are. Lake Victoria is not simply a geographical feature — it is the fulfilment of a divine promise.`,
     narrator: 'Preserved in oral tradition by elders and storytellers across western Kenya, Uganda, and Tanzania',
-    bookCover: '/images/storybook.png',
   },
 
   yoruba: {
@@ -146,7 +140,6 @@ This is why the Yoruba say: "Ile-Ife ni ile wa" — Ile-Ife is our home. All roa
     ],
     culturalContext: `The creation story of Ile-Ife is the cornerstone of Yoruba cosmology. It explains the origin of the world, the origin of human imperfection, and the sacred responsibility of Obatala. It has also shaped Yoruba approaches to disability and difference across centuries.`,
     narrator: 'Preserved in the Ifa divination corpus and oral tradition across Nigeria, Benin, and the Yoruba diaspora worldwide',
-    bookCover: '/images/African-latest.jpg',
   },
 
   zulu: {
@@ -197,7 +190,6 @@ This is why, to this day, the Zulu people do not blame God for death. Death is a
     ],
     culturalContext: `The story of Unkulunkulu explains one of the most profound questions any culture faces: why do people die? The Zulu answer is neither punishment nor design — it is accident, timing, and the tragic speed of a small lizard. This shapes a distinctly Zulu attitude to mortality: grief without bitterness.`,
     narrator: 'Preserved in oral tradition by izimbongi (praise poets) and elders across KwaZulu-Natal, South Africa',
-    bookCover: '/images/maasai-women-latest.jpg',
   },
 
   kikuyu: {
@@ -252,7 +244,6 @@ Mount Kenya still stands at the heart of Kikuyu life. Homes are built facing it.
     ],
     culturalContext: `The story of Gikuyu and Mumbi is not simply a creation myth — it is a land title. For the Kikuyu, this story explains precisely why the fertile highlands around Mount Kenya belong to them, why the mugumo tree must never be cut, and why nine is a sacred number in Kikuyu counting, ceremony, and clan structure.`,
     narrator: 'Preserved in oral tradition by elders and through the writings of Jomo Kenyatta in "Facing Mount Kenya" (1938)',
-    bookCover: '/images/maasai-women2.jpg',
   },
 
   igbo: {
@@ -301,7 +292,6 @@ When an Igbo person achieves something great, they do not say "I did this alone.
     ],
     culturalContext: `The concept of chi is one of the most sophisticated philosophical ideas in African indigenous thought. It sits at the intersection of fate and free will — acknowledging that humans are not the sole authors of their destiny, yet insisting they are active participants in shaping it.`,
     narrator: 'Preserved in Igbo oral tradition and explored in the literature of Chinua Achebe, particularly in "Things Fall Apart" and "Arrow of God"',
-    bookCover: '/images/African-latest.jpg',
   },
 
   ashanti: {
@@ -356,7 +346,6 @@ It never will be.`,
     ],
     culturalContext: `The Golden Stool is unique in African history — a physical object believed to contain the collective soul of an entire nation. Its descent from heaven in the sight of gathered chiefs transformed the political landscape of West Africa, creating one of the most cohesive and powerful empires on the continent.`,
     narrator: 'Preserved in royal oral tradition by the Asantehene\'s court in Kumasi, Ghana, and recorded in colonial-era ethnographies',
-    bookCover: '/images/kitenge-latest.jpg',
   },
 
   hausa: {
@@ -413,7 +402,6 @@ Every Hausa person can trace themselves back to this story. The well in Daura st
     ],
     culturalContext: `The legend of Bayajidda is the founding myth of the Hausa people and explains the origin of the seven original Hausa city-states. It is remarkable for its practical, heroic quality — a stranger earns his place not through birth or divine appointment, but through courage and action.`,
     narrator: 'Preserved in royal court traditions across northern Nigeria and Niger, and recorded by colonial historians in the early 20th century',
-    bookCover: '/images/African-latest.jpg',
   },
 
   swahili: {
@@ -468,7 +456,6 @@ The sea still listens.`,
     ],
     culturalContext: `The Swahili origin story is unique in African oral tradition because it does not speak of a single ancestral figure or a divine act of creation. It speaks instead of a relationship — between a people and a sea — and of the transformation that comes from sustained encounter with the wider world.`,
     narrator: 'Preserved in taarab song traditions, coastal oral histories, and the chronicles of Swahili city-states along the East African coast',
-    bookCover: '/images/maasai-migration.jpg',
   },
 
   amhara: {
@@ -537,7 +524,6 @@ Three thousand years. One story.`,
     ],
     culturalContext: `The story of the Queen of Sheba and King Solomon is not merely mythology for the Amhara — it is the foundation of the Ethiopian state. The Kebra Nagast, a 14th century Ethiopian text, records this story in full and served as the constitutional basis for the legitimacy of Ethiopia's emperors for centuries.`,
     narrator: 'Preserved in the Kebra Nagast (Glory of Kings), Ethiopian Orthodox Church tradition, and royal oral histories dating back over a thousand years',
-    bookCover: '/images/African-latest.jpg',
   },
 
   berber: {
@@ -598,7 +584,6 @@ The Tuareg today — the blue-robed people of the Sahara, the last great desert 
     ],
     culturalContext: `Tin Hinan is unique among African founding ancestors because she is not a mythological figure — she is an archaeological reality. Her tomb exists and has been excavated. This convergence of legend and physical evidence gives her story an unusual power: it cannot be dismissed as "merely" myth.`,
     narrator: 'Preserved in Tuareg oral tradition across Algeria, Mali, and Niger, and verified by the 1925 archaeological excavation of her tomb in the Hoggar Mountains',
-    bookCover: '/images/maasai-necklaces2.jpg',
   },
 
   fulani: {
@@ -651,7 +636,6 @@ When a Fulani elder dies, his favourite cow is brought to stand at the grave —
     ],
     culturalContext: `The Fulani origin story is fundamentally a story about relationship — between people and animals, between humans and God, between patience and reward. It explains not just where the Fulani came from, but why they move, and why the treatment of cattle is a moral, not merely a practical, matter.`,
     narrator: 'Preserved in Fula (Fulfulde) oral tradition across West and Central Africa, particularly in the pastoral communities of the Sahel',
-    bookCover: '/images/maasai-livestock2.jpg',
   },
 
   wolof: {
@@ -706,155 +690,5 @@ No one wept. They understood: the spirits give what they give, and reclaim what 
     ],
     culturalContext: `The legend of Ndiadiane Ndiaye is central to Wolof political identity. The fact that the first Buur ba Jolof came from outside — from the river, from the spirit world — makes the institution of kingship itself something beyond human politics. It was divine in origin, and therefore legitimate in a way that mere conquest could never be.`,
     narrator: 'Preserved by Wolof griots (gewël) across Senegal and the Gambia, and recorded by colonial-era scholars and post-independence Senegalese historians',
-    bookCover: '/images/drums-latest.jpg',
   },
 };
-
-const FolklorePage = () => {
-  const { tribeName } = useParams();
-  const navigate = useNavigate();
-  const data = folkloreData[tribeName?.toLowerCase()];
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [tribeName]);
-
-  if (!data) {
-    return (
-      <>
-        <Navbar />
-        <div className="fl-not-found">
-          <h1>Story not found</h1>
-          <p>We don't have a folklore page for "{tribeName}" yet.</p>
-          <button onClick={() => navigate('/tribes')}>← Back to Tribes</button>
-        </div>
-        <Footer />
-      </>
-    );
-  }
-
-  const { originStory, stories, culturalContext, narrator, bookCover } = data;
-
-  return (
-    <>
-      <div className="fl-page">
-        <Navbar />
-
-        {/* ── CINEMATIC HERO ── */}
-        <div className="fl-hero" style={{ backgroundImage: `url(${originStory.image})` }}>
-          <div className="fl-hero-overlay" />
-          <div className="fl-hero-content">
-            <div className="fl-breadcrumb">
-              <span onClick={() => navigate('/')} className="fl-crumb">Home</span>
-              <span className="fl-sep">›</span>
-              <span onClick={() => navigate('/tribes')} className="fl-crumb">Tribes</span>
-              <span className="fl-sep">›</span>
-              <span onClick={() => navigate(`/tribes/${tribeName}/folklore`)} className="fl-crumb">{data.tribeName}</span>
-              <span className="fl-sep">›</span>
-              <span className="fl-crumb fl-crumb-active">Folklore</span>
-            </div>
-
-            {/* Hero inner: text left, book card right */}
-            <div className="fl-hero-inner">
-              <div className="fl-hero-text">
-                <div className="fl-hero-meta">
-                  <span className="fl-hero-tag">Origin Story</span>
-                  <span className="fl-hero-tag fl-hero-tag-outline">{originStory.theme}</span>
-                  <span className="fl-hero-tag fl-hero-tag-outline">{originStory.readTime}</span>
-                </div>
-                <h1 className="fl-hero-title">{originStory.title}</h1>
-                <p className="fl-hero-tribe">{data.tribeName} People</p>
-              </div>
-
-              {/* Storybook card — floats right inside the hero */}
-              <div className="fl-hero-book">
-                <p className="fl-hero-book-label">Get the Storybook</p>
-                <div className="fl-hero-book-cover">
-                  <img src={bookCover} alt={`${data.tribeName} Storybook`} />
-                  <div className="fl-hero-book-spine" />
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* ── STORY BODY ── */}
-        <div className="fl-body">
-          <div className="fl-body-inner">
-
-            {/* Narrator note */}
-            <div className="fl-narrator">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(210,123,53)" strokeWidth="1.8" strokeLinecap="round">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
-                <path d="M12 16v-4M12 8h.01"/>
-              </svg>
-              <span>{narrator}</span>
-            </div>
-
-            {/* Story text */}
-            <div className="fl-story-text">
-              {originStory.story.split('\n\n').map((para, i) => (
-                <p key={i} className={i === 0 ? 'fl-story-first' : ''}>{para}</p>
-              ))}
-            </div>
-
-            {/* Cultural context */}
-            <div className="fl-context">
-              <div className="fl-context-label">Cultural Significance</div>
-              <p>{culturalContext}</p>
-            </div>
-
-          </div>
-        </div>
-
-        {/* ── MORE STORIES ── */}
-        {stories && stories.length > 0 && (
-          <div className="fl-more">
-            <div className="fl-more-inner">
-              <div className="fl-more-header">
-                <h2>More Stories from the {data.tribeName}</h2>
-                <div className="fl-more-rule" />
-              </div>
-              <div className="fl-more-grid">
-                {stories.map((story, i) => (
-                  <div key={i} className="fl-more-card">
-                    <div className="fl-more-card-img">
-                      <img src={story.image} alt={story.title} />
-                      <div className="fl-more-card-fade" />
-                      <span className="fl-more-card-theme">{story.theme}</span>
-                    </div>
-                    <div className="fl-more-card-body">
-                      <h3>{story.title}</h3>
-                      <p>{story.excerpt}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* ── BACK NAVIGATION ── */}
-        <div className="fl-nav-footer">
-          <button
-            className="fl-back-btn"
-            onClick={() => navigate(`/tribes/${tribeName}/folklore`)}
-          >
-            ← Back to {data.tribeName} Folklore
-          </button>
-          <button
-            className="fl-tribe-btn"
-            onClick={() => navigate(`/tribes/${tribeName}/history`)}
-          >
-            Explore {data.tribeName} History →
-          </button>
-        </div>
-
-        <Footer />
-      </div>
-    </>
-  );
-};
-
-export default FolklorePage;

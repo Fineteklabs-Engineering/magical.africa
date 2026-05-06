@@ -9,7 +9,8 @@ import { toSlug } from '../components/ProductDetail';
 import '../styles/tribe-page.css';
 import PageSeo from '../components/PageSeo';
 import { SEO_CONTENT } from '../utils/seoContent';
-import { tribeData, folkloreData } from '../data/tribesData';
+import { tribeData } from '../data/tribesData';
+import { folkloreData } from '../data/folkloreData';
 
 const getAllProducts = () => {
   const jewellery = Object.values(jewelleryData).flat().map((item) => ({
