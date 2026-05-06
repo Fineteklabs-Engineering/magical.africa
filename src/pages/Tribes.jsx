@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PageSeo from '../components/PageSeo';
 import { SEO_CONTENT } from '../utils/seoContent';
+import { useRef } from 'react';
+
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/tribes2.css';
@@ -11,10 +13,15 @@ import '../styles/contribute.css';
 const Tribes = () => {
   const [selectedRegion, setSelectedRegion] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  
   const [hoveredPin, setHoveredPin] = useState(null);
+  const heroRef = useRef(null);
   const navigate = useNavigate();
   const { t } = useTranslation();
+
+  const handleSearchFocus = () => {
+  heroRef.current?.scrollIntoView({ behavior: 'smooth' });
+};
 
   const communitiesData = [
     { name: t('tribesPage.communities.maasai.name'), image: 'maasai', region: 'East Africa', location: t('tribesPage.communities.maasai.location'), population: t('tribesPage.communities.maasai.population'), language: t('tribesPage.communities.maasai.language'), desc: t('tribesPage.communities.maasai.desc'), color: '#8B4513' },
@@ -85,7 +92,7 @@ const Tribes = () => {
       <PageSeo {...SEO_CONTENT.tribes} />
 
       {/*  HERO  */}
-      <div className="heroSection2">
+      <div className="heroSection2" ref={heroRef}>
         <video autoPlay muted loop playsInline className="hero-video" src="/images/african-tribes-video.mp4" />
         <Navbar />
         <div className="tribes-hero-content">
@@ -93,6 +100,24 @@ const Tribes = () => {
             <h1>{t('tribesPage.hero.title')}</h1>
             <p>{t('tribesPage.hero.subtitle')}</p>
           </div>
+
+          {/* inside .tribes-hero-content, after the text div */}
+<div className="hero-search-wrap">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+    <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2"/>
+    <path d="M16.5 16.5L21 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+  <input
+    type="text"
+    placeholder="Search communities..."
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+    className="hero-search-input"
+  />
+
+ <span className="hero-count">{filtered.length} communities</span>
+  
+</div>
         </div>
       </div>
 
@@ -116,42 +141,33 @@ const Tribes = () => {
               placeholder="Search communities..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+               onFocus={handleSearchFocus}   // ← add this
               className="tribes-search-input"
             />
           </div>
 
-          <div className="tribes-dropdown-wrap">
-            <button
-              className="tribes-dropdown-btn"
-              onClick={() => setDropdownOpen((o) => !o)}
-            >
-              <span>{selectedRegion}</span>
-              <svg
-                width="12" height="12" viewBox="0 0 24 24" fill="none"
-                style={{ transform: dropdownOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}
-              >
-                <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </button>
-            {dropdownOpen && (
-              <div className="tribes-dropdown-menu">
-                {regions.map((r) => (
-                  <button
-                    key={r}
-                    className={`tribes-dropdown-item ${selectedRegion === r ? 'active' : ''}`}
-                    onClick={() => { setSelectedRegion(r); setDropdownOpen(false); }}
-                  >
-                    {r}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+          <div className="tribes-tabs">
+  {regions.map((r) => (
+    <button
+      key={r}
+      className={`tribes-tab ${selectedRegion === r ? 'active' : ''}`}
+      onClick={() => setSelectedRegion(r)}
+    >
+      {r !== 'All' && (
+        <span
+          className="tribes-tab-dot"
+          style={{ background: regionColors[r] || '#B5A191' }}
+        />
+      )}
+      {r}
+    </button>
+  ))}
+</div>
 
           <span className="tribes-count">{filtered.length} communities</span>
         </div>
 
-        {/* Community cards grid */}
+        {/* Community cards grid 
         <div className="tribes-grid">
           {filtered.length === 0 ? (
             <div className="tribes-empty">
@@ -182,6 +198,57 @@ const Tribes = () => {
             ))
           )}
         </div>
+*/}
+
+
+<div className="tribes-grid">
+  {filtered.length === 0 ? (
+    <div className="tribes-empty">
+      <p>No communities found. <button onClick={() => { setSearchQuery(''); setSelectedRegion('All'); }}>Clear filters</button></p>
+    </div>
+  ) : (
+    filtered.map((community, index) => (
+      <>
+        <div key={index} className="tribe-card"
+          onClick={() => navigate(`/tribes/${community.name.toLowerCase()}`)}>
+          {/* ...your existing card JSX unchanged... */}
+          <div className={`tribe-card-image community-image ${community.image}`}>
+                  <div className="tribe-card-region-badge">{community.region}</div>
+                </div>
+                <div className="tribe-card-body">
+                  <div className="tribe-card-accent" style={{ background: community.color }} />
+                  <h3 className="tribe-card-name">{community.name}</h3>
+                  <p className="tribe-card-desc">{community.desc}</p>
+                  <div className="tribe-card-meta">
+                    <span>📍 {community.location}</span>
+                    <span>👥 {community.population}</span>
+                    <span>📖 {community.language}</span>
+                  </div>
+                  <button className="tribe-card-btn"
+                  onClick={() => navigate(`/tribes/${community.name.toLowerCase()}`)}
+                  >{t('tribesPage.exploreCulture')} →</button>
+                </div>
+        </div>
+
+        {/* Media break after every 4th card */}
+        {(index + 1) % 5 === 0 && index !== filtered.length - 1 && (
+          <div key={`break-${index}`} className="tribes-media-break">
+            <video autoPlay muted loop playsInline src="/images/afrcan-events-video.mp4" className="tribes-break-video" />
+            <div className="tribes-break-overlay">
+              <div className="tribes-break-content">
+                <div className="tribes-break-play" />
+                <p className="tribes-break-label">FEATURED STORY</p>
+                <h3 className="tribes-break-title">Voices of the Continent</h3>
+                <p className="tribes-break-sub">How traditions are kept alive across generations</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </>
+    ))
+  )}
+</div>
+        
       </section>
 
       {/* ── AFRICA MAP ── */}

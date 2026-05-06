@@ -43,7 +43,7 @@
   min-width: 0;
 }
 
-/* ── STORYBOOK CARD INSIDE HERO ── */
+/*  STORYBOOK CARD INSIDE HERO */
 .fl-hero-book {
   flex-shrink: 0;
   width: 160px;
