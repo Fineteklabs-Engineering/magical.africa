@@ -334,12 +334,21 @@ const TribePage = () => {
                     />
                     <div className="tp-folklore-origin-img-overlay" />
                   </div>
-                  <div className="tp-folklore-origin-text">
-                    <h2>{tribeFolklore.originStory.title}</h2>
-                    {tribeFolklore.originStory.story.split('\n\n').map((para, i) => (
-                      <p key={i}>{para}</p>
-                    ))}
-                  </div>
+
+
+                 <div className="tp-folklore-origin-text">
+  <h2>{tribeFolklore.originStory.title}</h2>
+
+  {tribeFolklore.originStory.story
+    .split('\n\n') 
+    .slice(0, 4)     // show ONLY first 2 paragraphs 
+    .map((para, i) => (
+      <p key={i}>{para}</p>
+    ))
+  }
+</div>
+
+
                 </div>
               </div>
 
