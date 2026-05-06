@@ -15,6 +15,7 @@ const Tribes = () => {
   const [searchQuery, setSearchQuery] = useState('');
   
   const [hoveredPin, setHoveredPin] = useState(null);
+  const communitiesSectionRef = useRef(null);
   const heroRef = useRef(null);
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -22,6 +23,30 @@ const Tribes = () => {
   const handleSearchFocus = () => {
   heroRef.current?.scrollIntoView({ behavior: 'smooth' });
 };
+
+const handleHeroSearch = (e) => {
+  const value = e.target.value;
+  setSearchQuery(value);
+
+  if (value.trim() === '') return; // stop here if input is cleared
+
+  const hasMatch = communitiesData.some(
+    (c) =>
+      c.name.toLowerCase().includes(value.toLowerCase()) ||
+      c.location.toLowerCase().includes(value.toLowerCase())
+  );
+
+  if (hasMatch) {
+    communitiesSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
+const breakVideos = [
+  { src: '/images/afrcan-events-video.mp4', title: 'Voices of the Continent', sub: 'How traditions are kept alive across generations' },
+  { src: '/images/pottery-video.mp4', title: 'Rhythms of Africa', sub: 'Music and dance that tell the story of a people' },
+  { src: '/images/your-third-video.mp4', title: 'Sacred Traditions', sub: 'Ancient rituals passed down through generations' },
+];
+
 
   const communitiesData = [
     { name: t('tribesPage.communities.maasai.name'), image: 'maasai', region: 'East Africa', location: t('tribesPage.communities.maasai.location'), population: t('tribesPage.communities.maasai.population'), language: t('tribesPage.communities.maasai.language'), desc: t('tribesPage.communities.maasai.desc'), color: '#8B4513' },
@@ -111,7 +136,8 @@ const Tribes = () => {
     type="text"
     placeholder="Search communities..."
     value={searchQuery}
-    onChange={(e) => setSearchQuery(e.target.value)}
+    
+    onChange={handleHeroSearch}
     className="hero-search-input"
   />
 
@@ -122,7 +148,9 @@ const Tribes = () => {
       </div>
 
       {/* COMMUNITIES SECTION  */}
-      <section className="tribes-communities-section">
+      <section className="tribes-communities-section"
+      ref={communitiesSectionRef}
+      >
         <div className="tribes-section-header">
           <p className="tribes-section-label">ACROSS THE CONTINENT</p>
           <h2 className="tribes-section-title">{t('tribesPage.section.title')}</h2>
@@ -231,19 +259,23 @@ const Tribes = () => {
         </div>
 
         {/* Media break after every 4th card */}
-        {(index + 1) % 5 === 0 && index !== filtered.length - 1 && (
-          <div key={`break-${index}`} className="tribes-media-break">
-            <video autoPlay muted loop playsInline src="/images/afrcan-events-video.mp4" className="tribes-break-video" />
-            <div className="tribes-break-overlay">
-              <div className="tribes-break-content">
-                <div className="tribes-break-play" />
-                <p className="tribes-break-label">FEATURED STORY</p>
-                <h3 className="tribes-break-title">Voices of the Continent</h3>
-                <p className="tribes-break-sub">How traditions are kept alive across generations</p>
-              </div>
-            </div>
-          </div>
-        )}
+       {(index + 1) % 5 === 0 && index !== filtered.length - 1 && (() => {
+  const breakIndex = Math.floor((index + 1) / 4) - 1;
+  const video = breakVideos[breakIndex % breakVideos.length];
+  return (
+    <div key={`break-${index}`} className="tribes-media-break">
+      <video autoPlay muted loop playsInline src={video.src} className="tribes-break-video" />
+      <div className="tribes-break-overlay">
+        <div className="tribes-break-content">
+          <div className="tribes-break-play" />
+          <p className="tribes-break-label">FEATURED STORY</p>
+          <h3 className="tribes-break-title">{video.title}</h3>
+          <p className="tribes-break-sub">{video.sub}</p>
+        </div>
+      </div>
+    </div>
+  );
+})()}
       </>
     ))
   )}
