@@ -21,7 +21,7 @@
 .tp-hero-overlay {
   position: absolute;
   inset: 0;
- background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.6);
 }
 
 .tp-hero-content {
@@ -103,9 +103,6 @@
 .tp-stat-value {
   font-size: 0.88rem;
   font-weight: 500;
-}
-
-.tp-stat-value {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -200,7 +197,6 @@
   top: 0;
   bottom: 0;
   width: 2px;
- 
   background: #ede8e8;
 }
 
@@ -220,7 +216,6 @@
   color: rgb(210, 123, 53);
   text-align: right;
   padding-top: 2px;
-  
 }
 
 .tp-timeline-dot {
@@ -431,11 +426,10 @@
 .tp-product-card {
   background: white;
   border: 1px solid #ede8e8;
-  
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
-  flex-direction: column; /* ← add this */
+  flex-direction: column;
   cursor: pointer;
 }
 
@@ -464,9 +458,9 @@
 
 .tp-product-body {
   padding: 14px;
-   display: flex;          /* ← add */
-  flex-direction: column; /* ← add */
-  flex: 1;                /* ← add — makes body fill remaining card height */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .tp-product-body h4 {
@@ -481,7 +475,7 @@
   color: #888;
   line-height: 1.5;
   margin-bottom: 12px;
-  flex: 1
+  flex: 1;
 }
 
 .tp-product-footer {
@@ -490,7 +484,7 @@
   justify-content: space-between;
   border-top: 1px solid #ede8e8;
   padding-top: 10px;
-  margin-top: auto; 
+  margin-top: auto;
 }
 
 .tp-product-price {
@@ -514,6 +508,339 @@
 
 .tp-product-btn:hover {
   background: rgb(210, 123, 53);
+}
+
+.tp-market-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 3rem 0;
+}
+
+.tp-market-empty p {
+  font-size: 0.92rem;
+  color: #aaa;
+}
+
+.tp-market-empty button {
+  background: none;
+  border: 1px solid #d8d0c8;
+  color: #555;
+  padding: 0.55rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.tp-market-empty button:hover {
+  border-color: rgb(210, 123, 53);
+  color: rgb(210, 123, 53);
+}
+
+/* ── FOLKLORE TAB ── */
+.tp-folklore {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* Origin story */
+.tp-folklore-origin {
+  position: relative;
+}
+
+.tp-folklore-origin-badge {
+  display: inline-block;
+  background: rgb(210, 123, 53);
+  color: white;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 4px;
+  margin-bottom: 1.4rem;
+}
+
+.tp-folklore-origin-inner {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 3rem;
+  align-items: flex-start;
+  background: white;
+  border: 1px solid #ede8e8;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tp-folklore-origin-img-wrap {
+  position: relative;
+  height: 100%;
+  min-height: 320px;
+}
+
+.tp-folklore-origin-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tp-folklore-origin-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent 70%, white 100%);
+}
+
+.tp-folklore-origin-text {
+  padding: 2.5rem 2.5rem 2.5rem 0;
+}
+
+.tp-folklore-origin-text h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 1.4rem;
+  line-height: 1.3;
+}
+
+.tp-folklore-origin-text p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.95;
+  margin-bottom: 1rem;
+}
+
+.tp-folklore-origin-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Popular stories */
+.tp-folklore-stories-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tp-folklore-stories-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #ede8e8;
+}
+
+.tp-folklore-stories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.tp-folklore-story-card {
+  background: white;
+  border: 1px solid #ede8e8;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.tp-folklore-story-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+}
+
+.tp-folklore-story-img-wrap {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.tp-folklore-story-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.tp-folklore-story-card:hover .tp-folklore-story-img-wrap img {
+  transform: scale(1.05);
+}
+
+.tp-folklore-story-img-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 60%);
+}
+
+.tp-folklore-story-theme {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  background: rgba(0,0,0,0.35);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+.tp-folklore-story-body {
+  padding: 1.2rem 1.3rem 1.4rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tp-folklore-story-body h4 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.tp-folklore-story-body p {
+  font-size: 0.8rem;
+  color: #777;
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+/* ── PROMINENT PEOPLE (LEADERS) TAB ── */
+.tp-leaders {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.tp-leaders-header h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.4rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgb(210, 123, 53);
+  display: inline-block;
+}
+
+.tp-leaders-header p {
+  font-size: 0.88rem;
+  color: #999;
+  margin-top: 0.6rem;
+}
+
+.tp-leaders-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.tp-leader-card {
+  background: white;
+  border: 1px solid #ede8e8;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tp-leader-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+}
+
+.tp-leader-img-wrap {
+  position: relative;
+  width: 150px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.tp-leader-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.tp-leader-card:hover .tp-leader-img {
+  transform: scale(1.04);
+}
+
+.tp-leader-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent 50%, rgba(255,255,255,0.08) 100%);
+}
+
+.tp-leader-img-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem 0.7rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%);
+}
+
+.tp-leader-legacy {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+}
+
+.tp-leader-body {
+  padding: 1.4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.tp-leader-years {
+  font-size: 0.72rem;
+  color: rgb(210, 123, 53);
+  font-weight: 600;
+  letter-spacing: 0.05rem;
+}
+
+.tp-leader-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.tp-leader-role {
+  font-size: 0.75rem;
+  color: #999;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+
+.tp-leader-desc {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.75;
+  margin: 0;
+  flex: 1;
 }
 
 /* ── NOT FOUND ── */
@@ -568,6 +895,9 @@
 @media screen and (max-width: 1024px) {
   .tp-phrases-grid { grid-template-columns: repeat(2, 1fr); }
   .tp-market-grid { grid-template-columns: repeat(2, 1fr); }
+  .tp-folklore-stories-grid { grid-template-columns: repeat(2, 1fr); }
+  .tp-leaders-grid { grid-template-columns: 1fr; }
+  .tp-folklore-origin-inner { grid-template-columns: 260px 1fr; gap: 2rem; }
 }
 
 @media screen and (max-width: 768px) {
@@ -580,6 +910,22 @@
   .tp-back { padding: 0 1.5rem 2rem; }
   .tp-hero-stats { gap: 1.5rem; }
   .tp-timeline-list::before { left: 70px; }
+  .tp-folklore-origin-inner {
+    grid-template-columns: 1fr;
+  }
+  .tp-folklore-origin-img-wrap {
+    min-height: 220px;
+    height: 220px;
+  }
+  .tp-folklore-origin-img-overlay {
+    background: linear-gradient(to bottom, transparent 60%, white 100%);
+  }
+  .tp-folklore-origin-text {
+    padding: 0 1.5rem 2rem;
+  }
+  .tp-folklore-stories-grid { grid-template-columns: 1fr; }
+  .tp-leader-card { flex-direction: column; }
+  .tp-leader-img-wrap { width: 100%; height: 200px; }
 }
 
 @media screen and (max-width: 480px) {

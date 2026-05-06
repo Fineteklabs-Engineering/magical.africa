@@ -1,0 +1,407 @@
+/* ═══════════════════════════════════════════════════════
+   FOLKLORE PAGE  —  matches tribe-page.css design system
+   Accent: rgb(210, 123, 53)  |  BG: #faf9f7  |  Border: #ede8e8
+═══════════════════════════════════════════════════════ */
+
+/* ── PAGE SHELL ── */
+.fl-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #faf9f7;
+}
+
+/* ── CINEMATIC HERO ── */
+.fl-hero {
+  position: relative;
+  height: 65vh;
+  min-height: 420px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: flex-end;
+}
+
+.fl-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
+}
+
+.fl-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 4rem 3.5rem;
+  color: white;
+  width: 100%;
+}
+
+/* Breadcrumb — identical pattern to .tp-breadcrumb */
+.fl-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.fl-crumb {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.fl-crumb:hover { opacity: 0.6; }
+
+.fl-sep { opacity: 0.4; }
+
+.fl-crumb-active {
+  font-weight: 600;
+  cursor: default;
+}
+
+/* Meta tags row */
+.fl-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.fl-hero-tag {
+  display: inline-block;
+  background: rgb(210, 123, 53);
+  color: white;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 4px;
+}
+
+.fl-hero-tag-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.fl-hero-title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02rem;
+  max-width: 760px;
+}
+
+.fl-hero-tribe {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  letter-spacing: 0.04rem;
+}
+
+/* ── STORY BODY ── */
+.fl-body {
+  background: white;
+  border-bottom: 1px solid #ede8e8;
+}
+
+.fl-body-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 3.5rem 2rem;
+}
+
+/* Narrator note — mirrors .tp-breadcrumb style */
+.fl-narrator {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #fdf5ee;
+  border-left: 3px solid rgb(210, 123, 53);
+  padding: 0.85rem 1.2rem;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 2.5rem;
+  font-size: 0.82rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.fl-narrator svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Story text */
+.fl-story-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.fl-story-text p {
+  font-size: 0.96rem;
+  color: #444;
+  line-height: 2;
+}
+
+/* Drop-cap for first paragraph — editorial touch */
+.fl-story-first::first-letter {
+  float: left;
+  font-size: 3.4rem;
+  font-weight: 700;
+  line-height: 0.85;
+  margin: 0.08em 0.1em 0 0;
+  color: rgb(210, 123, 53);
+}
+
+/* Cultural context block — mirrors .tp-history-overview h2 underline style */
+.fl-context {
+  margin-top: 3rem;
+  padding: 2rem 2.2rem;
+  background: #faf9f7;
+  border: 1px solid #ede8e8;
+  border-radius: 10px;
+}
+
+.fl-context-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14rem;
+  text-transform: uppercase;
+  color: rgb(210, 123, 53);
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgb(210, 123, 53);
+  display: inline-block;
+}
+
+.fl-context p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.95;
+  margin: 0;
+}
+
+/* ── MORE STORIES ── */
+.fl-more {
+  padding: 4rem 0;
+  background: #faf9f7;
+}
+
+.fl-more-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+/* Section heading — mirrors .tp-folklore-stories-heading */
+.fl-more-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.fl-more-header h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.fl-more-rule {
+  flex: 1;
+  height: 1px;
+  background: #ede8e8;
+}
+
+/* Grid — mirrors .tp-folklore-stories-grid */
+.fl-more-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* Card — mirrors .tp-folklore-story-card */
+.fl-more-card {
+  background: white;
+  border: 1px solid #ede8e8;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.fl-more-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+}
+
+/* Image wrap — mirrors .tp-folklore-story-img-wrap */
+.fl-more-card-img {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.fl-more-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.fl-more-card:hover .fl-more-card-img img {
+  transform: scale(1.05);
+}
+
+.fl-more-card-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, transparent 60%);
+}
+
+/* Theme badge — mirrors .tp-folklore-story-theme */
+.fl-more-card-theme {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+}
+
+/* Card body — mirrors .tp-folklore-story-body */
+.fl-more-card-body {
+  padding: 1.2rem 1.3rem 1.4rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fl-more-card-body h3 {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.fl-more-card-body p {
+  font-size: 0.8rem;
+  color: #777;
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+/* ── BOTTOM NAVIGATION ── */
+.fl-nav-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 2.5rem 4rem;
+  background: white;
+  border-top: 1px solid #ede8e8;
+  flex-wrap: wrap;
+}
+
+/* Back button — mirrors .tp-back */
+.fl-back-btn {
+  background: none;
+  border: 1px solid #d8d0c8;
+  color: #555;
+  padding: 0.6rem 1.3rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.fl-back-btn:hover {
+  border-color: rgb(210, 123, 53);
+  color: rgb(210, 123, 53);
+}
+
+/* Forward button — filled, mirrors .tp-product-btn */
+.fl-tribe-btn {
+  background: rgb(48, 48, 48);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.3rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.fl-tribe-btn:hover {
+  background: rgb(210, 123, 53);
+}
+
+/* ── NOT FOUND ── mirrors .tp-not-found */
+.fl-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 60vh;
+  text-align: center;
+  color: #aaa;
+}
+
+.fl-not-found h1 { color: #333; font-size: 1.5rem; }
+.fl-not-found p  { font-size: 0.9rem; }
+
+.fl-not-found button {
+  background: rgb(48, 48, 48);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* ── LARGE SCREENS ── */
+@media screen and (min-width: 1440px) {
+  .fl-hero-content { padding: 0 8rem 4rem; }
+  .fl-more-inner   { padding: 0 8rem; max-width: 1400px; }
+  .fl-nav-footer   { padding: 2.5rem 8rem; }
+}
+
+/* ── RESPONSIVE ── */
+@media screen and (max-width: 1024px) {
+  .fl-more-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media screen and (max-width: 768px) {
+  .fl-hero-content { padding: 0 1.5rem 2.5rem; }
+  .fl-hero-title   { font-size: 2rem; }
+  .fl-body-inner   { padding: 2.5rem 1.5rem; }
+  .fl-more-inner   { padding: 0 1.5rem; }
+  .fl-nav-footer   { padding: 2rem 1.5rem; }
+  .fl-more-grid    { grid-template-columns: 1fr; }
+}
+
+@media screen and (max-width: 480px) {
+  .fl-hero-title { font-size: 1.7rem; }
+}
