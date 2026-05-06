@@ -95,7 +95,7 @@ To this day, the Luo say that the lake is alive — that its waters hold the mem
     ],
     culturalContext: `The story of Ramogi is central to Luo identity because it explains not just where the Luo came from, but why they belong where they are. Lake Victoria is not simply a geographical feature — it is the fulfilment of a divine promise.`,
     narrator: 'Preserved in oral tradition by elders and storytellers across western Kenya, Uganda, and Tanzania',
-    bookCover: '/images/storybook.png',
+    bookCover: '/images/storybook2.png',
   },
 
   yoruba: {
