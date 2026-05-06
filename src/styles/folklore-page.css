@@ -1,9 +1,5 @@
-/* ═══════════════════════════════════════════════════════
-   FOLKLORE PAGE  —  matches tribe-page.css design system
-   Accent: rgb(210, 123, 53)  |  BG: #faf9f7  |  Border: #ede8e8
-═══════════════════════════════════════════════════════ */
 
-/* ── PAGE SHELL ── */
+
 .fl-page {
   min-height: 100vh;
   display: flex;
@@ -11,7 +7,7 @@
   background: #faf9f7;
 }
 
-/* ── CINEMATIC HERO ── */
+
 .fl-hero {
   position: relative;
   height: 65vh;
@@ -37,7 +33,7 @@
   width: 100%;
 }
 
-/* Breadcrumb — identical pattern to .tp-breadcrumb */
+
 .fl-breadcrumb {
   display: flex;
   align-items: center;
@@ -61,7 +57,7 @@
   cursor: default;
 }
 
-/* Meta tags row */
+
 .fl-hero-meta {
   display: flex;
   align-items: center;
@@ -110,7 +106,7 @@
 }
 
 .fl-body-inner {
-  max-width: 780px;
+  max-width:1000px;
   margin: 0 auto;
   padding: 3.5rem 2rem;
 }
