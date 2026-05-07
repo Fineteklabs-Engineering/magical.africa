@@ -1,13 +1,15 @@
 //Tribess DATA
 import { swahiliTribeData } from "./swahiliTribeData";
 import { igboTribeData } from "./igboTribeData";
+import { amharaTribeData } from "./amharaTribeData";
 
 
 export const tribeData = {
 
 
   swahili: swahiliTribeData,
-   igbo: igboTribeData, 
+   igbo: igboTribeData,
+   amhara: amharaTribeData, 
 
   maasai: {
     name: 'Maasai',
