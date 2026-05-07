@@ -1,7 +1,13 @@
-// ── TRIBE DATA ──
-// Import this in TribePage.jsx and any other component that needs tribe info
+//Tribess DATA
+import { swahiliTribeData } from "./swahiliTribeData";
+import { igboTribeData } from "./igboTribeData";
+
 
 export const tribeData = {
+
+
+  swahili: swahiliTribeData,
+   igbo: igboTribeData, 
 
   maasai: {
     name: 'Maasai',

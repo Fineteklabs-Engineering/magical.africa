@@ -1,7 +1,9 @@
-// ── FOLKLORE DATA ──
-// Import this in FolklorePage.jsx
+
 
 export const folkloreData = {
+
+  
+
   maasai: {
     tribeName: 'Maasai',
     heroImage: '/images/drums-latest.jpg',

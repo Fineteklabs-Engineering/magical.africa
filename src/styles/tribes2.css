@@ -650,7 +650,7 @@ margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* play triangle via clip-path on a pseudo — or just use an ::after */
+ 
 }
 
 .tribes-break-play::after {
