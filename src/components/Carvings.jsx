@@ -39,30 +39,30 @@ export const carvingsData = {
  
   "Stone Sculpture": [
     {
-      img: "https://a.1stdibscdn.com/african-shona-art-sculpture-from-zimbabwes-shona-tribe-for-sale/f_97099/f_395132921703184620527/f_39513292_1703184621266_bg_processed.jpg",
+      img: "/images/ukomaShona.jpg",
       tribe: "Shona",
-      name: "Ukama — Family Bond",
+      name: "Ukama Family Bond",
       price: "$210",
       desc: "Carved in Zimbabwe springstone, Ukama means 'family' in Shona. This flowing form of intertwined figures is one of the most celebrated themes in Shona sculpture."
     },
     {
-      img: "https://a.1stdibscdn.com/chituwa-jemali-of-zimbabwe-symbols-of-peace-1v-shona-art-african-sculpture-for-sale/f_97099/f_280623021647452027567/f_28062302_1647452028000_bg_processed.jpg",
+      img: "/images/musikavanhuShona.jpg",
       tribe: "Shona",
-      name: "Musikavanhu — The Creator",
+      name: "Musikavanhu The Creator",
       price: "$180",
       desc: "Hand-polished serpentine figure inspired by Shona mythology. Musikavanhu is the divine being who, in Shona belief, fashioned humanity from clay."
     },
     {
-      img: "https://a.1stdibscdn.com/an-shona-stone-black-serpentine-family-sculpture-by-t-chitau-for-sale/f_97099/f_112947411584453852000/T_Chitau_family_sculpture_master.jpg",
+      img: "/images/mweyaShona.jpg",
       tribe: "Shona",
-      name: "Mweya — The Spirit Within",
+      name: "Mweya The Spirit Within",
       price: "$240",
       desc: "Abstract springstone sculpture capturing the Shona concept of mweya — the life spirit believed to reside in every living being and in the stone itself."
     },
     {
-      img: "https://a.1stdibscdn.com/african-shona-art-sculpture-from-zimbabwes-shona-tribe-for-sale/f_97099/f_395132921703184620527/f_39513292_1703184621266_bg_processed.jpg",
+      img: "/images/ngoziShona.jpg",
       tribe: "Shona",
-      name: "Ngozi — Avenging Spirit",
+      name: "Ngozi Avenging Spirit",
       price: "$195",
       desc: "Carved in dark opalstone, this piece references the Ngozi — a restless spirit in Shona belief that arises from unresolved injustice."
     }
@@ -72,28 +72,28 @@ export const carvingsData = {
  
   "Metallic Sculpture": [
     {
-      img: "https://a.1stdibscdn.com/antique-head-of-an-oba-king-bronze-benin-sculpture-african-tribal-altar-for-sale/f_97099/f_303456021655204799594/f_30345602_1655204800017_bg_processed.jpg",
+      img: "/images/uhunmwunElaoMemorialHead.jpg",
       tribe: "Benin",
-      name: "Uhunmwun Elao — Memorial Head",
+      name: "Uhunmwun Elao Memorial Head",
       price: "$260",
       desc: "Bronze cast in the tradition of Benin Kingdom memorial heads, placed on ancestral altars to honour deceased Obas. The tradition dates to the 13th century."
     },
     {
-      img: "https://asianafricanart.com/wp-content/uploads/2022/03/Ancestor-figure-Wood-Dogon-Mali-2.jpg",
+      img: "/images/hogonStaffFigure.jpg",
       tribe: "Dogon",
       name: "Hogon Staff Figure",
       price: "$190",
       desc: "Forged iron figure of a seated elder, referencing the Hogon — the spiritual leader of the Dogon people of Mali. Iron is sacred in Dogon cosmology."
     },
     {
-      img: "https://a.1stdibscdn.com/asante-ashanti-akuaba-fertility-doll-20-ghana-for-sale/f_97099/f_338760121678886828975/f_33876012_1678886829358_bg_processed.jpg",
+      img: "/images/akuabaAshanti.jpg",
       tribe: "Ashanti",
       name: "Akuaba Fertility Figure",
       price: "$155",
       desc: "Cast brass Akuaba doll with a disc-shaped head, carried by Ashanti women to ensure beautiful, healthy children. One of Ghana's most iconic cultural symbols."
     },
     {
-      img: "https://tribaldesign.co.uk/cdn/shop/products/OsheShango_1200x.jpg",
+      img: "/images/shangoYoruba.jpg",
       tribe: "Yoruba",
       name: "Shango Thunder Axe",
       price: "$175",

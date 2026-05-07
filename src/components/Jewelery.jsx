@@ -8,7 +8,7 @@ import { toSlug } from '../components/ProductDetail';
   'Beadwork Jewellery': [
     {
       id: 1,
-      image: '/images/jewelery-image1.png',
+      image: '/images/enkiamaNeckless.jpg',
       name: 'Enkiama Necklace',
       price: 45,
       tribe: 'Maasai',
@@ -16,7 +16,7 @@ import { toSlug } from '../components/ProductDetail';
     },
     {
       id: 2,
-      image: '/images/jewelery-image2.png',
+      image: '/images/orinkaWristCoil.jpg',
       name: 'Orinka Wrist Coil',
       price: 25,
       tribe: 'Maasai',
@@ -24,7 +24,7 @@ import { toSlug } from '../components/ProductDetail';
     },
     {
       id: 3,
-      image: '/images/jewelery-image.png',
+      image: '/images/ilekeLifeBeadYoruba.jpg',
       name: 'Ileke Ife Bead Set',
       price: 60,
       tribe: 'Yoruba',
@@ -32,7 +32,7 @@ import { toSlug } from '../components/ProductDetail';
     },
     {
       id: 4,
-      image: '/images/jewelery-image4.png',
+      image: '/images/akoriChoker.jpg',
       name: 'Akori Choker',
       price: 38,
       tribe: 'Akan',
@@ -80,7 +80,7 @@ import { toSlug } from '../components/ProductDetail';
   'Brass Jewellery': [
     {
       id: 1,
-      image: '/images/woman-mask2.png',
+      image: '/images/mmaaTweneboaBangle.jpg',
       name: 'Mmaa Tweneboa Bangle',
       price: 35,
       tribe: 'Ashanti',
@@ -88,7 +88,7 @@ import { toSlug } from '../components/ProductDetail';
     },
     {
       id: 2,
-      image: '/images/beaded-jewelery2.jpg',
+      image: '/images/igunEronmwonPendant.jpg',
       name: 'Igun-Eronmwon Pendant',
       price: 50,
       tribe: 'Benin',
@@ -96,7 +96,7 @@ import { toSlug } from '../components/ProductDetail';
     },
     {
       id: 3,
-      image: '/images/maasai-bracelets2.jpg',
+      image: '/images/kwottenaiKanyeEarrings.jpg',
       name: 'Kwottenai Kanye Earrings',
       price: 28,
       tribe: 'Fulani',
@@ -104,7 +104,7 @@ import { toSlug } from '../components/ProductDetail';
     },
     {
       id: 4,
-      image: '/images/woman-mask2.png',
+      image: '/images/dogonHogonCuffNommo.jpg',
       name: 'Dogon Hogon Cuff',
       price: 42,
       tribe: 'Dogon',
@@ -115,7 +115,7 @@ import { toSlug } from '../components/ProductDetail';
   'Gold Jewellery': [
     {
       id: 1,
-      image: '/images/Golden-set2.jpg',
+      image: '/images/krontiNeAkwamuRing.jpg',
       name: 'Kronti ne Akwamu Ring',
       price: 220,
       tribe: 'Akan',
@@ -123,7 +123,7 @@ import { toSlug } from '../components/ProductDetail';
     },
     {
       id: 2,
-      image: '/images/woman-mask2.png',
+      image: '/images/sikaDwaNecklace.jpg',
       name: 'Sika Dwa Necklace',
       price: 310,
       tribe: 'Ashanti',
@@ -131,7 +131,7 @@ import { toSlug } from '../components/ProductDetail';
     },
     {
       id: 3,
-      image: '/images/beaded-jewelery2.jpg',
+      image: '/images/thiourayeGoldBracelet.jpg',
       name: 'Thiouraye Gold Bracelet',
       price: 175,
       tribe: 'Wolof',
@@ -139,7 +139,7 @@ import { toSlug } from '../components/ProductDetail';
     },
     {
       id: 4,
-      image: '/images/woman-mask2.png',
+      image: '/images/diademOfTheLife.jpg',
       name: 'Diadem of the Ife',
       price: 280,
       tribe: 'Yoruba',
@@ -151,7 +151,7 @@ import { toSlug } from '../components/ProductDetail';
   'Silver Jewellery': [
     {
       id: 1,
-      image: '/images/maasai-bracelets2.jpg',
+      image: '/images/tenaghaltCrossPendant.jpg',
       name: 'Tenaghalt Cross Pendant',
       price: 80,
       tribe: 'Tuareg',
@@ -159,7 +159,7 @@ import { toSlug } from '../components/ProductDetail';
     },
     {
       id: 2,
-      image: '/images/beaded-jewelery2.jpg',
+      image: '/images/tizerzaiBerberCuff.jpg',
       name: 'Tizerzai Berber Cuff',
       price: 95,
       tribe: 'Amazigh',
@@ -167,7 +167,7 @@ import { toSlug } from '../components/ProductDetail';
     },
     {
       id: 3,
-      image: '/images/nigeria-wear2.jpg',
+      image: '/images/zaniHausaAnklet.jpg',
       name: 'Zani Hausa Anklet',
       price: 60,
       tribe: 'Hausa',
@@ -175,7 +175,7 @@ import { toSlug } from '../components/ProductDetail';
     },
     {
       id: 4,
-      image: '/images/maasai-bracelets2.jpg',
+      image: '/images/mzingoWaDhahabuBracelet.jpg',
       name: 'Mzingo wa Dhahabu Bracelet',
       price: 72,
       tribe: 'Swahili',
@@ -184,13 +184,13 @@ import { toSlug } from '../components/ProductDetail';
   ],
 };
 
-// 👇 Map each category to its hero image
+// Map each category to its hero image
 const categoryHeroImage = {
-  'Beadwork Jewellery': '/images/woman-jewelery.png',
+  'Beadwork Jewellery': '/images/beadWorrkJewellery.jpg',
   'Stone Jewellery':    '/images/man-stonejewelery.png',
-  'Brass Jewellery':    '/images/woman-mask2.png',
-  'Gold Jewellery':     '/images/Golden-set2.jpg',
-  'Silver Jewellery':   '/images/maasai-bracelets2.jpg',
+  'Brass Jewellery':    '/images/brassJewellery.jpg',
+  'Gold Jewellery':     '/images/goldJewellery.jpg',
+  'Silver Jewellery':   '/images/silverJewellery.jpg',
 };
 
 const Jewelery = ({ subCategory }) => {
