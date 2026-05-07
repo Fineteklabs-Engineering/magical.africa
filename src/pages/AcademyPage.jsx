@@ -11,14 +11,14 @@ import '../styles/academy-page.css';
 import PageSeo from '../components/PageSeo'
 import { SEO_CONTENT } from '../utils/seoContent'
 
-const languages = ['Swahili', 'Yoruba', 'Zulu', 'Hausa', 'Amharic'];
+const languages = ['Swahili', 'Yoruba', 'Zulu', 'Hausa', 'Amhara'];
 
 const languageIcons = {
   Swahili: 'fa-comments',
   Yoruba:  'fa-comments',
   Zulu:    'fa-hands',
   Hausa:   'fa-landmark',
-  Amharic: 'fa-star',
+  Amhara: 'fa-star',
 };
 
 const communityKeys = ['liveClasses', 'forums', 'mentorship'];
@@ -301,7 +301,10 @@ const AcademyPage = () => {
                 <button
                   key={lang}
                   className={`lang-chip ${activeLanguage === lang ? 'lang-chip-active' : ''}`}
-                  onClick={() => setActiveLanguage(lang)}
+                 onClick={() => {
+  setActiveLanguage(lang);
+  navigate(`/tribes/${lang.toLowerCase()}/language`);
+}}
                 >
                   <i className={`fa-solid ${languageIcons[lang]}`}></i>
                   {lang}

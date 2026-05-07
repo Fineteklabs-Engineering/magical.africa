@@ -37,6 +37,8 @@ import Auctions from './components/Auctions';
 import AuctionsHub from './components/AuctionsHub';
 import TribePage from './components/TribesPage';
 import FolklorePage from './components/FolklorePage';
+import ProminentPeople from './components/ProminentPeople';
+
 
 function App() {
   return (
@@ -92,7 +94,8 @@ function App() {
 <Route path="/tribes/:tribeName/:tab/:section" element={<TribePage />} />
 
 
-<Route path="/tribes/:tribeName/folklore/story" element={<FolklorePage />} />
+<Route path="/tribes/:tribeName/folklore/:storySlug" element={<FolklorePage />} />
+<Route path="/tribes/:tribeName/leaders/:leaderName" element={<ProminentPeople />} />
 
 
           {/* ── Teacher-only routes ── */}

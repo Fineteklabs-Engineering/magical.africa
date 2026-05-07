@@ -11,6 +11,7 @@ import PageSeo from '../components/PageSeo';
 import { SEO_CONTENT } from '../utils/seoContent';
 import { tribeData } from '../data/tribesData';
 import { folkloreData } from '../data/folkloreData';
+import PhraseCarousel from '../components/PhraseCarousel'
 
 const getAllProducts = () => {
   const jewellery = Object.values(jewelleryData).flat().map((item) => ({
@@ -271,14 +272,8 @@ const TribePage = () => {
               </div>
               <div className="tp-phrases">
                 <h3>Common Phrases</h3>
-                <div className="tp-phrases-grid">
-                  {tribe.language.phrases.map((p, i) => (
-                    <div key={i} className="tp-phrase-card">
-                      <span className="tp-phrase-word">{p.phrase}</span>
-                      <span className="tp-phrase-meaning">{p.meaning}</span>
-                    </div>
-                  ))}
-                </div>
+                
+                <PhraseCarousel phrases={tribe.language.phrases} />
               </div>
             </div>
           )}
@@ -337,7 +332,7 @@ const TribePage = () => {
                 <div className="tp-folklore-origin-badge">Origin Story</div>
                 <div className="tp-folklore-origin-inner"
                   style={{ cursor: 'pointer' }}
-                  onClick={() => navigate(`/tribes/${tribeName}/folklore/story`)}
+                 onClick={() => navigate(`/tribes/${tribeName}/folklore/${tribeFolklore.originStory.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`)}
                 >
                   <div className="tp-folklore-origin-img-wrap">
                     <img
@@ -408,7 +403,11 @@ const TribePage = () => {
               </div>
               <div className="tp-leaders-grid">
                 {tribe.leaders.map((leader, i) => (
-                  <div key={i} className="tp-leader-card">
+                  <div key={i} className="tp-leader-card"
+                  
+                  style={{ cursor: 'pointer' }} 
+                  onClick={() => navigate(`/tribes/${tribeName}/leaders/${leader.name.toLowerCase().replace(/\s+/g, '-')}`)}
+                  >
                     <div className="tp-leader-img-wrap">
                       <img src={leader.image} alt={leader.name} className="tp-leader-img" />
                       <div className="tp-leader-img-overlay" />

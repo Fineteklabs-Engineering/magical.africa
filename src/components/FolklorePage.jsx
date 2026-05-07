@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import PageSeo from '../components/PageSeo';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/folklore-page.css';
@@ -711,7 +712,7 @@ No one wept. They understood: the spirits give what they give, and reclaim what 
 };
 
 const FolklorePage = () => {
-  const { tribeName } = useParams();
+  const { tribeName, storySlug } = useParams();
   const navigate = useNavigate();
   const data = folkloreData[tribeName?.toLowerCase()];
 
@@ -722,6 +723,8 @@ const FolklorePage = () => {
   if (!data) {
     return (
       <>
+
+  
         <Navbar />
         <div className="fl-not-found">
           <h1>Story not found</h1>
@@ -737,6 +740,11 @@ const FolklorePage = () => {
 
   return (
     <>
+
+        <PageSeo
+      title={`${data.tribeName} Origin Story — ${originStory.title}`}
+      path={`/tribes/${tribeName}/folklore/${storySlug}`}
+    />
       <div className="fl-page">
         <Navbar />
 

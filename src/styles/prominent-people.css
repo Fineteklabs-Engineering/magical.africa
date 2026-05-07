@@ -1,0 +1,474 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+/* ── PROMINENT PEOPLE PAGE ── */
+.pp-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #faf9f7;
+}
+
+/* ── HERO ── */
+.pp-hero {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.pp-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  transform: scale(1.05);
+  filter: blur(2px);
+}
+
+.pp-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.4) 60%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+}
+
+.pp-hero-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 4rem 3.5rem;
+  color: white;
+}
+
+/* Breadcrumb */
+.pp-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  margin-bottom: 1.2rem;
+  opacity: 0.75;
+}
+
+.pp-crumb {
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.pp-crumb:hover { opacity: 0.5; }
+
+.pp-crumb-sep { opacity: 0.4; }
+
+.pp-crumb-active {
+  font-weight: 600;
+  cursor: default;
+}
+
+.pp-hero-legacy {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  color: rgb(210, 123, 53);
+  border: 1px solid rgba(210, 123, 53, 0.5);
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  width: fit-content;
+}
+
+.pp-hero-name {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02rem;
+}
+
+.pp-hero-role {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin-bottom: 0.3rem;
+}
+
+.pp-hero-years {
+  font-size: 0.82rem;
+  opacity: 0.55;
+  letter-spacing: 0.05rem;
+}
+
+/* ── BODY LAYOUT ── */
+.pp-body {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2.5rem;
+  padding: 3.5rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  flex: 1;
+  box-sizing: border-box; /* 👈 add this */
+}
+
+/* ── LEFT COLUMN ── */
+.pp-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  min-width: 0; /* 👈 add this */
+}
+
+/* Portrait card */
+.pp-portrait-card {
+  background: white;
+  border: 1px solid #ede8e8;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.pp-portrait-img-wrap {
+  height: 280px;
+  overflow: hidden;
+}
+
+.pp-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.pp-portrait-card:hover .pp-portrait-img {
+  transform: scale(1.04);
+}
+
+.pp-portrait-meta {
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pp-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid #f0ebe8;
+}
+
+.pp-meta-row:last-child {
+  border-bottom: none;
+}
+
+.pp-meta-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08rem;
+  color: #bbb;
+  flex-shrink: 0;
+}
+
+.pp-meta-value {
+  font-size: 0.82rem;
+  color: #444;
+  text-align: right;
+  line-height: 1.4;
+}
+
+.pp-meta-legacy {
+  color: rgb(210, 123, 53);
+  font-weight: 600;
+}
+
+/* Other leaders */
+.pp-others {
+  background: white;
+  border: 1px solid #ede8e8;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 1.2rem 1.4rem;
+}
+
+.pp-others-heading {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  color: #bbb;
+  margin-bottom: 1rem;
+}
+
+.pp-others-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.pp-other-card {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.pp-other-card:hover {
+  background: #faf9f7;
+}
+
+.pp-other-img-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid #ede8e8;
+}
+
+.pp-other-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pp-other-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.pp-other-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pp-other-role {
+  font-size: 0.72rem;
+  color: #aaa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── RIGHT COLUMN ── */
+.pp-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 0; 
+}
+
+/* Quote block */
+.pp-quote-block {
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 2rem 2.5rem 2rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.pp-quote-mark {
+  font-size: 7rem;
+  line-height: 0.6;
+  color: rgb(210, 123, 53);
+  opacity: 0.25;
+  font-family: Georgia, serif;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  pointer-events: none;
+}
+
+.pp-quote-text {
+  font-size: 1.15rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.75;
+  margin: 0 0 0.8rem 0;
+  position: relative;
+  z-index: 1;
+  padding-left: 1rem;
+}
+
+.pp-quote-context {
+  font-size: 0.75rem;
+  color: rgb(210, 123, 53);
+  opacity: 0.85;
+  position: relative;
+  z-index: 1;
+  padding-left: 1rem;
+  letter-spacing: 0.03rem;
+}
+
+/* Sections */
+.pp-section {
+  background: white;
+  border: 1px solid #ede8e8;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  min-width: 0;   /* 👈 add this */
+  width: 100%;    /* 👈 add this */
+}
+
+.pp-section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid rgb(210, 123, 53);
+  display: inline-block;
+}
+
+.pp-section-body {
+  font-size: 0.92rem;
+  color: #555;
+  line-height: 2;
+}
+
+/* Achievements */
+
+
+
+
+
+/* ── BACK BUTTON ── */
+.pp-back {
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 0.82rem;
+  cursor: pointer;
+  padding: 0 4rem 3rem;
+  text-align: left;
+  transition: color 0.2s;
+  font-family: inherit;
+}
+
+.pp-back:hover { color: rgb(210, 123, 53); }
+
+/* ── NOT FOUND ── */
+.pp-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  min-height: 60vh;
+  text-align: center;
+  color: #aaa;
+}
+
+.pp-not-found h1 { color: #333; font-size: 1.5rem; }
+.pp-not-found p { font-size: 0.9rem; }
+.pp-not-found button {
+  background: rgb(48, 48, 48);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Achievements */
+.pp-ach-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.pp-ach-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  width: 100%;
+}
+.pp-ach-text {
+  flex: 1 !important;
+  flex-direction: row !important;
+  display: block !important;
+  font-size: 0.88rem !important;
+  color: #555 !important;
+  line-height: 1.6 !important;
+  width: auto !important;
+  height: auto !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+  border: none !important;
+  align-items: unset !important;
+  justify-content: unset !important;
+}
+
+.pp-ach-dot {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background-color: rgb(210, 123, 53) !important;
+  flex-shrink: 0 !important;
+  margin-top: 6px !important;
+  display: block !important;
+  border: none !important;
+}
+
+/* ── LARGE SCREENS ── */
+@media screen and (min-width: 1440px) {
+  .pp-hero-content { padding: 0 8rem 4rem; }
+  .pp-body { padding: 4rem 8rem; max-width: 1400px; }
+  .pp-back { padding: 0 8rem 4rem; }
+}
+
+/* ── RESPONSIVE ── */
+@media screen and (max-width: 1024px) {
+  .pp-body {
+    grid-template-columns: 260px 1fr;
+    gap: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .pp-hero-content { padding: 0 1.5rem 2.5rem; }
+  .pp-hero-name { font-size: 2.2rem; }
+  .pp-body {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.5rem;
+  }
+  .pp-portrait-img-wrap { height: 220px; }
+  .pp-back { padding: 0 1.5rem 2rem; }
+}
+
+@media screen and (max-width: 480px) {
+  .pp-hero-name { font-size: 1.8rem; }
+  .pp-section { padding: 1.5rem; }
+  .pp-quote-block { padding: 1.5rem; }
+}
