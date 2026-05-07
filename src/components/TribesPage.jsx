@@ -99,6 +99,7 @@ const TribePage = () => {
 
   const tribeSeo = SEO_CONTENT[tribeName?.toLowerCase()];
 
+  {/* 
   const dynamicSeo = tribeSeo ? {
     ...tribeSeo,
     title: activeTab === 'culture'
@@ -108,6 +109,17 @@ const TribePage = () => {
       ? `/tribes/${tribeName}/culture/${activeAccordion}`
       : `/tribes/${tribeName}/${activeTab}`,
   } : null;
+   */}
+
+   const dynamicSeo = tribeSeo ? {
+  ...tribeSeo,
+  title: activeTab === 'culture'
+    ? `The ${tribe?.name} ${cultureSectionTitles[activeAccordion] || 'Culture'}`
+    : `The ${tribe?.name} ${tabTitles[activeTab]} `,
+  path: activeTab === 'culture'
+    ? `/tribes/${tribeName}/culture/${activeAccordion}`
+    : `/tribes/${tribeName}/${activeTab}`,
+} : null;
 
   const handleAccordionClick = (key) => {
     navigate(`/tribes/${tribeName}/culture/${key}`);
