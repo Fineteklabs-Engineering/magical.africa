@@ -25,6 +25,11 @@ import FashionDropdown from '../components/FashionDropdown';
 import FurnitureDropdown from '../components/FurnitureDropdown';
 import PotteryDropdown from '../components/PotteryDropdown';
 import Artefacts from '../components/Artefacts';
+import { jewelleryData } from '../components/Jewelery';
+import { carvingsData } from '../components/Carvings';
+import { artefactsData } from '../components/Artefacts';
+import { potteryData } from '../components/Pottery';
+
 import Fashion from '../components/Fashion';
 import { SEO_CONTENT } from '../utils/seoContent'
 
@@ -32,8 +37,57 @@ import { SEO_CONTENT } from '../utils/seoContent'
 const Market = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [heroSearch, setHeroSearch] = useState('');
+  const [heroSuggestions, setHeroSuggestions] = useState([]);
+  const [noResult, setNoResult] = useState(false);
 
   const [communityBestSellers, setCommunityBestSellers] = useState([])
+
+
+
+  const handleHeroSearch = (value) => {
+  setHeroSearch(value);
+  setNoResult(false);
+  if (!value.trim()) return setHeroSuggestions([]);
+  const matches = allMarketProducts.filter(p =>
+  p.name.toLowerCase().includes(value.toLowerCase()) ||
+  p.tribe?.toLowerCase().includes(value.toLowerCase()) ||
+  p.category.toLowerCase().includes(value.toLowerCase())
+);
+ setHeroSuggestions(matches.slice(0, 6));
+};
+
+const handleHeroSubmit = (e) => {
+  e.preventDefault();
+  const match = allMarketProducts.find(p =>
+    p.name.toLowerCase().includes(heroSearch.toLowerCase()) ||
+    p.tribe?.toLowerCase().includes(heroSearch.toLowerCase()) ||
+    p.category.toLowerCase().includes(heroSearch.toLowerCase())
+  );
+  if (match) {
+    navigate(`/market/${match.category}/${toSlug(match.name)}`);
+  } else {
+    setNoResult(true);
+  }
+};
+
+
+
+  // Build a flat searchable list of all products
+const allMarketProducts = [
+  ...Object.values(jewelleryData).flat().map(item => ({
+    name: item.name, category: 'jewellery', tribe: item.tribe
+  })),
+  ...Object.values(carvingsData).flat().map(item => ({
+    name: item.name, category: 'carvings', tribe: item.tribe
+  })),
+  ...Object.values(artefactsData).flatMap(cat => (cat.items || []).map(item => ({
+    name: item.name, category: 'artefacts', tribe: item.tribe
+  }))),
+  ...Object.values(potteryData).flatMap(cat => (cat.items || []).map(item => ({
+    name: item.name, category: 'pottery', tribe: item.tribe
+  }))),
+];
 
   const marketHeroImages = [
     '/images/side-view-people-garage-sale2.jpg',
@@ -212,6 +266,44 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
           <h1>{t('market.hero.titleStart')} <span>{t('market.hero.titleAccent')}</span> {t('market.hero.titleEnd')}</h1>
 
           <p>{t('market.hero.description')}</p>
+
+
+          <form className="market-hero-search-form" onSubmit={handleHeroSubmit}>
+  <div className="market-hero-search-wrap">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+      <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2"/>
+      <path d="M16.5 16.5L21 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    </svg>
+    <input
+      type="text"
+      placeholder="Search jewellery, carvings, pottery..."
+      value={heroSearch}
+      onChange={(e) => handleHeroSearch(e.target.value)}
+      className="market-hero-search-input"
+    />
+    <button type="submit" className="market-hero-search-btn">Search</button>
+  </div>
+
+  {/* Suggestions dropdown */}
+  {heroSuggestions.length > 0 && (
+    <div className="market-hero-suggestions">
+      {heroSuggestions.map((item, i) => (
+        <div
+          key={i}
+          className="market-hero-suggestion-item"
+          onClick={() => navigate(`/market/${item.category}/${toSlug(item.name)}`)}
+        >
+          <span className="suggestion-name">{item.name}</span>
+          <span className="suggestion-category">{item.category}</span>
+        </div>
+      ))}
+    </div>
+  )}
+
+  {noResult && (
+    <p className="market-hero-no-result">No products found. Try a different search.</p>
+  )}
+</form>
 
           <div className='market-hero-population'>
             <span>
