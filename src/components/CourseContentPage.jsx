@@ -436,9 +436,8 @@ const CourseContentPage = () => {
 
   const handlePreviewAcquire = async () => {
     if (!course || !courseId || previewActionLoading) return
-    if (!user) {
-      setToast({ type: 'info', message: 'Sign in as learner to add or buy this course.' })
-      setTimeout(() => setToast(null), 2200)
+  if (!user) {
+      navigate('/academy-signIn')
       return
     }
 
@@ -512,6 +511,11 @@ const CourseContentPage = () => {
   }
 
   const handleViewTutorProfile = () => {
+    if (!user) {
+      setToast({ type: 'info', message: 'Please sign in to view tutor profiles.' })
+      setTimeout(() => setToast(null), 2200)
+      return
+    }
     if (!course) return
     const resolvedTutorId = course.teacherId || course.tutorId || course.createdBy || course.authorId || ''
     const resolvedTutorName = course.teacherName || course.tutorName || course.authorName || 'Tutor'
@@ -552,7 +556,8 @@ const CourseContentPage = () => {
         completedLessonIds={completedLessonIds}
         onToggleLessonComplete={isPreviewMode ? undefined : handleToggleLessonComplete}
         isPreviewMode={isPreviewMode}
-        onBackToDashboard={() => navigate('/learner')}
+        isLoggedIn={!!user}
+        onBackToDashboard={() => user ? navigate('/learner') : navigate('/academy-signIn')}
         previewPrice={getCoursePrice()}
         previewOwned={previewOwned}
         previewActionLoading={previewActionLoading}

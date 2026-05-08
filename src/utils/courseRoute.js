@@ -15,9 +15,13 @@ export const buildCoursePath = (courseId, title = '', options = {}) => {
   const slug = slugifyCourseTitle(title)
   const params = new URLSearchParams()
 
-  if (options.preview) params.set('preview', '1')
   if (options.fromResume) params.set('resume', '1')
 
   const query = params.toString()
+
+  if (options.preview) {
+    return `/course-preview/${encodeURIComponent(courseId)}/${slug}`
+  }
+
   return `/learner/course/${encodeURIComponent(courseId)}/${slug}${query ? `?${query}` : ''}`
 }

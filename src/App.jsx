@@ -63,6 +63,7 @@ function App() {
           <Route path="/market" element={<Market />} />
           <Route path="/academy-signUp" element={<Academy2 />} />
           <Route path="/academy-signIn" element={<AcademyLogin />} />
+          <Route path="/course-preview/:courseId/:courseSlug?" element={<CourseContentPage />} />
           <Route path="/music" element={<Music />} />
         <Route path="/academy"element={<AcademyPage />}
          />

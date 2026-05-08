@@ -467,6 +467,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .fl-hero{
+    min-height: 800px;
+  }
   .fl-hero-content { padding: 0 1.5rem 2.5rem; }
   .fl-hero-title   { font-size: 2rem; }
   .fl-hero-inner   { flex-direction: column; align-items: flex-start; gap: 1.5rem; }

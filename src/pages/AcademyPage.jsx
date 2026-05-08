@@ -125,20 +125,21 @@ const AcademyPage = () => {
     coursesRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const handleCourseShortcut = (course) => {
+const handleCourseShortcut = (course) => {
     if (!course?.id) {
       goToAcademy();
       return;
     }
 
-    if (!user) {
-      navigate('/academy-signIn');
+    const resolvedRole = normalizeRole(userData?.role);
+    if (user && (resolvedRole === 'teacher' || String(userData?.subject || '').trim())) {
+      goToAcademy();
       return;
     }
 
-    const resolvedRole = normalizeRole(userData?.role);
-    if (resolvedRole === 'teacher' || String(userData?.subject || '').trim()) {
-      goToAcademy();
+    // Logged in learners go directly to the course, not preview
+    if (user && resolvedRole === 'learner') {
+      navigate(buildCoursePath(course.id, course.title));
       return;
     }
 

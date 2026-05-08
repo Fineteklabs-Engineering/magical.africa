@@ -80,7 +80,8 @@ const CourseContent = ({
   onReviewImprovementChange,
   onReviewSubmit,
   courseCompletionPercent = 0,
-  onViewTutorProfile
+  onViewTutorProfile,
+  isLoggedIn = false
 }) => {
     const [activeTab, setActiveTab] = useState('overview')
   const [sidebarExpanded, setSidebarExpanded] = useState({})
@@ -145,7 +146,12 @@ const CourseContent = ({
     setSidebarExpanded(prev => ({ ...prev, [id]: !prev[id] }))
   }
 
-  const handleLessonClick = (lesson, lessonId) => {
+const handleLessonClick = (lesson, lessonId, isLoggedIn) => {
+    if (!isLoggedIn) {
+      // show message in video area instead of playing
+      setActiveVideo({ locked: true, title: lesson.title || 'Lesson' })
+      return
+    }
     if (lesson.videoURL) {
       setActiveVideo({ url: lesson.videoURL, title: lesson.title || 'Lesson', lessonId })
     }
@@ -179,6 +185,22 @@ const CourseContent = ({
 
   const renderVideoArea = () => {
     if (activeVideo) {
+
+    
+      if (activeVideo.locked) {
+        return (
+          <div className='cc-video-area'>
+            <div className='cc-video-placeholder'>
+              <FaPlayCircle className='cc-video-play-icon' />
+              <p>Please sign in to watch this lesson.</p>
+              <button onClick={onPreviewAction} type='button' style={{ marginTop: '1rem' }}>
+                Sign In to Start Learning
+              </button>
+            </div>
+          </div>
+        )
+      }
+
       const embedUrl = getYouTubeEmbedUrl(activeVideo.url)
       const isDirect = isDirectVideoUrl(activeVideo.url)
       const isLessonDone = activeVideo.lessonId
@@ -615,10 +637,10 @@ const CourseContent = ({
                                   tabIndex={-1}
                                 />
                               </div>
-                              <div
-                                className='cc-sidebar-lesson-info'
-                                onClick={() => hasVideo && handleLessonClick(lesson, lessonId)}
-                                style={{ cursor: hasVideo ? 'pointer' : 'default' }}
+              <div
+              className='cc-sidebar-lesson-info'
+            onClick={() => hasVideo && handleLessonClick(lesson, lessonId, isLoggedIn)}
+              style={{ cursor: hasVideo ? 'pointer' : 'default' }}
                               >
                                 <span className='cc-sidebar-lesson-title'>{lesson.title || `Lesson ${li + 1}`}</span>
                                 <div className='cc-sidebar-lesson-meta'>
@@ -628,16 +650,19 @@ const CourseContent = ({
                                   {hasVideo && <span className='cc-sidebar-play-hint'>▶ Play</span>}
                                 </div>
                               </div>
-                              {onToggleLessonComplete && !isPreviewMode && (
-                                <button
-                                  className={`cc-sidebar-complete-btn ${isDone ? 'done' : ''}`}
-                                  type='button'
-                                  onClick={() => handleToggle(lessonId, { action: isDone ? 'undo' : 'complete', source: 'manual' })}
-                                  title={isDone ? 'Mark incomplete' : 'Mark complete'}
-                                >
-                                  {isDone ? '↩' : '✓'}
-                                </button>
-                              )}
+        {onToggleLessonComplete && !isPreviewMode && isLoggedIn && (
+  <button
+    className={`cc-sidebar-complete-btn ${isDone ? 'done' : ''}`}
+    type='button'
+    onClick={() => handleToggle(lessonId, { action: isDone ? 'undo' : 'complete', source: 'manual' })}
+    title={isDone ? 'Mark incomplete' : 'Mark complete'}
+  >
+    {isDone ? '↩' : '✓'}
+  </button>
+)}
+
+
+                              
                             </div>
                           )
                         })}
