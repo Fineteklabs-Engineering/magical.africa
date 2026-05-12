@@ -1,33 +1,32 @@
-*{
+* {
   margin: 0;
   padding: 0;
-  box-sizing: border-box ;
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0.025rem;
 }
 
-.popular-course-div{
-  background: linear-gradient(135deg, #fafafa, #fff);
+/* ── SECTION ── */
+.popular-course-div {
+  background: linear-gradient(135deg, #fdf6ee, #fff);
   display: flex;
   flex-direction: column;
-  height: fit-content;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding: 3rem 4rem;
 }
-
-.popular-course-div h1{
+.popular-course-div h1 {
   font-size: 1.5rem;
   font-weight: 400;
   text-align: center;
 }
 
-.popular-content-div-p{
+.popular-content-div-p {
   text-align: center;
   padding-top: 2rem;
   font-size: 0.875rem;
+  color: #888;
 }
 
-.pop{
+.pop {
   text-align: start;
   margin-top: 2rem;
   color: rgb(210, 123, 53);
@@ -36,13 +35,13 @@
   font-weight: 600;
 }
 
-.pop-div{
+.pop-div {
   width: 820px;
   align-self: center;
 }
 
-.pop-bottom{
-  color: #1f6f43; 
+.pop-bottom {
+  color: #1f6f43;
   padding-top: 0.5rem;
   font-weight: 600;
   display: flex;
@@ -53,7 +52,11 @@
   cursor: pointer;
 }
 
-.pop-bottom-div{
+.pop-bottom:hover {
+  color: rgb(210, 123, 53);
+}
+
+.pop-bottom-div {
   width: 820px;
   align-self: center;
   justify-content: flex-end;
@@ -61,162 +64,70 @@
   flex-direction: row;
 }
 
-.popular-div{
+/* ── MAIN LAYOUT ── */
+.pc-layout {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
   gap: 20px;
-}
-
-.popular1{
-  width: 400px;
+  width: 820px;
+  align-self: center;
   height: 500px;
-  position: relative;
-  background-image: url(/images/african-pottery2.jpg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
-.popular1::before{
+/* ── BIG FEATURE CARD ── */
+.pc-feature {
+  flex: 1.1;
+  height: 100%;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.pc-feature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.pc-feature::before {
   content: '';
   position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); 
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 1;
-}
-
-.popular2{
-  width: 400px;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.popular2-a{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
-
-.popular2-b{
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
-
-.popular2-a1{
-  background-color: aquamarine;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background-image: url(/images/african-instrument.avif);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.popular2-a1::before{
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); 
-  z-index: 1;
-}
-
-.popular2-a2{
-  background-color: aquamarine;
-  width: 100%;
-  height: 100%;
-  background-image: url(/images/african-basketry.jpg);
-  position: relative;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.popular2-a2::before{
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); 
-  z-index: 1;
-}
-
-.popular2-b1{
-  background-color: aquamarine;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background-image: url(/images/African-cooking.avif);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.popular2-b1::before{
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); 
-  z-index: 1;
-}
-
-.popular2-b2{
-  background-color: aquamarine;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background-image: url(/images/wood_carving.webp);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.popular2-b2::before{
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); 
-  z-index: 1;
-}
-
-.popular-div-content{
-  position: absolute;
-  z-index: 2;
-  color: white;
-  font-size: 0.675rem;
-  padding-top: 1rem;
-  padding-left: 0.5rem;
   transition: opacity 0.25s ease;
 }
 
-/* ── OVERLAY ── */
-.pc-card {
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.pc-card:hover .popular-div-content {
+.pc-feature:hover::before {
   opacity: 0;
 }
 
+.popular1 { background-image: url(/images/african-pottery2.jpg); }
+
+/* ── FEATURE TITLE ── */
+.popular-div-content {
+  position: absolute;
+  z-index: 2;
+  bottom: 16px;
+  left: 16px;
+  color: white;
+  transition: opacity 0.25s ease;
+}
+
+.popular-div-content h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.pc-feature:hover .popular-div-content {
+  opacity: 0;
+}
+
+/* ── HOVER OVERLAY (feature card only) ── */
 .pc-overlay {
   position: absolute;
   inset: 0;
@@ -237,7 +148,7 @@
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-.pc-card:hover .pc-overlay {
+.pc-feature:hover .pc-overlay {
   opacity: 1;
   transform: translateY(0);
 }
@@ -256,50 +167,109 @@
   margin: 0;
 }
 
+/* ── RIGHT SIDE LIST ── */
+.pc-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+/* ── ROW ITEM ── */
+.pc-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  background: white;
+  border: 1px solid #ede8e3;
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  flex: 1;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  overflow: hidden;
+}
+
+.pc-row:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transform: translateX(4px);
+}
+
+/* ── ROW THUMBNAIL ── */
+.pc-row-img {
+  width: 72px;
+  min-width: 72px;
+  height: 100%;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.popular2-a1 { background-image: url(/images/african-instrument.avif); }
+.popular2-a2 { background-image: url(/images/african-basketry.jpg); }
+.popular2-b1 { background-image: url(/images/African-cooking.avif); }
+.popular2-b2 { background-image: url(/images/wood_carving.webp); }
+
+/* ── ROW TEXT ── */
+.pc-row-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+}
+
+.pc-row-text h3 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pc-row-text p {
+  font-size: 0.72rem;
+  color: #999;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* ── RESPONSIVE ── */
-@media screen and (min-width:1440px) {
-  .popular1{
-    width: 500px;
-    height: 600px;
-  }
-  .popular2{
-    width: 500px;
-    height: 600px;
-  }
-  .pop-div{
-    width: 1020px;
-  }
-  .pop-bottom-div{
-    width: 1020px;
-  }
+@media screen and (min-width: 1440px) {
+  .pc-layout      { width: 1020px; height: 580px; }
+  .pop-div        { width: 1020px; }
+  .pop-bottom-div { width: 1020px; }
+  .pc-row-img     { width: 90px; min-width: 90px; }
 }
 
-@media screen and (max-width:768px) {
-  .pop-div{
-    width: 100%;
-  }
-  .pop-bottom-div{
-    width: 100%;
-  }
-  .popular-course-div{
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
+@media screen and (max-width: 1024px) {
+  .popular-course-div { padding: 3rem 2rem; }
+  .pc-layout      { width: 100%; height: 460px; }
+  .pop-div        { width: 100%; }
+  .pop-bottom-div { width: 100%; }
 }
 
-@media screen and (max-width:480px) {
-  .popular-course-div{
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  .popular-div{
+@media screen and (max-width: 768px) {
+  .popular-course-div { padding: 2.5rem 1.5rem; }
+  .pc-layout {
     flex-direction: column;
+    height: auto;
   }
+  .pc-feature { height: 280px; }
+  .pc-side    { gap: 10px; }
+  .pc-row-img { width: 60px; min-width: 60px; }
+  .pop-div        { width: 100%; }
+  .pop-bottom-div { width: 100%; }
 }
 
-@media screen and (max-width:390px) {
-  .popular-course-div{
-    width: 100%;
-    overflow: hidden;
-  }
+@media screen and (max-width: 480px) {
+  .popular-course-div { padding: 2rem 1rem; }
+  .pc-feature { height: 220px; }
+  .pc-row-img { width: 55px; min-width: 55px; }
 }

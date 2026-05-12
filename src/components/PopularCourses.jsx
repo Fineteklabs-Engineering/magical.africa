@@ -62,89 +62,67 @@ const PopularCourses = () => {
     navigate(buildCoursePath(course.id, course.title, { preview: true }))
   }
 
+  const sideItems = [
+    { key: 'instrumentMaking', imgClass: 'popular2-a1', title: t('popularCourses.instrumentMaking'), desc: t('popularCourses.instrumentMakingDesc') },
+    { key: 'weaving',          imgClass: 'popular2-a2', title: t('popularCourses.weaving'),          desc: t('popularCourses.weavingDesc') },
+    { key: 'cooking',          imgClass: 'popular2-b1', title: t('popularCourses.cooking'),          desc: t('popularCourses.cookingDesc') },
+    { key: 'woodCarving',      imgClass: 'popular2-b2', title: t('popularCourses.woodCarving'),      desc: t('popularCourses.woodCarvingDesc') },
+  ]
+
   return (
-    <>
-      <div className="popular-course-div">
+    <div className="popular-course-div">
 
-        <h1>{t('popularCourses.title')}</h1>
-        <p className='popular-content-div-p'>{t('popularCourses.subtitle')}</p>
+      <h1>{t('popularCourses.title')}</h1>
+      <p className="popular-content-div-p">{t('popularCourses.subtitle')}</p>
 
-        <div className='pop-div'>
-          <p className='pop'>{t('popularCourses.popularLabel')}</p>
-        </div>
+      <div className="pop-div">
+        <p className="pop">{t('popularCourses.popularLabel')}</p>
+      </div>
 
-        <div className='popular-div'>
+      {/* ── LAYOUT ── */}
+      <div className="pc-layout">
 
-          <div className='popular1 pc-card' onClick={() => handleCardClick('pottery')} style={{ cursor: 'pointer' }}>
-            <div className='popular-div-content'>
-              <h3>{t('popularCourses.pottery')}</h3>
-            </div>
-            <div className='pc-overlay'>
-              <h3>{t('popularCourses.pottery')}</h3>
-              <p>{t('popularCourses.potteryDesc')}</p>
-            </div>
+        {/* Big feature card — pottery */}
+        <div
+          className="pc-feature popular1 pc-card"
+          onClick={() => handleCardClick('pottery')}
+        >
+          <div className="popular-div-content">
+            <h3>{t('popularCourses.pottery')}</h3>
           </div>
-
-          <div className='popular2'>
-            <div className='popular2-a'>
-
-              <div className='popular2-a1 pc-card' onClick={() => handleCardClick('instrumentMaking')} style={{ cursor: 'pointer' }}>
-                <div className='popular-div-content'>
-                  <h3>{t('popularCourses.instrumentMaking')}</h3>
-                </div>
-                <div className='pc-overlay'>
-                  <h3>{t('popularCourses.instrumentMaking')}</h3>
-                  <p>{t('popularCourses.instrumentMakingDesc')}</p>
-                </div>
-              </div>
-
-              <div className='popular2-a2 pc-card' onClick={() => handleCardClick('weaving')} style={{ cursor: 'pointer' }}>
-                <div className='popular-div-content'>
-                  <h3>{t('popularCourses.weaving')}</h3>
-                </div>
-                <div className='pc-overlay'>
-                  <h3>{t('popularCourses.weaving')}</h3>
-                  <p>{t('popularCourses.weavingDesc')}</p>
-                </div>
-              </div>
-
-            </div>
-
-            <div className='popular2-b'>
-
-              <div className='popular2-b1 pc-card' onClick={() => handleCardClick('cooking')} style={{ cursor: 'pointer' }}>
-                <div className='popular-div-content'>
-                  <h3>{t('popularCourses.cooking')}</h3>
-                </div>
-                <div className='pc-overlay'>
-                  <h3>{t('popularCourses.cooking')}</h3>
-                  <p>{t('popularCourses.cookingDesc')}</p>
-                </div>
-              </div>
-
-              <div className='popular2-b2 pc-card' onClick={() => handleCardClick('woodCarving')} style={{ cursor: 'pointer' }}>
-                <div className='popular-div-content'>
-                  <h3>{t('popularCourses.woodCarving')}</h3>
-                </div>
-                <div className='pc-overlay'>
-                  <h3>{t('popularCourses.woodCarving')}</h3>
-                  <p>{t('popularCourses.woodCarvingDesc')}</p>
-                </div>
-              </div>
-
-            </div>
+          <div className="pc-overlay">
+            <h3>{t('popularCourses.pottery')}</h3>
+            <p>{t('popularCourses.potteryDesc')}</p>
           </div>
         </div>
 
-        <div className='pop-bottom-div'>
-          <p className='pop-bottom' onClick={() => navigate('/academy')}>
-            {t('popularCourses.viewMore')}
-            <i className="fa-solid fa-arrow-right"></i>
-          </p>
+        {/* Right side — vertical list rows */}
+        <div className="pc-side">
+          {sideItems.map((item) => (
+            <div
+              key={item.key}
+              className="pc-row"
+              onClick={() => handleCardClick(item.key)}
+            >
+              <div className={`pc-row-img ${item.imgClass}`} />
+              <div className="pc-row-text">
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
 
       </div>
-    </>
+
+      <div className="pop-bottom-div">
+        <p className="pop-bottom" onClick={() => navigate('/academy')}>
+          {t('popularCourses.viewMore')}
+          <i className="fa-solid fa-arrow-right"></i>
+        </p>
+      </div>
+
+    </div>
   )
 }
 
