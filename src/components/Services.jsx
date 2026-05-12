@@ -1,39 +1,39 @@
-
-
- import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import useAcademyNavigation from "../hooks/useAcademyNavigation";
 
 import '../styles/services.css';
 
 const Services = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { t } = useTranslation();
-   const goToAcademy = useAcademyNavigation();
+  const navigate = useNavigate();
 
   const services = [
     {
       title: t('services.learnLanguage.title'),
       description: t('services.learnLanguage.description'),
-      image: "/images/Learn-Language3.jpg"
+      image: "/images/Learn-Language3.jpg",
+      action: () => navigate('/academy')
     },
     {
       title: t('services.exploreIdentity.title'),
       description: t('services.exploreIdentity.description'),
-      image: "/images/explore-identity2.jpg"
+      image: "/images/explore-identity2.jpg",
+      action: () => navigate('/tribes')
     },
     {
       title: t('services.streamFolklore.title'),
       description: t('services.streamFolklore.description'),
-      image: "/images/African-storytelling2.jpg"
+      image: "/images/African-storytelling2.jpg",
+      action: () => navigate('/tribes')
     },
     {
-
       title: t('services.exploreCourses.title'),
       description: t('services.exploreCourses.description'),
-      image: "/images/photorealistic-portrait-african-woman.jpg"
-      
+      image: "/images/photorealistic-portrait-african-woman.jpg",
+      action: () => navigate('/academy')
+     
     }
   ];
 
@@ -46,23 +46,14 @@ const Services = () => {
   };
 
   useEffect(() => {
-  const timer = setInterval(() => {
-    setCurrentIndex((prev) => (prev + 1) % services.length);
-  }, 7000); // changes every 4 seconds — adjust to taste
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % services.length);
+    }, 7000);
 
-  return () => clearInterval(timer);
-}, [services.length]);
+    return () => clearInterval(timer);
+  }, [services.length]);
 
   const service = services[currentIndex];
-
-    const navigate = useNavigate(); 
-  
-  
-    const handleNavigation = (path) => {
-      navigate(path);
-    };
-  
-
 
   return (
     <section className="services">
@@ -76,17 +67,18 @@ const Services = () => {
         </div>
 
         <div className="service-wrap">
-          <div className="wrap1" >
+          <div className="wrap1">
             <h1>{service.title}</h1>
             <p>{service.description}</p>
-            <button className="learn-more" onClick={goToAcademy}>{t('services.learnMore')}</button>
+            <button className="learn-more" onClick={service.action}>
+              {t('services.learnMore')}
+            </button>
           </div>
 
-          <div 
+          <div
             className="wrap2"
-           
             style={{ backgroundImage: `url(${service.image})` }}
-           ></div>
+          ></div>
         </div>
 
         <div className="i">

@@ -8,10 +8,6 @@
   
 }
 
-
-
-
-
 .marketplace h1{
 font-size: 1.5rem;
 padding-top: 2rem;
@@ -188,17 +184,22 @@ ul li span{
   display: flex;
   flex-direction: row;
   font-size: 0.875rem;
-  border: 1px solid rgb(181, 161, 145);
-  background-color: transparent;
+
+  border:1px solid rgb(210, 123, 58);
+  background-color: rgb(210, 123, 58);
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  color: white;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   font-weight: 600;
 }
+
 .show-btn2:hover{
-  background-color: rgb(181, 161, 145);
+  background: var(--tech-orange-dark, #b85e1a);
+  border-color: var(--tech-orange-dark, #b85e1a);
   color: white;
+  transform: translateY(-2px);
 }
 .show-all2 hr{
   height: 0.5px;
