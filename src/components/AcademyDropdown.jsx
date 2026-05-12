@@ -150,22 +150,28 @@ const AcademyDropdown = () => {
       }))
   }, [dropdownCourses])
 
-  const handleCourseClick = (course) => {
+
+
+const handleCourseClick = (course) => {
     if (!course?.id) return
 
-    if (!user) {
-      navigate('/academy-signIn')
-      return
-    }
-
     const resolvedRole = normalizeRole(userData?.role)
-    if (resolvedRole === 'teacher' || String(userData?.subject || '').trim()) {
+
+    if (user && (resolvedRole === 'teacher' || String(userData?.subject || '').trim())) {
       goToAcademy()
       return
     }
 
+    // Logged in learners go directly to the course
+    if (user && resolvedRole === 'learner') {
+      navigate(buildCoursePath(course.id, course.title))
+      return
+    }
+
+    // Not logged in — go to preview
     navigate(buildCoursePath(course.id, course.title, { preview: true }))
   }
+
 
   const handleOpenCoursesPage = () => {
     navigate('/academy', { state: { scrollTo: 'courses', requestedAt: Date.now() } })
