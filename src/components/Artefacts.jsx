@@ -6,30 +6,30 @@ import { toSlug } from '../components/ProductDetail';
 
 export const artefactsData = {
   "Oil Paintings": {
-    coverImage: "/images/pottery1-image1.jpg", // swap to your preferred image
+    coverImage: "/images/oilPaint.jpg",
     items: [
-      { img: "/images/Oromo2.jpg", name: "Sunset Canvas", price: 40, tribe: "Yoruba", desc: "A warm depiction of African sunset life in vibrant tones." },
-      { img: "/images/kitenge-latest.jpg", name: "Village Glow", price: 35, tribe: "Zulu", desc: "Captures daily village harmony and tradition." },
-      { img: "/images/Oromo2.jpg", name: "Sunset Canvas", price: 40, tribe: "Yoruba", desc: "A warm depiction of African sunset life in vibrant tones." },
-      { img: "/images/kitenge-latest.jpg", name: "Village Glow", price: 35, tribe: "Zulu", desc: "Captures daily village harmony and tradition." },
+      { img: "/images/yorubaSunsetCanva.jpg", name: "Sunset Canvas", price: 40, tribe: "Yoruba", desc: "A warm depiction of African sunset life in vibrant tones." },
+      { img: "/images/zuluVillageGlow.jpg", name: "Village Glow", price: 35, tribe: "Zulu", desc: "Captures daily village harmony and tradition." },
+      { img: "/images/igboVillagePaint.jpg", name: "Sunlit Village Path", price: 35, tribe: "Igbo", desc: "Captures a peaceful rural village scene with colorful homes, palm trees, and daily life unfolding along a sunlit path." },
+      { img: "/images/oilPaint02.jpg", name: "Radiant Heritage", price: 35, tribe: "Yoruba", desc: "A vibrant textured portrait highlighting African beauty, culture, and strength through bold expressive colors." },
     ]
   },
   "Pencil Portraits": {
-    coverImage: "/images/maasai-wear2.jpg", // swap to your preferred image
+    coverImage: "/images/pencil-potrait.jpeg", 
     items: [
-      { img: "/images/maasai-bracelets2.jpg", name: "Silent Gaze", price: 45, tribe: "Kikuyu", desc: "A detailed pencil portrait showing deep emotion." },
-      { img: "/images/maasai-wear2.jpg", name: "Elder Wisdom", price: 50, tribe: "Maasai", desc: "A strong portrait of an elder full of history." },
-      { img: "/images/maasai-bracelets2.jpg", name: "Silent Gaze", price: 45, tribe: "Kikuyu", desc: "A detailed pencil portrait showing deep emotion." },
-      { img: "/images/maasai-wear2.jpg", name: "Elder Wisdom", price: 50, tribe: "Maasai", desc: "A strong portrait of an elder full of history." },
+      { img: "/images/pencil-potrait2.jpeg", name: "Voice of Change", price: 35, tribe: "Kisii", desc: "A detailed pencil portrait honoring leadership, courage, and the spirit of unity." },
+      { img: "/images/pencilPortraits.jpg", name: "African Woman", price: 20, tribe: "Maasai", desc: "A potrait on a beautiful cultural woman with a traditional skulf worn on the head." },
+      { img: "/images/kikiyuSilentGlaze.jpg", name: "Elderly Woman", price: 45, tribe: "Kikuyu", desc: "A detailed pencil portrait showing deep emotion ofrom an elderly woman." },
+      { img: "/images/maasaiElderWisdom.jpg", name: "Elder Wisdom", price: 50, tribe: "Maasai", desc: "A strong portrait of an elder full of history." },
     ]
   },
   "Coloured Pencils": {
-    coverImage: "/images/maasai-women2.jpg", // swap to your preferred image
+    coverImage: "/images/coloredPencil.jpg", 
     items: [
-      { img: "/images/nigeria-wear2.jpg", name: "Color Burst", price: 38, tribe: "Igbo", desc: "Bright expressive artwork using colored pencils." },
-      { img: "/images/maasai-women2.jpg", name: "Wild Harmony", price: 42, tribe: "Kamba", desc: "A fusion of wildlife and abstract color energy." },
-      { img: "/images/nigeria-wear2.jpg", name: "Color Burst", price: 38, tribe: "Igbo", desc: "Bright expressive artwork using colored pencils." },
-      { img: "/images/maasai-women2.jpg", name: "Wild Harmony", price: 42, tribe: "Kamba", desc: "A fusion of wildlife and abstract color energy." },
+      { img: "/images/coloredPencil02.jpg", name: "Color Burst", price: 38, tribe: "Igbo", desc: "Bright expressive artwork using colored pencils." },
+      { img: "/images/coloredPencil03.jpg", name: "Wild Harmony", price: 42, tribe: "Kamba", desc: "A fusion of wildlife and abstract color energy." },
+      { img: "/images/coloredPencil04.jpg", name: "Color Burst", price: 38, tribe: "Igbo", desc: "Bright expressive artwork using colored pencils." },
+      { img: "/images/coloredPencil05.jpg", name: "Wild Harmony", price: 42, tribe: "Kamba", desc: "A fusion of wildlife and abstract color energy." },
     ]
   }
 }
