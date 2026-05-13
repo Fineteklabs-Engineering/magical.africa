@@ -1,0 +1,112 @@
+.african-loader-wrap {
+  min-height: 100vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes dancer1 {
+  0%, 100% { transform: translate(80px, 160px) rotate(-8deg); }
+  50% { transform: translate(80px, 154px) rotate(8deg); }
+}
+@keyframes dancer2 {
+  0%, 100% { transform: translate(330px, 150px) rotate(6deg); }
+  50% { transform: translate(330px, 158px) rotate(-6deg); }
+}
+@keyframes drummerBob {
+  0%, 100% { transform: translate(210px, 140px) translateY(0px); }
+  50% { transform: translate(210px, 137px); }
+}
+@keyframes armL1 {
+  0%, 100% { transform: rotate(-30deg); }
+  50% { transform: rotate(20deg); }
+}
+@keyframes armR1 {
+  0%, 100% { transform: rotate(25deg); }
+  50% { transform: rotate(-20deg); }
+}
+@keyframes armL2 {
+  0%, 100% { transform: rotate(20deg); }
+  50% { transform: rotate(-25deg); }
+}
+@keyframes armR2 {
+  0%, 100% { transform: rotate(-20deg); }
+  50% { transform: rotate(35deg); }
+}
+@keyframes legL1 {
+  0%, 100% { transform: rotate(15deg); }
+  50% { transform: rotate(-10deg); }
+}
+@keyframes legR1 {
+  0%, 100% { transform: rotate(-12deg); }
+  50% { transform: rotate(18deg); }
+}
+@keyframes stickR {
+  0%, 100% { transform: rotate(10deg); }
+  50% { transform: rotate(45deg); }
+}
+@keyframes stickL {
+  0%, 100% { transform: rotate(50deg); }
+  50% { transform: rotate(15deg); }
+}
+@keyframes dotBounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+  40% { transform: translateY(-8px); opacity: 1; }
+}
+@keyframes groundPulse {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.35; }
+}
+@keyframes sparkle {
+  0%, 80%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
+  40% { transform: translateY(-10px) scale(1.3); opacity: 1; }
+}
+
+.al-d1 { animation: dancer1 0.6s ease-in-out infinite; }
+.al-d2 { animation: dancer2 0.65s ease-in-out infinite; animation-delay: 0.2s; }
+.al-drummer { animation: drummerBob 0.35s ease-in-out infinite; }
+
+.al-arm-l1 { transform-origin: -13px 18px; animation: armL1 0.6s ease-in-out infinite; }
+.al-arm-r1 { transform-origin: 13px 18px; animation: armR1 0.6s ease-in-out infinite; }
+.al-arm-l2 { transform-origin: -13px 18px; animation: armL2 0.65s ease-in-out infinite; animation-delay: 0.2s; }
+.al-arm-r2 { transform-origin: 13px 18px; animation: armR2 0.65s ease-in-out infinite; animation-delay: 0.2s; }
+
+.al-leg-l1 { transform-origin: -10px 95px; animation: legL1 0.6s ease-in-out infinite; }
+.al-leg-r1 { transform-origin: 10px 95px; animation: legR1 0.6s ease-in-out infinite; }
+.al-leg-l2 { transform-origin: -10px 95px; animation: legR1 0.65s ease-in-out infinite; animation-delay: 0.2s; }
+.al-leg-r2 { transform-origin: 10px 95px; animation: legL1 0.65s ease-in-out infinite; animation-delay: 0.2s; }
+
+.al-stick-r { transform-origin: 14px 28px; animation: stickR 0.35s ease-in-out infinite; }
+.al-stick-l { transform-origin: -14px 28px; animation: stickL 0.35s ease-in-out infinite; animation-delay: 0.175s; }
+
+.al-ground { animation: groundPulse 0.7s ease-in-out infinite; }
+
+.al-sp1 { animation: sparkle 0.7s ease-in-out infinite; }
+.al-sp2 { animation: sparkle 0.7s ease-in-out infinite; animation-delay: 0.12s; }
+.al-sp3 { animation: sparkle 0.7s ease-in-out infinite; animation-delay: 0.24s; }
+.al-sp4 { animation: sparkle 0.65s ease-in-out infinite; animation-delay: 0.1s; }
+.al-sp5 { animation: sparkle 0.65s ease-in-out infinite; animation-delay: 0.22s; }
+
+.al-loading-text {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+}
+.al-loading-label {
+  font-size: 15px;
+  color: #A0522D;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+.al-dot {
+  font-size: 20px;
+  font-weight: 700;
+  color: #D85A30;
+  display: inline-block;
+}
+.al-dot1 { animation: dotBounce 0.8s ease-in-out infinite; animation-delay: 0s; }
+.al-dot2 { animation: dotBounce 0.8s ease-in-out infinite; animation-delay: 0.2s; }
+.al-dot3 { animation: dotBounce 0.8s ease-in-out infinite; animation-delay: 0.4s; }

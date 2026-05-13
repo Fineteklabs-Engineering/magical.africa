@@ -10,6 +10,7 @@ import { useAuth } from '../context/AuthContext'
 import { FaCheckCircle, FaUndoAlt } from 'react-icons/fa'
 import { MdQuiz } from 'react-icons/md'
 import { buildCoursePath, slugifyCourseTitle } from '../utils/courseRoute'
+import AfricanLoader from './AfricanLoader'
 
 const CourseContentPage = () => {
   const location = useLocation()
@@ -259,6 +260,7 @@ const CourseContentPage = () => {
   if (loading) return (
     <>
       <Navbar solid />
+      {/* 
       <div className='app-loading-wrap app-loading-wrap--navbar'>
         <div className='app-loading-text' role='status' aria-live='polite' aria-label='Loading course content'>
           <span>L</span>
@@ -270,6 +272,9 @@ const CourseContentPage = () => {
           <span>G</span>
         </div>
       </div>
+      */}
+
+      <AfricanLoader />
     </>
   )
 
