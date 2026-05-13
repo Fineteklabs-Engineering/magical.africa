@@ -23,12 +23,12 @@ export const potteryData = {
     ]
   },
   "Sculptural": {
-    coverImage: "/images/pottery3-image3.png",
+    coverImage: "/images/sculturalPottery.jpg",
     items: [
-      { img: "/images/pottery4-image5.png", name: "Warrior Bust", price: 60, tribe: "Zulu", desc: "A sculpted bust honouring the Zulu warrior spirit." },
-      { img: "/images/pottery5-image6.png", name: "Mother Figure", price: 55, tribe: "Yoruba", desc: "Abstract clay figure symbolising motherhood." },
-      { img: "/images/pottery2-image2.png", name: "Animal Totem", price: 48, tribe: "Kikuyu", desc: "Hand-sculpted animal totem with cultural markings." },
-      { img: "/images/pottery3-image3.png", name: "Ancestor Mask", price: 70, tribe: "Ashanti", desc: "Deeply carved ancestral mask in raw clay." },
+      { img: "/images/zuluWarriorBust.jpg", name: "Warrior Bust", price: 60, tribe: "Zulu", desc: "A sculpted bust honouring the Zulu warrior spirit." },
+      { img: "/images/yorubaMotherFigure.jpg", name: "Mother Figure", price: 55, tribe: "Yoruba", desc: "Abstract clay figure symbolising motherhood." },
+      { img: "/images/kikuyuAnimalTotem.jpg", name: "Animal Totem", price: 48, tribe: "Kikuyu", desc: "Hand-sculpted animal totem with cultural markings." },
+      { img: "/images/ashantiAncetorMask.jpg", name: "Ancestor Mask", price: 70, tribe: "Ashanti", desc: "Deeply carved ancestral mask in raw clay." },
     ]
   }
 }
