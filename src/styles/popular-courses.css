@@ -11,7 +11,7 @@
   background: linear-gradient(135deg, #fdf6ee, #fff);
   display: flex;
   flex-direction: column;
-  padding: 3rem 4rem;
+  padding: 4rem 4rem;
 }
 .popular-course-div h1 {
   font-size: 1.5rem;
