@@ -45,23 +45,23 @@ const Marketplace = () => {
       sections: [
         {
           category: 'artefacts',
-          image: '/images/Oromo2.jpg',
+          image: '/images/yorubaSunsetCanva.jpg',
           title: 'Sunset Canvas',
           description: 'A warm depiction of African sunset life in vibrant tones.',
           price: '$40',
         },
         {
           category: 'artefacts',
-          image: '/images/kitenge-latest.jpg',
+          image: '/images/zuluVillageGlow.jpg',
           title: 'Village Glow',
           description: 'Captures daily village harmony and tradition.',
           price: '$35',
         },
         {
           category: 'artefacts',
-          image: '/images/maasai-bracelets2.jpg',
-          title: 'Silent Gaze',
-          description: 'A detailed pencil portrait showing deep emotion.',
+          image: '/images/kikiyuSilentGlaze.jpg',
+          title: 'Elderly Woman',
+          description: 'A detailed pencil portrait showing deep emotion ofrom an elderly woman.',
           price: '$45',
         },
       ],
