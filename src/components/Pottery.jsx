@@ -14,12 +14,12 @@ export const potteryData = {
     ]
   },
   "Glazed Pottery": {
-    coverImage: "/images/pottery2-image2.png",
+    coverImage: "/images/glazedPottery.jpg",
     items: [
-      { img: "/images/pottery3-image3.png", name: "Blue Glaze Jar", price: 45, tribe: "Swahili", desc: "Coastal-inspired jar with deep ocean blue glaze." },
-      { img: "/images/pottery4-image5.png", name: "Speckled Mug", price: 22, tribe: "Amhara", desc: "A hand-thrown mug with earthy speckled finish." },
-      { img: "/images/pottery5-image6.png", name: "Glazed Platter", price: 55, tribe: "Ashanti", desc: "Wide ceremonial platter with rich amber glaze." },
-      { img: "/images/pottery2-image2.png", name: "Shine Pot", price: 38, tribe: "Igbo", desc: "Polished pot with reflective glaze surface." },
+      { img: "/images/swahiliBlueGlazeJar.jpg", name: "Blue Glaze Jar", price: 45, tribe: "Swahili", desc: "Coastal-inspired jar with deep ocean blue glaze." },
+      { img: "/images/amharaSpeckledMug.jpg", name: "Speckled Mug", price: 22, tribe: "Amhara", desc: "A hand-thrown mug with earthy speckled finish." },
+      { img: "/images/ashantiGlazedPlatter.jpg", name: "Glazed Platter", price: 55, tribe: "Ashanti", desc: "Wide ceremonial platter with rich amber glaze." },
+      { img: "/images/igboShinePot.jpg", name: "Shine Pot", price: 38, tribe: "Igbo", desc: "Polished pot with reflective glaze surface." },
     ]
   },
   "Sculptural": {
