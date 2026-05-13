@@ -5,12 +5,12 @@ import { toSlug } from '../components/ProductDetail';
 
 export const potteryData = {
   "Terracotta": {
-    coverImage: "/images/pottery1-image1.jpg",
+    coverImage: "/images/terracotta.jpg",
     items: [
-      { img: "/images/pottery2-image2.png", name: "Golden Mask", price: 25, tribe: "Yoruba", desc: "A ceremonial terracotta mask with gold detailing." },
-      { img: "/images/pottery3-image3.png", name: "Earth Vase", price: 30, tribe: "Kikuyu", desc: "Hand-shaped vase from rich African red clay." },
-      { img: "/images/pottery4-image5.png", name: "Ceramic Cup", price: 20, tribe: "Zulu", desc: "A rustic cup fired in traditional open kilns." },
-      { img: "/images/pottery5-image6.png", name: "Clay Bowl", price: 18, tribe: "Maasai", desc: "Wide-mouthed bowl used in ceremonial gatherings." },
+      { img: "/images/yorubaGoldMask.jpg", name: "Golden Mask", price: 25, tribe: "Yoruba", desc: "A ceremonial terracotta mask with gold detailing." },
+      { img: "/images/handShapedVase.jpg", name: "Earth Vase", price: 30, tribe: "Kikuyu", desc: "Hand-shaped vase from rich African red clay." },
+      { img: "/images/zuluCeramicCup.jpg", name: "Ceramic Cup", price: 20, tribe: "Zulu", desc: "A rustic cup fired in traditional open kilns." },
+      { img: "/images/maasaiClayBowl.jpg", name: "Clay Bowl", price: 18, tribe: "Maasai", desc: "Wide-mouthed bowl used in ceremonial gatherings." },
     ]
   },
   "Glazed Pottery": {
