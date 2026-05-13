@@ -365,19 +365,7 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
           {/* Tribe pill + stars */}
           <div className='best-seller-meta'>
             <span className='tribe-pill'>{item.tribe || 'Unknown'}</span>
-          {/* 
-            <div className='best-seller-stars'>
-              {[1,2,3,4].map(i => (
-                
-                <svg key={i} width="11" height="11" viewBox="0 0 10 10">
-                  <path d="M5 1l1.1 2.2L9 3.6 7 5.5l.5 2.7L5 6.9 2.5 8.2 3 5.5 1 3.6l2.9-.4z" fill="#EF9F27"/>
-                </svg>
-              ))}
-              <svg width="11" height="11" viewBox="0 0 10 10">
-                <path d="M5 1l1.1 2.2L9 3.6 7 5.5l.5 2.7L5 6.9 2.5 8.2 3 5.5 1 3.6l2.9-.4z" fill="#ccc"/>
-              </svg>
-            </div>
-          */}
+          
           </div>
 
           {/* Name */}
@@ -683,11 +671,11 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
 
             <div className='artisan1'>
               <span></span>
-              <h3>Nashai Ole</h3>
+              <h3>Gloria Machoka</h3>
               <h4>{t('market.artisans.artisan1.craft')}</h4>
               <p>📍 {t('market.artisans.artisan1.location')}</p>
               <p>{t('market.artisans.artisan1.items')}</p>
-              <button>{t('market.artisans.follow')}</button>
+              <button >{t('market.artisans.follow')}</button>
             </div>
 
             <div className='artisan2'>
