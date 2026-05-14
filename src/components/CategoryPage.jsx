@@ -25,6 +25,9 @@ const categoryMeta = {
     hero: '/images/african-jewelery.jpg',
     tagline: 'Beads, metals & sacred adornments from across the continent',
   },
+
+
+  
   carvings: {
     label: 'Carvings',
     hero: '/images/carvings-image.jpg',

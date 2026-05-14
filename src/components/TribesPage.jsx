@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -11,7 +11,75 @@ import PageSeo from '../components/PageSeo';
 import { SEO_CONTENT } from '../utils/seoContent';
 import { tribeData } from '../data/tribesData';
 import { folkloreData } from '../data/folkloreData';
-import PhraseCarousel from '../components/PhraseCarousel'
+import PhraseCarousel from '../components/PhraseCarousel';
+import { TRIBE_RADIO_STATIONS } from '../data/tribeRadioStations';
+import '../styles/tribes-radio.css'
+
+
+const TRIBE_RADIO = {
+  maasai: {
+    name: 'Mayian FM',
+    freq: '100.7 FM · Narok, Kenya',
+    stream: 'https://mayianfm-atunwadigital.streamguys1.com/mayianfm',
+    image: 'https://radio.co.ke/media/station/mayian-fm.webp',  // ← put your image path here
+  },
+  luo: {
+    name: 'Ramogi FM',
+    freq: '107.6 FM · Nairobi, Kenya',
+    stream: 'https://ramogifm-atunwadigital.streamguys1.com/ramogifm',
+    image: 'https://cdn.instant.audio/images/logos/radio-or-ke/ramogi.png',
+  },
+  kikuyu: {
+    name: 'Inooro FM',
+    freq: '98.9 FM · Nairobi, Kenya',
+    stream: 'https://inoorofm-atunwadigital.streamguys1.com/inoorofm',
+    image: 'https://cdn.instant.audio/images/logos/radio-or-ke/inooro.png',
+  },
+swahili: {
+  name: 'Milele FM',
+  freq: '104.8 FM · Nairobi, Kenya',
+  stream: 'https://milelefm-atunwadigital.streamguys1.com/milelefm',
+  image: 'https://cdn.instant.audio/images/logos/radio-or-ke/milele.png',
+},
+zulu: {
+  name: 'Ukhozi FM',
+  freq: '90.8 FM · Durban, KwaZulu-Natal',
+  stream: 'https://playerservices.streamtheworld.com/api/livestream-redirect/UKHOZIFM.mp3',
+  image: '/images/ukhozi.jpg',
+},
+yoruba: {
+  name: 'Lagelu FM',
+  freq: '96.7 FM · Ibadan, Oyo State',
+  stream: 'https://edge.mixlr.com/channel/wupzh',
+  image: '/images/lagelu.jpg',
+},
+igbo: {
+  name: 'Radio Palmwine',
+  freq: 'Online · Lagos, Nigeria',
+  stream: 'https://stream.zeno.fm/yn65m6h2k5zuv',
+  image: '/images/radio-palmwine.webp',
+},
+ashanti: {
+  name: 'Otec FM',
+  freq: '102.9 FM · Kumasi, Ashanti',
+  stream: 'https://stream.zeno.fm/9tua3tnkp0hvv',
+  image: '/images/otec-fm.webp',
+},
+hausa: {
+  name: 'Freedom Radio',
+  freq: '99.5 FM · Kano, Nigeria',
+  stream: 'https://stream.zeno.fm/t8bhnmek8mzuv',
+  image: '/images/freedom-radio.png',
+},
+amhara: {
+  name: 'Sheger FM',
+  freq: '102.1 FM · Addis Ababa, Amhara',
+  stream: 'https://stream.zeno.fm/sheger-fm2fsxukzhgg0uv',
+  image: '/images/sheger-fm.avif',
+},
+};
+
+
 
 const getAllProducts = () => {
   const jewellery = Object.values(jewelleryData).flat().map((item) => ({
@@ -51,13 +119,83 @@ const cultureKeys = [
   { key: 'rites',    label: 'Rites of Passage' },
 ];
 
-const TABS = ['history', 'culture', 'language', 'market', 'folklore', 'leaders'];
-const TAB_LABELS = { history: 'History', culture: 'Culture', language: 'Language', market: 'Market', folklore: 'Folklore', leaders: 'Prominent People' };
+const TABS = ['history', 'culture', 'language', 'market', 'folklore', 'leaders', 'radio'];
+const TAB_LABELS = { history: 'History', culture: 'Culture', language: 'Language', market: 'Market', folklore: 'Folklore', leaders: 'Prominent People', radio: 'Radio' };
 const DEFAULT_SECTION = 'taboos';
 
 const TribePage = () => {
   const { tribeName, tab, section } = useParams();
   const navigate = useNavigate();
+
+
+
+const audioRef = useRef(null);
+const [isPlaying, setIsPlaying] = useState(false);
+const [playerOpen, setPlayerOpen] = useState(false); 
+const [activeStation, setActiveStation] = useState(null);
+const tabAudioRef = useRef(null);
+const [tabPlaying, setTabPlaying] = useState(false);
+
+const radioStation = TRIBE_RADIO[tribeName?.toLowerCase()];
+
+const handleRadioToggle = () => {
+  const audio = audioRef.current;
+  if (!audio) return;
+  if (isPlaying) {
+    audio.pause();
+    setIsPlaying(false);
+  } else {
+    audio.play().catch(() => {});
+    setIsPlaying(true);
+  }
+};
+
+const handleCardClick = () => {
+  setPlayerOpen(true);
+  // auto-play when card is clicked open
+  setTimeout(() => {
+    const audio = audioRef.current;
+    if (audio && !isPlaying) {
+      audio.play().catch(() => {});
+      setIsPlaying(true);
+    }
+  }, 100);
+};
+
+
+const handleStationClick = (station) => {
+  if (activeStation?.id === station.id) {
+    const audio = tabAudioRef.current;
+    if (!audio) return;
+    if (tabPlaying) {
+      audio.pause();
+      setTabPlaying(false);
+    } else {
+      audio.play().catch(() => {});
+      setTabPlaying(true);
+    }
+    return;
+  }
+  if (tabAudioRef.current) {
+    tabAudioRef.current.pause();
+    setTabPlaying(false);
+  }
+  setActiveStation(station);
+  setTimeout(() => {
+    if (tabAudioRef.current) {
+      tabAudioRef.current.play().catch(() => {});
+      setTabPlaying(true);
+    }
+  }, 80);
+};
+
+const handleStationClose = () => {
+  if (tabAudioRef.current) tabAudioRef.current.pause();
+  setTabPlaying(false);
+  setActiveStation(null);
+};
+
+const tribeStations = TRIBE_RADIO_STATIONS[tribeName?.toLowerCase()] || [];
 
   const tribe = tribeData[tribeName?.toLowerCase()];
   const tribeFolklore = folkloreData[tribeName?.toLowerCase()];
@@ -147,55 +285,150 @@ const TribePage = () => {
       <div className="tp-page">
         <Navbar />
 
-        {/* ── HERO ── */}
-        <div className="tp-hero" style={{ backgroundImage: `url(${tribe.heroImage})` }}>
-          <div className="tp-hero-overlay" />
-          <div className="tp-hero-content">
-            <div className="tp-breadcrumb">
-              <span onClick={() => navigate('/')} className="tp-crumb">Home</span>
-              <span className="tp-crumb-sep">›</span>
-              <span onClick={() => navigate('/tribes')} className="tp-crumb">Tribes</span>
-              <span className="tp-crumb-sep">›</span>
-              <span className="tp-crumb tp-crumb-active">{tribe.name}</span>
+ {/* ── HERO ── */}
+<div className="tp-hero" style={{ backgroundImage: `url(${tribe.heroImage})` }}>
+  <div className="tp-hero-overlay" />
+  <div
+    className="tp-hero-content"
+    style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '2rem' }}
+  >
+    {/* ── LEFT: existing content ── */}
+    <div style={{ flex: 1 }}>
+      <div className="tp-breadcrumb">
+        <span onClick={() => navigate('/')} className="tp-crumb">Home</span>
+        <span className="tp-crumb-sep">›</span>
+        <span onClick={() => navigate('/tribes')} className="tp-crumb">Tribes</span>
+        <span className="tp-crumb-sep">›</span>
+        <span className="tp-crumb tp-crumb-active">{tribe.name}</span>
+      </div>
+      <p className="tp-hero-region">{tribe.region}</p>
+      <h1 className="tp-hero-title">{tribe.name}</h1>
+      <p className="tp-hero-tagline">{tribe.tagline}</p>
+      <div className="tp-hero-stats">
+        <div className="tp-stat">
+          <span className="tp-stat-label">Location</span>
+          <span className="tp-stat-value">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="rgb(210,123,53)" strokeWidth="1.8" fill="none"/>
+              <circle cx="12" cy="9" r="2.5" stroke="rgb(210,123,53)" strokeWidth="1.8" fill="none"/>
+            </svg>
+            {tribe.location}
+          </span>
+        </div>
+        <div className="tp-stat">
+          <span className="tp-stat-label">Population</span>
+          <span className="tp-stat-value">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="rgb(210,123,53)" strokeWidth="1.8" strokeLinecap="round"/>
+              <circle cx="9" cy="7" r="4" stroke="rgb(210,123,53)" strokeWidth="1.8"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="rgb(210,123,53)" strokeWidth="1.8" strokeLinecap="round"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="rgb(210,123,53)" strokeWidth="1.8" strokeLinecap="round"/>
+            </svg>
+            {tribe.population}
+          </span>
+        </div>
+        <div className="tp-stat">
+          <span className="tp-stat-label">Language</span>
+          <span className="tp-stat-value">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="rgb(210,123,53)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            {tribe.language.name}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    {/* ── RIGHT: Radio card ── */}
+    {radioStation && (
+  <>
+    <audio ref={audioRef} src={radioStation.stream} preload="none" />
+
+    {!playerOpen ? (
+      /* ── STAGE 1: Image card with hover overlay ── */
+      <div className="tp-radio-thumbnail" onClick={handleCardClick}>
+        <img
+          src={radioStation.image}
+          alt={radioStation.name}
+          className="tp-radio-thumb-img"
+        />
+        <div className="tp-radio-thumb-overlay">
+          <div className="tp-radio-thumb-play">
+            <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <p className="tp-radio-thumb-label">Tune In</p>
+        </div>
+      </div>
+    ) : (
+      /* ── STAGE 2: Full player card ── */
+      <div className="tp-radio-card">
+        {/* top row: image + station info */}
+        <div className="tp-radio-card-top">
+          <img
+            src={radioStation.image}
+            alt={radioStation.name}
+            className="tp-radio-card-img"
+          />
+          <div className="tp-radio-card-info">
+            {/* 
+            <div className="tp-radio-label">
+              <span className={`tp-radio-label-dot ${!isPlaying ? 'paused' : ''}`} />
+              Tribe Radio
             </div>
-            <p className="tp-hero-region">{tribe.region}</p>
-            <h1 className="tp-hero-title">{tribe.name}</h1>
-            <p className="tp-hero-tagline">{tribe.tagline}</p>
-            <div className="tp-hero-stats">
-              <div className="tp-stat">
-                <span className="tp-stat-label">Location</span>
-                <span className="tp-stat-value">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="rgb(210,123,53)" strokeWidth="1.8" fill="none"/>
-                    <circle cx="12" cy="9" r="2.5" stroke="rgb(210,123,53)" strokeWidth="1.8" fill="none"/>
-                  </svg>
-                  {tribe.location}
-                </span>
-              </div>
-              <div className="tp-stat">
-                <span className="tp-stat-label">Population</span>
-                <span className="tp-stat-value">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="rgb(210,123,53)" strokeWidth="1.8" strokeLinecap="round"/>
-                    <circle cx="9" cy="7" r="4" stroke="rgb(210,123,53)" strokeWidth="1.8"/>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="rgb(210,123,53)" strokeWidth="1.8" strokeLinecap="round"/>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="rgb(210,123,53)" strokeWidth="1.8" strokeLinecap="round"/>
-                  </svg>
-                  {tribe.population}
-                </span>
-              </div>
-              <div className="tp-stat">
-                <span className="tp-stat-label">Language</span>
-                <span className="tp-stat-value">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="rgb(210,123,53)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  {tribe.language.name}
-                </span>
-              </div>
-            </div>
+            */}
+            <p className="tp-radio-station-name">{radioStation.name}</p>
+            <p className="tp-radio-station-freq">{radioStation.freq}</p>
+          </div>
+          {/* close button */}
+          <button
+            className="tp-radio-close"
+            onClick={(e) => {
+              e.stopPropagation();
+              audioRef.current?.pause();
+              setIsPlaying(false);
+              setPlayerOpen(false);
+            }}
+          >
+            ✕
+          </button>
+        </div>
+
+        {/* controls row */}
+        <div className="tp-radio-controls">
+          <button
+            className="tp-radio-play-btn"
+            onClick={handleRadioToggle}
+            aria-label={isPlaying ? 'Pause radio' : 'Play radio'}
+          >
+            {isPlaying ? (
+              <svg viewBox="0 0 24 24">
+                <rect x="6" y="4" width="4" height="16" rx="1"/>
+                <rect x="14" y="4" width="4" height="16" rx="1"/>
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+            )}
+          </button>
+          <div className="tp-radio-waveform">
+            {[1,2,3,4,5,6,7].map(i => (
+              <div key={i} className={`tp-radio-bar ${!isPlaying ? 'paused' : ''}`} />
+            ))}
           </div>
         </div>
+
+        <p className="tp-radio-status">
+          {isPlaying ? 'Streaming live · Ewangan olosho' : 'Tap to tune in'}
+        </p>
+      </div>
+    )}
+  </>
+)}
+  </div>
+</div>
 
         {/* ── TABS ── */}
         <div className="tp-tabs">
@@ -426,6 +659,103 @@ const TribePage = () => {
               </div>
             </div>
           )}
+
+
+
+        {activeTab === 'radio' && (
+  <div className="tp-radio-tab">
+
+    {activeStation && (
+      <audio ref={tabAudioRef} src={activeStation.stream} preload="none" />
+    )}
+
+    <div className="tp-radio-tab-header">
+      <h2>Radio Stations</h2>
+      <p>Tune in to radio stations connected to the {tribe.name} community.</p>
+    </div>
+
+    {tribeStations.length === 0 ? (
+      <div className="tp-market-empty">
+        <p>No radio stations listed for this tribe yet.</p>
+      </div>
+    ) : (
+      <div className="tp-radio-tab-grid">
+        {tribeStations.map((station) => {
+          const isActive = activeStation?.id === station.id;
+          return (
+            <div
+              key={station.id}
+              className={`tp-radio-tab-card ${isActive ? 'tp-radio-tab-card--active' : ''}`}
+              onClick={() => handleStationClick(station)}
+            >
+              {/* ── IMAGE (always visible) ── */}
+              <div className="tp-radio-tab-card-img-wrap">
+                <img
+                  src={station.image}
+                  alt={station.name}
+                  className="tp-radio-tab-card-img"
+                />
+              </div>
+
+              {/* ── HOVER PLAYER OVERLAY ── */}
+              <div className="tp-radio-tab-hover-player" onClick={(e) => e.stopPropagation()}>
+                
+                {/* close button */}
+                {isActive && (
+                  <button
+                    className="tp-radio-tab-close"
+                    onClick={(e) => { e.stopPropagation(); handleStationClose(); }}
+                  >✕</button>
+                )}
+
+                {/* top row: small logo + name + freq */}
+                <div className="tp-radio-tab-hover-top">
+                  <img src={station.image} alt={station.name} className="tp-radio-tab-hover-thumb" />
+                  <div>
+                    <p className="tp-radio-tab-hover-name">{station.name}</p>
+                    <p className="tp-radio-tab-hover-freq">{station.freq}</p>
+                  </div>
+                </div>
+
+                {/* play/pause + waveform */}
+                <div className="tp-radio-tab-hover-controls">
+                  <button
+                    className="tp-radio-play-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleStationClick(station);
+                    }}
+                  >
+                    {isActive && tabPlaying ? (
+                      <svg viewBox="0 0 24 24">
+                        <rect x="6" y="4" width="4" height="16" rx="1"/>
+                        <rect x="14" y="4" width="4" height="16" rx="1"/>
+                      </svg>
+                    ) : (
+                      <svg viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    )}
+                  </button>
+                  <div className="tp-radio-waveform">
+                    {[1,2,3,4,5,6,7].map(i => (
+                      <div key={i} className={`tp-radio-bar ${!(isActive && tabPlaying) ? 'paused' : ''}`} />
+                    ))}
+                  </div>
+                </div>
+
+                <p className="tp-radio-status">
+                  {isActive && tabPlaying ? `Streaming live · ${station.name}` : 'Tap to tune in'}
+                </p>
+              </div>
+
+            </div>
+          );
+        })}
+      </div>
+    )}
+  </div>
+)}
 
         </div>
 
