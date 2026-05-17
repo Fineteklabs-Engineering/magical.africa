@@ -33,7 +33,7 @@ const Home = () => {
 
 
       <HeroSection />
-      
+      <img src="/images/maasai-pattern.avif" alt="" />
       <Services />
       <HomeAiSection />
       <Languages />
