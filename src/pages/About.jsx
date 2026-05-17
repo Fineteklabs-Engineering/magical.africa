@@ -11,6 +11,7 @@ import '../styles/team.css';
 import '../styles/AI.css';
 import AccordionPrinciples from '../components/AccordianPrinciples';
 import ContactModal from '../components/ContactModal';
+import CinematicStories from '../components/CinematicStories';
 
 
 
@@ -488,7 +489,7 @@ const toggleMute = () => {
 
      
 
-      {/* AI Section */}
+      {/* AI Section 
       <div className='AI-section' style={{ backgroundImage: `url('/images/drums2-latest.jpg')` }}>
         <h1>{t('about.ai.title')}</h1>
         <div className='AI-boxes' ref={aiRef}>
@@ -526,6 +527,11 @@ const toggleMute = () => {
           </div>
         </div>
       </div>
+*/}
+
+
+ <CinematicStories />
+
 
       {/* Partners Section */}
       <div className='working-with'>
