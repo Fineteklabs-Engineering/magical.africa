@@ -137,3 +137,56 @@
   gap: 0.75rem;
   margin-bottom: 0.6rem;
 }
+
+/* ── ALWAYS-VISIBLE INFO ON THUMBNAIL ── */
+.tp-radio-thumb-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.7rem 0.9rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.tp-radio-live-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(210, 123, 53, 0.9);
+  border-radius: 4px;
+  padding: 0.15rem 0.45rem;
+  flex-shrink: 0;
+}
+
+.tp-radio-live-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: white;
+  animation: tp-radio-pulse 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.tp-radio-thumb-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.02rem;
+}
+
+/* make sure the live badge font is styled */
+.tp-radio-live-badge span:last-child,
+.tp-radio-live-badge {
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.1rem;
+  color: white;
+}

@@ -346,21 +346,32 @@ const tribeStations = TRIBE_RADIO_STATIONS[tribeName?.toLowerCase()] || [];
 
     {!playerOpen ? (
       /* ── STAGE 1: Image card with hover overlay ── */
-      <div className="tp-radio-thumbnail" onClick={handleCardClick}>
-        <img
-          src={radioStation.image}
-          alt={radioStation.name}
-          className="tp-radio-thumb-img"
-        />
-        <div className="tp-radio-thumb-overlay">
-          <div className="tp-radio-thumb-play">
-            <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-          </div>
-          <p className="tp-radio-thumb-label">Tune In</p>
-        </div>
+  <div className="tp-radio-thumbnail" onClick={handleCardClick}>
+    <img
+      src={radioStation.image}
+      alt={radioStation.name}
+      className="tp-radio-thumb-img"
+    />
+
+    {/* ── LIVE BADGE + NAME (always visible) ── */}
+    <div className="tp-radio-thumb-info">
+      <div className="tp-radio-live-badge">
+        <span className="tp-radio-live-dot" />
+        LIVE
       </div>
+      <p className="tp-radio-thumb-name">{radioStation.name}</p>
+    </div>
+
+    {/* ── HOVER OVERLAY ── */}
+    <div className="tp-radio-thumb-overlay">
+      <div className="tp-radio-thumb-play">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </div>
+      <p className="tp-radio-thumb-label">Tune In</p>
+    </div>
+  </div>
     ) : (
       /* ── STAGE 2: Full player card ── */
       <div className="tp-radio-card">
