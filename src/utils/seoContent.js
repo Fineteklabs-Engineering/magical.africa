@@ -213,7 +213,7 @@ ashanti: {
     image: '/images/AI-woman.png'
   },
   academyLogin: {
-    title: 'Academy Login | Magical Africa',
+    title: 'Login | Magical Africa',
     description: 'Sign in to your Magical Africa Academy account to access your learner or tutor dashboard.',
     keywords: 'Magical Africa login, academy sign in, learner login, tutor login',
     path: '/academy-signIn',
@@ -221,7 +221,7 @@ ashanti: {
     noIndex: true
   },
   academySignup: {
-    title: 'Create Academy Account | Magical Africa',
+    title: 'Create Account | Magical Africa',
     description: 'Create a Magical Africa Academy account to join as a learner or educator.',
     keywords: 'Magical Africa Academy signup, create account, African courses, African learning platform',
     path: '/academy-signUp',

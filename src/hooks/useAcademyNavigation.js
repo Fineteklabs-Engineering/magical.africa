@@ -24,7 +24,7 @@ const useAcademyNavigation = () => {
     // FIX: removed getDoc — userData is already loaded in AuthContext
     // No Firestore read needed here at all
     if (!user) {
-      navigate("/academy-signUp");
+      navigate("/join");
       return;
     }
 

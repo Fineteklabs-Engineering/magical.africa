@@ -311,7 +311,7 @@ const Academy2 = () => {
           </div>
 
           <div className='academy-already'>
-            <p>Already have an account? <a  onClick={() => navigate('/academy-signIn')}>Sign In</a></p>
+            <p>Already have an account? <a  onClick={() => navigate('/login')}>Sign In</a></p>
           </div>
 
         </div>

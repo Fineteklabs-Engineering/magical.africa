@@ -244,7 +244,7 @@ const Navbar = ({ solid }) => {
           </div>
 
           {!user ? (
-            <a id="contact-us" onClick={() => navigate('/academy-signUp')}>
+            <a id="contact-us" onClick={() => navigate('/join')}>
               <i className="fa-regular fa-user" id="user-icon"></i>
               {t('nav.signIn')}
             </a>
