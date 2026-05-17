@@ -2,8 +2,10 @@ import { useEffect } from 'react';
 import { signin } from './marketplaceApi';
 
 
-const API_EMAIL = 'admin@nakkei.com';
-const API_PASSWORD = 'admin@nakkei.com';
+
+
+const API_EMAIL = '';
+const API_PASSWORD = '';
 
 const useApiAuth = () => {
   useEffect(() => {

@@ -8,6 +8,7 @@ const ArtefactsDropdown = ({ visible, onSelect }) => {
     "Coloured Pencils"
   ];
 
+
   return (
     <div className={`artefacts-dropdown ${visible ? "show" : ""}`}>
       {artefactTypes.map((item) => (
