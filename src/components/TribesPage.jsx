@@ -224,6 +224,7 @@ const tribeStations = TRIBE_RADIO_STATIONS[tribeName?.toLowerCase()] || [];
     market: 'Market',
     folklore: 'Folklore',
     leaders: 'Prominent People',
+    radio: 'Radio',
   };
 
   const cultureSectionTitles = {
