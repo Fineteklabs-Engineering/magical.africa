@@ -1142,6 +1142,10 @@
 
 
 
+
+
+
+
 /* ── LARGE SCREENS ── */
 @media screen and (min-width: 1440px) {
   .tp-hero-content { padding: 0 8rem 4rem; }
@@ -1186,6 +1190,10 @@
   .tp-leader-card { flex-direction: column; }
   .tp-leader-img-wrap { width: 100%; height: 200px; }
 }
+
+
+
+
 
 /* On mobile, hide it or stack below hero */
 @media screen and (max-width: 768px) {

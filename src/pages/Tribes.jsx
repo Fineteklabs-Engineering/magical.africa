@@ -147,6 +147,8 @@ const breakVideos = [
         </div>
       </div>
 
+      <img src="/images/maasai-pattern.avif" alt="" />
+
       {/* COMMUNITIES SECTION  */}
       <section className="tribes-communities-section"
       ref={communitiesSectionRef}
@@ -353,6 +355,7 @@ const breakVideos = [
         </div>
       </section>
 
+<img src="/images/maasai-pattern.avif" alt="" />
       <Footer />
     </>
   );
