@@ -9,7 +9,7 @@
 }
 
 .services{
-  background-image: url(/images/african-pattern8.jpg);
+  background-image: url(/images/african-pattern8.jpg) !important;
  background-position: center;
  background-size: cover;
  background-repeat: no-repeat;

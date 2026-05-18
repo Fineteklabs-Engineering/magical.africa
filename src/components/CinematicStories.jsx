@@ -1,37 +1,37 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import '../styles/cinematic-stories.css';
 
 const floatingCards = [
   {
     id: 1,
-    label: 'Interview',
-    title: "The Griot's Voice",
-    excerpt: 'The last keepers of oral tradition speak',
-    video: '/images/afrcan-events-video.mp4',
+    label: 'Member',
+    title: "Ian Cheryuiot",
+    excerpt: 'About Magical Africa',
+    youtubeId: 'qf0gvfIjP3c',
     style: { top: '18%', left: '4%' },
   },
   {
     id: 2,
-    label: 'Interview',
-    title: 'The Beadwork Artist',
-    excerpt: 'Every colour tells a story only she knows',
-    video: '/images/african-tribes-video.mp4',
+    label: 'Member',
+    title: 'Steve Kombo',
+    excerpt: 'The authenticity of Magical Africa',
+    youtubeId: 'udnvqPG2yNo',
     style: { top: '58%', left: '8%' },
   },
   {
     id: 3,
-    label: 'Interview',
-    title: 'The Kente Weaver',
-    excerpt: 'Threading identity into cloth, one strip at a time',
-    video: '/images/pottery-video.mp4',
+    label: 'Member',
+    title: 'Lorna Wanderi',
+    excerpt: 'Kikuyu Expert',
+    youtubeId: 'GpcpkDnjUPI',
     style: { top: '12%', right: '4%' },
   },
   {
     id: 4,
-    label: 'Interview',
-    title: 'The Drum Master',
-    excerpt: 'When the drum speaks, the village listens',
-    video: '/images/child.mp4',
+    label: 'Member',
+    title: 'Gloria Nyatichi',
+    excerpt: 'What Magical Africa is all about',
+    youtubeId: 'tfDpOFodSLU',
     style: { top: '52%', right: '8%' },
   },
 ];
@@ -52,24 +52,39 @@ const FloatingCard = ({ card }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* ── Video always visible, fills whole card ── */}
+      {/* ── YouTube iframe fills whole card ── */}
       <div className="cs-card-media">
-        <video
-          src={card.video}
-          muted
-          loop
-          playsInline
-          autoPlay
+        <iframe
+          src={`https://www.youtube.com/embed/${card.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${card.youtubeId}&controls=0&showinfo=0&rel=0&modestbranding=1`}
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
           className="cs-card-video cs-card-video--visible"
+          style={{
+            pointerEvents: 'none',
+            position: 'absolute',
+            top: '-10%',
+            left: 0,
+            width: '100%',
+            height: '120%',
+            border: 'none',
+          }}
+          title={card.title}
         />
 
         {/* gradient overlay */}
         <div className="cs-card-overlay" />
 
-        {/* play button */}
-        <div className={`cs-card-play ${hovered ? 'cs-card-play--active' : ''}`}>
+        {/* ── Play button → opens YouTube video in new tab ── */}
+        <a
+          href={`https://www.youtube.com/watch?v=${card.youtubeId}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`cs-card-play ${hovered ? 'cs-card-play--active' : ''}`}
+          aria-label={`Watch ${card.title} on YouTube`}
+        >
           <PlayIcon />
-        </div>
+        </a>
       </div>
 
       {/* Text always on top */}
