@@ -442,7 +442,7 @@ const CourseContentPage = () => {
   const handlePreviewAcquire = async () => {
     if (!course || !courseId || previewActionLoading) return
   if (!user) {
-      navigate('/academy-signIn')
+      navigate('/join')
       return
     }
 
@@ -562,7 +562,7 @@ const CourseContentPage = () => {
         onToggleLessonComplete={isPreviewMode ? undefined : handleToggleLessonComplete}
         isPreviewMode={isPreviewMode}
         isLoggedIn={!!user}
-        onBackToDashboard={() => user ? navigate('/learner') : navigate('/academy-signIn')}
+        onBackToDashboard={() => user ? navigate('/learner') : navigate('/join')}
         previewPrice={getCoursePrice()}
         previewOwned={previewOwned}
         previewActionLoading={previewActionLoading}
