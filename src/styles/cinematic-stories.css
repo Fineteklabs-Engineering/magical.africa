@@ -249,6 +249,11 @@
   display: none;
 }
 
+@keyframes cs-fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+ 
 @media screen and (max-width:1280px) {
   .cs-section {
     height: 150vh;

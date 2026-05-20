@@ -7,7 +7,8 @@ const floatingCards = [
     label: 'Member',
     title: "Ian Cheryuiot",
     excerpt: 'About Magical Africa',
-    youtubeId: 'qf0gvfIjP3c',
+    video: '/images/ian-cheruiyot.mp4',
+    youtubeUrl: 'https://www.youtube.com/shorts/qf0gvfIjP3c',
     style: { top: '18%', left: '4%' },
   },
   {
@@ -15,7 +16,8 @@ const floatingCards = [
     label: 'Member',
     title: 'Steve Kombo',
     excerpt: 'The authenticity of Magical Africa',
-    youtubeId: 'udnvqPG2yNo',
+    video: '/images/steve-kombo.mp4',
+    youtubeUrl: 'https://www.youtube.com/shorts/udnvqPG2yNo',
     style: { top: '58%', left: '8%' },
   },
   {
@@ -23,7 +25,8 @@ const floatingCards = [
     label: 'Member',
     title: 'Lorna Wanderi',
     excerpt: 'Kikuyu Expert',
-    youtubeId: 'GpcpkDnjUPI',
+    video: '/images/lorna-wanderi.mp4',
+    youtubeUrl: 'https://www.youtube.com/shorts/GpcpkDnjUPI',
     style: { top: '12%', right: '4%' },
   },
   {
@@ -31,7 +34,8 @@ const floatingCards = [
     label: 'Member',
     title: 'Gloria Nyatichi',
     excerpt: 'What Magical Africa is all about',
-    youtubeId: 'tfDpOFodSLU',
+    video: '/images/gloria-nyatichi.mp4',
+    youtubeUrl: 'https://www.youtube.com/shorts/4hOnrv9tleo',
     style: { top: '52%', right: '8%' },
   },
 ];
@@ -42,6 +46,7 @@ const PlayIcon = () => (
   </svg>
 );
 
+/* ── Floating card ── */
 const FloatingCard = ({ card }) => {
   const [hovered, setHovered] = useState(false);
 
@@ -52,14 +57,14 @@ const FloatingCard = ({ card }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {/* ── YouTube iframe fills whole card ── */}
+      {/* Local MP4 fills the card (muted, looping preview) */}
       <div className="cs-card-media">
-        <iframe
-          src={`https://www.youtube.com/embed/${card.youtubeId}?autoplay=1&mute=1&loop=1&playlist=${card.youtubeId}&controls=0&showinfo=0&rel=0&modestbranding=1`}
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-          className="cs-card-video cs-card-video--visible"
+        <video
+          src={card.video}
+          autoPlay
+          muted
+          loop
+          playsInline
           style={{
             pointerEvents: 'none',
             position: 'absolute',
@@ -67,17 +72,16 @@ const FloatingCard = ({ card }) => {
             left: 0,
             width: '100%',
             height: '120%',
-            border: 'none',
+            objectFit: 'cover',
           }}
-          title={card.title}
         />
 
         {/* gradient overlay */}
         <div className="cs-card-overlay" />
 
-        {/* ── Play button → opens YouTube video in new tab ── */}
+        {/* Play button → opens YouTube in new tab */}
         <a
-          href={`https://www.youtube.com/watch?v=${card.youtubeId}`}
+          href={card.youtubeUrl}
           target="_blank"
           rel="noopener noreferrer"
           className={`cs-card-play ${hovered ? 'cs-card-play--active' : ''}`}
@@ -99,6 +103,7 @@ const FloatingCard = ({ card }) => {
   );
 };
 
+/* ── Main section ── */
 const CinematicStories = ({
   backgroundImage = '/images/pyramids2.jpg',
 }) => {
