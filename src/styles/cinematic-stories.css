@@ -1,8 +1,8 @@
-/* ── CINEMATIC STORIES SECTION ── */
+
 .cs-section {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 110vh;
   min-height: 600px;
   overflow: hidden;
   display: flex;
@@ -11,7 +11,7 @@
   font-family: 'Georgia', serif;
 }
 
-/* Background image */
+
 .cs-bg {
   position: absolute;
   inset: 0;
@@ -26,14 +26,14 @@
   transform: scale(1.0);
 }
 
-/* Dark gradient overlay for readability */
+
 .cs-bg-gradient {
   position: absolute;
   inset: 0;
  
 }
 
-/* ── CENTER TEXT ── */
+
 .cs-center {
   position: relative;
   z-index: 2;
@@ -92,11 +92,11 @@
   display: none;
 }
 
-/* ── FLOATING CARDS ── */
+
 .cs-card {
   position: absolute;
-  width: 200px;
-  height: 280px;
+  width: 220px;
+  height: 320px;
   overflow: hidden;
   cursor: pointer;
   z-index: 3;
@@ -123,7 +123,7 @@
   animation-play-state: paused;
 }
 
-/* ── MEDIA — fills entire card ── */
+
 .cs-card-media {
   position: absolute;
   inset: 0;
@@ -146,7 +146,7 @@
   opacity: 1;
 }
 
-/* strong gradient so text is always readable */
+
 .cs-card-overlay {
   position: absolute;
   inset: 0;
@@ -159,7 +159,7 @@
   z-index: 1;
 }
 
-/* ── PLAY BUTTON — centered in card ── */
+
 .cs-card-play {
   position: absolute;
   top: 50%;
@@ -181,7 +181,7 @@
   transform: translate(-50%, -50%) scale(1.1);
 }
 
-/* ── TEXT — centered at bottom ── */
+
 .cs-card-text {
   position: absolute;
   bottom: 0;
@@ -229,7 +229,7 @@
   opacity: 1;
 }
 
-/* ── NUMBER BADGE (top-right corner) ── */
+
 .cs-card::before {
   content: attr(data-index);
   position: absolute;
@@ -255,7 +255,7 @@
   }
 }
 
-/* ── RESPONSIVE ── */
+/*  Responsive */
 @media screen and (max-width: 768px) {
   .cs-section {
     height: auto;
