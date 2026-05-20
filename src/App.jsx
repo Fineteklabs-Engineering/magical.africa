@@ -38,6 +38,7 @@ import AuctionsHub from './components/AuctionsHub';
 import TribePage from './components/TribesPage';
 import FolklorePage from './components/FolklorePage';
 import ProminentPeople from './components/ProminentPeople';
+import SubmitBlog from './components/SubmitBlog'
 
 
 function App() {
@@ -97,6 +98,7 @@ function App() {
 
 <Route path="/tribes/:tribeName/folklore/:storySlug" element={<FolklorePage />} />
 <Route path="/tribes/:tribeName/leaders/:leaderName" element={<ProminentPeople />} />
+<Route path="/blogs/create-blog" element={<SubmitBlog />} />
 
 
           {/* ── Teacher-only routes ── */}
