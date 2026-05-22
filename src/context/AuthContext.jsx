@@ -127,6 +127,7 @@ export const AuthProvider = ({ children }) => {
     }
     return result;
   };
+  
 
   const logout = async () => {
     return signOut(auth);

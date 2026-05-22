@@ -15,26 +15,27 @@ const AcademyLogin = () => {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [success, setSuccess] = useState(false)  // added
+  const [success, setSuccess] = useState(false)  
   
    const [showPassword, setShowPassword] = useState(false)
 
   const navigate = useNavigate()
 
-  const normalizeRole = (role) => {
-    const value = String(role || '').trim().toLowerCase()
-    if (!value) return ''
-    if (value.includes('teacher') || value.includes('tutor') || value.includes('educator')) return 'teacher'
-    if (value.includes('learner') || value.includes('student')) return 'learner'
-    return ''
-  }
+const normalizeRole = (role) => {
+  const value = String(role || '').trim().toLowerCase()
+  if (!value) return ''
+  if (value.includes('teacher') || value.includes('tutor') || value.includes('educator')) return 'teacher'
+  if (value.includes('creator')) return 'creator'
+  if (value.includes('learner') || value.includes('student')) return 'learner'
+  return ''
+}
 
-  const resolveLoginRole = (profile) => {
-    const normalized = normalizeRole(profile?.role)
-    if (normalized) return normalized
-    if (String(profile?.subject || '').trim()) return 'teacher'
-    return 'learner'
-  }
+const resolveLoginRole = (profile) => {
+  const normalized = normalizeRole(profile?.role)
+  if (normalized) return normalized
+  if (String(profile?.subject || '').trim()) return 'teacher'
+  return 'learner'
+}
  
 
   const handleSubmit = async (e) => {
@@ -64,13 +65,15 @@ const AcademyLogin = () => {
 
         // 3. Show success message then redirect based on role
         setSuccess(true)
-        setTimeout(() => {
-          if (role === 'teacher') {
-            navigate(buildTeacherDashboardPath('courses'))
-          } else {
-            navigate(buildLearnerDashboardPath('store'))
-          }
-        }, 2000)
+       setTimeout(() => {
+  if (role === 'teacher') {
+    navigate(buildTeacherDashboardPath('courses'))
+  } else if (role === 'creator') {
+    navigate('/creator-dashboard')  // ✅ add this
+  } else {
+    navigate(buildLearnerDashboardPath('store'))
+  }
+}, 2000)
 
       } else {
         // User exists in Auth but not Firestore

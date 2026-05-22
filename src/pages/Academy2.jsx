@@ -13,6 +13,8 @@ const Academy2 = () => {
   const [role, setRole] = useState('learner')
   const [firstName, setFirstName] = useState('')
   const [secondName, setSecondName] = useState('')
+
+  
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [subject, setSubject] = useState('')
@@ -42,10 +44,11 @@ const Academy2 = () => {
       setError('Password must be at least 6 characters.')
       return
     }
-    if (role === 'teacher' && !subject) {
-      setError('Please enter your subject or expertise.')
-      return
-    }
+   if ((role === 'teacher' || role === 'creator') && !subject) {
+  setError('Please enter your subject or type of content.')
+  return
+}
+
 
     setLoading(true)
     setError('')
@@ -68,7 +71,7 @@ const Academy2 = () => {
         tribe: tribe || null,
         dob,
         role,
-        subject: role === 'teacher' ? subject : null,
+        subject: (role === 'teacher' || role === 'creator') ? subject : null,
         createdAt: new Date().toISOString()
       })
 
@@ -76,13 +79,15 @@ const Academy2 = () => {
       setSuccess(true)
 
       // 5. Redirect after 2 seconds
-      setTimeout(() => {
-        if (role === 'teacher') {
-          navigate('/teacher-dashboard')
-        } else {
-          navigate('/learner')
-        }
-      }, 2000)
+     setTimeout(() => {
+  if (role === 'teacher') {
+    navigate('/teacher-dashboard')
+  } else if (role === 'creator') {
+    navigate('/creator-dashboard')  // or wherever creators go
+  } else {
+    navigate('/learner')
+  }
+}, 2000)
 
     } catch (err) {
       if (err.code === 'auth/email-already-in-use') {
@@ -153,19 +158,25 @@ const Academy2 = () => {
           )}
 
           <div className='academy-category'>
-            <button
-              className={role === 'learner' ? 'learner' : 'teacher'}
-              onClick={() => setRole('learner')}
-            >
-              Learner
-            </button>
-            <button
-              className={role === 'teacher' ? 'learner' : 'teacher'}
-              onClick={() => setRole('teacher')}
-            >
-              Tutor
-            </button>
-          </div>
+  <button
+    className={role === 'learner' ? 'active-role' : 'inactive-role'}
+    onClick={() => setRole('learner')}
+  >
+    Learner
+  </button>
+  <button
+    className={role === 'teacher' ? 'active-role' : 'inactive-role'}
+    onClick={() => setRole('teacher')}
+  >
+    Tutor
+  </button>
+  <button
+    className={role === 'creator' ? 'active-role' : 'inactive-role'}
+    onClick={() => setRole('creator')}
+  >
+    Creator
+  </button>
+</div>
 
           <div className='academy-info1'>
             <div className='academy-info1-a'>
@@ -293,6 +304,19 @@ const Academy2 = () => {
               />
             </div>
           )}
+
+
+          {role === 'creator' && (
+  <div className='academy-info3'>
+    <label>Type of Content</label>
+    <input
+      type="text"
+      placeholder="e.g. Music, Art, Storytelling, Fashion..."
+      value={subject}
+      onChange={(e) => setSubject(e.target.value)}
+    />
+  </div>
+)}
 
           <div className='academy-create'>
             <button onClick={handleCreate} disabled={loading || success}>

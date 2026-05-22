@@ -39,6 +39,8 @@ import TribePage from './components/TribesPage';
 import FolklorePage from './components/FolklorePage';
 import ProminentPeople from './components/ProminentPeople';
 import SubmitBlog from './components/SubmitBlog'
+import CreatorDashboard from './components/CreatorDashboard'
+import Creator from './pages/Creator';
 
 
 function App() {
@@ -62,6 +64,8 @@ function App() {
           <Route path="/Common-nouns" element={<Language7 />} />
           <Route path="/events" element={<Events />} />
           <Route path="/market" element={<Market />} />
+          <Route path="/creator" element={<Creator />} />
+          
           <Route path="/join" element={<Academy2 />} />
           <Route path="/login" element={<AcademyLogin />} />
           <Route path="/course-preview/:courseId/:courseSlug?" element={<CourseContentPage />} />
@@ -180,7 +184,19 @@ function App() {
             </ProtectedRoute>
           } />
 
+
+           {/* ── Creator-only routes ── */}
+          <Route path="/creator-dashboard" element={
+            <ProtectedRoute allowedRole='creator'>
+              <CreatorDashboard />
+            </ProtectedRoute>
+          } />
+
+
         </Routes>
+
+
+        
 
 
           <ContactWidget /> 

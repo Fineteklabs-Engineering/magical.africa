@@ -36,13 +36,14 @@ const Navbar = ({ solid }) => {
 
   const currentLanguage = languages.find(l => l.code === i18n.language) || languages[0];
 
-  const normalizeRole = (role) => {
-    const value = String(role || '').trim().toLowerCase();
-    if (!value) return '';
-    if (value.includes('teacher') || value.includes('tutor') || value.includes('educator')) return 'teacher';
-    if (value.includes('learner') || value.includes('student')) return 'learner';
-    return '';
-  };
+const normalizeRole = (role) => {
+  const value = String(role || '').trim().toLowerCase();
+  if (!value) return '';
+  if (value.includes('teacher') || value.includes('tutor') || value.includes('educator')) return 'teacher';
+  if (value.includes('learner') || value.includes('student')) return 'learner';
+  if (value.includes('creator')) return 'creator'; // add this
+  return '';
+};
 
   const resolveProfileRole = (profile) => {
     const normalized = normalizeRole(profile?.role);
@@ -99,7 +100,7 @@ const Navbar = ({ solid }) => {
 
   const handleTeachOnMagical = async () => {
     if (!user) {
-      navigate('/academy-signIn');
+      navigate('/join');
       return;
     }
 
@@ -121,7 +122,7 @@ const Navbar = ({ solid }) => {
       return;
     }
 
-    navigate('/academy-page');
+    navigate('/academy');
   };
 
   return (
@@ -206,6 +207,10 @@ const Navbar = ({ solid }) => {
            {t('nav.technology')}
           </NavLink>
 
+          <NavLink to="/creator" className={({ isActive }) => isActive ? 'active-link' : ''}>
+           {t('nav.creator')}
+          </NavLink>
+
 
       
 
@@ -273,7 +278,7 @@ const Navbar = ({ solid }) => {
                   <i className="fa-solid fa-check"></i>
                 </div>
 
-                {accountRole !== 'teacher' && (
+                {accountRole !== 'teacher' &&  accountRole !== 'creator' && (
                   <>
                     <div className="dropdown-option" onClick={handleMyLearning}>
                       <span><i className="fa-solid fa-graduation-cap"></i>My Learning</span>
@@ -287,13 +292,23 @@ const Navbar = ({ solid }) => {
                       <span><i className="fa-solid fa-palette"></i>My Arts</span>
                     </div>
                   </>
-                )}
+                )}  
+
+                
 
                 {accountRole === 'teacher' && (
                   <div className="dropdown-option" onClick={handleTeachOnMagical}>
                     <span><i className="fa-solid fa-chalkboard-user"></i>Teach on Magical</span>
                   </div>
                 )}
+
+                {accountRole === 'creator' && (
+  <div className="dropdown-option" onClick={() => navigate('/creator-dashboard')}>
+    <span><i className="fa-solid fa-wand-magic-sparkles"></i>Creator Content</span>
+  </div>
+)}
+
+     
 
                 <div className="dropdown-option">
                   <span><i className="fa-regular fa-credit-card"></i>Billings</span>
