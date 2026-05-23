@@ -228,6 +228,14 @@ ashanti: {
     image: '/images/photorealistic-portrait-african-woman.jpg',
     noIndex: true
   },
+  creators: {
+  title: 'African Creators & Artisans | Magical Africa',
+  description: 'Meet the artisans, weavers, carvers, and fashion designers behind Magical Africa — each telling their community\'s story through handcrafted work.',
+  keywords: 'African artisans, African creators, African craftspeople, handmade African art, African weavers, African carvers',
+  path: '/creators',
+  image: '/images/artisan-gloria.jpeg',
+  schemaType: 'CollectionPage',
+},
 }
 
 export const SEO_ROUTE_LIST = [
@@ -254,4 +262,5 @@ export const SEO_ROUTE_LIST = [
   SEO_CONTENT.technology,
   SEO_CONTENT.academyLogin,
   SEO_CONTENT.academySignup,
+  SEO_CONTENT.creators,
 ]

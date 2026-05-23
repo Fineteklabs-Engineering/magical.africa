@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { tribeData } from '../data/tribesData';
 import '../styles/prominent-people.css';
+import PageSeo from '../components/PageSeo' 
 
 const ProminentPeople = () => {
 const { tribeName, leaderName } = useParams(); 
@@ -38,6 +39,15 @@ const { tribeName, leaderName } = useParams();
   return (
     <>
       <div className="pp-page">
+
+        <PageSeo
+  title={`${leader.name}`}
+  description={leader.fullBio || leader.description || `${leader.name} was a prominent ${tribe.name} ${leader.role} known for ${leader.legacy}.`}
+  path={`/tribes/${tribeName}/leaders/${leaderName}`}
+  image={leader.image}
+  keywords={`${leader.name}, ${tribe.name} prominent people, ${tribe.name} leaders, African heritage, Magical Africa`}
+/>
+
         <Navbar />
 
         {/* ── HERO ── */}

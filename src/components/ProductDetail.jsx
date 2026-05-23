@@ -9,15 +9,11 @@ import { jewelleryData } from '../components/Jewelery';
 import { carvingsData } from '../components/Carvings';
 import { artefactsData } from '../components/Artefacts';
 import PageSeo from '../components/PageSeo';
-import { SEO_CONTENT } from '../utils/seoContent';
 import '../styles/product-detail.css';
 
-// Helper: convert product name to URL slug
 export const toSlug = (name = '') =>
   name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
-// Flatten all static component data into one searchable list.
-// Add more imports + entries here as you build new components.
 const getAllStaticProducts = () => {
   const jewellery = Object.values(jewelleryData).flat().map((item) => ({
     ...item,
@@ -43,15 +39,6 @@ const getAllStaticProducts = () => {
   return [...jewellery, ...carvings, ...artefacts];
 };
 
-{/* 
-const fallbackBestSellers = (t) => [
-  { id: 'default-1', imageUrl: '/images/maasai-milkgourd.png', name: t('market.bestSellers.item1.name'), price: 49, tribe: 'Maasai', description: t('market.bestSellers.item1.description') },
-  { id: 'default-2', imageUrl: '/images/kikuyu-calabash.png', name: t('market.bestSellers.item2.name'), price: 35, tribe: 'Kikuyu', description: t('market.bestSellers.item2.description') },
-  { id: 'default-3', imageUrl: '/images/luo-bul.png', name: t('market.bestSellers.item3.name'), price: 25, tribe: 'Luo', description: t('market.bestSellers.item3.description') },
-  { id: 'default-4', imageUrl: '/images/kamba-carving.png', name: t('market.bestSellers.item4.name'), price: 30, tribe: 'Kamba', description: t('market.bestSellers.item4.description') },
-];
-*/}
-
 const fallbackBestSellers = (t) => [
   { id: 'default-1', imageUrl: '/images/maasai-milkgourd.png', name: t('market.bestSellers.item1.name'), price: 49, tribe: 'Maasai', category: 'carvings', description: t('market.bestSellers.item1.description') },
   { id: 'default-2', imageUrl: '/images/kikuyu-calabash.png', name: t('market.bestSellers.item2.name'), price: 35, tribe: 'Kikuyu', category: 'pottery', description: t('market.bestSellers.item2.description') },
@@ -59,14 +46,66 @@ const fallbackBestSellers = (t) => [
   { id: 'default-4', imageUrl: '/images/kamba-carving.png', name: t('market.bestSellers.item4.name'), price: 30, tribe: 'Kamba', category: 'carvings', description: t('market.bestSellers.item4.description') },
 ];
 
+// ── Creator data (same list as CreatorProfile) — used to enrich product with image ──
+const creatorProducts = {
+  'gloria-machoka': [
+    { name: 'Soapstone Elephant', price: 45, imageUrl: '/images/artisan-gloria.jpeg', tribe: 'Kisii', description: 'A hand-carved soapstone elephant by Gloria Machoka, crafted using generations-old Kisii stone carving techniques.' },
+    { name: 'Carved Tribal Mask', price: 78, imageUrl: '/images/African2.jpg', tribe: 'Kisii', description: 'An intricately carved tribal mask that draws from Gusii ancestral myths and ceremonial traditions.' },
+    { name: 'Ancestral Bowl', price: 60, imageUrl: '/images/lorna2.jpeg', tribe: 'Kisii', description: 'A ceremonial bowl carved from Kisii soapstone, used in traditional Gusii rituals.' },
+  ],
+  'kofi-mensah': [
+    { name: 'Akan Stool', price: 120, imageUrl: '/images/African2.jpg', tribe: 'Ashanti', description: 'A traditional Akan stool handcrafted from raw timber by master woodworker Kofi Mensah.' },
+    { name: 'Hand-carved Totem', price: 95, imageUrl: '/images/Joel-Makori.jpeg', tribe: 'Ashanti', description: 'A totem carved from African hardwood, embodying the spirit of Akan heritage.' },
+  ],
+  'naledi-dlamini': [
+    { name: 'Earth Fire Vessel', price: 55, imageUrl: '/images/lorna2.jpeg', tribe: 'Zulu', description: 'A hand-coiled Zulu vessel fired in an open earth kiln, creating unique earthy textures.' },
+    { name: 'Coiled Ceremonial Pot', price: 80, imageUrl: '/images/artisan-gloria.jpeg', tribe: 'Zulu', description: 'A ceremonial pot shaped using age-old Zulu coiling techniques passed down through generations.' },
+  ],
+  'tariq-osei': [
+    { name: 'Kente Wrap Shirt', price: 65, imageUrl: '/images/Steve.jpeg', tribe: 'Fante', description: 'A contemporary wrap shirt featuring traditional Fante weaving patterns by Tariq Osei.' },
+    { name: 'Woven Festival Dress', price: 110, imageUrl: '/images/ima-thomas.jpg', tribe: 'Fante', description: 'A woven festival dress worn at cultural celebrations across West Africa, featured at Accra Fashion Week.' },
+  ],
+  'zawadi-achieng': [
+    { name: 'Identity Canvas I', price: 200, imageUrl: '/images/Edwait.jpeg', tribe: 'Luo', description: 'A mixed-media canvas by Zawadi Achieng combining natural pigments, beads, and reclaimed materials.' },
+  ],
+  'emeka-eze': [
+    { name: 'Igbo Spirit Mask', price: 150, imageUrl: '/images/Joel-Makori.jpeg', tribe: 'Igbo', description: 'A ceremonial Igbo spirit mask carved by Emeka Eze, rooted in ancestral spiritual tradition.' },
+    { name: 'Ancestral Figure', price: 220, imageUrl: '/images/African2.jpg', tribe: 'Igbo', description: 'A carved ancestral figure connecting the world of the living to that of the ancestors.' },
+  ],
+  'fatuma-hassan': [
+    { name: 'Embroidered Diric', price: 90, imageUrl: '/images/ima-thomas.jpg', tribe: 'Somali', description: 'A hand-embroidered diric fusing Somali traditions with East African coastal aesthetics.' },
+  ],
+  'akosua-boateng': [
+    { name: 'Adinkra Canvas', price: 185, imageUrl: '/images/cheru.jpeg', tribe: 'Akan', description: 'A bold geometric painting inspired by Adinkra symbols, carrying a philosophical message about resilience.' },
+    { name: 'Geometric Textile', price: 70, imageUrl: '/images/artisan-gloria.jpeg', tribe: 'Akan', description: 'A geometric textile by Akosua Boateng featuring patterns drawn from Akan philosophical tradition.' },
+  ],
+}
+
+// Creator display names for breadcrumb
+const creatorNames = {
+  'gloria-machoka': 'Gloria Machoka',
+  'kofi-mensah': 'Kofi Mensah',
+  'naledi-dlamini': 'Naledi Dlamini',
+  'tariq-osei': 'Tariq Osei',
+  'zawadi-achieng': 'Zawadi Achieng',
+  'emeka-eze': 'Emeka Eze',
+  'fatuma-hassan': 'Fatuma Hassan',
+  'akosua-boateng': 'Akosua Boateng',
+}
+
 const ProductDetail = () => {
-  const { category, productSlug } = useParams(); // now reads both /market/:category/:productSlug
+  // Supports two route shapes:
+  //   /market/:category/:productSlug       (marketplace)
+  //   /creators/:creatorSlug/:productSlug  (creator profile)
+  const { category, creatorSlug, productSlug } = useParams();
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
+
+  const isCreatorRoute = Boolean(creatorSlug);
 
   const formatPrice = (value) =>
     new Intl.NumberFormat('en-US', {
@@ -76,7 +115,13 @@ const ProductDetail = () => {
     }).format(Number(value || 0));
 
   useEffect(() => {
-    // Safety net timeout — prevents infinite loading
+    // ── If coming from a creator profile, look up the product locally first ──
+    if (isCreatorRoute) {
+      const creatorProds = creatorProducts[creatorSlug] || [];
+      const match = creatorProds.find((p) => toSlug(p.name) === productSlug);
+      if (match) { setProduct(match); setLoading(false); return; }
+    }
+
     const timeout = setTimeout(() => {
       const staticProducts = getAllStaticProducts();
       const staticMatch = staticProducts.find((p) => toSlug(p.name) === productSlug);
@@ -91,8 +136,6 @@ const ProductDetail = () => {
       marketProductsRef,
       (snapshot) => {
         clearTimeout(timeout);
-
-        // 1. Check Firestore live products
         const products = snapshot.docs
           .map((doc) => ({ id: doc.id, ...doc.data() }))
           .filter((p) => p.showOnWebsite && p.active);
@@ -100,12 +143,10 @@ const ProductDetail = () => {
         const liveMatch = products.find((p) => toSlug(p.name) === productSlug);
         if (liveMatch) { setProduct(liveMatch); setLoading(false); return; }
 
-        // 2. Check all static component data
         const staticProducts = getAllStaticProducts();
         const staticMatch = staticProducts.find((p) => toSlug(p.name) === productSlug);
         if (staticMatch) { setProduct(staticMatch); setLoading(false); return; }
 
-        // 3. Check best seller fallbacks
         const defaults = fallbackBestSellers(t);
         setProduct(defaults.find((p) => toSlug(p.name) === productSlug) || null);
         setLoading(false);
@@ -123,17 +164,16 @@ const ProductDetail = () => {
     );
 
     return () => { unsubscribe(); clearTimeout(timeout); };
-  }, [productSlug, t]);
+  }, [productSlug, creatorSlug, isCreatorRoute, t]);
 
-  // Back navigation — goes to category page if category exists, else marketplace
   const handleBack = () => {
-    if (category) navigate(`/market/${category}`);
+    if (isCreatorRoute) navigate(`/creator/${creatorSlug}`);
+    else if (category) navigate(`/market/${category}`);
     else navigate('/market');
   };
 
   if (loading) {
     return (
-     
       <div className="pd-loading-screen">
         <Navbar solid />
         <div className="pd-loading-content">
@@ -141,19 +181,12 @@ const ProductDetail = () => {
           <p>Loading product...</p>
         </div>
       </div>
-    
     );
   }
 
   if (!product) {
     return (
       <>
-
-   <PageSeo
-  title={`Marketplace | ${category ? category.charAt(0).toUpperCase() + category.slice(1) : 'Products'} | ${product.name}`}
-  description={product.description || 'Hand-crafted by skilled artisans using traditional techniques passed down through generations.'}
-  path={`/market/${category}/${productSlug}`}
-/>
         <Navbar solid />
         <div className="pd-not-found">
           <h1>Product not found</h1>
@@ -165,40 +198,66 @@ const ProductDetail = () => {
     );
   }
 
-  return (
-    <>
-  <PageSeo
-  title={`Marketplace | ${category ? category.charAt(0).toUpperCase() + category.slice(1) : 'Products'} | ${product.name}`}
-  description={product.description || 'Hand-crafted by skilled artisans using traditional techniques passed down through generations.'}
-  path={`/market/${category}/${productSlug}`}
-/>
-      <div className="pd-page">
-        <Navbar solid />
-
-        {/* Breadcrumb — now shows category if present */}
+  // ── Build breadcrumb based on which route we're on ──
+  const renderBreadcrumb = () => {
+    if (isCreatorRoute) {
+      const creatorDisplayName = creatorNames[creatorSlug] || creatorSlug
+      return (
         <div className="pd-breadcrumb">
           <span onClick={() => navigate('/')} className="pd-crumb">Home</span>
           <span className="pd-crumb-sep">›</span>
-          <span onClick={() => navigate('/market')} className="pd-crumb">Marketplace</span>
-          {category && (
-            <>
-              <span className="pd-crumb-sep">›</span>
-              <span onClick={() => navigate(`/market/${category}`)} className="pd-crumb" style={{ textTransform: 'capitalize' }}>{category}</span>
-            </>
-          )}
+          <span onClick={() => navigate('/creator')} className="pd-crumb">Creators</span>
+          <span className="pd-crumb-sep">›</span>
+          <span onClick={() => navigate(`/creator/${creatorSlug}`)} className="pd-crumb">{creatorDisplayName}</span>
           <span className="pd-crumb-sep">›</span>
           <span className="pd-crumb pd-crumb-active">{product.name}</span>
         </div>
+      )
+    }
+
+    return (
+      <div className="pd-breadcrumb">
+        <span onClick={() => navigate('/')} className="pd-crumb">Home</span>
+        <span className="pd-crumb-sep">›</span>
+        <span onClick={() => navigate('/market')} className="pd-crumb">Marketplace</span>
+        {category && (
+          <>
+            <span className="pd-crumb-sep">›</span>
+            <span onClick={() => navigate(`/market/${category}`)} className="pd-crumb" style={{ textTransform: 'capitalize' }}>{category}</span>
+          </>
+        )}
+        <span className="pd-crumb-sep">›</span>
+        <span className="pd-crumb pd-crumb-active">{product.name}</span>
+      </div>
+    )
+  }
+
+  return (
+    <>
+      <PageSeo
+        title={
+          isCreatorRoute
+            ? `${creatorNames[creatorSlug] || 'Creator'} | ${product.name}`
+            : `Marketplace | ${category ? category.charAt(0).toUpperCase() + category.slice(1) : 'Products'} | ${product.name}`
+        }
+        description={product.description || 'Hand-crafted by skilled artisans using traditional techniques passed down through generations.'}
+        path={isCreatorRoute ? `/creators/${creatorSlug}/${productSlug}` : `/market/${category}/${productSlug}`}
+      />
+
+      <div className="pd-page">
+        <Navbar solid />
+
+        {renderBreadcrumb()}
 
         <div className="pd-main">
           <div className="pd-image-side">
             <div className="pd-image-frame">
               <img src={product.imageUrl || '/images/pottery2-image2.png'} alt={product.name} />
             </div>
-            <div className="pd-tribe-badge"
-            
-            onClick={() => product.tribe && navigate(`/tribes/${product.tribe.toLowerCase()}`)}
-            style={{ cursor: product.tribe ? 'pointer' : 'default' }}
+            <div
+              className="pd-tribe-badge"
+              onClick={() => product.tribe && navigate(`/tribes/${product.tribe.toLowerCase()}`)}
+              style={{ cursor: product.tribe ? 'pointer' : 'default' }}
             >
               <span className="pd-tribe-label">Community</span>
               <span className="pd-tribe-value">{product.tribe || 'African Artisan'}</span>
@@ -206,10 +265,13 @@ const ProductDetail = () => {
           </div>
 
           <div className="pd-info-side">
-            <span className="pd-pill"
-            onClick={() => product.tribe && navigate(`/tribes/${product.tribe.toLowerCase()}`)}
-            style={{ cursor: product.tribe ? 'pointer' : 'default' }}
-            >{product.tribe || 'Handcrafted'}</span>
+            <span
+              className="pd-pill"
+              onClick={() => product.tribe && navigate(`/tribes/${product.tribe.toLowerCase()}`)}
+              style={{ cursor: product.tribe ? 'pointer' : 'default' }}
+            >
+              {product.tribe || 'Handcrafted'}
+            </span>
             <h1 className="pd-title">{product.name}</h1>
 
             <div className="pd-price-row">
@@ -252,7 +314,7 @@ const ProductDetail = () => {
             </div>
 
             <button className="pd-back-link" onClick={handleBack}>
-              ← Back to {category ? category.charAt(0).toUpperCase() + category.slice(1) : 'Marketplace'}
+              ← Back to {isCreatorRoute ? (creatorNames[creatorSlug] || 'Creator') : (category ? category.charAt(0).toUpperCase() + category.slice(1) : 'Marketplace')}
             </button>
           </div>
         </div>

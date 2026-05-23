@@ -41,6 +41,7 @@ import ProminentPeople from './components/ProminentPeople';
 import SubmitBlog from './components/SubmitBlog'
 import CreatorDashboard from './components/CreatorDashboard'
 import Creator from './pages/Creator';
+import CreatorProfile from './components/CreatorProfile';
 
 
 function App() {
@@ -191,6 +192,10 @@ function App() {
               <CreatorDashboard />
             </ProtectedRoute>
           } />
+
+          <Route path="/creator/:name" element={<CreatorProfile />} />
+         
+<Route path="/creators/:creatorSlug/:productSlug" element={<ProductDetail />} />
 
 
         </Routes>
