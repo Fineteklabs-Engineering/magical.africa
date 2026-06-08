@@ -227,6 +227,7 @@ const tribeStations = TRIBE_RADIO_STATIONS[tribeName?.toLowerCase()] || [];
     radio: 'Radio',
   };
 
+  
   const cultureSectionTitles = {
     taboos:   'Taboos',
     myths:    'Myths & Legends',
@@ -251,11 +252,25 @@ const tribeStations = TRIBE_RADIO_STATIONS[tribeName?.toLowerCase()] || [];
   } : null;
    */}
 
+   {/* 
    const dynamicSeo = tribeSeo ? {
   ...tribeSeo,
   title: activeTab === 'culture'
     ? `The ${tribe?.name} ${cultureSectionTitles[activeAccordion] || 'Culture'}`
     : `The ${tribe?.name} ${tabTitles[activeTab]} `,
+  path: activeTab === 'culture'
+    ? `/tribes/${tribeName}/culture/${activeAccordion}`
+    : `/tribes/${tribeName}/${activeTab}`,
+} : null;
+ */}
+
+ const dynamicSeo = tribeSeo ? {
+  ...tribeSeo,
+  title: activeTab === 'culture'
+    ? `The ${tribe?.name} ${cultureSectionTitles[activeAccordion] || 'Culture'}`
+    : activeTab === 'radio'
+    ? `Stream Online ${tribe?.name} Radio`
+    : `The ${tribe?.name} ${tabTitles[activeTab]}`,
   path: activeTab === 'culture'
     ? `/tribes/${tribeName}/culture/${activeAccordion}`
     : `/tribes/${tribeName}/${activeTab}`,
