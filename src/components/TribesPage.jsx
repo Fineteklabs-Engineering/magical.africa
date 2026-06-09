@@ -242,30 +242,9 @@ const tribeStations = TRIBE_RADIO_STATIONS[tribeName?.toLowerCase()] || [];
 
   const tribeSeo = SEO_CONTENT[tribeName?.toLowerCase()];
 
-  {/* 
-  const dynamicSeo = tribeSeo ? {
-    ...tribeSeo,
-    title: activeTab === 'culture'
-       ? `Tribes | ${tribe?.name} | Culture | ${cultureSectionTitles[activeAccordion] || 'Culture'}`
-    : `Tribes | ${tribe?.name} | ${tabTitles[activeTab]}`,
-    path: activeTab === 'culture'
-      ? `/tribes/${tribeName}/culture/${activeAccordion}`
-      : `/tribes/${tribeName}/${activeTab}`,
-  } : null;
-   */}
+ 
 
-   {/* 
-   const dynamicSeo = tribeSeo ? {
-  ...tribeSeo,
-  title: activeTab === 'culture'
-    ? `The ${tribe?.name} ${cultureSectionTitles[activeAccordion] || 'Culture'}`
-    : `The ${tribe?.name} ${tabTitles[activeTab]} `,
-  path: activeTab === 'culture'
-    ? `/tribes/${tribeName}/culture/${activeAccordion}`
-    : `/tribes/${tribeName}/${activeTab}`,
-} : null;
- */}
-
+{/* 
  const dynamicSeo = tribeSeo ? {
   ...tribeSeo,
   title: activeTab === 'culture'
@@ -277,6 +256,27 @@ const tribeStations = TRIBE_RADIO_STATIONS[tribeName?.toLowerCase()] || [];
     ? `/tribes/${tribeName}/culture/${activeAccordion}`
     : `/tribes/${tribeName}/${activeTab}`,
 } : null;
+*/}
+
+const dynamicSeo = tribeSeo ? {
+  ...tribeSeo,
+  title: activeTab === 'culture'
+    ? `The ${tribe?.name} ${cultureSectionTitles[activeAccordion] || 'Culture'}`
+    : activeTab === 'radio'
+    ? `Stream Online ${tribe?.name} Radio`
+    : activeTab === 'language' && languageTab === 'dictionary'
+    ? `The ${tribe?.name} Dictionary`
+    : activeTab === 'language' && languageTab === 'translation'
+    ? `Get Translations to and from ${tribe?.name}`
+    : `The ${tribe?.name} ${tabTitles[activeTab]}`,
+  path: activeTab === 'culture'
+    ? `/tribes/${tribeName}/culture/${activeAccordion}`
+    : activeTab === 'language'
+    ? `/tribes/${tribeName}/language/${languageTab}`
+    : `/tribes/${tribeName}/${activeTab}`,
+} : null;
+
+
 
   const handleAccordionClick = (key) => {
     navigate(`/tribes/${tribeName}/culture/${key}`);
