@@ -25,7 +25,7 @@ const Services = () => {
     {
       title: t('services.streamFolklore.title'),
       description: t('services.streamFolklore.description'),
-      image: "/images/African-storytelling2.jpg",
+      image: "/images/Rabbit.jpeg",
       action: () => navigate('/tribes')
     },
     {
