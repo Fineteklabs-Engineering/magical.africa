@@ -14,6 +14,7 @@ import { folkloreData } from '../data/folkloreData';
 import PhraseCarousel from '../components/PhraseCarousel';
 import { TRIBE_RADIO_STATIONS } from '../data/tribeRadioStations';
 import '../styles/tribes-radio.css'
+import '../styles/tribe-page2.css'
 
 
 const TRIBE_RADIO = {
@@ -135,6 +136,7 @@ const [playerOpen, setPlayerOpen] = useState(false);
 const [activeStation, setActiveStation] = useState(null);
 const tabAudioRef = useRef(null);
 const [tabPlaying, setTabPlaying] = useState(false);
+const [languageTab, setLanguageTab] = useState('overview')
 
 const radioStation = TRIBE_RADIO[tribeName?.toLowerCase()];
 
@@ -519,7 +521,7 @@ const tribeStations = TRIBE_RADIO_STATIONS[tribeName?.toLowerCase()] || [];
             </div>
           )}
 
-          {/* LANGUAGE */}
+          {/* LANGUAGE 
           {activeTab === 'language' && (
             <div className="tp-language">
               <div className="tp-language-overview">
@@ -537,6 +539,62 @@ const tribeStations = TRIBE_RADIO_STATIONS[tribeName?.toLowerCase()] || [];
               </div>
             </div>
           )}
+            */}
+
+    {activeTab === 'language' && (
+  <div className="tp-language">
+
+    {/* ── Side tabs ── */}
+    <div className="tp-culture-list">
+      {['overview', 'dictionary', 'translation'].map((lt) => (
+        <button
+          key={lt}
+          className={`tp-culture-item ${languageTab === lt ? 'active' : ''}`}
+          onClick={() => setLanguageTab(lt)}
+        >
+          <span className="tp-culture-arrow">
+            {languageTab === lt ? '▼' : '▶'}
+          </span>
+          <span>{lt.charAt(0).toUpperCase() + lt.slice(1)}</span>
+        </button>
+      ))}
+    </div>
+
+    {/* ── Right content ── */}
+    <div className="tp-culture-content">
+
+      {languageTab === 'overview' && (
+        <>
+          <div className="tp-language-overview">
+            <h2>{tribe.language.name}</h2>
+            <div className="tp-lang-meta">
+              <span><strong>Language Family:</strong> {tribe.language.family}</span>
+              <span><strong>Speakers:</strong> {tribe.language.speakers}</span>
+            </div>
+            <p>{tribe.language.overview}</p>
+          </div>
+          <div className="tp-phrases">
+            <h3>Common Phrases</h3>
+            <PhraseCarousel phrases={tribe.language.phrases} />
+          </div>
+        </>
+      )}
+
+      {languageTab === 'dictionary' && (
+        <div className="tp-language-coming">
+          <p>Dictionary coming soon.</p>
+        </div>
+      )}
+
+      {languageTab === 'translation' && (
+        <div className="tp-language-coming">
+          <p>Translation coming soon.</p>
+        </div>
+      )}
+
+    </div>
+  </div>
+)}
 
           {/* MARKET */}
           {activeTab === 'market' && (

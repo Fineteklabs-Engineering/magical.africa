@@ -325,8 +325,9 @@
 /* ── LANGUAGE TAB ── */
 .tp-language {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 2.5rem;
+  align-items: flex-start;
 }
 
 .tp-language-overview h2 {

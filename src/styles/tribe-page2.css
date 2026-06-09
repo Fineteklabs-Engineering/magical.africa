@@ -1,0 +1,10 @@
+
+
+.tp-language-coming {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: #aaa;
+  font-size: 0.92rem;
+}
