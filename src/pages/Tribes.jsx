@@ -197,40 +197,7 @@ const breakVideos = [
           <span className="tribes-count">{filtered.length} communities</span>
         </div>
 
-        {/* Community cards grid 
-        <div className="tribes-grid">
-          {filtered.length === 0 ? (
-            <div className="tribes-empty">
-              <p>No communities found. <button onClick={() => { setSearchQuery(''); setSelectedRegion('All'); }}>Clear filters</button></p>
-            </div>
-          ) : (
-            filtered.map((community, index) => (
-              <div key={index} className="tribe-card" 
-              onClick={() => navigate(`/tribes/${community.name.toLowerCase()}`)}
-              >
-                <div className={`tribe-card-image community-image ${community.image}`}>
-                  <div className="tribe-card-region-badge">{community.region}</div>
-                </div>
-                <div className="tribe-card-body">
-                  <div className="tribe-card-accent" style={{ background: community.color }} />
-                  <h3 className="tribe-card-name">{community.name}</h3>
-                  <p className="tribe-card-desc">{community.desc}</p>
-                  <div className="tribe-card-meta">
-                    <span>📍 {community.location}</span>
-                    <span>👥 {community.population}</span>
-                    <span>📖 {community.language}</span>
-                  </div>
-                  <button className="tribe-card-btn"
-                  onClick={() => navigate(`/tribes/${community.name.toLowerCase()}`)}
-                  >{t('tribesPage.exploreCulture')} →</button>
-                </div>
-              </div>
-            ))
-          )}
-        </div>
-*/}
-
-
+      
 <div className="tribes-grid">
   {filtered.length === 0 ? (
     <div className="tribes-empty">
