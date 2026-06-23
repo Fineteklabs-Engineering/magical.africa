@@ -82,7 +82,7 @@ const BlogPost = () => {
     )
   }
 
-  // Related posts — only available for static posts
+ 
   const related = isStatic
     ? (relatedMap[key] || []).map((k) => ({ key: k, ...blogData[k] }))
     : []
