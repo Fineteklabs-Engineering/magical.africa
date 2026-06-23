@@ -24,7 +24,7 @@
   gap: 20px;
   justify-content: center;
 }
-.text h1{
+.text h2{
   font-size: 1.5rem;
   font-weight: 400;
 }
@@ -97,7 +97,7 @@ opacity: 1;
   opacity: 1;
 }
 
-.impact-text h1{
+.impact-text h3{
   font-size: 1.5rem;
   font-weight: 400;
 }

@@ -72,7 +72,7 @@ const PopularCourses = () => {
   return (
     <div className="popular-course-div">
 
-      <h1>{t('popularCourses.title')}</h1>
+      <h2>{t('popularCourses.title')}</h2>
       <p className="popular-content-div-p">{t('popularCourses.subtitle')}</p>
 
       <div className="pop-div">

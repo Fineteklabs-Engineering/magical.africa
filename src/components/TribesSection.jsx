@@ -43,22 +43,22 @@ const TribesSection = () => {
 
   return (
     <section className="tribes">
-      <h1>{t('tribes.title')}</h1>
+      <h2>{t('tribes.title')}</h2>
       <p>{t('tribes.subtitle')}</p>
 
       <div className="tribes-section" ref={tribesRef}>
        <div className="tribe1" onClick={() => handleNavigation('/tribes/kikuyu')} style={{ cursor: 'pointer' }}>
-  <h1>{t('tribes.kikuyu.name')}</h1>
+  <h3>{t('tribes.kikuyu.name')}</h3>
   <p>{t('tribes.kikuyu.description')}</p>
 </div>
 
 <div className="tribe2" onClick={() => handleNavigation('/tribes/luo')} style={{ cursor: 'pointer' }}>
-  <h1>{t('tribes.luo.name')}</h1>
+  <h3>{t('tribes.luo.name')}</h3>
   <p>{t('tribes.luo.description')}</p>
 </div>
 
         <div className="tribe3" onClick={() => handleNavigation('/tribes/maasai')} style={{ cursor: 'pointer' }}>
-  <h1>{t('tribes.maasai.name')}</h1>
+  <h3>{t('tribes.maasai.name')}</h3>
   <p>{t('tribes.maasai.description')}</p>
 </div>
       </div>

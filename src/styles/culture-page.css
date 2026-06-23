@@ -92,11 +92,12 @@
   font-weight: 400;
 }
 
-.culture-section1 h1 {
+.culture-section1 h2 {
   color: white;
+  font-size: 2rem;
 }
 
-.culture-section1 h1 span {
+.culture-section1 h2 span {
   color: rgb(210, 123, 53);
 }
 
@@ -215,9 +216,9 @@
 }
 
 /* ── Card headings ── */
-.culture-section2-a h2,
-.culture-section2-b h2,
-.culture-section2-c h2 {
+.culture-section2-a h3,
+.culture-section2-b h3,
+.culture-section2-c h3 {
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.3;

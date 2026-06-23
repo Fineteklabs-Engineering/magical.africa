@@ -124,7 +124,7 @@ const Marketplace = () => {
 
   return (
     <section className="marketplace">
-      <h1>{t('marketplace.title')}</h1>
+      <h2>{t('marketplace.title')}</h2>
 
       <div id="categoryList">
         {marketplaceData.map((category, index) => (

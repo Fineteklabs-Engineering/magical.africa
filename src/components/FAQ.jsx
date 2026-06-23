@@ -39,7 +39,7 @@ const FAQ = () => {
 
       <div className="faq-inner">
         <div className="faq-heading-block">
-          <h1>{t('faq.title')} <span>{t('faq.titlespan')}</span></h1>
+          <h2>{t('faq.title')} <span>{t('faq.titlespan')}</span></h2>
           <div className="faq-divider">
             <span className="faq-divider-line" />
             <HelpCircle size={22} color="rgb(210,123,53)" strokeWidth={1.5} />

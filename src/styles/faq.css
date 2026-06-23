@@ -64,7 +64,7 @@
   padding-bottom: 1rem;
 }
 
-.FAQ h1 {
+.FAQ h2 {
   font-size: 1.6rem;
   font-weight: 700;
   text-align: center;
@@ -72,7 +72,7 @@
   line-height: 1.3;
 }
 
-.FAQ h1 span {
+.FAQ h2 span {
   color: rgb(210, 123, 53);
 }
 
