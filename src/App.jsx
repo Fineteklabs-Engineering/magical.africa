@@ -53,8 +53,9 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/tribes" element={<Tribes />} />
+         {/* 
           <Route path="/maasai" element={<Maasai />} />
-          {/* 
+         
           <Route path="/academy" element={<Academy />} />
           */}
           <Route path="/register" element={<Language2 />} />animation onan

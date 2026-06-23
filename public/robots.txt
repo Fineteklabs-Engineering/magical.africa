@@ -11,7 +11,7 @@ Disallow: /curriculum
 Disallow: /lesson
 Disallow: /course-content
 Disallow: /tutor-preview/
-Disallow: /academy-signIn
-Disallow: /academy-signUp
+Disallow: /join
+Disallow: /login
 
 Sitemap: https://magical.africa/sitemap.xml

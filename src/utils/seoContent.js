@@ -245,6 +245,7 @@ export const SEO_ROUTE_LIST = [
   SEO_CONTENT.maasai,
   SEO_CONTENT.zulu,
   SEO_CONTENT.yoruba,
+  SEO_CONTENT.luo,
   SEO_CONTENT.ashanti,
   SEO_CONTENT.hausa,
   SEO_CONTENT.kikuyu,

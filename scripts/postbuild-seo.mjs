@@ -14,6 +14,14 @@ const DEFAULT_IMAGE = `${SITE_URL}/images/magical-colored-fav.png`
 
 const routes = SEO_ROUTE_LIST
 
+const escapeHtml = (str = '') =>
+  String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+
 const toAbsoluteUrl = (value = '') => {
   if (!value) return DEFAULT_IMAGE
   if (/^https?:\/\//i.test(value)) return value
@@ -52,24 +60,40 @@ const buildSeoBlock = (route) => {
   const image = toAbsoluteUrl(route.image)
   const url = canonicalUrl(route.path)
   const robots = route.noIndex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'
+  const title = escapeHtml(route.title)
+  const description = escapeHtml(route.description)
+  const keywords = escapeHtml(route.keywords)
 
   return `
-    <title>${route.title}</title>
-    <meta name="description" content="${route.description}" />
-    <meta name="keywords" content="${route.keywords}" />
+    <title>${title}</title>
+    <meta name="description" content="${description}" />
+    <meta name="keywords" content="${keywords}" />
     <meta name="robots" content="${robots}" />
     <link rel="canonical" href="${url}" />
-    <meta property="og:title" content="${route.title}" />
-    <meta property="og:description" content="${route.description}" />
+    <meta property="og:title" content="${title}" />
+    <meta property="og:description" content="${description}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="${url}" />
     <meta property="og:image" content="${image}" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="${route.title}" />
-    <meta name="twitter:description" content="${route.description}" />
+    <meta name="twitter:title" content="${title}" />
+    <meta name="twitter:description" content="${description}" />
     <meta name="twitter:image" content="${image}" />
     <script type="application/ld+json">${buildSchema(route)}</script>
   `
+}
+
+const buildSitemap = () => {
+  const urls = routes
+    .filter((r) => !r.noIndex)
+    .map((r) => `  <url>
+    <loc>${canonicalUrl(r.path)}</loc>
+    <changefreq>${r.path === '/' || r.path === '/tribes' ? 'weekly' : 'monthly'}</changefreq>
+    <priority>${r.path === '/' ? '1.0' : r.path.startsWith('/tribes/') ? '0.7' : '0.8'}</priority>
+  </url>`)
+    .join('\n')
+
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
 }
 
 const routeOutputPath = (routePath) => {
@@ -87,6 +111,9 @@ const main = async () => {
     await mkdir(path.dirname(outputPath), { recursive: true })
     await writeFile(outputPath, html, 'utf8')
   }
+
+  await writeFile(path.join(distDir, 'sitemap.xml'), buildSitemap(), 'utf8')
+  console.log('sitemap.xml generated.')
 
   console.log(`SEO route HTML generated for ${routes.length} public routes.`)
 }
