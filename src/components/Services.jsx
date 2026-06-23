@@ -58,7 +58,7 @@ const Services = () => {
   return (
     <section className="services">
       <div className="services-heading">
-        <h1>{t('services.heading')}</h1>
+        <h2>{t('services.heading')}</h2>
       </div>
 
       <div className="service-section">
@@ -68,7 +68,7 @@ const Services = () => {
 
         <div className="service-wrap">
           <div className="wrap1">
-            <h1>{service.title}</h1>
+            <h2>{service.title}</h2>
             <p>{service.description}</p>
             <button className="learn-more" onClick={service.action}>
               {t('services.learnMore')}

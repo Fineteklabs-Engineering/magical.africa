@@ -6,7 +6,7 @@ import '../styles/faq.css';
 
 
 
-/* ── Tri-mark icon per question ── */
+
 const TriMark = ({ isOpen }) => (
   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="faq-tri-mark" style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}>
     <rect x="4" y="4" width="16" height="16" rx="2" stroke="rgb(210,123,53)" strokeWidth="1.5" fill={isOpen ? 'rgba(210,123,53,0.1)' : 'none'}/>
@@ -39,7 +39,7 @@ const FAQ = () => {
 
       <div className="faq-inner">
         <div className="faq-heading-block">
-          <h1>{t('faq.title')} <span>{t('faq.titlespan')}</span></h1>
+          <h2>{t('faq.title')} <span>{t('faq.titlespan')}</span></h2>
           <div className="faq-divider">
             <span className="faq-divider-line" />
             <HelpCircle size={22} color="rgb(210,123,53)" strokeWidth={1.5} />

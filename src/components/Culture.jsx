@@ -96,7 +96,7 @@ const Culture = () => {
             <h3>{t('culture.tagline')}</h3>
           </div>
 
-          <h1>{t('culture.titleStart')} <span>{t('culture.titleAccent')}</span> {t('culture.titleEnd')}</h1>
+          <h2>{t('culture.titleStart')} <span>{t('culture.titleAccent')}</span> {t('culture.titleEnd')}</h2>
           <p>{t('culture.description')}</p>
         </div>
 
@@ -107,10 +107,10 @@ const Culture = () => {
             <div className='card-icon-wrap card-icon-wrap--a'>
               <DrumIcon />
             </div>
-            <h2>
+            <h3>
               <span className='card-title-accent'>{t('culture.music.titleAccent')}</span>{' '}
               {t('culture.music.titleRest')}
-            </h2>
+            </h3>
             <div className='card-divider card-divider-orange' />
             <div className='festivals-list'>
               <div className='festivals-info'>
@@ -132,10 +132,10 @@ const Culture = () => {
             <div className='card-icon-wrap card-icon-wrap--b'>
               <CookingPotIcon />
             </div>
-            <h2>
+            <h3>
               {t('culture.food.titleStart')}{' '}
               <span className='card-title-block'>{t('culture.food.titleAccent')}</span>
-            </h2>
+            </h3>
             <div className='card-divider card-divider-dark' />
             <div className='festivals-list'>
               <div className='festivals-info2'>
@@ -157,10 +157,10 @@ const Culture = () => {
             <div className='card-icon-wrap card-icon-wrap--c'>
               <AdinkraIcon />
             </div>
-            <h2>
+            <h3>
               {t('culture.art.titleStart')}{' '}
               <span className='card-title-accent'>{t('culture.art.titleAccent')}</span>
-            </h2>
+            </h3>
             <div className='card-divider card-divider-orange' />
             <div className='festivals-list'>
               <div className='festivals-info'>

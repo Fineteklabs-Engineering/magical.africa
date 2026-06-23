@@ -19,7 +19,7 @@
 
 
 
-.tribes h1 {
+.tribes h2 {
   font-size: 1.5rem;
   font-weight: 400;
   text-align: center;
@@ -67,7 +67,7 @@
   padding-right: 1rem;
 }
 
-.tribe1 h1, .tribe2 h1, .tribe3 h1 {
+.tribe1 h3, .tribe2 h3, .tribe3 h3 {
   font-size: 1.5rem;
   font-weight: 600;
   color: white;

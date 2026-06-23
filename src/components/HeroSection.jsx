@@ -67,7 +67,7 @@ const HeroSection = ({ children, customContent, backgroundImage }) => {
   }, [backgroundImage]);
 
 
-  // Add this useEffect in HeroSection, alongside your existing one
+  
 useEffect(() => {
   heroSlides.forEach((slide) => {
     const img = new Image();

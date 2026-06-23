@@ -32,24 +32,7 @@ const Languages = () => {
 
 
 
-{/* 
-        <div 
-          className={`languages ${isPaused ? 'paused' : ''}`}
-          id="languageCarousel"
-        >
-          {languages.map((lang, index) => (
-            <span 
-              key={index}
-              data-tooltip={lang.tooltip}
-              onMouseEnter={() => setIsPaused(true)}
-              onMouseLeave={() => setIsPaused(false)}
-            >
-              {lang.name}
-            </span>
-          ))}
-        </div>
 
-*/}
 
 
 <div 

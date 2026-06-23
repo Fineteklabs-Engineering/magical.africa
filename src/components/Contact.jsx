@@ -12,7 +12,7 @@ const Contact = () => {
       <section className="contact-page">
         <div className="contact-section">
           <div className="contact1">
-            <h1>Magical Africa</h1>
+            <p className='contact1-heading'>Magical Africa</p>
             <p>{t('contact.description')}</p>
             <button onClick={() => setModalOpen(true)}>
               {t('contact.button')}

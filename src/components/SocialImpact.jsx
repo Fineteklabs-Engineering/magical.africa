@@ -13,7 +13,7 @@ const SocialImpact = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // ✅ Defined outside if/else so both blocks can access them
+        
           const impact1 = entry.target.querySelector('.impact1');
           const impact2 = entry.target.querySelector('.impact2');
 
@@ -44,7 +44,7 @@ const SocialImpact = () => {
   return (
     <section className="social-impact">
       <div className="text">
-        <h1>{t('socialImpact.title')}</h1>
+        <h2>{t('socialImpact.title')}</h2>
         <p>{t('socialImpact.description')}</p>
         <span onClick={()=> handleNavigation('/about')}>
           {t('socialImpact.learnMore')} <i className="fa-solid fa-arrow-right"></i>
@@ -54,7 +54,7 @@ const SocialImpact = () => {
       <div className="impacts" ref={impactsRef}>
         <div className="impact1">
           <div className="impact-text">
-            <h1>{t('socialImpact.artisans.title')}</h1>
+            <h3>{t('socialImpact.artisans.title')}</h3>
             <p>{t('socialImpact.artisans.description')}</p>
 
             {/* 
@@ -70,7 +70,7 @@ const SocialImpact = () => {
 
         <div className="impact2">
           <div className="impact-text">
-            <h1>{t('socialImpact.heritage.title')}</h1>
+            <h3>{t('socialImpact.heritage.title')}</h3>
             <p>{t('socialImpact.heritage.description')}</p>
             {/* 
             <button className="read-more">{t('socialImpact.readMore')}</button>
