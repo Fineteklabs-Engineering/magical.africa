@@ -217,14 +217,13 @@
   font-style: italic;
 }
 
-/* ── CARD BUTTONS ROW ── */
+
 .cg-card-btns {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
 }
 
-/* ── VIEW PROFILE BUTTON ── */
 .cg-view-btn {
   display: inline-flex;
   align-items: center;
