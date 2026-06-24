@@ -1,6 +1,49 @@
 import { blogData } from '../data/blogData.js'
 
 
+const MARKET_CATEGORIES = {
+  jewellery: {
+    label: 'Jewellery',
+    description: 'Shop authentic African jewellery — beaded necklaces, bracelets, and traditional adornments handcrafted by artisans across the continent.',
+  },
+  carvings: {
+    label: 'Wood Carvings & Sculptures',
+    description: 'Explore hand-carved African sculptures and wood carvings, crafted using traditional techniques passed down through generations.',
+  },
+  pottery: {
+    label: 'Pottery',
+    description: 'Discover handcrafted African pottery and ceramics, rooted in centuries-old traditions from communities across the continent.',
+  },
+  artefacts: {
+    label: 'Artefacts & Artwork',
+    description: 'Browse original African artefacts, paintings, and cultural artwork from talented artisans and creators.',
+  },
+  fashion: {
+    label: 'Fashion & Textiles',
+    description: 'Shop African fashion, textiles, and traditional garments including kitenge, ankara, and handwoven fabrics.',
+  },
+  baskets: {
+    label: 'Baskets & Furniture',
+    description: 'Explore handwoven African baskets and traditional furniture crafted by skilled artisans.',
+  },
+  spices: {
+    label: 'Spices',
+    description: 'Discover authentic African spices and seasonings sourced directly from farmers and producers across the continent.',
+  },
+}
+
+export const buildMarketCategoryRoutes = () => {
+  return Object.entries(MARKET_CATEGORIES).map(([key, info]) => ({
+    title: `${info.label} | African Marketplace | Magical Africa`,
+    description: info.description,
+    keywords: `${info.label}, African ${info.label.toLowerCase()}, buy African crafts, Magical Africa marketplace`,
+    path: `/market/${key}`,
+    image: SEO_CONTENT.market.image,
+    schemaType: 'CollectionPage',
+  }))
+}
+
+
 export const buildBlogRoutes = () => {
   return Object.entries(blogData).map(([key, post]) => ({
     title: `${post.title} | Magical Africa`,
