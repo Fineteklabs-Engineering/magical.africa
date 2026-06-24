@@ -1,117 +1,4 @@
-/*
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box ;
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 0.025rem;
-}
-
-.music-div{
-  display: flex;
-  flex-direction: column;
-  padding-top: 6rem;
-  padding-bottom: 2rem;
-  
-  
-
-}
-
-.music-wrapper{
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.wrapper1, .wrapper2{
-  width: 100%;
-  max-width: 600px;
-  height: 500px;
-
-}
-
-.wrapper1{
-background-image: url(/images/side-view-people-garage-sale.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.wrapper2{
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
-}
-
-.wrapper2 h1{
-  line-height: 1.8rem;
-}
-
-.wrapper2 ul{
-  display: flex;
-  flex-direction: row;
-
- justify-content: flex-start;
- padding-left: 0.5rem;
- width:100%;
- margin-top: 1rem;
-
-}
-
-.wrapper2 ul li{
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
-  align-items: center;
- 
-}
-
-.wrapper2 ul li span{
-  background-color: none;
-  height: 0;
-  width: 0;
-}
-
-.book-event{
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  background-color: transparent;
-}
-
-.book-event button{
-  background-color: transparent;
-  border: none;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: white;
-  background-color: #1f6f43;
-}
-
-.music-dots{
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
-  padding-top: 6rem;
-}
-
-.music-dots span{
-  height: 10px;
-  width: 10px;
-  background-color: rgb(181, 161, 145);
-  border-radius: 50%;
-}
-
-*/
 
 
 * {
@@ -129,20 +16,19 @@ background-image: url(/images/side-view-people-garage-sale.jpg);
   padding-bottom: 2rem;
 }
 
-/* ── SLIDER CONTAINER ── */
 .music-slider {
   width: 100%;
-  overflow: hidden; /* hides the off-screen slides */
+  overflow: hidden; 
 }
 
-/* ── TRACK: holds all 3 slides side by side ── */
+
 .music-track {
   display: flex;
   transition: transform 1.2s cubic-bezier(0.77, 0, 0.18, 1);
   will-change: transform;
 }
 
-/* ── EACH SLIDE ── */
+
 .music-wrapper {
   display: flex;
   flex-direction: row;
@@ -150,7 +36,7 @@ background-image: url(/images/side-view-people-garage-sale.jpg);
   align-items: center;
   justify-content: center;
   width: 100%;
-  flex-shrink: 0; /* prevent slides from collapsing */
+  flex-shrink: 0;
   padding: 0 2rem;
 }
 
@@ -176,9 +62,10 @@ background-image: url(/images/side-view-people-garage-sale.jpg);
   justify-content: center;
 }
 
-.wrapper2 h1 {
+.wrapper2 h3{
   line-height: 1.8rem;
   align-self: self-start;
+  font-size: 2rem;
 }
 
 .wrapper2 ul {
@@ -304,7 +191,7 @@ background-image: url(/images/side-view-people-garage-sale.jpg);
 
 
 @media screen and (max-width:480px) {
-  .wrapper2 h1{
+  .wrapper2 h3{
     line-height: 2rem;
   }
 }

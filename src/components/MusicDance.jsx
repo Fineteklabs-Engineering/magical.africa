@@ -61,7 +61,7 @@ const MusicDance = () => {
               />
 
               <div className='wrapper2'>
-                <h1>{slide.title}</h1>
+                <h3>{slide.title}</h3>
                 <p>{slide.description}</p>
 
                 <ul>
