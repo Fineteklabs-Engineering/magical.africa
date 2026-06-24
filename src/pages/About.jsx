@@ -12,6 +12,7 @@ import '../styles/AI.css';
 import AccordionPrinciples from '../components/AccordianPrinciples';
 import ContactModal from '../components/ContactModal';
 import CinematicStories from '../components/CinematicStories';
+import { HiH3 } from 'react-icons/hi2';
 
 
 
@@ -24,12 +25,10 @@ const About = () => {
   const [contactOpen, setContactOpen] = useState(false);
   const [membersPerSlide, setMembersPerSlide] = useState(3);
 
-    const navigate = useNavigate(); // 👈 1. create navigate
-        
-          // 👈 2. define the handler
-          const handleNavigation = (path) => {
-            navigate(path);
-          };
+    const navigate = useNavigate(); 
+     const handleNavigation = (path) => {
+     navigate(path);
+      };
 
 
   const problemRef = useRef(null);
@@ -145,17 +144,17 @@ useEffect(() => {
   return () => observer.disconnect();
 }, []);
 
-  // Update members per slide based on screen width
+ 
   useEffect(() => {
     const updateMembersPerSlide = () => {
       if (window.innerWidth <= 480) {
-        setMembersPerSlide(1); // Mobile: 1 at a time
+        setMembersPerSlide(1);
       } else if (window.innerWidth <= 768) {
-        setMembersPerSlide(1); // Tablet: 2 at a time
+        setMembersPerSlide(1); 
       } else {
-        setMembersPerSlide(3); // Desktop: 3 at a time
+        setMembersPerSlide(3);
       }
-      setTeamSlide(0); // Reset to first slide
+      setTeamSlide(0); 
     };
 
     updateMembersPerSlide();
@@ -173,13 +172,6 @@ useEffect(() => {
   };
 
 
- //for the about page
-/*
-    useEffect(() => {
-    document.title = 'About Magical Africa';
-  }, []);
-  
-  */
 
 
   const approaches = [
@@ -258,24 +250,7 @@ useEffect(() => {
   };
 
 
-  {/* 
 
-const heroVideoRef = useRef(null);
-const [isHeroPlaying, setIsHeroPlaying] = useState(true);
-
-const toggleHeroVideo = () => {
-  const video = heroVideoRef.current;
-  if (!video) return;
-  if (video.paused) {
-    video.play();
-    setIsHeroPlaying(true);
-  } else {
-    video.pause();
-    setIsHeroPlaying(false);
-  }
-};
-
-*/}
 const heroVideoRef = useRef(null);
 const [isMuted, setIsMuted] = useState(true);
 
@@ -313,7 +288,7 @@ const toggleMute = () => {
   <div className="heroSection2 heroSection--video">
   <Navbar />
 
-  {/* Background Video */}
+
   <video
     ref={heroVideoRef}
     className="hero-video"
@@ -324,18 +299,8 @@ const toggleMute = () => {
     playsInline
   />
 
-  {/* Dark overlay */}
+ 
   <div className="hero-overlay" />
-
-  {/* Play/Pause Button 
-  <button
-    className="hero-play-btn"
-    onClick={toggleHeroVideo}
-    aria-label={isHeroPlaying ? 'Pause video' : 'Play video'}
-  >
-    {isHeroPlaying ? <FaPause /> : <FaPlay />}
-  </button>
-  */}
 
   <button
   className="hero-play-btn"
@@ -362,7 +327,7 @@ const toggleMute = () => {
         ></div>
         
         <div className="problem-text">
-          <h1>{t('about.background.sectionTitle')} <span>{t('about.background.sectionTitleHighlight')}</span></h1>
+          <h2>{t('about.background.sectionTitle')} <span>{t('about.background.sectionTitleHighlight')}</span></h2>
            
           <div className='background-text'>
             <p>{t('about.background.paragraph1')}</p>
@@ -374,7 +339,7 @@ const toggleMute = () => {
 
       {/* Impact Section */}
       <section className="our-impact">
-        <h1>{t('about.approach.title')}</h1>
+        <h2>{t('about.approach.title')}</h2>
         <p>{t('about.approach.description')}</p>
 
         <div className="impact-boxes" ref={impactRef}>
@@ -392,7 +357,7 @@ const toggleMute = () => {
 
       {/* What We Do Section */}
       <section className="our-solution">
-        <h1>{t('about.whatWeDo.title')}</h1>
+        <h2>{t('about.whatWeDo.title')}</h2>
 
         <div className="solution-box">
           <div className="chev-prev2" onClick={prevSolution}>
@@ -407,7 +372,7 @@ const toggleMute = () => {
               {/* Pair 1 - Data Stewardship */}
               <div className="solution-pair">
                 <div className="solution-text">
-                  <h2>{t('about.whatWeDo.slides.datastewardship.title')}</h2>
+                  <h3>{t('about.whatWeDo.slides.datastewardship.title')}</h3>
                   <p>{t('about.whatWeDo.slides.datastewardship.description')}</p>
 
                   <ul>
@@ -444,7 +409,7 @@ const toggleMute = () => {
               {/* Pair 3 - Education */}
               <div className="solution-pair">
                 <div className="solution-text">
-                  <h2>{t('about.whatWeDo.slides.education.title')}</h2>
+                  <h3>{t('about.whatWeDo.slides.education.title')}</h3>
                   <p>{t('about.whatWeDo.slides.education.description')}</p>
                   <ul>
                     {t('about.whatWeDo.slides.education.items', { returnObjects: true }).map((item, idx) => (
@@ -468,66 +433,16 @@ const toggleMute = () => {
 
       {/* Principles Section */}
       <section className="magical-achievements">
-        <h1>{t('about.principles.title')}</h1>
+        <h2>{t('about.principles.title')}</h2>
 
-{/* 
-        <div className="achievements">
-          {principles.map((principle, index) => (
-            <div className="achievement1" key={index}>
-              <p>{principle}</p>
-            </div>
-          ))}
-        </div>
-
-
-*/}
-
- <AccordionPrinciples />
+    <AccordionPrinciples />
 
       </section>
 
 
      
 
-      {/* AI Section 
-      <div className='AI-section' style={{ backgroundImage: `url('/images/drums2-latest.jpg')` }}>
-        <h1>{t('about.ai.title')}</h1>
-        <div className='AI-boxes' ref={aiRef}>
-          <div className='AI-1'>
-            <div className='AI-heading'>
-              <h1>{t('about.ai.sections.preparingData.title')}</h1>
-            </div>
-            <div>
-              {t('about.ai.sections.preparingData.items', { returnObjects: true }).map((item, idx) => (
-                <p key={idx}><span></span>{item}</p>
-              ))}
-            </div>
-          </div>
-
-          <div className='AI-1'>
-            <div className='AI-heading'>
-              <h1>{t('about.ai.sections.research.title')}</h1>
-            </div>
-            <div>
-              {t('about.ai.sections.research.items', { returnObjects: true }).map((item, idx) => (
-                <p key={idx}><span></span>{item}</p>
-              ))}
-            </div>
-          </div>
-
-          <div className='AI-1'>
-            <div className='AI-heading'>
-              <h1>{t('about.ai.sections.communityTools.title')}</h1>
-            </div>
-            <div>
-              {t('about.ai.sections.communityTools.items', { returnObjects: true }).map((item, idx) => (
-                <p key={idx}><span></span>{item}</p>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-*/}
+     
 
 
  <CinematicStories />
@@ -535,7 +450,7 @@ const toggleMute = () => {
 
       {/* Partners Section */}
       <div className='working-with'>
-        <h1>{t('about.partners.title')}</h1>
+        <h2>{t('about.partners.title')}</h2>
         <p>{t('about.partners.description')}</p>
 
         <div className='partnering img-a' ref={partnersRef}>
@@ -556,7 +471,7 @@ const toggleMute = () => {
 
       {/* Team Section with Carousel */}
       <section className="team">
-        <h1>{t('about.team.title')}</h1>
+        <h2>{t('about.team.title')}</h2>
         <p>{t('about.team.description')}</p>
 
         <div className='team-carousel'>
@@ -607,7 +522,7 @@ const toggleMute = () => {
       {/* Footer CTA */}
       <section className="about-footer">
         <div className="about-footer-box">
-          <h1>{t('about.cta.title')}</h1>
+          <h2>{t('about.cta.title')}</h2>
           <p>{t('about.cta.description')}</p>
 
           <div className="about-footer-buttons">
