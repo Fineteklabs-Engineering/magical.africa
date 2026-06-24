@@ -87,7 +87,7 @@ const BlogPost = () => {
     ? (relatedMap[key] || []).map((k) => ({ key: k, ...blogData[k] }))
     : []
 
-  // Author initials for avatar
+ 
   const initials = post.author
     ? post.author.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)
     : 'MA'

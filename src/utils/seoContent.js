@@ -1,3 +1,18 @@
+import { blogData } from '../data/blogData.js'
+
+
+export const buildBlogRoutes = () => {
+  return Object.entries(blogData).map(([key, post]) => ({
+    title: `${post.title} | Magical Africa`,
+    description: post.subtitle || (post.body?.[0]?.slice(0, 155)) || 'Read this story on Magical Africa.',
+    keywords: (post.tags || []).join(', '),
+    path: `/blogs/${key}`,
+    image: post.image,
+    schemaType: 'Article',
+  }))
+}
+
+
 export const SEO_CONTENT = {
   home: {
     title: 'Magical Africa | African Culture, Languages, and Heritage',
