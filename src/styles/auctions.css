@@ -34,7 +34,7 @@
   font-weight: 400;
 }
 
-.Auctions-div h1{
+.Auctions-div h2{
   font-size: 1.5rem;
   font-weight: 400;
   text-align: center;
@@ -92,13 +92,14 @@
   padding: 1rem;
 }
 
-.Auction-box1-b h3{
+.auction-category-label{
  color: #EA580C;
  font-weight: 400;
  font-size: 0.875rem;
  padding-bottom: 0.2rem;
+ align-self: flex-start;
 }
-.Auction-box1-b h2{
+.Auction-box1-b h3{
   height: 30px;
   color: rgb(48, 48, 48);
   font-size: 1.3rem;
