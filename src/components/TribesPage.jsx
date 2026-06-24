@@ -15,6 +15,7 @@ import PhraseCarousel from '../components/PhraseCarousel';
 import { TRIBE_RADIO_STATIONS } from '../data/tribeRadioStations';
 import '../styles/tribes-radio.css'
 import '../styles/tribe-page2.css'
+import TribeDictionary from '../components/TribeDictionary';
 
 
 const TRIBE_RADIO = {
@@ -581,9 +582,7 @@ const dynamicSeo = tribeSeo ? {
       )}
 
       {languageTab === 'dictionary' && (
-        <div className="tp-language-coming">
-          <p>Dictionary coming soon.</p>
-        </div>
+       <TribeDictionary tribe={tribe} tribeName={tribeName} />
       )}
 
       {languageTab === 'translation' && (
