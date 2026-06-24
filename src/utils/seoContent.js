@@ -265,3 +265,94 @@ export const SEO_ROUTE_LIST = [
   SEO_CONTENT.academySignup,
   SEO_CONTENT.creators,
 ]
+
+
+// Add this near the bottom of seoContent.js, after SEO_ROUTE_LIST
+
+const TRIBE_SLUGS = ['maasai', 'zulu', 'yoruba', 'luo', 'ashanti', 'hausa', 'kikuyu', 'igbo', 'amhara', 'berber', 'swahili', 'wolof', 'fulani']
+
+const CULTURE_SECTIONS = {
+  taboos: 'Taboos',
+  myths: 'Myths & Legends',
+  food: 'Food',
+  housing: 'Housing',
+  clothing: 'Clothing & Adornment',
+  religion: 'Religion',
+  rites: 'Rites of Passage',
+}
+
+const TAB_TITLES = {
+  history: 'History',
+  culture: 'Culture',
+  market: 'Market',
+  folklore: 'Folklore',
+  leaders: 'Prominent People',
+  radio: 'Radio',
+}
+
+const LANGUAGE_SUBTABS = {
+  overview: null, // handled separately, uses base language title
+  dictionary: 'Dictionary',
+  translation: 'Translation',
+}
+
+export const buildTribeTabRoutes = () => {
+  const routes = []
+
+  for (const slug of TRIBE_SLUGS) {
+    const base = SEO_CONTENT[slug]
+    if (!base) continue
+
+    const tribeDisplayName = base.title.split('|')[0].replace('Tribe', '').replace('People', '').trim()
+
+    // history, market, folklore, leaders, radio
+    for (const tab of ['history', 'market', 'folklore', 'leaders']) {
+      routes.push({
+        ...base,
+        title: `The ${tribeDisplayName} ${TAB_TITLES[tab]} | Magical Africa`,
+        description: base.description,
+        path: `/tribes/${slug}/${tab}`,
+      })
+    }
+
+    // radio — special phrasing to match dynamicSeo
+    routes.push({
+      ...base,
+      title: `Stream Online ${tribeDisplayName} Radio | Magical Africa`,
+      description: `Listen to live radio stations connected to the ${tribeDisplayName} community.`,
+      path: `/tribes/${slug}/radio`,
+    })
+
+    // culture + each section
+    for (const [sectionKey, sectionLabel] of Object.entries(CULTURE_SECTIONS)) {
+      routes.push({
+        ...base,
+        title: `The ${tribeDisplayName} ${sectionLabel} | Magical Africa`,
+        description: base.description,
+        path: `/tribes/${slug}/culture/${sectionKey}`,
+      })
+    }
+
+    // language — overview (base) + dictionary + translation
+    routes.push({
+      ...base,
+      title: `The ${tribeDisplayName} Language | Magical Africa`,
+      description: base.description,
+      path: `/tribes/${slug}/language`,
+    })
+    routes.push({
+      ...base,
+      title: `The ${tribeDisplayName} Dictionary | Magical Africa`,
+      description: base.description,
+      path: `/tribes/${slug}/language/dictionary`,
+    })
+    routes.push({
+      ...base,
+      title: `Get Translations to and from ${tribeDisplayName} | Magical Africa`,
+      description: base.description,
+      path: `/tribes/${slug}/language/translation`,
+    })
+  }
+
+  return routes
+}
