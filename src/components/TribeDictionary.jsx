@@ -160,7 +160,7 @@ const TribeDictionary = ({ tribe, tribeName }) => {
                   <path d="M10 9l5 3-5 3V9z" fill="currentColor" stroke="none"/>
                 </svg>
                 <p>{tribe?.name} Language Video</p>
-                <span>Coming soon</span>
+               
               </div>
             )}
           </div>
