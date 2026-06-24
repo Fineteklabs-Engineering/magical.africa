@@ -47,9 +47,7 @@ const Technology = () => {
   const pillarsRef = useRef(null)
   const [pillarsVisible, setPillarsVisible] = useState(false)
   const goToAcademy = useAcademyNavigation()
-        const navigate = useNavigate(); // 👈 1. create navigate
-      
-        // 👈 2. define the handler
+        const navigate = useNavigate(); 
         const handleNavigation = (path) => {
           navigate(path);
         };

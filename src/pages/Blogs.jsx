@@ -39,7 +39,6 @@ const Blogs = () => {
 
   const featuredPost = blogData[featuredPostKey]
 
-  // Fetch Firestore posts on mount
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -56,11 +55,11 @@ const Blogs = () => {
     fetchPosts()
   }, [])
 
-  // Merge Firestore posts (first) + static posts
+ 
   const staticPosts = latestPostKeys.map(key => ({ key, ...blogData[key] }))
   const allPosts = [...firestorePosts, ...staticPosts]
 
-  // Filter merged posts by category and search
+
   const filteredPosts = allPosts
     .filter(post =>
       activeCategory === null ? true : post.tags?.includes(activeCategory)
@@ -90,7 +89,7 @@ const Blogs = () => {
 
         <Navbar />
 
-        {/* ── HEADER ── */}
+      
         <div className="blogs-header">
           <div className="blogs-header-decor top" />
           <div className="blogs-header-content">
@@ -191,7 +190,7 @@ const Blogs = () => {
 
           </main>
 
-          {/* ── SIDEBAR ── */}
+          
           <aside className="blogs-sidebar">
 
             {/* Recent Posts */}
