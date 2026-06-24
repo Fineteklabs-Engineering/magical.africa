@@ -12,7 +12,8 @@
     "yourAccounts": "Akaunti syaku",
     "addAccount": "Ongela akaunti ya Magical Africa",
     "personal": "Ya mũene",
-    "technology": "Tekinoloshia"
+    "technology": "Tekinoloshia",
+    "creator": "Aũmbi"
   },
   "hero": {
   
@@ -760,24 +761,19 @@
       "teaching": "Maũvoo mamwe kana matendo mekũleta thĩna.",
       "learnMore": "Ĩthya Kĩĩngĩ"
     },
-    "music": {
-      "title": "Mĩkano ya Ũtũũĩ",
-      "intro": "Mĩkano ya Afrika nĩyo ĩmwe wa ũtũũĩ wa mĩkano kũkũũ kũũ thĩ-inĩ, ĩkakolite kĩĩngĩ na maisha ma andũ kũlĩa maŨndũ, makũngũĩa, kũnena ngewa, kũina, na maũndũ ma ngai.",
-      "popularGenres": "Iria Iendeetwe",
-      "musicGenres": "Mĩthemba ya Mĩkano",
-      "genres": {
-        "djembe": "Mĩkano wa Djembe",
-        "maasai": "Nyĩmbo sya Maasai",
-        "isicathamiya": "Isicathamiya",
-        "benga": "Mĩkano wa Benga"
-      },
-      "listenTitle": "Thikĩĩia Mĩkano ya Afrika",
-      "tracks": {
-        "djembe": "Mĩthiĩo ya Ũtũũĩ ya Djembe",
-        "afrobeat": "Afrobeat ya Ũmũthĩ"
-      },
-      "learnMore": "Ĩthya Kĩĩngĩ"
-    },
+    "academy": {
+  "title": "Masomo Maitũ",
+  "intro": "Menya masomo ma wĩa wa moko wa Aafrika morutwa nĩ aathani ma wĩa ũsu — wĩmanyĩsye na ivinda yaku, kũndũ kwosa.",
+  "tags": {
+    "pottery": "Wĩa wa Nyũmba",
+    "cooking": "Kũĩa",
+    "woodwork": "Wĩa wa Miti",
+    "drumming": "Kũkua Ngoma"
+  },
+  "videoLabel": "Ũmanyĩsyo Mũnene",
+  "videoTitle": "Ũũgĩ wa Wĩa wa Nyũmba wa Aafrika",
+  "cta": "Geria Yu"
+},
     "events": {
       "title": "Maũndũ Ma Ũtũũĩ",
       "intro": "Maũndũ ma ũtũũĩ ma Afrika makũngũĩa ũtũũĩ nĩ kũũnganĩthya andũ kũlĩa mĩkano, kũina, matini, ĩlya, na kũnena ngewa, ĩkĩĩthĩa ũtũũĩ na ũkũmenyithya ũmwe wa ũmũthĩ wa Afrika.",
@@ -1372,7 +1368,31 @@
         "detail": "Tũkĩamini Mũafrica woothe — atĩ mapato, mahali, kana ũĩ wĩngĩ wa kiufundi — astahili kupata ũhoro wake wa mĩtũũrĩre. Nĩ ũndũ ũcio maudhui yaitũ ya msingi ya kujifunza nĩ ya bure, jukwaa laitũ lĩkĩthiĩ kwa miunganiko ya kipimo cha chini, na uzoefu wacitũ wa simu ũboreshĩtwe kwa vifaa vinavyotumiwa zaidi barani."
       }
     ]
+  },
+
+  "home": {
+  "aiSection": {
+    "eyebrow": "Itandĩko Yĩa Wĩa Yathondekwa nĩ AI",
+    "title1": "Ũndũ Twĩhũthĩsya AI",
+    "title2": "Kũsiia Sũthyomi sya Aafrika",
+    "subtitle": "Magical Africa nĩyũnganasya ũũgĩ wa mũtugo na ũmenyo mũnene wa mĩtugo ya Aafrika onthe, ũgatuma sũthyomi sya mĩciĩ syĩthĩwa na kwĩmanyĩsya, gũkwatwa, na gũtũũra syĩ na thayũ.",
+    "features": {
+      "speech": { "title": "Kũmenya Mũgambo", "description": "Mĩbango ya AI ĩrutĩtwe kũmenya na kwandĩka sũthyomi sya Aafrika sya kwarĩrio, ndũmĩnyĩ na mĩario ya mwena na sũthyomi sya mĩciĩ." },
+      "transcription": { "title": "Kwandĩka na Ũũgĩ", "description": "Nĩwĩlasya o ũu ngewa, ndeesya, na masomo marĩa marĩtio matuĩke maandĩki ma kwĩthĩwa nesa kana mahonokie na kwĩmanyĩsya." },
+      "recommendations": { "title": "Mataaro ma Mũndũ Ũmwe", "description": "AI nĩyonanasya masomo, ngewa, na kĩla kĩrĩ thini ũrĩa kwagĩrĩire na ivinda, wendi, na ũseo wa mwĩmanyĩsi ũmwe." },
+      "storyRegeneration": { "title": "AI Gũthondeka Ngewa sya Syana Ingĩ", "description": "AI yitũ nĩyĩkũaa kuma ngewa sya tene sya Aafrika syenekete na ngerekano ĩla yagĩrĩire harĩ kana o wothe — ĩkathondeka ndeto, ũraihu wa ndeto, na ũthyomi nĩ kana syana syĩmanyĩsye na njĩa ya ngewa ila syendete biũ." }
+    },
+    "howItWorks": {
+      "label": "Ũndũ Ũrĩa Wĩaa",
+      "step1": { "label": "Ngewa ya tene yathuurwa", "desc": "Ngewa ya Aafrika ya tene yĩthuurwa kuma kwĩ mahooya maitũ ma ngewa makĩria ya igana kuma kontinent yonthe." },
+      "step2": { "label": "AI nĩĩthondeka ngerekano na ũthyomi", "desc": "Ngewa nĩyathondekwa ĩngĩ na ũthyomi wa kana ũsu na ngerekano ya gũthoma nzeo — ndeto, mũtaratara wa ũthyomi, na ũraihu wa ndeto syonthe nĩsyathondekawa na njĩa ya kwĩyendeesya." },
+      "step3": { "label": "Mũgambo wa kwasya nĩwathondekwa", "desc": "Mũgambo wa mũndũ ũla wĩsĩ ũthyomi ũsu nĩwathoma ngewa na mũgambo, ũgatetheesya syana kũnyiitania ndeto syandĩkĩtwe na mwarĩrie ũla wagĩrĩire." },
+      "step4": { "label": "Kana yĩthoma, yĩthikĩrĩsya, na yĩmanyĩsya", "desc": "Kana yĩatĩĩaa, ĩkahutia ndeto nĩ kana yĩew ĩthyomwa, ĩkaaka ndeto na njĩa ya ngewa ĩla yĩkenetye nayo biũ." }
+    },
+    "ctaSeeAll": "Sisya kĩla kĩndũ kya AI",
+    "ctaAcademy": "Mantha Academy"
   }
+}
 }
 
 

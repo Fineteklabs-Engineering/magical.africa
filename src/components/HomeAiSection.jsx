@@ -251,41 +251,41 @@ const HomeAiSection = ({ videoSrc = '/images/child.mp4' }) => {
                   </div>
                 </div>
 
-                {/* right: how it works steps */}
-                <div className="has-story-right">
-                  <p className="has-story-steps-label">How it works</p>
+        {/* right: how it works steps */}
+<div className="has-story-right">
+  <p className="has-story-steps-label">{t('home.aiSection.howItWorks.label', 'How it works')}</p>
 
-                  <StoryStep
-                    icon="book"
-                    color="orange"
-                    label="Original folk tale selected"
-                    desc="A traditional African story is chosen from our curated archive of 100+ tales spanning the continent."
-                  />
-                  <div className="has-story-connector" />
+  <StoryStep
+    icon="book"
+    color="orange"
+    label={t('home.aiSection.howItWorks.step1.label')}
+    desc={t('home.aiSection.howItWorks.step1.desc')}
+  />
+  <div className="has-story-connector" />
 
-                  <StoryStep
-                    icon="wand"
-                    color="green"
-                    label="AI adapts level + language"
-                    desc="The story is regenerated in the child's target language at the correct reading level vocabulary, grammar, and sentence length all tailored automatically."
-                  />
-                  <div className="has-story-connector" />
+  <StoryStep
+    icon="wand"
+    color="green"
+    label={t('home.aiSection.howItWorks.step2.label')}
+    desc={t('home.aiSection.howItWorks.step2.desc')}
+  />
+  <div className="has-story-connector" />
 
-                  <StoryStep
-                    icon="layers"
-                    color="orange"
-                    label="Audio narration generated"
-                    desc="A native-speaker voice synthesis reads the story aloud, helping children connect written words to natural pronunciation."
-                  />
-                  <div className="has-story-connector" />
+  <StoryStep
+    icon="layers"
+    color="orange"
+    label={t('home.aiSection.howItWorks.step3.label')}
+    desc={t('home.aiSection.howItWorks.step3.desc')}
+  />
+  <div className="has-story-connector" />
 
-                  <StoryStep
-                    icon="child"
-                    color="green"
-                    label="Child reads, listens & learns"
-                    desc="The child follows along, tapping words to hear them spoken, building vocabulary through a story they genuinely enjoy."
-                  />
-                </div>
+  <StoryStep
+    icon="child"
+    color="green"
+    label={t('home.aiSection.howItWorks.step4.label')}
+    desc={t('home.aiSection.howItWorks.step4.desc')}
+  />
+</div>
 
               </div>
             )}

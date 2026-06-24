@@ -12,7 +12,8 @@
     "yourAccounts": "Ama-akhawunti akho",
     "addAccount": "Engeza i-akhawunti ye-Magical Africa",
     "personal": "Komuntu siqu",
-    "technology": "Ubuchwepheshe"
+    "technology": "Ubuchwepheshe",
+    "creator": "Abadali"
   },
   "hero": {
    
@@ -825,24 +826,19 @@
       "teaching": "Imibuzo ethile noma izenzo zingaletha inkinga.",
       "learnMore": "Funda Kabanzi"
     },
-    "music": {
-      "title": "Umculo Wamasiko",
-      "intro": "Umculo wase-Afrika ungomunye wemikhuba yomculo emidala kakhulu emhlabeni, othandwe kakhulu ekuphileni komphakathi ngemicimbi, imibungazo, ukuxoxa izindaba, ukudansa, nezinqubo zokomoya.",
-      "popularGenres": "Okuthandwayo",
-      "musicGenres": "Izinhlobo Zomculo",
-      "genres": {
-        "djembe": "Umculo we-Djembe",
-        "maasai": "Amahubo ama-Maasai",
-        "isicathamiya": "Isicathamiya",
-        "benga": "Umculo we-Benga"
-      },
-      "listenTitle": "Lalela Umculo Wase-Afrika",
-      "tracks": {
-        "djembe": "Amasingqi e-Djembe Esintu",
-        "afrobeat": "I-Afrobeat Yesimanje"
-      },
-      "learnMore": "Funda Kabanzi"
-    },
+    "academy": {
+  "title": "Izifundo Zethu",
+  "intro": "Thola izifundo zobuciko base-Afrika ezifundiswa ngochwepheshe — funda ngesivinini sakho, nomaphi.",
+  "tags": {
+    "pottery": "Ukubumba Izinto Zobumba",
+    "cooking": "Ukupheka",
+    "woodwork": "Umsebenzi Wokhuni",
+    "drumming": "Ukushaya Izigubhu"
+  },
+  "videoLabel": "Isifundo Esikhethekile",
+  "videoTitle": "Ubuciko Bokubumba Izinto Zobumba zase-Afrika",
+  "cta": "Zama Manje"
+},
     "events": {
       "title": "Imicimbi Yamasiko",
       "intro": "Imicimbi yamasiko yase-Afrika igubha ifa ngokuhlanganisa imiphakathi ngomculo, ukudansa, ubuciko, ukudla, nokuxoxa izindaba, ihlonipha isiko ngenkathi yamukela ubunikazi bamanje base-Afrika.",
@@ -1441,7 +1437,31 @@
         "detail": "Siyakholelwa ukuthi wonke umuntu wase-Afrika — ngaphandle kwemali yengeniso, indawo, noma ulwazi lwezobuchwepheshe — ufanelwe ukufinyelela efa lakhe lamasiko. Yingakho okuqukethwe kwethu okuyisisekelo sokufunda kumahhala, inkundla yethu isebenza ezixhumanisini eziphansi, futhi ulwazi lwethu lweselula luhlelwe kahle kwizidingo ezisetshenziswa kakhulu kulo lonke elase-Afrika."
       }
     ]
+  },
+
+  "home": {
+  "aiSection": {
+    "eyebrow": "Inkundla Eqhutshwa nge-AI",
+    "title1": "Indlela Esisebenzisa Ngayo i-AI",
+    "title2": "Ukulondoloza Izilimi Zase-Afrika",
+    "subtitle": "I-Magical Africa ihlanganisa ubuhlakani bokwakhiwa obusezingeni eliphezulu nolwazi olujulile lwamasiko ase-Afrika yonke, okwenza izilimi zomdabu zifundeke kalula, zitholakale, futhi ziqhubeke ziphila.",
+    "features": {
+      "speech": { "title": "Ukubona Izwi", "description": "Amamodeli e-AI aqeqeshelwe ukubona nokubhala izilimi zase-Afrika ezikhulunywayo, kuhlanganise nemisindo yendawo nezilimi zezindawo." },
+      "transcription": { "title": "Ukubhala Okuhlakaniphile", "description": "Iguqula ngokuzenzakalelayo izindaba ezikhulunywayo, izingxoxo, nezifundo ezibe yimibhalo eqondile yokulondoloza nokufunda." },
+      "recommendations": { "title": "Iziphakamiso Eziqondene Nawe", "description": "I-AI iphakamisa izifundo, izindaba, nokuqukethwe okulungiselelwe isivinini, intshisekelo, nentuthuko yomfundi ngamunye." },
+      "storyRegeneration": { "title": "I-AI Iyakha Kabusha Izindaba Zezingane", "description": "I-AI yethu ilandisa kabusha izindaba zendabuko zase-Afrika ezithandwayo ezingeni elifanele kanjalo nganye ingane — ilungisa amagama, ubude bomusho, nolimi ukuze izingane zifunde ngendlela ejwayelekile ngezindaba ezizithandayo kakade." }
+    },
+    "howItWorks": {
+      "label": "Indlela Esisebenza Ngayo",
+      "step1": { "label": "Inganekwane yokuqala ikhethwa", "desc": "Indaba yendabuko yase-Afrika ikhethwa kusuka kunqolobane yethu enezindaba ezingaphezu kuka-100 ezivela kuzwelonke." },
+      "step2": { "label": "I-AI ilungisa izinga nolimi", "desc": "Indaba iphindwa ngolimi olufunwa ngumntwana ezingeni elifanele lokufunda — amagama, uhlelo lolimi, nobude bomusho konke kulungiswa ngokuzenzakalelayo." },
+      "step3": { "label": "Umsindo wokulandisa wakhiwa", "desc": "Izwi lesimo somuntu langempela lifunda indaba ngokuzwakala, lisiza izingane zixhumanise amagama abhaliwe nokuphimisela okuvamile." },
+      "step4": { "label": "Ingane ifunda, ilalele futhi ifunda", "desc": "Ingane ilandela, ithinta amagama ukuze izizwe zikhulunywa, yakha amagama ngendaba ezijabulisa ngempela." }
+    },
+    "ctaSeeAll": "Bona zonke izici ze-AI",
+    "ctaAcademy": "Hlola i-Academy"
   }
+}
 }
 
 

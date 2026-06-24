@@ -75,8 +75,8 @@ const Footer = () => {
             <Link to="/events">{t('footer.links.events')}</Link>
 
             <Link to="/music">{t('footer.links.music')}</Link>
-            <Link to="/technology">{t('footer.links.technology')}</Link>
-             <Link to="/creator">{t('footer.links.creators')}</Link>
+            <Link to="/technology">{t('nav.technology')}</Link>
+             <Link to="/creator">{t('nav.creator')}</Link>
             <span className="footer-link" onClick={() => setContactOpen(true)}>
   {t('footer.links.contact')}
           
