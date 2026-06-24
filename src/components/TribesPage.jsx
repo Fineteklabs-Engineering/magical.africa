@@ -16,6 +16,7 @@ import { TRIBE_RADIO_STATIONS } from '../data/tribeRadioStations';
 import '../styles/tribes-radio.css'
 import '../styles/tribe-page2.css'
 import TribeDictionary from '../components/TribeDictionary';
+import TribeTranslation from './TribeTranslation';
 
 
 const TRIBE_RADIO = {
@@ -586,9 +587,7 @@ const dynamicSeo = tribeSeo ? {
       )}
 
       {languageTab === 'translation' && (
-        <div className="tp-language-coming">
-          <p>Translation coming soon.</p>
-        </div>
+        <TribeTranslation tribe={tribe} tribeName={tribeName} />
       )}
 
     </div>
