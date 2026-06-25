@@ -1,3 +1,61 @@
+import { blogData } from '../data/blogData.js'
+
+
+const MARKET_CATEGORIES = {
+  jewellery: {
+    label: 'Jewellery',
+    description: 'Shop authentic African jewellery — beaded necklaces, bracelets, and traditional adornments handcrafted by artisans across the continent.',
+  },
+  carvings: {
+    label: 'Wood Carvings & Sculptures',
+    description: 'Explore hand-carved African sculptures and wood carvings, crafted using traditional techniques passed down through generations.',
+  },
+  pottery: {
+    label: 'Pottery',
+    description: 'Discover handcrafted African pottery and ceramics, rooted in centuries-old traditions from communities across the continent.',
+  },
+  artefacts: {
+    label: 'Artefacts & Artwork',
+    description: 'Browse original African artefacts, paintings, and cultural artwork from talented artisans and creators.',
+  },
+  fashion: {
+    label: 'Fashion & Textiles',
+    description: 'Shop African fashion, textiles, and traditional garments including kitenge, ankara, and handwoven fabrics.',
+  },
+  baskets: {
+    label: 'Baskets & Furniture',
+    description: 'Explore handwoven African baskets and traditional furniture crafted by skilled artisans.',
+  },
+  spices: {
+    label: 'Spices',
+    description: 'Discover authentic African spices and seasonings sourced directly from farmers and producers across the continent.',
+  },
+}
+
+export const buildMarketCategoryRoutes = () => {
+  return Object.entries(MARKET_CATEGORIES).map(([key, info]) => ({
+    title: `${info.label} | African Marketplace | Magical Africa`,
+    description: info.description,
+    keywords: `${info.label}, African ${info.label.toLowerCase()}, buy African crafts, Magical Africa marketplace`,
+    path: `/market/${key}`,
+    image: SEO_CONTENT.market.image,
+    schemaType: 'CollectionPage',
+  }))
+}
+
+
+export const buildBlogRoutes = () => {
+  return Object.entries(blogData).map(([key, post]) => ({
+    title: `${post.title} | Magical Africa`,
+    description: post.subtitle || (post.body?.[0]?.slice(0, 155)) || 'Read this story on Magical Africa.',
+    keywords: (post.tags || []).join(', '),
+    path: `/blogs/${key}`,
+    image: post.image,
+    schemaType: 'Article',
+  }))
+}
+
+
 export const SEO_CONTENT = {
   home: {
     title: 'Magical Africa | African Culture, Languages, and Heritage',
@@ -265,3 +323,94 @@ export const SEO_ROUTE_LIST = [
   SEO_CONTENT.academySignup,
   SEO_CONTENT.creators,
 ]
+
+
+// Add this near the bottom of seoContent.js, after SEO_ROUTE_LIST
+
+const TRIBE_SLUGS = ['maasai', 'zulu', 'yoruba', 'luo', 'ashanti', 'hausa', 'kikuyu', 'igbo', 'amhara', 'berber', 'swahili', 'wolof', 'fulani']
+
+const CULTURE_SECTIONS = {
+  taboos: 'Taboos',
+  myths: 'Myths & Legends',
+  food: 'Food',
+  housing: 'Housing',
+  clothing: 'Clothing & Adornment',
+  religion: 'Religion',
+  rites: 'Rites of Passage',
+}
+
+const TAB_TITLES = {
+  history: 'History',
+  culture: 'Culture',
+  market: 'Market',
+  folklore: 'Folklore',
+  leaders: 'Prominent People',
+  radio: 'Radio',
+}
+
+const LANGUAGE_SUBTABS = {
+  overview: null, // handled separately, uses base language title
+  dictionary: 'Dictionary',
+  translation: 'Translation',
+}
+
+export const buildTribeTabRoutes = () => {
+  const routes = []
+
+  for (const slug of TRIBE_SLUGS) {
+    const base = SEO_CONTENT[slug]
+    if (!base) continue
+
+    const tribeDisplayName = base.title.split('|')[0].replace('Tribe', '').replace('People', '').trim()
+
+    // history, market, folklore, leaders, radio
+    for (const tab of ['history', 'market', 'folklore', 'leaders']) {
+      routes.push({
+        ...base,
+        title: `The ${tribeDisplayName} ${TAB_TITLES[tab]} | Magical Africa`,
+        description: base.description,
+        path: `/tribes/${slug}/${tab}`,
+      })
+    }
+
+    // radio — special phrasing to match dynamicSeo
+    routes.push({
+      ...base,
+      title: `Stream Online ${tribeDisplayName} Radio | Magical Africa`,
+      description: `Listen to live radio stations connected to the ${tribeDisplayName} community.`,
+      path: `/tribes/${slug}/radio`,
+    })
+
+    // culture + each section
+    for (const [sectionKey, sectionLabel] of Object.entries(CULTURE_SECTIONS)) {
+      routes.push({
+        ...base,
+        title: `The ${tribeDisplayName} ${sectionLabel} | Magical Africa`,
+        description: base.description,
+        path: `/tribes/${slug}/culture/${sectionKey}`,
+      })
+    }
+
+    // language — overview (base) + dictionary + translation
+    routes.push({
+      ...base,
+      title: `The ${tribeDisplayName} Language | Magical Africa`,
+      description: base.description,
+      path: `/tribes/${slug}/language`,
+    })
+    routes.push({
+      ...base,
+      title: `The ${tribeDisplayName} Dictionary | Magical Africa`,
+      description: base.description,
+      path: `/tribes/${slug}/language/dictionary`,
+    })
+    routes.push({
+      ...base,
+      title: `Get Translations to and from ${tribeDisplayName} | Magical Africa`,
+      description: base.description,
+      path: `/tribes/${slug}/language/translation`,
+    })
+  }
+
+  return routes
+}

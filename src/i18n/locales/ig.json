@@ -12,8 +12,8 @@
     "yourAccounts": "Akaụntụ gị",
     "addAccount": "Tinye akaụntụ Magical Africa",
     "personal": "Nke onwe",
-    "technology": "Teknụzụ"
-
+    "technology": "Teknụzụ",
+    "creator": "Ndị Okike"
   },
   "hero": {
     
@@ -831,24 +831,19 @@
       "teaching": "Ụfọdụ ajụjụ ma ọ bụ omume nwere ike iweta nsogbu.",
       "learnMore": "Mụtakwuo"
     },
-    "music": {
-      "title": "Egwu Omenala",
-      "intro": "Egwu Afrika bụ otu n'ime omenala egwu kacha ochie n'ụwa, nke ejikọtara n'ime ndụ obodo site na emume, mmemme, ịkọ akụkọ, ịgba egwu, na omume ime mmụọ.",
-      "popularGenres": "Ndị a ma ama",
-      "musicGenres": "Ụdị Egwu",
-      "genres": {
-        "djembe": "Egwu Djembe",
-        "maasai": "Ukwe Maasai",
-        "isicathamiya": "Isicathamiya",
-        "benga": "Egwu Benga"
-      },
-      "listenTitle": "Gee Egwu Afrika",
-      "tracks": {
-        "djembe": "Ụda Djembe Omenala",
-        "afrobeat": "Afrobeat Ọgbara Ọhụrụ"
-      },
-      "learnMore": "Mụtakwuo"
-    },
+    "academy": {
+  "title": "Ọzụzụ Anyị",
+  "intro": "Chọpụta ọzụzụ ǹka Afrịka nke ndị ǹka kachasị mma na-akụzi — mụta n'ọsọ gị, ebe ọ bụla.",
+  "tags": {
+    "pottery": "Ife Ụrọ",
+    "cooking": "Isiri Nri",
+    "woodwork": "Ọrụ Osisi",
+    "drumming": "Ịkụ Ụbọ"
+  },
+  "videoLabel": "Ihe Ọmụmụ A Họpụtara",
+  "videoTitle": "Nka Ife Ụrọ Afrịka",
+  "cta": "Nwaa Ugbu A"
+},
     "events": {
       "title": "Emume Omenala",
       "intro": "Emume omenala Afrika na-eme ememe ihe nketa site n'ijikọ obodo ọnụ site na egwu, ịgba egwu, nka, nri, na ịkọ akụkọ, na-asọpụrụ omenala ebe ha na-anabata njirimara Afrika nke oge a.",
@@ -1446,7 +1441,32 @@
         "detail": "Anyị kwere na onye Afịrịka ọ bụla — n'ọ bụ n'ihe gbasara ego, ọnọdụ, ma ọ bụ ihe ọmụma nke teknọlọjị — kwesịrị inweta ihe nketa ya nke omenala. Nke ahụ bụ ihe mere okuqukethwe anyị nke msingi nke mmụta bụ efu, ikpe anyị na-arụ ọrụ na njikọ mgbata ala dị ala, na ahụmịhe simu anyị emebere maka ngwaọrụ a na-ejikarị eme ihe n'kọntinent."
       }
     ]
+  },
+
+
+  "home": {
+  "aiSection": {
+    "eyebrow": "Ikpo Okwu Nke AI",
+    "title1": "Otú Anyị Si Eji AI",
+    "title2": "Chekwaa Asụsụ Afrịka",
+    "subtitle": "Magical Africa na-ejikọta ọgụgụ isi nkuzi ọhụrụ na ihe ọmụma omenala Afrịka niile, na-eme ka asụsụ ndị obodo dị mfe ịmụta, ịchọta, ma na-adị ndụ.",
+    "features": {
+      "speech": { "title": "Ịmata Olu", "description": "Ụdị AI a zụrụ ịmata na ide asụsụ Afrịka a na-asụ, gụnyere olu mpaghara na asụsụ obodo." },
+      "transcription": { "title": "Ide Akwụkwọ Nkà", "description": "Na-agbanwe ozugbo akụkọ, mkparịta ụka, na nkuzi ka ọ bụrụ ihe odide ziri ezi maka nchekwa na mmụta." },
+      "recommendations": { "title": "Ndụmọdụ Ahaziri Iche", "description": "AI na-atụ aro nkuzi, akụkọ, na ọdịnaya ahaziri maka ọsọ, mmasị, na ọganihu nke onye mmụta ọ bụla." },
+      "storyRegeneration": { "title": "AI Na-emepụta Akụkọ Ụmụaka Ọzọ", "description": "AI anyị na-akọwa akụkọ ọdịnala Afrịka a hụrụ n'anya n'ọkwa kwesịrị ekwesị maka nwa ọ bụla — na-agbanwe okwu, ogologo ahịrịokwu, na asụsụ ka ụmụaka mụta n'ụzọ efu site n'akụkọ ha hụrụ n'anya."}
+    },
+    "howItWorks": {
+      "label": "Otú Ọ Na-arụ Ọrụ",
+      "step1": { "label": "A họọrọ akụkọ ọdịnala mbụ", "desc": "A na-ahọrọ akụkọ ọdịnala Afrịka site n'ọchịchọ akụkọ anyị nke karịrị 100 site na kọntinent ahụ." },
+      "step2": { "label": "AI na-agbanwe ọkwa na asụsụ", "desc": "A na-emepụta akụkọ ọzọ n'asụsụ nwata ahụ chọrọ n'ọkwa ọgụgụ ziri ezi — okwu, ụtọasụsụ, na ogologo ahịrịokwu niile ka emere ka ọ dabara." },
+      "step3": { "label": "E mepụtara olu nkọwa", "desc": "Olu onye na-asụ asụsụ ahụ akpaakpa na-agụ akụkọ ahụ, na-enyere ụmụaka aka ijikọ okwu edere na nzụpụta okwu ziri ezi." },
+      "step4": { "label": "Nwata na-agụ, na-ege ntị, na-amụta", "desc": "Nwata na-eso, na-ekpo aka n'okwu iji nụ ka a na-ekwu ya, na-ewulite okwu site n'akụkọ ọ na-anụ ụtọ n'ezie." }
+    },
+    "ctaSeeAll": "Lee njirimara AI niile",
+    "ctaAcademy": "Nyochaa Academy"
   }
+}
 }
 
 

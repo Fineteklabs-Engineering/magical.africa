@@ -12,7 +12,9 @@
     "yourAccounts": "Akaunti ciaku",
     "addAccount": "Ongera akaunti ya Magical Africa",
     "personal": "Ya mwene",
-    "technology": "Tekinoroji"
+    "technology": "Tekinoroji",
+    "creator": "Aĩmbi"
+
   },
   "hero": {
     
@@ -756,24 +758,19 @@
       "teaching": "Ciũria ciumwe kana maũndũ no matũme thĩĩna.",
       "learnMore": "Menya Maũndũ Mangĩ"
     },
-    "music": {
-      "title": "Mũkano wa Mũtũũrĩre",
-      "intro": "Mũkano wa Afrika nĩ ũmwe wa mĩtũũrĩre ya mũkano ya tene mũno thĩ-inĩ, ũrĩ ũndũ ũrĩa ũtangĩkĩrĩka na mũtũũrĩre wa andũ na ũndũ wa maũndũ, ikũngũĩro, ũhoro, kũina, na maũndũ ma ũhooi.",
-      "popularGenres": "Iria Iendeetwo",
-      "musicGenres": "Mĩthemba ya Mũkano",
-      "genres": {
-        "djembe": "Mũkano wa Djembe",
-        "maasai": "Nyĩmbo cia Maasai",
-        "isicathamiya": "Isicathamiya",
-        "benga": "Mũkano wa Benga"
-      },
-      "listenTitle": "Thikĩrĩria Mũkano wa Afrika",
-      "tracks": {
-        "djembe": "Mĩthiĩo ya Tene ya Djembe",
-        "afrobeat": "Afrobeat ya Ũmũthĩ"
-      },
-      "learnMore": "Menya Maũndũ Mangĩ"
-    },
+   "academy": {
+  "title": "Masomo Maitu",
+  "intro": "Menyerera masomo ma wĩra wa moko wa Aafrika morutwo nĩ aruti a wĩra ũrĩa moĩ — wĩrute na ihinda rĩaku, kũrĩa guothe.",
+  "tags": {
+    "pottery": "Wĩra wa Tũmbĩra",
+    "cooking": "Kũruga",
+    "woodwork": "Wĩra wa Mĩtĩ",
+    "drumming": "Kũhũũra Ngoma"
+  },
+  "videoLabel": "Ũrutani Mũnene",
+  "videoTitle": "Ũũgĩ wa Wĩra wa Tũmbĩra wa Aafrika",
+  "cta": "Geria Rĩu"
+},
     "events": {
       "title": "Maũndũ Ma Mũtũũrĩre",
       "intro": "Maũndũ ma mũtũũrĩre ma Afrika magũngũyagia ũtũũre nĩ kũũnganĩrithia andũ na ũndũ wa mũkano, kũina, mĩhianano, irio, na kũheana ũhoro, ĩkĩĩthĩa mĩtũũrĩre ĩrĩa ĩkwĩtĩkĩra ũmenyi wa ũmũthĩ wa Afrika.",
@@ -1360,7 +1357,32 @@
         "detail": "Tũkĩamini Mũafrica woothe — atĩ mapato, mahali, kana ũĩ wĩngĩ wa kiufundi — astahili kupata ũhoro wake wa mĩtũũrĩre. Nĩ ũndũ ũcio maudhui yaitũ ya msingi ya kujifunza nĩ ya bure, jukwaa laitũ lĩkĩthiĩ kwa miunganiko ya kipimo cha chini, na uzoefu wacitũ wa simu ũboreshĩtwe kwa vifaa vinavyotumiwa zaidi barani."
       }
     ]
+  },
+
+
+  "home": {
+  "aiSection": {
+    "eyebrow": "Igũrũ Rĩa Wĩra Rĩathondekwo nĩ AI",
+    "title1": "Ũrĩa Tũhũthagĩra AI",
+    "title2": "Kũigana Thiomi cia Aafrika",
+    "subtitle": "Magical Africa nĩĩnganagia ũũgĩ wa mũtugo na ũmenyo munene wa mĩtugo ya Aafrika othe, ũgatũma thiomi cia mĩciĩ ihote kwĩrutwo, gũcaragwo, na gũtũũra irĩ muoyo.",
+    "features": {
+      "speech": { "title": "Kũmenya Mũgambo", "description": "Mĩbango ya AI ĩrutĩtwo kũmenya na kwandĩka thiomi cia Aafrika cia kwarĩrio, hamwe na mĩario ya mwena na thiomi cia mĩciĩ." },
+      "transcription": { "title": "Kwandĩka Wĩra na Ũũgĩ", "description": "Nĩũgarũraga o ũguo marugano, ndeereti, na masomo marĩa marĩtio matuĩke marĩtwo ma kwandĩkwo wega nĩguo mahonokio na kwĩruta." },
+      "recommendations": { "title": "Mataaro ma Mũndũ Ũmwe", "description": "AI nĩĩonanagia masomo, ngewa, na ũrĩa kĩrĩ thiini ũrĩa kwagĩrĩire na ihinda, wendi, na ũgaacĩru wa mũũrutwo ũmwe." },
+      "storyRegeneration": { "title": "AI Gũthondeka Ngewa cia Ciana Rĩngĩ", "description": "AI iitũ nĩĩcookagia kuuga ngewa cia tene cia Aafrika iria ciendekete na ngerekano ĩrĩa yagĩrĩire harĩ mwana o wothe — ĩgathondeka ciugo, ũraihu wa ciugo, na rũthiomi nĩguo ciana cĩĩrute na njĩra ya ndũire na ngewa iria ciendete biũ." }
+    },
+    "howItWorks": {
+      "label": "Ũrĩa Ĩrutaga Wĩra",
+      "step1": { "label": "Rũgano rwa tene rwathuurwo", "desc": "Rũgano rwa Aafrika rwa tene rũrathuurwo kuuma harĩ mahooya maitũ ma marũgano makĩria ya igana kuuma kontinent yothe." },
+      "step2": { "label": "AI nĩĩthondekaga ngerekano na rũthiomi", "desc": "Rũgano nĩrũrathondekwo rĩngĩ na rũthiomi rwa mwana ũcio na ngerekano ya gũthoma njega — ciugo, mũtaratara wa rũthiomi, na ũraihu wa ciugo ciothe nĩciathondekagwo wĩra ũcio na njĩra ya kwĩyendera." },
+      "step3": { "label": "Mũgambo wa kuuga nĩũthondekwo", "desc": "Mũgambo wa mũndũ ũrĩa wĩciirĩtie rũthiomi rũu nĩũthomaga rũgano na mũgambo, ũgateithia ciana kũnyiitithania ciugo iria ciandĩkĩtwo na mwarĩrie ũrĩa wagĩrĩire." },
+      "step4": { "label": "Mwana athomaga, athikagĩrĩria, na erutaga", "desc": "Mwana arũmagĩrĩra, akahutia ciugo nĩguo aigue ciugagwo, agaaka ciugo na njĩra ya rũgano rũrĩa akenagĩra biũ." }
+    },
+    "ctaSeeAll": "Rora mĩbango yothe ya AI",
+    "ctaAcademy": "Thigaana Academy"
   }
+}
 }
 
 

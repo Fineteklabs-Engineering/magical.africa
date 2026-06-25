@@ -159,7 +159,7 @@ outline: none;
   border: 1px solid #EA580C;
 }
 
-.market-conclusion h1{
+.market-conclusion h2{
   color: rgb(48, 48, 48);
   font-size: 2rem;
 }
@@ -222,8 +222,6 @@ outline: none;
     padding-right: 1rem;
   }
 
-  .market-conclusion-buttons input{
-    
-  }
+  
   
 }

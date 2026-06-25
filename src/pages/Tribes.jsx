@@ -298,7 +298,7 @@ const breakVideos = [
 
             {/* Legend */}
             <div className="tribes-map-legend">
-              <h4>Regions</h4>
+              <p className="legend-title">Regions</p>
               {Object.entries(regionColors).map(([label, color]) => (
                 <div key={label} className="legend-item">
                   <span className="legend-dot" style={{ background: color }} />
@@ -316,7 +316,7 @@ const breakVideos = [
       {/* ── CONTRIBUTE ── */}
       <section className="contribute-story">
         <div className="contribute-text">
-          <h1>{t('tribesPage.contribute.title')}</h1>
+          <h2>{t('tribesPage.contribute.title')}</h2>
           <p>{t('tribesPage.contribute.description')}</p>
           <button className="contribute-btn" onClick={()=> navigate('/blogs')}>{t('tribesPage.contribute.button')}</button>
         </div>

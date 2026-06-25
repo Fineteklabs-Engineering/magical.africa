@@ -332,7 +332,7 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
 
        {/* Best Sellers */}
 <div className='best-sellers-div'>
-  <h1>{t('market.bestSellers.title')}</h1>
+  <h2>{t('market.bestSellers.title')}</h2>
   <p>{t('market.bestSellers.subtitle')}</p>
 
   <div className='best-seller-wrapper'>
@@ -395,7 +395,7 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
 
       {/* Shop Collection */}
       <div className='Shop-div'>
-        <h1>{t('market.shop.title')}</h1>
+        <h2>{t('market.shop.title')}</h2>
         <p className='collection-description'>{t('market.shop.subtitle')}</p>
 
         <div className='collection-div'>
@@ -591,7 +591,7 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
           <h3>{t('market.auctions.tagline')}</h3>
         </div>
 
-        <h1>{t('market.auctions.title')}</h1>
+        <h2>{t('market.auctions.title')}</h2>
         <p>{t('market.auctions.subtitle')}</p>
 
         <div className='Auction-boxes'>
@@ -602,8 +602,8 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
           >
             <div className='Auction-box1-a'></div>
             <div className='Auction-box1-b'>
-              <h3>{t('market.auctions.item1.category')}</h3>
-              <h2>{t('market.auctions.item1.name')}</h2>
+              <p className='auction-category-label'>{t('market.auctions.item1.category')}</p>
+              <h3>{t('market.auctions.item1.name')}</h3>
               <p className='auction-p'>{t('market.auctions.item1.description')}</p>
               <div className='Auction-box1-price'>
                 <span>
@@ -621,8 +621,8 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
           >
             <div className='Auction-box2-a'></div>
             <div className='Auction-box1-b'>
-              <h3>{t('market.auctions.item2.category')}</h3>
-              <h2>{t('market.auctions.item2.name')}</h2>
+              <p className='auction-category-label'>{t('market.auctions.item2.category')}</p>
+              <h3>{t('market.auctions.item2.name')}</h3>
               <p className='auction-p'>{t('market.auctions.item2.description')}</p>
               <div className='Auction-box1-price'>
                 <span>
@@ -639,8 +639,8 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
           >
             <div className='Auction-box3-a'></div>
             <div className='Auction-box1-b'>
-              <h3>{t('market.auctions.item3.category')}</h3>
-              <h2>{t('market.auctions.item3.name')}</h2>
+              <p className='auction-category-label'>{t('market.auctions.item3.category')}</p>
+              <h3>{t('market.auctions.item3.name')}</h3>
               <p className='auction-p'>{t('market.auctions.item3.description')}</p>
               <div className='Auction-box1-price'>
                 <span>
@@ -663,7 +663,7 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
           <h3>{t('market.artisans.tagline')}</h3>
         </div>
 
-        <h1 className='artisans-title'>{t('market.artisans.title')}</h1>
+        <h2 className='artisans-title'>{t('market.artisans.title')}</h2>
         <p className='artisans-subtitle'>{t('market.artisans.subtitle')}</p>
 
         <div className='artisans'>
@@ -703,7 +703,7 @@ const [fashionCategory, setFashionCategory] = useState("Clothing");
 
       {/* Newsletter */}
       <div className='market-conclusion'>
-        <h1>{t('market.newsletter.title')}</h1>
+        <h2>{t('market.newsletter.title')}</h2>
         <p>{t('market.newsletter.subtitle')}</p>
 
         <div className='market-conclusion-buttons'>

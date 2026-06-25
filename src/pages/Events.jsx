@@ -53,7 +53,7 @@ const Events = () => {
       <div className='events-div'>
         <div className='events-div1'>
           <hr />
-          <h1>{t('events.explore.title')}</h1>
+          <h2>{t('events.explore.title')}</h2>
         </div>
 
         <div className='event-lists'>
@@ -83,7 +83,7 @@ const Events = () => {
 
       {/* Events by Month */}
       <div className='event-month'>
-        <h1>{t('events.byMonth.title')}</h1>
+        <h2>{t('events.byMonth.title')}</h2>
         <p className='event-month-p'>{t('events.byMonth.subtitle')}</p>
 
         <div className='months'>
@@ -92,57 +92,57 @@ const Events = () => {
             onClick={handleJanClick}
             style={{ cursor: 'pointer' }}
           >
-            <h1>{t('events.byMonth.months.january')}</h1>
+            <h3>{t('events.byMonth.months.january')}</h3>
             <p>{t('events.byMonth.eventCount.two')}</p>
           </div>
           <div className='feb'>
-            <h1>{t('events.byMonth.months.february')}</h1>
+            <h3>{t('events.byMonth.months.february')}</h3>
             <p>{t('events.byMonth.eventCount.three')}</p>
           </div>
           <div className='march'>
-            <h1>{t('events.byMonth.months.march')}</h1>
+            <h3>{t('events.byMonth.months.march')}</h3>
             <p>{t('events.byMonth.eventCount.one')}</p>
           </div>
           <div className='april'>
-            <h1>{t('events.byMonth.months.april')}</h1>
+            <h3>{t('events.byMonth.months.april')}</h3>
             <p>{t('events.byMonth.eventCount.four')}</p>
           </div>
         </div>
 
         <div className='months2'>
           <div className='jan'>
-            <h1>{t('events.byMonth.months.may')}</h1>
+            <h3>{t('events.byMonth.months.may')}</h3>
             <p>{t('events.byMonth.eventCount.zero')}</p>
           </div>
           <div className='feb'>
-            <h1>{t('events.byMonth.months.june')}</h1>
+            <h3>{t('events.byMonth.months.june')}</h3>
             <p>{t('events.byMonth.eventCount.two')}</p>
           </div>
           <div className='march'>
-            <h1>{t('events.byMonth.months.july')}</h1>
+            <h3>{t('events.byMonth.months.july')}</h3>
             <p>{t('events.byMonth.eventCount.five')}</p>
           </div>
           <div className='april'>
-            <h1>{t('events.byMonth.months.august')}</h1>
+            <h3>{t('events.byMonth.months.august')}</h3>
             <p>{t('events.byMonth.eventCount.three')}</p>
           </div>
         </div>
 
         <div className='months2'>
           <div className='jan'>
-            <h1>{t('events.byMonth.months.september')}</h1>
+            <h3>{t('events.byMonth.months.september')}</h3>
             <p>{t('events.byMonth.eventCount.one')}</p>
           </div>
           <div className='feb'>
-            <h1>{t('events.byMonth.months.october')}</h1>
+            <h3>{t('events.byMonth.months.october')}</h3>
             <p>{t('events.byMonth.eventCount.four')}</p>
           </div>
           <div className='march'>
-            <h1>{t('events.byMonth.months.november')}</h1>
+            <h3>{t('events.byMonth.months.november')}</h3>
             <p>{t('events.byMonth.eventCount.three')}</p>
           </div>
           <div className='april'>
-            <h1>{t('events.byMonth.months.december')}</h1>
+            <h3>{t('events.byMonth.months.december')}</h3>
             <p>{t('events.byMonth.eventCount.six')}</p>
           </div>
         </div>
@@ -155,14 +155,14 @@ const Events = () => {
         <div className='month-event' ref={monthEventRef}>
           {janClicked && (
             <>
-              <h1 className='jan-heading month-ev-slideup month-ev-delay-1'>
+              <h2 className='jan-heading month-ev-slideup month-ev-delay-1'>
                 {t('events.byMonth.janEvents.title')}
-              </h1>
+              </h2>
 
               <div className='jan-events'>
                 <div className='jan-event1 month-ev-slideup month-ev-delay-2'>
-                  <h2>{t('events.byMonth.janEvents.event1.category')}</h2>
-                  <h1>{t('events.byMonth.janEvents.event1.name')}</h1>
+                  <h4>{t('events.byMonth.janEvents.event1.category')}</h4>
+                  <h3>{t('events.byMonth.janEvents.event1.name')}</h3>
                   <p>{t('events.byMonth.janEvents.event1.description')}</p>
                   <hr />
                   <div className='jan-event-location'>
@@ -172,8 +172,8 @@ const Events = () => {
                 </div>
 
                 <div className='jan-event2 month-ev-slideup month-ev-delay-3'>
-                  <h2>{t('events.byMonth.janEvents.event2.category')}</h2>
-                  <h1>{t('events.byMonth.janEvents.event2.name')}</h1>
+                  <h4>{t('events.byMonth.janEvents.event2.category')}</h4>
+                  <h3>{t('events.byMonth.janEvents.event2.name')}</h3>
                   <p>{t('events.byMonth.janEvents.event2.description')}</p>
                   <hr />
                   <div className='jan-event-location'>

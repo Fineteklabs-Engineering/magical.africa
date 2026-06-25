@@ -47,9 +47,7 @@ const Technology = () => {
   const pillarsRef = useRef(null)
   const [pillarsVisible, setPillarsVisible] = useState(false)
   const goToAcademy = useAcademyNavigation()
-        const navigate = useNavigate(); // 👈 1. create navigate
-      
-        // 👈 2. define the handler
+        const navigate = useNavigate(); 
         const handleNavigation = (path) => {
           navigate(path);
         };
@@ -135,7 +133,8 @@ const Technology = () => {
           </div>
           <div className='tech-intro-quote'>
             <blockquote>
-              "{t('technology.intro.quote')}"
+             <p>"{t('technology.intro.quote')}"</p>
+  <cite>Magical Africa</cite>
             </blockquote>
           </div>
         </div>
@@ -213,7 +212,9 @@ const Technology = () => {
         <div className='tech-timeline'>
           {stepIds.map((id, i) => (
             <div key={id} className='tech-timeline-item'>
-              <div className='tech-timeline-step'>
+              <div className='tech-timeline-step'
+              aria-hidden="true"
+              >
                 <span>{t(`technology.howItWorks.steps.${id}.step`)}</span>
               </div>
               {i < stepIds.length - 1 && <div className='tech-timeline-connector' />}

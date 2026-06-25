@@ -12,7 +12,8 @@
     "yourAccounts": "Akaunti línó",
     "addAccount": "Tíkí akaunti e Magical Africa",
     "personal": "Endáà",
-    "technology": "Teknolojia"
+    "technology": "Teknolojia",
+    "maasai": "Ilopeny"
   },
   "hero": {
    
@@ -756,24 +757,19 @@
       "teaching": "Inkibunga naakueny ai inkitobi kuna esidai taisere.",
       "learnMore": "Iyiolo Kishomi"
     },
-    "music": {
-      "title": "Enkishomi E Lturukul",
-      "intro": "Enkishomi e Afrika ore te nkishomi kitok naiborere oltau, neidim kishomi olowaru olong olpul nabo enkiguena, enkishomi, olotuno, oloshon, ai enkirikiet e laibon.",
-      "popularGenres": "Naaisiankiki",
-      "musicGenres": "Inkishomi Naadiffa",
-      "genres": {
-        "djembe": "Enkishomi E Djembe",
-        "maasai": "Enkishomi E Maasai",
-        "isicathamiya": "Isicathamiya",
-        "benga": "Enkishomi E Benga"
-      },
-      "listenTitle": "Iruku Enkishomi E Afrika",
-      "tracks": {
-        "djembe": "Enkishomi E Djembe E Lturukul",
-        "afrobeat": "Afrobeat E Sapuk"
-      },
-      "learnMore": "Iyiolo Kishomi"
-    },
+    "academy": {
+  "title": "Kɔrkina Sapuk",
+  "intro": "Bik kɔrkina lɛ Maa-naapooki tɛnɛ irkulie tɛnɛ a-shomo lɛ kishomo — pukunye nabo apa, naa pooki.",
+  "tags": {
+    "pottery": "Eng'eno",
+    "cooking": "Ɛmurat",
+    "woodwork": "Olchani",
+    "drumming": "Ɛnkɔɔnyek"
+  },
+  "videoLabel": "Kɔrkina Sapuk",
+  "videoTitle": "Eng'eno e Maa",
+  "cta": "Tii Naa"
+},
     "events": {
       "title": "Inkiguena E Lturukul",
       "intro": "Inkiguena e lturukul e Afrika eyiolou ilmurran nabo olotuno, oloshon, enkishomi, olkeri ai olterito, naitashe lturukul aiyiolo enkop e sapuk e Afrika.",
@@ -1374,7 +1370,32 @@
         "detail": "Eitĩamini Mũafrica woothe — atĩ mapato, mahali, kana ũĩ wĩngĩ ye kiufundi — astahili enkipatikana olkiama wake ye ilkiama. Nĩ ũndũ ũcio enkiama yaitore ye msingi ye kujifunza nĩ ya bure, enkiama laitore lĩkĩthiĩ kwa miunganiko ye kipimo cha chini, na uzoefu wacitore ye simu ũboreshĩtwe kwa vifaa vinavyotumiwa zaidi barani."
       }
     ]
+  },
+
+
+  "home": {
+  "aiSection": {
+    "eyebrow": "Enkitobiroto e AI",
+    "title1": "Kɔrkina Etii Tɛnɛ Ɛrishata AI",
+    "title2": "Ɛnkɛ Eitobiro Ŋusuni e Afrika",
+    "subtitle": "Magical Africa eɔɔshiyu ŋusuni e AI naa olcani lenya ŋ Maa-naapooki, ɛrikitin ŋusuni e ɔɔshɔ kuna shɔmɔ, ɔɔshɔ, nɛ ɛyatakini.",
+    "features": {
+      "speech": { "title": "Ɛnyaŋunyo e Engaaki", "description": "Inkera e AI naa rikitin ɛnyaŋunyo nɛ kwandika ŋusuni e Afrika naa shɔmɔ, kɔnɔ ŋusuni e olɔshɔ tɛnɛ olosho." },
+      "transcription": { "title": "Engáruak Le Aitobitobiroi", "description": "Etoroto kɔɔnyek, ɛnkutuk, nɛ kɔrkina ɛnɛ engáruak naa kishomo nɛ kebari." },
+      "recommendations": { "title": "Ŋulukunyek Le Olngʼwesi Naapooki", "description": "AI etoroto kɔrkina, olɔɔshi, nɛ ŋusuni naa rikitin tɛnɛ olngʼwesi enkanyit, intashilikenyiet, nɛ enkishomo." },
+      "storyRegeneration": { "title": "AI Etoroto Olɔɔshi Le Ɛnkɛrai", "description": "AI naa rikitin etoroto olɔɔshi le Maa-naapooki naa rikitin enkerekano e ɛnkɛrai pooki — ŋusuni, ɔrɔk, nɛ ɔlɔshɔ pooki ɛtɔrɔtɔ apa nɛ ɛnkɛrai eshɔmɔ olɔɔshi naa rikitin." }
+    },
+    "howItWorks": {
+      "label": "Kɔrkina Le Etii",
+      "step1": { "label": "Olɔɔshi le tene atɛnata", "desc": "Olɔɔshi le Maa-naapooki atɛnata pɔɔki tɛnɛ ɔrkulie le olɔɔshi 100 naa pooki kɔnɔ kontinent." },
+      "step2": { "label": "AI etoroto enkerekano nɛ ɔlɔshɔ", "desc": "Olɔɔshi ɛtɔrɔtɔ tɛnɛ ɔlɔshɔ ŋ inkera ɛnɛ nkerekano e shomo — ŋusuni, ɛnaɔta, nɛ ɔrɔk e ŋusuni pooki ɛtɔrɔtɔ apa." },
+      "step3": { "label": "Eng'aaki e kɔɔnyek etiimwa", "desc": "Eng'aaki naa ata ɔlɔshɔ enaa kishomo olɔɔshi, kɛyamatakini inkera kuna inkutuk e kaa nɛ ŋusuni e shɔmɔ." },
+      "step4": { "label": "Ɛnkɛra ɛshɔmɔ, ɛyiɛu nɛ ɛrut", "desc": "Ɛnkɛra etumoki, ɛnyangik ŋusuni inra eyiɛu, etii ŋusuni tɛnɛ olɔɔshi naa rikitin sapuk." }
+    },
+    "ctaSeeAll": "Yiɛu pooki e AI",
+    "ctaAcademy": "Tarakini Academy"
   }
+}
 }
 
 

@@ -514,7 +514,7 @@ margin: 0 auto;
   flex-shrink: 0;
 }
 
-.tribes-map-legend h4 {
+.legend-title {
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12rem;
@@ -703,7 +703,7 @@ margin: 0 auto;
     gap: 1rem;
     align-items: center;
   }
-  .tribes-map-legend h4 { width: 100%; margin-bottom: 0; }
+  .legend-title{ width: 100%; margin-bottom: 0; }
   .legend-divider, .legend-note { display: none; }
 }
 

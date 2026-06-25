@@ -16,7 +16,7 @@ const Ceremonies = () => {
 
           <div className='ceremony-text'>
 
-            <h1>Maasai Cultural Week</h1>
+            <h3>Maasai Cultural Week</h3>
 
             <p>
               Experience the Maasai people's warrior dances, beadwork traditions, and cattle ceremonies up close during this immersive week of cultural education and community storytelling.
@@ -38,7 +38,7 @@ const Ceremonies = () => {
 
           <div className='ceremony-text'>
 
-            <h1>Homowo Harvest Festival</h1>
+            <h3>Homowo Harvest Festival</h3>
 
             <p>
               The Ga people of Ghana "hoot at hunger" with this vibrant harvest celebration. Families reunite, ancestral rites are performed, and the streets overflow with kpokpoi.
@@ -60,7 +60,7 @@ const Ceremonies = () => {
 
           <div className='ceremony-text'>
 
-            <h1>Zulu Reed Dance</h1>
+            <h3>Zulu Reed Dance</h3>
 
             <p>
               Thousands of Zulu maidens gather annually to celebrate their heritage in a vibrant ceremony of song, dance, and traditional dress at the royal palace in KwaZulu-Natal.

@@ -89,6 +89,12 @@ const SideMenu = ({ isOpen, onClose }) => {
 
          </li>
 
+          <li onClick={()=> handleNavigation('/creator')}>
+          {t('nav.creator')}
+          <i className="fa-solid fa-chevron-right"></i>
+
+         </li>
+
 
           <li onClick={() => handleNavigation('/events')}>
             {t('sideMenu.events')} <i className="fa-solid fa-chevron-right"></i>
@@ -97,6 +103,8 @@ const SideMenu = ({ isOpen, onClose }) => {
           <li onClick={() => handleNavigation('/music')}>
             {t('sideMenu.music')} <i className="fa-solid fa-chevron-right"></i>
           </li>
+
+
         </ul>
       </div>
     </div>

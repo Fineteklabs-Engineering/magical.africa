@@ -266,7 +266,9 @@
     "contact": "Contact",
     "music": "Music",
     "academy": "Academy",
-    "events": "Events"
+    "events": "Events",
+    "technology": "Technology",
+    "creators": "Creators"
   },
   "terms": "Terms of Use",
   "privacy": "Privacy Policy",
@@ -831,24 +833,19 @@
       "teaching": "Some questions or actions can lead to trouble.",
       "learnMore": "Learn More"
     },
-    "music": {
-      "title": "Cultural Music",
-      "intro": "African music is one of the world's oldest traditions, deeply woven into community life through ceremonies, celebrations, storytelling, dance, and spiritual practices.",
-      "popularGenres": "Popular",
-      "musicGenres": "Music Genres",
-      "genres": {
-        "djembe": "Djembe Music",
-        "maasai": "Maasai chants",
-        "isicathamiya": "Isicathamiya",
-        "benga": "Benga music"
-      },
-      "listenTitle": "Listen to African Music",
-      "tracks": {
-        "djembe": "Traditional Djembe Rhythms",
-        "afrobeat": "Contemporary Afrobeat"
-      },
-      "learnMore": "Learn More"
-    },
+    "academy": {
+  "title": "Our Courses",
+  "intro": "Discover hands-on African craft courses taught by master artisans — learn at your own pace, from anywhere.",
+  "tags": {
+    "pottery": "Pottery",
+    "cooking": "Cooking",
+    "woodwork": "Woodwork",
+    "drumming": "Drumming"
+  },
+  "videoLabel": "Featured lesson",
+  "videoTitle": "The Art of African Pottery",
+  "cta": "Try it now"
+},
     "events": {
       "title": "Cultural Events",
       "intro": "African cultural events celebrate heritage by uniting communities through music, dance, art, food, and storytelling, honoring tradition while embracing modern African identity.",
@@ -1487,13 +1484,38 @@
         "detail": "We believe every African — regardless of income, location, or technical literacy — deserves access to their own cultural heritage. That is why our core learning content is free, our platform works on low-bandwidth connections, and our mobile experience is optimized for the devices most commonly used across the continent. Premium features exist to fund the free tier, not to restrict it."
       }
     ]
+  },
+
+
+  "home": {
+  "aiSection": {
+    "eyebrow": "AI-Powered Platform",
+    "title1": "How We Use AI",
+    "title2": "to Preserve African Languages",
+    "subtitle": "Magical Africa combines cutting edge artificial intelligence with deep Pan-African cultural knowledge making indigenous languages learnable, searchable, and alive.",
+    "features": {
+      "speech": { "title": "Speech Recognition", "description": "AI models trained to recognize and transcribe spoken African languages, even with regional accents and dialects." },
+      "transcription": { "title": "Smart Transcription", "description": "Automatically converts spoken stories, interviews, and lessons into accurate written text for archiving and learning." },
+      "recommendations": { "title": "Personalized Recommendations", "description": "AI suggests lessons, stories, and content tailored to each learner's pace, interests, and progress." },
+      "storyRegeneration": { "title": "AI Children's Story Regeneration", "description": "Our AI retells beloved African folk tales at exactly the right level for each child — adapting vocabulary, sentence length, and language so kids learn naturally through stories they already love." }
+    },
+    "howItWorks": {
+      "label": "How it works",
+      "step1": { "label": "Original folk tale selected", "desc": "A traditional African story is chosen from our curated archive of 100+ tales spanning the continent." },
+      "step2": { "label": "AI adapts level + language", "desc": "The story is regenerated in the child's target language at the correct reading level — vocabulary, grammar, and sentence length all tailored automatically." },
+      "step3": { "label": "Audio narration generated", "desc": "A native-speaker voice synthesis reads the story aloud, helping children connect written words to natural pronunciation." },
+      "step4": { "label": "Child reads, listens & learns", "desc": "The child follows along, tapping words to hear them spoken, building vocabulary through a story they genuinely enjoy." }
+    },
+    "ctaSeeAll": "See all AI features",
+    "ctaAcademy": "Explore the Academy"
   }
-  
-
-
-
-  
 }
+}
+
+
+
+  
+
 
 
 

@@ -138,11 +138,11 @@ justify-content: center;
 gap: 20px;
 }
 
-.problem-text h1{
+.problem-text h2{
   font-size: 1.5rem;
 }
 
-.problem-text h1 span{
+.problem-text h2 span{
   color: rgb(181, 161, 145);
 }
 
@@ -236,7 +236,7 @@ background-color: transparent;
   align-items: center;
   background-color: rgb(242, 239, 235);
 }
-.our-solution h1{
+.our-solution h2{
   font-size: 1.5rem;
   font-weight: 400;
 
@@ -301,8 +301,8 @@ background-color: transparent;
   
 }
 
-.solution-text h1{
-  font-size: 1rem;
+.solution-text h3{
+  font-size: 1.5rem;
   line-height: 1.7rem;
 }
 
@@ -363,7 +363,7 @@ display: none;
   align-items: center;
 
 }
-.working-with h1{
+.working-with h2{
   font-size: 1.5rem;
   text-align: center;
   font-weight: 400;
@@ -585,7 +585,7 @@ padding-top: 6rem;
 .solution-pair{
   flex-direction: column;
 }
-.solution-text h1{
+.solution-text h3{
   text-align: start;
 }
 .solution-text p{
@@ -621,7 +621,7 @@ padding-top: 6rem;
   padding-left:0rem ;
   padding-right: 0rem;
 }
-.solution-text h1{
+.solution-text h3{
   line-height: 1.7rem;
 }
 }

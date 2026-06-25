@@ -88,7 +88,7 @@ const FloatingCard = ({ card }) => {
 
       <div className="ch-card-text">
         <span className="ch-card-label">{card.label}</span>
-        <p className="ch-card-title">{card.title}</p>
+        <h3 className="ch-card-title">{card.title}</h3>
         <p className="ch-card-excerpt">{card.excerpt}</p>
       </div>
     </div>

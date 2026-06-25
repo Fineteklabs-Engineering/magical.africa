@@ -165,7 +165,7 @@ const handleCourseShortcut = (course) => {
       <PageSeo {...SEO_CONTENT.academy} />
 
 
-      {/* ── HERO ── */}
+      
       <div
         className="academy-hero"
         style={{ backgroundImage: 'url(/images/photorealistic-portrait-african-woman.jpg)' }}

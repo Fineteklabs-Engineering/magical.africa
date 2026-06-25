@@ -12,7 +12,8 @@
     "yourAccounts": "Akaunti zako",
     "addAccount": "Ongeza akaunti ya Magical Africa",
     "personal": "Binafsi",
-    "technology": "teknolojia"
+    "technology": "teknolojia",
+    "creator": "Waumbaji"
   },
   "hero": {
    
@@ -819,24 +820,19 @@
       "teaching": "Maswali au matendo fulani yanaweza kuleta shida.",
       "learnMore": "Jifunze Zaidi"
     },
-    "music": {
-      "title": "Muziki wa Kitamaduni",
-      "intro": "Muziki wa Kiafrika ni miongoni mwa mila za muziki za zamani zaidi duniani, uliosukwa kwa kina katika maisha ya jamii kupitia sherehe, matamasha, hadithi, dansi, na mazoezi ya kiroho.",
-      "popularGenres": "Maarufu",
-      "musicGenres": "Aina za Muziki",
-      "genres": {
-        "djembe": "Muziki wa Djembe",
-        "maasai": "Nyimbo za Maasai",
-        "isicathamiya": "Isicathamiya",
-        "benga": "Muziki wa Benga"
-      },
-      "listenTitle": "Sikiliza Muziki wa Kiafrika",
-      "tracks": {
-        "djembe": "Midundo ya Jadi ya Djembe",
-        "afrobeat": "Afrobeat ya Kisasa"
-      },
-      "learnMore": "Jifunze Zaidi"
-    },
+    "academy": {
+  "title": "Kozi Zetu",
+  "intro": "Gundua kozi za ufundi wa Kiafrika zinazofundishwa na mafundi stadi — jifunze kwa kasi yako, popote ulipo.",
+  "tags": {
+    "pottery": "Ufinyanzi",
+    "cooking": "Kupika",
+    "woodwork": "Useremala",
+    "drumming": "Kupiga Ngoma"
+  },
+  "videoLabel": "Somo Maalum",
+  "videoTitle": "Sanaa ya Ufinyanzi wa Kiafrika",
+  "cta": "Jaribu Sasa"
+},
     "events": {
       "title": "Matukio ya Kitamaduni",
       "intro": "Matukio ya kitamaduni ya Kiafrika yanasherehekea urithi kwa kuunganisha jamii kupitia muziki, dansi, sanaa, chakula, na hadithi, kuheshimu mila huku tukikubali utambulisho wa kisasa wa Kiafrika.",
@@ -1437,7 +1433,32 @@
         "detail": "Tunaamini kila Mwafrika — bila kujali mapato, mahali, au ujuzi wa kiufundi — anastahili kupata urithi wake wa kitamaduni. Ndiyo maana maudhui yetu ya msingi ya kujifunza ni ya bure, jukwaa letu linafanya kazi kwenye miunganiko ya kipimo cha chini, na uzoefu wetu wa simu umeboreshwa kwa vifaa vinavyotumiwa zaidi barani."
       }
     ]
+  },
+
+
+  "home": {
+  "aiSection": {
+    "eyebrow": "Jukwaa Linaloendeshwa na AI",
+    "title1": "Jinsi Tunavyotumia AI",
+    "title2": "Kuhifadhi Lugha za Kiafrika",
+    "subtitle": "Magical Africa inachanganya akili bandia ya kisasa na maarifa ya kina ya kitamaduni ya Pan-Afrika, ikifanya lugha za asili kuwa rahisi kujifunza, kutafutwa, na kuendelea kuwa hai.",
+    "features": {
+      "speech": { "title": "Utambuzi wa Sauti", "description": "Mifumo ya AI iliyofunzwa kutambua na kuandika lugha za Kiafrika zinazozungumzwa, ikiwa ni pamoja na lafudhi na lahaja za kikanda." },
+      "transcription": { "title": "Uandishi Mahiri", "description": "Hubadilisha kiotomatiki hadithi, mahojiano, na masomo yaliyosemwa kuwa maandishi sahihi kwa ajili ya kuhifadhi na kujifunza." },
+      "recommendations": { "title": "Mapendekezo Binafsi", "description": "AI inapendekeza masomo, hadithi, na maudhui yaliyolengwa kulingana na kasi, maslahi, na maendeleo ya kila mwanafunzi." },
+      "storyRegeneration": { "title": "AI Kuunda Upya Hadithi za Watoto", "description": "AI yetu inasimulia upya hadithi za jadi za Kiafrika kwa kiwango sahihi kwa kila mtoto — ikirekebisha msamiati, urefu wa sentensi, na lugha ili watoto wajifunze kwa kawaida kupitia hadithi wanazozipenda." }
+    },
+    "howItWorks": {
+      "label": "Jinsi Inavyofanya Kazi",
+      "step1": { "label": "Hadithi ya jadi inachaguliwa", "desc": "Hadithi ya jadi ya Kiafrika inachaguliwa kutoka kwenye hifadhi yetu ya hadithi zaidi ya 100 kutoka kote barani." },
+      "step2": { "label": "AI inabadilisha kiwango na lugha", "desc": "Hadithi inarekebishwa katika lugha lengwa ya mtoto kwa kiwango sahihi cha usomaji — msamiati, sarufi, na urefu wa sentensi vinarekebishwa kiotomatiki." },
+      "step3": { "label": "Sauti ya masimulizi inatengenezwa", "desc": "Sauti ya mzungumzaji asilia inasoma hadithi kwa sauti, ikimsaidia mtoto kuunganisha maneno yaliyoandikwa na matamshi sahihi." },
+      "step4": { "label": "Mtoto anasoma, anasikiliza na anajifunza", "desc": "Mtoto anafuatilia, akigusa maneno ili kuyasikia yakisemwa, akijenga msamiati kupitia hadithi anayoifurahia kweli." }
+    },
+    "ctaSeeAll": "Tazama vipengele vyote vya AI",
+    "ctaAcademy": "Gundua Academy"
   }
+}
 }
 
 

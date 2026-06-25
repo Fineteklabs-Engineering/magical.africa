@@ -33,8 +33,6 @@ const Languages = () => {
 
 
 
-
-
 <div 
   className={`languages ${isPaused ? 'paused' : ''}`}
   id="languageCarousel"

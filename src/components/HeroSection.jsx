@@ -122,7 +122,7 @@ useEffect(() => {
           <div className="hero-image">
             <span className="community-name">{slide.name}</span>
             {slide.flag && (
-              <img src={slide.flag} alt="" className="hero-img" style={{ display: 'block' }} />
+              <img src={slide.flag} alt="hero-section-image" className="hero-img" style={{ display: 'block' }} />
             )}
           </div>
         </>

@@ -38,7 +38,7 @@ justify-content: center;
   z-index: 1;
 }
 
-.food-div1 h1, .food-div2 h1, .food-div3 h1, .food-div4 h1{
+.food-div1 h3, .food-div2 h3, .food-div3 h3, .food-div4 h3{
 
  text-align: center;
   z-index: 2;

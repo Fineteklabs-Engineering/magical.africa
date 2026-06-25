@@ -34,7 +34,7 @@
  padding-top: 1rem;
 }
 
-.event-month h1{
+.event-month h2{
   font-size: 1.5rem;
   text-align: center;
 }
@@ -76,7 +76,7 @@ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 color: white;
 }
 
-.jan h1, .feb h1, .march h1, .april h1{
+.jan h3, .feb h3, .march h3, .april h3{
 font-size: 1rem;
 color: #4a3728;
 
@@ -98,7 +98,7 @@ font-size: 0.875rem;
   padding-top: 2rem;
 }
 
-.month-event h1{
+.month-event h2{
   align-self: self-start;
   padding-bottom: 3rem;
 }
@@ -148,14 +148,14 @@ background: #1a2e1e;
   font-weight: 600;
 }
 
-.jan-event1 h1, .jan-event2 h1{
+.jan-event1 h4, .jan-event2 h4{
   font-size: 1.2rem;
   text-align: start;
   padding-bottom: 0rem;
   color: #f2ddb0;
 }
 
-.jan-event1 h2, .jan-event2 h2{
+.jan-event1 h3, .jan-event2 h3{
 font-size: 0.9rem;
 font-weight: 400;
 color: #c8611a;

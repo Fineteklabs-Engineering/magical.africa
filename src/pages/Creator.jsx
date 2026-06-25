@@ -16,7 +16,7 @@ const Creator = () => {
   schemaType="CollectionPage"
       />
    <CreatorHero />
-   <img src="/images/maasai-pattern.avif" alt="" />
+   <img src="/images/maasai-pattern.avif" alt="Maasai decorative pattern" />
    <CreatorGrid />
     <Footer />
     

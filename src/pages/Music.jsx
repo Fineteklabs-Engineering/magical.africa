@@ -93,32 +93,32 @@ const Music = () => {
         <div className="music-instruments-grid">
           <div className="music-instrument-card instrument1">
             <div className="music-instrument-icon"></div>
-            <h4>{t('music.instruments.kora.name')}</h4>
+            <h3>{t('music.instruments.kora.name')}</h3>
             <p>{t('music.instruments.kora.description')}</p>
           </div>
           <div className="music-instrument-card instrument2">
             <div className="music-instrument-icon"></div>
-            <h4>{t('music.instruments.djembe.name')}</h4>
+            <h3>{t('music.instruments.djembe.name')}</h3>
             <p>{t('music.instruments.djembe.description')}</p>
           </div>
           <div className="music-instrument-card instrument3">
             <div className="music-instrument-icon"></div>
-            <h4>{t('music.instruments.mbira.name')}</h4>
+            <h3>{t('music.instruments.mbira.name')}</h3>
             <p>{t('music.instruments.mbira.description')}</p>
           </div>
           <div className="music-instrument-card instrument4">
             <div className="music-instrument-icon"></div>
-            <h4>{t('music.instruments.talkingDrum.name')}</h4>
+            <h3>{t('music.instruments.talkingDrum.name')}</h3>
             <p>{t('music.instruments.talkingDrum.description')}</p>
           </div>
           <div className="music-instrument-card instrument5">
             <div className="music-instrument-icon"></div>
-            <h4>{t('music.instruments.krar.name')}</h4>
+            <h3>{t('music.instruments.krar.name')}</h3>
             <p>{t('music.instruments.krar.description')}</p>
           </div>
           <div className="music-instrument-card instrument6">
             <div className="music-instrument-icon"></div>
-            <h4>{t('music.instruments.balafon.name')}</h4>
+            <h3>{t('music.instruments.balafon.name')}</h3>
             <p>{t('music.instruments.balafon.description')}</p>
           </div>
         </div>
@@ -132,7 +132,7 @@ const Music = () => {
 
           <div className="music-artist-card artist1">
             <div className="music-artist-overlay">
-              <h4>Fela Kuti</h4>
+              <h3>Fela Kuti</h3>
               <span className="music-artist-genre">{t('music.artists.artist1.genre')}</span>
               <p>{t('music.artists.artist1.description')}</p>
             </div>
@@ -140,7 +140,7 @@ const Music = () => {
 
           <div className="music-artist-card artist2">
             <div className="music-artist-overlay">
-              <h4>Miriam Makeba</h4>
+              <h3>Miriam Makeba</h3>
               <span className="music-artist-genre">{t('music.artists.artist2.genre')}</span>
               <p>{t('music.artists.artist2.description')}</p>
             </div>
@@ -148,7 +148,7 @@ const Music = () => {
 
           <div className="music-artist-card artist3">
             <div className="music-artist-overlay">
-              <h4>Burna Boy</h4>
+              <h3>Burna Boy</h3>
               <span className="music-artist-genre">{t('music.artists.artist3.genre')}</span>
               <p>{t('music.artists.artist3.description')}</p>
             </div>
@@ -156,7 +156,7 @@ const Music = () => {
 
           <div className="music-artist-card artist4">
             <div className="music-artist-overlay">
-              <h4>Tems</h4>
+              <h3>Tems</h3>
               <span className="music-artist-genre">{t('music.artists.artist4.genre')}</span>
               <p>{t('music.artists.artist4.description')}</p>
             </div>
@@ -164,7 +164,7 @@ const Music = () => {
 
           <div className="music-artist-card artist5">
             <div className="music-artist-overlay">
-              <h4>Ali Farka Touré</h4>
+              <h3>Ali Farka Touré</h3>
               <span className="music-artist-genre">{t('music.artists.artist5.genre')}</span>
               <p>{t('music.artists.artist5.description')}</p>
             </div>
@@ -172,7 +172,7 @@ const Music = () => {
 
           <div className="music-artist-card artist6">
             <div className="music-artist-overlay">
-              <h4>Youssou N'Dour</h4>
+              <h3>Youssou N'Dour</h3>
               <span className="music-artist-genre">{t('music.artists.artist6.genre')}</span>
               <p>{t('music.artists.artist6.description')}</p>
             </div>
@@ -180,7 +180,7 @@ const Music = () => {
 
           <div className="music-artist-card artist7">
             <div className="music-artist-overlay">
-              <h4>Ima Thomas</h4>
+              <h3>Ima Thomas</h3>
               <span className="music-artist-genre">{t('music.artists.artist7.genre')}</span>
               <p>{t('music.artists.artist7.description')}</p>
             </div>
@@ -195,19 +195,19 @@ const Music = () => {
         <p className="music-section-sub">{t('music.influence.subtitle')}</p>
         <div className="music-influence-grid">
           <div className="music-influence-card">
-            <h4>{t('music.influence.jazz.name')}</h4>
+            <h3>{t('music.influence.jazz.name')}</h3>
             <p>{t('music.influence.jazz.description')}</p>
           </div>
           <div className="music-influence-card">
-            <h4>{t('music.influence.reggae.name')}</h4>
+            <h3>{t('music.influence.reggae.name')}</h3>
             <p>{t('music.influence.reggae.description')}</p>
           </div>
           <div className="music-influence-card">
-            <h4>{t('music.influence.hiphop.name')}</h4>
+            <h3>{t('music.influence.hiphop.name')}</h3>
             <p>{t('music.influence.hiphop.description')}</p>
           </div>
           <div className="music-influence-card">
-            <h4>{t('music.influence.electronic.name')}</h4>
+            <h3>{t('music.influence.electronic.name')}</h3>
             <p>{t('music.influence.electronic.description')}</p>
           </div>
         </div>

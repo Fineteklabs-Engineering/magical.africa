@@ -122,44 +122,38 @@ const CultureCard = () => {
         </div>
 
         {/* SECTION 2 — Academy */}
-        <div className='slide'>
-          <h1><i className="fa-solid fa-graduation-cap"></i> Our Courses</h1>
+<div className='slide'>
+  <h1><i className="fa-solid fa-graduation-cap"></i> {t('cultureCard.academy.title')}</h1>
 
-          <p className='academy-intro'>
-            Discover hands-on African craft courses taught by master artisans — learn at your own pace, from anywhere.
-          </p>
+  <p className='academy-intro'>
+    {t('cultureCard.academy.intro')}
+  </p>
 
-          <div className='academy-course-tag'>
-            <span>Pottery</span>
-            <span>Cooking</span>
-            <span>Woodwork</span>
-            <span>Drumming</span>
-          </div>
+  <div className='academy-course-tag'>
+    <span>{t('cultureCard.academy.tags.pottery')}</span>
+    <span>{t('cultureCard.academy.tags.cooking')}</span>
+    <span>{t('cultureCard.academy.tags.woodwork')}</span>
+    <span>{t('cultureCard.academy.tags.drumming')}</span>
+  </div>
 
-          <p className='academy-video-label'>
-            <i className="fa-solid fa-circle-play"></i> Featured lesson
-          </p>
+  <p className='academy-video-label'>
+    <i className="fa-solid fa-circle-play"></i> {t('cultureCard.academy.videoLabel')}
+  </p>
 
-          <div className='academy-video-wrapper'>
-            <video
-              className='academy-video'
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster="/images/pottery-thumb.jpg"
-            >
-              <source src="/images/pottery-video.mp4" type="video/mp4" />
-            </video>
-            <div className='academy-video-overlay'>
-              <span className='academy-video-title'>The Art of African Pottery</span>
-            </div>
-          </div>
+  <div className='academy-video-wrapper'>
+    <video className='academy-video' autoPlay muted loop playsInline poster="/images/pottery-thumb.jpg">
+      <source src="/images/pottery-video.mp4" type="video/mp4" />
+    </video>
+    <div className='academy-video-overlay'>
+      <span className='academy-video-title'>{t('cultureCard.academy.videoTitle')}</span>
+    </div>
+  </div>
 
-          <button className='academy-cta2' onClick={goToAcademy}>
-            Try it now <i className="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
+  <button className='academy-cta2' onClick={goToAcademy}>
+    {t('cultureCard.academy.cta')} <i className="fa-solid fa-arrow-right"></i>
+  </button>
+</div>
+
 
         {/* SECTION 3 — Events */}
         <div className='slide'>
