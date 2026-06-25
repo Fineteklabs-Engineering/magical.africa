@@ -12,7 +12,7 @@ const Teacher = () => {
   const location = useLocation()
   const { userData } = useAuth()
 
-  // ✅ Check if we're editing an existing course
+ 
   const editCourseId = location.state?.editCourseId || null
 
   const [title, setTitle] = useState('')
@@ -23,7 +23,7 @@ const Teacher = () => {
   const [pricingModel, setPricingModel] = useState('free')
   const [regularPrice, setRegularPrice] = useState('')
   const [salePrice, setSalePrice] = useState('')
-  const [featuredImage, setFeaturedImage] = useState(null)  // base64 string or Firebase URL
+  const [featuredImage, setFeaturedImage] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [success, setSuccess] = useState(false)
