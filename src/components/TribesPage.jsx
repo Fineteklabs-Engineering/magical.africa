@@ -287,6 +287,7 @@ const dynamicSeo = tribeSeo ? {
   if (!tribe) {
     return (
       <>
+
       {dynamicSeo && <PageSeo {...dynamicSeo} />}
         <Navbar />
         <div className="tp-not-found">
@@ -301,7 +302,7 @@ const dynamicSeo = tribeSeo ? {
 
   return (
     <>
-    <h1>COOLIFY TEST 25 JUNE</h1>
+   
       {dynamicSeo && <PageSeo {...dynamicSeo} />}
       <div className="tp-page">
         <Navbar />
