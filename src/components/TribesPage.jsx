@@ -24,7 +24,7 @@ const TRIBE_RADIO = {
     name: 'Mayian FM',
     freq: '100.7 FM · Narok, Kenya',
     stream: 'https://mayianfm-atunwadigital.streamguys1.com/mayianfm',
-    image: 'https://radio.co.ke/media/station/mayian-fm.webp',  // ← put your image path here
+    image: 'https://radio.co.ke/media/station/mayian-fm.webp', 
   },
   luo: {
     name: 'Ramogi FM',
