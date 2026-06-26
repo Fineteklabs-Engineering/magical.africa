@@ -1375,20 +1375,20 @@
     "eyebrow": "Itandĩko Yĩa Wĩa Yathondekwa nĩ AI",
     "title1": "Ũndũ Twĩhũthĩsya AI",
     "title2": "Kũsiia Sũthyomi sya Aafrika",
-    "subtitle": "Magical Africa nĩyũnganasya ũũgĩ wa mũtugo na ũmenyo mũnene wa mĩtugo ya Aafrika onthe, ũgatuma sũthyomi sya mĩciĩ syĩthĩwa na kwĩmanyĩsya, gũkwatwa, na gũtũũra syĩ na thayũ.",
+    "subtitle": "Magical Africa yooa AI na ũũgi wa ũtamaduni wa Pan-Africa — ikĩumbiia ndũmi sya kale isomeke na ikorwe na ũima.",
     "features": {
-      "speech": { "title": "Kũmenya Mũgambo", "description": "Mĩbango ya AI ĩrutĩtwe kũmenya na kwandĩka sũthyomi sya Aafrika sya kwarĩrio, ndũmĩnyĩ na mĩario ya mwena na sũthyomi sya mĩciĩ." },
-      "transcription": { "title": "Kwandĩka na Ũũgĩ", "description": "Nĩwĩlasya o ũu ngewa, ndeesya, na masomo marĩa marĩtio matuĩke maandĩki ma kwĩthĩwa nesa kana mahonokie na kwĩmanyĩsya." },
-      "recommendations": { "title": "Mataaro ma Mũndũ Ũmwe", "description": "AI nĩyonanasya masomo, ngewa, na kĩla kĩrĩ thini ũrĩa kwagĩrĩire na ivinda, wendi, na ũseo wa mwĩmanyĩsi ũmwe." },
-      "storyRegeneration": { "title": "AI Gũthondeka Ngewa sya Syana Ingĩ", "description": "AI yitũ nĩyĩkũaa kuma ngewa sya tene sya Aafrika syenekete na ngerekano ĩla yagĩrĩire harĩ kana o wothe — ĩkathondeka ndeto, ũraihu wa ndeto, na ũthyomi nĩ kana syana syĩmanyĩsye na njĩa ya ngewa ila syendete biũ." }
+      "speech": { "title": "Kũũa Sauti", "description": "AI yatheuliwe kũũa ndũmi sya Africa syoiwa na ũvoo ũila ũila wa mbũi." },
+"transcription": { "title": "Kwandĩka kwa Ũũngu", "description": "Yoiwa nthimo na mũhũthia ũsyaiwe gũtũũrika andĩko maarũ kwa kũsũngĩa na kwĩsomia." },
+"recommendations": { "title": "Maũndũ ma Mwana", "description": "AI yoiwa mwana maũndũ ma kwĩsomia na nthimo syatheuliwe na ũvoo wake wa kwĩsomia." },
+      "storyRegeneration": { "title": "AI Gũthondeka Ngewa sya Syana Ingĩ", "description": "AI yoiwa nthimo sya Africa syatheuliwe kwa mwana ũila ũila - nĩ vana vĩsomie na njĩa ya kawaida kwa nthimo syoo syenda."}
     },
     "howItWorks": {
-      "label": "Ũndũ Ũrĩa Wĩaa",
-      "step1": { "label": "Ngewa ya tene yathuurwa", "desc": "Ngewa ya Aafrika ya tene yĩthuurwa kuma kwĩ mahooya maitũ ma ngewa makĩria ya igana kuma kontinent yonthe." },
-      "step2": { "label": "AI nĩĩthondeka ngerekano na ũthyomi", "desc": "Ngewa nĩyathondekwa ĩngĩ na ũthyomi wa kana ũsu na ngerekano ya gũthoma nzeo — ndeto, mũtaratara wa ũthyomi, na ũraihu wa ndeto syonthe nĩsyathondekawa na njĩa ya kwĩyendeesya." },
-      "step3": { "label": "Mũgambo wa kwasya nĩwathondekwa", "desc": "Mũgambo wa mũndũ ũla wĩsĩ ũthyomi ũsu nĩwathoma ngewa na mũgambo, ũgatetheesya syana kũnyiitania ndeto syandĩkĩtwe na mwarĩrie ũla wagĩrĩire." },
-      "step4": { "label": "Kana yĩthoma, yĩthikĩrĩsya, na yĩmanyĩsya", "desc": "Kana yĩatĩĩaa, ĩkahutia ndeto nĩ kana yĩew ĩthyomwa, ĩkaaka ndeto na njĩa ya ngewa ĩla yĩkenetye nayo biũ." }
-    },
+  "label": "Nĩ ũvoo ũndũ ũyũ ũkĩĩtawa",
+  "step1": { "label": "Nthimo yatheuliwe", "desc": "Nthimo ya Africa yatheuliwe kuuma kwa nzeo yetu ya nthimo isyo ikũlu na 100." },
+  "step2": { "label": "AI yooa nthimo", "desc": "Yoiwa kana yaulũlũkiie kĩĩndĩ kya mwana na kĩemo kya kwĩsomia kĩa kĩĩkatĩkĩlĩie." },
+  "step3": { "label": "Sauti ya kwĩsomia yongelwe", "desc": "Mũndũ ũmanyae ũlũ rũthimu rũũsomea na sauti ya kwĩsomia kwa kawaida." },
+  "step4": { "label": "Mwana asomea na kwĩsomia", "desc": "Vana vafuatilia, vakĩkĩnya maũndũ ma kwĩvwa na kwĩyĩkia maneno mapya." }
+},
     "ctaSeeAll": "Sisya kĩla kĩndũ kya AI",
     "ctaAcademy": "Mantha Academy"
   }

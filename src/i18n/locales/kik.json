@@ -1365,20 +1365,20 @@
     "eyebrow": "Igũrũ Rĩa Wĩra Rĩathondekwo nĩ AI",
     "title1": "Ũrĩa Tũhũthagĩra AI",
     "title2": "Kũigana Thiomi cia Aafrika",
-    "subtitle": "Magical Africa nĩĩnganagia ũũgĩ wa mũtugo na ũmenyo munene wa mĩtugo ya Aafrika othe, ũgatũma thiomi cia mĩciĩ ihote kwĩrutwo, gũcaragwo, na gũtũũra irĩ muoyo.",
+   "subtitle": "Magical Africa ĩkĩhũrũka AI na ũũgi wa ũtamaduni wa Pan-Africa ĩkĩringĩria ndũmi cia mbere ithomeke na ikorwo na ũima.",
     "features": {
-      "speech": { "title": "Kũmenya Mũgambo", "description": "Mĩbango ya AI ĩrutĩtwo kũmenya na kwandĩka thiomi cia Aafrika cia kwarĩrio, hamwe na mĩario ya mwena na thiomi cia mĩciĩ." },
-      "transcription": { "title": "Kwandĩka Wĩra na Ũũgĩ", "description": "Nĩũgarũraga o ũguo marugano, ndeereti, na masomo marĩa marĩtio matuĩke marĩtwo ma kwandĩkwo wega nĩguo mahonokio na kwĩruta." },
-      "recommendations": { "title": "Mataaro ma Mũndũ Ũmwe", "description": "AI nĩĩonanagia masomo, ngewa, na ũrĩa kĩrĩ thiini ũrĩa kwagĩrĩire na ihinda, wendi, na ũgaacĩru wa mũũrutwo ũmwe." },
-      "storyRegeneration": { "title": "AI Gũthondeka Ngewa cia Ciana Rĩngĩ", "description": "AI iitũ nĩĩcookagia kuuga ngewa cia tene cia Aafrika iria ciendekete na ngerekano ĩrĩa yagĩrĩire harĩ mwana o wothe — ĩgathondeka ciugo, ũraihu wa ciugo, na rũthiomi nĩguo ciana cĩĩrute na njĩra ya ndũire na ngewa iria ciendete biũ." }
+      "speech": { "title": "Kũmenyithia Rũgano", "description": "AI ĩthomithitwe kũmenyithia ndũmi cia Africa icio ũrĩa ũkĩaria na ũguo ũrĩa ũkĩaria." },
+"transcription": { "title": "Gũcooka Kwandĩka", "description": "Ĩkĩhũrũka ngano na mũhũthia ũrĩa ũkĩariwo gũtũũrika andĩko maarũ maka gũcookia na gũthoma." },
+"recommendations": { "title": "Ũhũrũ wa Mwana", "description": "AI ĩkĩhe mwana ũhũrũ wa gũthoma na ngano icio ĩkĩrũmĩrĩria ũguo ũkĩthoma." },
+      "storyRegeneration": { "title": "AI Gũthondeka Ngewa cia Ciana Rĩngĩ", "description": "AI ĩkĩaria ngano cia Africa cia kĩĩndĩ kĩa mwana ũrĩa ũrĩ na ũrĩa - nĩguo ciana ithome na njĩra ya kamũthũ kuuma ngano icio ĩkĩenda." }
     },
     "howItWorks": {
-      "label": "Ũrĩa Ĩrutaga Wĩra",
-      "step1": { "label": "Rũgano rwa tene rwathuurwo", "desc": "Rũgano rwa Aafrika rwa tene rũrathuurwo kuuma harĩ mahooya maitũ ma marũgano makĩria ya igana kuuma kontinent yothe." },
-      "step2": { "label": "AI nĩĩthondekaga ngerekano na rũthiomi", "desc": "Rũgano nĩrũrathondekwo rĩngĩ na rũthiomi rwa mwana ũcio na ngerekano ya gũthoma njega — ciugo, mũtaratara wa rũthiomi, na ũraihu wa ciugo ciothe nĩciathondekagwo wĩra ũcio na njĩra ya kwĩyendera." },
-      "step3": { "label": "Mũgambo wa kuuga nĩũthondekwo", "desc": "Mũgambo wa mũndũ ũrĩa wĩciirĩtie rũthiomi rũu nĩũthomaga rũgano na mũgambo, ũgateithia ciana kũnyiitithania ciugo iria ciandĩkĩtwo na mwarĩrie ũrĩa wagĩrĩire." },
-      "step4": { "label": "Mwana athomaga, athikagĩrĩria, na erutaga", "desc": "Mwana arũmagĩrĩra, akahutia ciugo nĩguo aigue ciugagwo, agaaka ciugo na njĩra ya rũgano rũrĩa akenagĩra biũ." }
-    },
+  "label": "Ũndũ ũyũ ũrĩa ũkĩĩra",
+  "step1": { "label": "Gĩkuyu kĩahũrũirio", "desc": "Gĩkuyu kĩa Africa kĩahũrũirio kuuma ikũmbĩ rĩetũ rĩa ngano igĩrĩ na 100." },
+  "step2": { "label": "AI ĩgũthindũka ngano", "desc": "Ĩgũkorwo ĩkĩhũrũka gĩkĩene gĩa mwana na kĩemo kĩa gũtoma kĩrĩa kĩũgĩrĩire." },
+  "step3": { "label": "Rũgano rwa kũiguithia rũongekio", "desc": "Mũndũ ũrĩa ũmenyaga ũrĩa rũgano rũagĩa na rĩtwa rĩakĩiguithia." },
+  "step4": { "label": "Mwana agĩtoma na gĩkĩmenyithia", "desc": "Ciana igĩkũra, igĩkĩhiga maũndũ ma kũiguithia na gũtuĩka na ũrĩa ũhoro." }
+},
     "ctaSeeAll": "Rora mĩbango yothe ya AI",
     "ctaAcademy": "Thigaana Academy"
   }

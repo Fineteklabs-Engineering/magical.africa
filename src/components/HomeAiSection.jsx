@@ -187,11 +187,11 @@ const HomeAiSection = ({ videoSrc = '/images/child.mp4' }) => {
         </h2>
 
         <p className="has-sub">
-          {t(
-            'home.aiSection.subtitle',
-            'Magical Africa combines cutting edge artificial intelligence with deep Pan-African cultural knowledge making indigenous languages learnable, searchable, and alive.',
-          )}
-        </p>
+  {t(
+    'home.aiSection.subtitle',
+    'Magical Africa blends AI with Pan-African cultural knowledge - making indigenous languages learnable and alive.',
+  )}
+</p>
 
         {/* ── Carousel viewport ── */}
         <div className="has-carousel">
@@ -232,12 +232,12 @@ const HomeAiSection = ({ videoSrc = '/images/child.mp4' }) => {
                     {t('home.aiSection.features.storyRegeneration.title', 'AI Children\'s Story Regeneration')}
                   </h3>
 
-                  <p className="has-story-body">
-                    {t(
-                      'home.aiSection.features.storyRegeneration.description',
-                      'Our AI retells beloved African folk tales at exactly the right level for each child — adapting vocabulary, sentence length, and language so kids learn naturally through stories they already love.',
-                    )}
-                  </p>
+                 <p className="has-story-body">
+  {t(
+    'home.aiSection.features.storyRegeneration.description',
+    'AI retells African folk tales tailored to each child - so kids learn naturally through stories they love.',
+  )}
+</p>
 
                   <div className="has-story-stats">
                     <div className="has-card-stat has-card-stat--orange">

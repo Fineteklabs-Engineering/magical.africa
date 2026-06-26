@@ -1492,20 +1492,20 @@
     "eyebrow": "AI-Powered Platform",
     "title1": "How We Use AI",
     "title2": "to Preserve African Languages",
-    "subtitle": "Magical Africa combines cutting edge artificial intelligence with deep Pan-African cultural knowledge making indigenous languages learnable, searchable, and alive.",
+    "subtitle": "Magical Africa blends AI with Pan-African cultural knowledge making indigenous languages learnable and alive.",
     "features": {
-      "speech": { "title": "Speech Recognition", "description": "AI models trained to recognize and transcribe spoken African languages, even with regional accents and dialects." },
-      "transcription": { "title": "Smart Transcription", "description": "Automatically converts spoken stories, interviews, and lessons into accurate written text for archiving and learning." },
-      "recommendations": { "title": "Personalized Recommendations", "description": "AI suggests lessons, stories, and content tailored to each learner's pace, interests, and progress." },
-      "storyRegeneration": { "title": "AI Children's Story Regeneration", "description": "Our AI retells beloved African folk tales at exactly the right level for each child — adapting vocabulary, sentence length, and language so kids learn naturally through stories they already love." }
+     "speech": { "title": "Speech Recognition", "description": "AI trained to recognize spoken African languages across regional accents and dialects." },
+"transcription": { "title": "Smart Transcription", "description": "Converts spoken stories and lessons into accurate written text for archiving and learning." },
+"recommendations": { "title": "Personalized Recommendations", "description": "AI suggests lessons and stories tailored to each learner's pace and progress." },
+      "storyRegeneration": { "title": "AI Children's Story Regeneration", "description": "AI retells African folk tales tailored to each child - so kids learn naturally through stories they love." }
     },
-    "howItWorks": {
-      "label": "How it works",
-      "step1": { "label": "Original folk tale selected", "desc": "A traditional African story is chosen from our curated archive of 100+ tales spanning the continent." },
-      "step2": { "label": "AI adapts level + language", "desc": "The story is regenerated in the child's target language at the correct reading level — vocabulary, grammar, and sentence length all tailored automatically." },
-      "step3": { "label": "Audio narration generated", "desc": "A native-speaker voice synthesis reads the story aloud, helping children connect written words to natural pronunciation." },
-      "step4": { "label": "Child reads, listens & learns", "desc": "The child follows along, tapping words to hear them spoken, building vocabulary through a story they genuinely enjoy." }
-    },
+   "howItWorks": {
+  "label": "How it works",
+  "step1": { "label": "Folk tale selected", "desc": "A traditional African story is chosen from our archive of 100+ tales." },
+  "step2": { "label": "AI adapts the story", "desc": "Regenerated in the child's target language at the right reading level." },
+  "step3": { "label": "Audio narration added", "desc": "A native-speaker voice reads the story aloud for natural pronunciation." },
+  "step4": { "label": "Child reads & learns", "desc": "Kids follow along, tapping words to hear them and build vocabulary." }
+},
     "ctaSeeAll": "See all AI features",
     "ctaAcademy": "Explore the Academy"
   }

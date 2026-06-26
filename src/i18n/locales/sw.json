@@ -1441,20 +1441,21 @@
     "eyebrow": "Jukwaa Linaloendeshwa na AI",
     "title1": "Jinsi Tunavyotumia AI",
     "title2": "Kuhifadhi Lugha za Kiafrika",
-    "subtitle": "Magical Africa inachanganya akili bandia ya kisasa na maarifa ya kina ya kitamaduni ya Pan-Afrika, ikifanya lugha za asili kuwa rahisi kujifunza, kutafutwa, na kuendelea kuwa hai.",
+    "subtitle": "Magical Africa inachanganya AI na maarifa ya kitamaduni ya Pan-Afrika ikifanya lugha za asili ziweze kujifunzwa na kuishi.",
     "features": {
-      "speech": { "title": "Utambuzi wa Sauti", "description": "Mifumo ya AI iliyofunzwa kutambua na kuandika lugha za Kiafrika zinazozungumzwa, ikiwa ni pamoja na lafudhi na lahaja za kikanda." },
-      "transcription": { "title": "Uandishi Mahiri", "description": "Hubadilisha kiotomatiki hadithi, mahojiano, na masomo yaliyosemwa kuwa maandishi sahihi kwa ajili ya kuhifadhi na kujifunza." },
-      "recommendations": { "title": "Mapendekezo Binafsi", "description": "AI inapendekeza masomo, hadithi, na maudhui yaliyolengwa kulingana na kasi, maslahi, na maendeleo ya kila mwanafunzi." },
-      "storyRegeneration": { "title": "AI Kuunda Upya Hadithi za Watoto", "description": "AI yetu inasimulia upya hadithi za jadi za Kiafrika kwa kiwango sahihi kwa kila mtoto — ikirekebisha msamiati, urefu wa sentensi, na lugha ili watoto wajifunze kwa kawaida kupitia hadithi wanazozipenda." }
+     "speech": { "title": "Utambuzi wa Sauti", "description": "AI iliyofunzwa kutambua lugha za Afrika zinazozungumzwa katika lahaja mbalimbali." },
+"transcription": { "title": "Uandishi Mahiri", "description": "Inabadilisha hadithi na masomo yanayosemwa kuwa maandishi sahihi kwa kuhifadhi na kujifunza." },
+"recommendations": { "title": "Mapendekezo Binafsi", "description": "AI inapendekeza masomo na hadithi kulingana na kasi na maendeleo ya kila mwanafunzi." },
+      "storyRegeneration": { "title": "AI Kuunda Upya Hadithi za Watoto", "description": "AI inasimula hadithi za jadi za Afrika zilizoundwa kwa kila mtoto - ili watoto wajifunze kwa njia ya asili kupitia hadithi wanazopenda."}
     },
+
     "howItWorks": {
-      "label": "Jinsi Inavyofanya Kazi",
-      "step1": { "label": "Hadithi ya jadi inachaguliwa", "desc": "Hadithi ya jadi ya Kiafrika inachaguliwa kutoka kwenye hifadhi yetu ya hadithi zaidi ya 100 kutoka kote barani." },
-      "step2": { "label": "AI inabadilisha kiwango na lugha", "desc": "Hadithi inarekebishwa katika lugha lengwa ya mtoto kwa kiwango sahihi cha usomaji — msamiati, sarufi, na urefu wa sentensi vinarekebishwa kiotomatiki." },
-      "step3": { "label": "Sauti ya masimulizi inatengenezwa", "desc": "Sauti ya mzungumzaji asilia inasoma hadithi kwa sauti, ikimsaidia mtoto kuunganisha maneno yaliyoandikwa na matamshi sahihi." },
-      "step4": { "label": "Mtoto anasoma, anasikiliza na anajifunza", "desc": "Mtoto anafuatilia, akigusa maneno ili kuyasikia yakisemwa, akijenga msamiati kupitia hadithi anayoifurahia kweli." }
-    },
+  "label": "Jinsi inavyofanya kazi",
+  "step1": { "label": "Hadithi ya jadi inachaguliwa", "desc": "Hadithi ya Afrika inachaguliwa kutoka kwenye mkusanyo wetu wa hadithi 100+." },
+  "step2": { "label": "AI inabadilisha hadithi", "desc": "Inatengenezwa upya kwa lugha ya mtoto katika kiwango sahihi cha kusoma." },
+  "step3": { "label": "Sauti ya kusimulia inaongezwa", "desc": "Mzungumzaji wa lugha hiyo anasoma hadithi kwa sauti kwa matamshi sahihi." },
+  "step4": { "label": "Mtoto anasoma na kujifunza", "desc": "Watoto wanafuatilia, wakigusa maneno kuyasikia na kujenga msamiati." }
+},
     "ctaSeeAll": "Tazama vipengele vyote vya AI",
     "ctaAcademy": "Gundua Academy"
   }

@@ -1318,6 +1318,7 @@
         "scalable": { "label": "Enkiama Enkikua", "desc": "Eyiamu leilkiama tobono le 10M+" }
       }
     },
+    
     "howItWorks": {
       "sectionTitle": "Enkiama Yaitore",
       "steps": {
@@ -1327,6 +1328,8 @@
         "deliver": { "step": "04", "title": "Enkiama", "desc": "AI ye Imawatho ye Akili etuma olkiama oreto leilkiama oreto — na ilchamus yao, na enkiama yao, kwa kifaa chochote." }
       }
     },
+
+
     "cta": {
       "sectionTitle": "Injia Enkiama Ino",
       "description": "Tusaidie enkiama hifadhi nene ye kidijitali ye olkiama ye ilchamus na ilkiama Afrika. Eitai wewe ni ilkiama, mwanafunzi, kana mwekezaji — kuna nafasi yako Magical Africa.",
@@ -1378,20 +1381,20 @@
     "eyebrow": "Enkitobiroto e AI",
     "title1": "Kɔrkina Etii Tɛnɛ Ɛrishata AI",
     "title2": "Ɛnkɛ Eitobiro Ŋusuni e Afrika",
-    "subtitle": "Magical Africa eɔɔshiyu ŋusuni e AI naa olcani lenya ŋ Maa-naapooki, ɛrikitin ŋusuni e ɔɔshɔ kuna shɔmɔ, ɔɔshɔ, nɛ ɛyatakini.",
+   "subtitle": "Magical Africa eyieta AI na enkiama e Pan-Africa enkisumo enkiama eyieta na nkishon.",
     "features": {
-      "speech": { "title": "Ɛnyaŋunyo e Engaaki", "description": "Inkera e AI naa rikitin ɛnyaŋunyo nɛ kwandika ŋusuni e Afrika naa shɔmɔ, kɔnɔ ŋusuni e olɔshɔ tɛnɛ olosho." },
-      "transcription": { "title": "Engáruak Le Aitobitobiroi", "description": "Etoroto kɔɔnyek, ɛnkutuk, nɛ kɔrkina ɛnɛ engáruak naa kishomo nɛ kebari." },
-      "recommendations": { "title": "Ŋulukunyek Le Olngʼwesi Naapooki", "description": "AI etoroto kɔrkina, olɔɔshi, nɛ ŋusuni naa rikitin tɛnɛ olngʼwesi enkanyit, intashilikenyiet, nɛ enkishomo." },
-      "storyRegeneration": { "title": "AI Etoroto Olɔɔshi Le Ɛnkɛrai", "description": "AI naa rikitin etoroto olɔɔshi le Maa-naapooki naa rikitin enkerekano e ɛnkɛrai pooki — ŋusuni, ɔrɔk, nɛ ɔlɔshɔ pooki ɛtɔrɔtɔ apa nɛ ɛnkɛrai eshɔmɔ olɔɔshi naa rikitin." }
+      "speech": { "title": "Enkisokon Enkiama", "description": "AI eyieta enkisokon e Africa nabo enkiama yake na enkisumo yake." },
+"transcription": { "title": "Enkiwriting Enaisirik", "description": "Eyieta entoroi na enkiama eyieta nabo enkiwriting ake kuna enkiama." },
+"recommendations": { "title": "Enkiama Olayioni", "description": "AI eyieta olayioni enkiama nabo entoroi ake na nkishon yake." },
+      "storyRegeneration": { "title": "AI Etoroto Olɔɔshi Le Ɛnkɛrai", "description": "AI eyieta entoroi e Africa ake nabo olayioni — ilayiok eyieta enkiama nabo entoroi eyieta." }
     },
     "howItWorks": {
-      "label": "Kɔrkina Le Etii",
-      "step1": { "label": "Olɔɔshi le tene atɛnata", "desc": "Olɔɔshi le Maa-naapooki atɛnata pɔɔki tɛnɛ ɔrkulie le olɔɔshi 100 naa pooki kɔnɔ kontinent." },
-      "step2": { "label": "AI etoroto enkerekano nɛ ɔlɔshɔ", "desc": "Olɔɔshi ɛtɔrɔtɔ tɛnɛ ɔlɔshɔ ŋ inkera ɛnɛ nkerekano e shomo — ŋusuni, ɛnaɔta, nɛ ɔrɔk e ŋusuni pooki ɛtɔrɔtɔ apa." },
-      "step3": { "label": "Eng'aaki e kɔɔnyek etiimwa", "desc": "Eng'aaki naa ata ɔlɔshɔ enaa kishomo olɔɔshi, kɛyamatakini inkera kuna inkutuk e kaa nɛ ŋusuni e shɔmɔ." },
-      "step4": { "label": "Ɛnkɛra ɛshɔmɔ, ɛyiɛu nɛ ɛrut", "desc": "Ɛnkɛra etumoki, ɛnyangik ŋusuni inra eyiɛu, etii ŋusuni tɛnɛ olɔɔshi naa rikitin sapuk." }
-    },
+  "label": "Nkishon nabo enasupat",
+  "step1": { "label": "Entoroi eshomo", "desc": "Entoroi e Africa eshomo nabo enkiama yetu e entoroi ingishu 100." },
+  "step2": { "label": "AI eyieta entoroi", "desc": "Eyieta enkiama e olayioni na enkisumo enkitok ake nabo." },
+  "step3": { "label": "Enkisokon eyongoki", "desc": "Oltungani olerata enkiama nabo enkisokon enkisumo nabo." },
+  "step4": { "label": "Olayioni esokon na eyieta", "desc": "Ilayiok sujuu, eyieta enkisokon na eyieta enkiama yake." }
+},
     "ctaSeeAll": "Yiɛu pooki e AI",
     "ctaAcademy": "Tarakini Academy"
   }

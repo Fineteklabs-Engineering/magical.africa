@@ -1449,20 +1449,20 @@
     "eyebrow": "Ikpo Okwu Nke AI",
     "title1": "Otú Anyị Si Eji AI",
     "title2": "Chekwaa Asụsụ Afrịka",
-    "subtitle": "Magical Africa na-ejikọta ọgụgụ isi nkuzi ọhụrụ na ihe ọmụma omenala Afrịka niile, na-eme ka asụsụ ndị obodo dị mfe ịmụta, ịchọta, ma na-adị ndụ.",
+    "subtitle": "Magical Africa na-ejikọ AI na ọmọọma omenala Pan-Africa na-eme ka asụsụ ọchịchọ nwee ike ịmụ ma dị ndụ.",
     "features": {
-      "speech": { "title": "Ịmata Olu", "description": "Ụdị AI a zụrụ ịmata na ide asụsụ Afrịka a na-asụ, gụnyere olu mpaghara na asụsụ obodo." },
-      "transcription": { "title": "Ide Akwụkwọ Nkà", "description": "Na-agbanwe ozugbo akụkọ, mkparịta ụka, na nkuzi ka ọ bụrụ ihe odide ziri ezi maka nchekwa na mmụta." },
-      "recommendations": { "title": "Ndụmọdụ Ahaziri Iche", "description": "AI na-atụ aro nkuzi, akụkọ, na ọdịnaya ahaziri maka ọsọ, mmasị, na ọganihu nke onye mmụta ọ bụla." },
-      "storyRegeneration": { "title": "AI Na-emepụta Akụkọ Ụmụaka Ọzọ", "description": "AI anyị na-akọwa akụkọ ọdịnala Afrịka a hụrụ n'anya n'ọkwa kwesịrị ekwesị maka nwa ọ bụla — na-agbanwe okwu, ogologo ahịrịokwu, na asụsụ ka ụmụaka mụta n'ụzọ efu site n'akụkọ ha hụrụ n'anya."}
+      "speech": { "title": "Ịnụ Ụda Okwu", "description": "AI zụzọọrọ ịnụ asụsụ Africa a na-asụ, n'agbanyeghị olu mpaghara." },
+"transcription": { "title": "Ide Ọhụrụ Ọkọlọtọ", "description": "Na-atụgharị akụkọ na mmụta a na-asụ n'olu ka ọ bụrụ ederede maka echekwa na mmụta." },
+"recommendations": { "title": "Ndụmọdụ Onye Ọ Bụla", "description": "AI na-atụ aro ihe mmụta na akụkọ dabara na ọsọ na ọganihu nwa mmụta ọ bụla." },
+      "storyRegeneration": { "title": "AI Na-emepụta Akụkọ Ụmụaka Ọzọ", "description": "AI na-akọ akụkọ ifo Africa n'ụzọ kwesịrị maka nwa ọ bụla - ka ụmụaka mụọ asụsụ site n'akụkọ ha hụrụ n'anya."}
     },
     "howItWorks": {
-      "label": "Otú Ọ Na-arụ Ọrụ",
-      "step1": { "label": "A họọrọ akụkọ ọdịnala mbụ", "desc": "A na-ahọrọ akụkọ ọdịnala Afrịka site n'ọchịchọ akụkọ anyị nke karịrị 100 site na kọntinent ahụ." },
-      "step2": { "label": "AI na-agbanwe ọkwa na asụsụ", "desc": "A na-emepụta akụkọ ọzọ n'asụsụ nwata ahụ chọrọ n'ọkwa ọgụgụ ziri ezi — okwu, ụtọasụsụ, na ogologo ahịrịokwu niile ka emere ka ọ dabara." },
-      "step3": { "label": "E mepụtara olu nkọwa", "desc": "Olu onye na-asụ asụsụ ahụ akpaakpa na-agụ akụkọ ahụ, na-enyere ụmụaka aka ijikọ okwu edere na nzụpụta okwu ziri ezi." },
-      "step4": { "label": "Nwata na-agụ, na-ege ntị, na-amụta", "desc": "Nwata na-eso, na-ekpo aka n'okwu iji nụ ka a na-ekwu ya, na-ewulite okwu site n'akụkọ ọ na-anụ ụtọ n'ezie." }
-    },
+  "label": "Otu o si arụ ọrụ",
+  "step1": { "label": "Akụkọ ifo ahọpụtara", "desc": "A na-ahọpụta akụkọ ochie nke Africa sitere na ọba anyị nwere ihe karị 100." },
+  "step2": { "label": "AI na-agbanwe akụkọ ahụ", "desc": "A na-emepụta ya n'asụsụ nwa ahụ chọrọ, n'ọkwa ọgụgụ kwesịrị ekwesị." },
+  "step3": { "label": "Olu ọgụgụ etinye", "desc": "Onye nwe asụsụ ahụ na-agụ akụkọ ahụ ọnụ ka nwa nwee ike ịmụ ụda." },
+  "step4": { "label": "Nwa na-agụ ma mụọ", "desc": "Ụmụaka na-eso ya, na-eti okwu ka ha nụọ ha wee mụọ okwu ọhụrụ." }
+},
     "ctaSeeAll": "Lee njirimara AI niile",
     "ctaAcademy": "Nyochaa Academy"
   }

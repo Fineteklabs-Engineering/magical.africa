@@ -1444,20 +1444,20 @@
     "eyebrow": "Inkundla Eqhutshwa nge-AI",
     "title1": "Indlela Esisebenzisa Ngayo i-AI",
     "title2": "Ukulondoloza Izilimi Zase-Afrika",
-    "subtitle": "I-Magical Africa ihlanganisa ubuhlakani bokwakhiwa obusezingeni eliphezulu nolwazi olujulile lwamasiko ase-Afrika yonke, okwenza izilimi zomdabu zifundeke kalula, zitholakale, futhi ziqhubeke ziphila.",
+    "subtitle": "Magical Africa ihlanganisa i-AI nolwazi lwenkultura ye-Pan-Africa — yenza izilimi zendabuko zifundeke futhi ziphile.",
     "features": {
-      "speech": { "title": "Ukubona Izwi", "description": "Amamodeli e-AI aqeqeshelwe ukubona nokubhala izilimi zase-Afrika ezikhulunywayo, kuhlanganise nemisindo yendawo nezilimi zezindawo." },
-      "transcription": { "title": "Ukubhala Okuhlakaniphile", "description": "Iguqula ngokuzenzakalelayo izindaba ezikhulunywayo, izingxoxo, nezifundo ezibe yimibhalo eqondile yokulondoloza nokufunda." },
-      "recommendations": { "title": "Iziphakamiso Eziqondene Nawe", "description": "I-AI iphakamisa izifundo, izindaba, nokuqukethwe okulungiselelwe isivinini, intshisekelo, nentuthuko yomfundi ngamunye." },
-      "storyRegeneration": { "title": "I-AI Iyakha Kabusha Izindaba Zezingane", "description": "I-AI yethu ilandisa kabusha izindaba zendabuko zase-Afrika ezithandwayo ezingeni elifanele kanjalo nganye ingane — ilungisa amagama, ubude bomusho, nolimi ukuze izingane zifunde ngendlela ejwayelekile ngezindaba ezizithandayo kakade." }
+      "speech": { "title": "Ukubona Inkulumo", "description": "I-AI eqeqeshwe ukubona izilimi zase-Afrika ezikhulunywayo kuzo zonke izilimi zemvelo." },
+"transcription": { "title": "Ukubhala Okukhalipha", "description": "Iguqula izindaba nezifundo ezikhulunywayo zibe umbhalo ofanele wokugcina nokufunda." },
+"recommendations": { "title": "Izincomo Zokomuntu", "description": "I-AI incoma izifundo nezindaba ezilinganiselwe ithempo nentuthuko yomfundi ngamunye." },
+      "storyRegeneration": { "title": "I-AI Iyakha Kabusha Izindaba Zezingane", "description": "I-AI ixoxa izinganekwane zase-Afrika ezilinganiselwe ingane ngayinye - ukuze izingane zifunde ngokwemvelo ngezindaba ezizithandayo." }
     },
-    "howItWorks": {
-      "label": "Indlela Esisebenza Ngayo",
-      "step1": { "label": "Inganekwane yokuqala ikhethwa", "desc": "Indaba yendabuko yase-Afrika ikhethwa kusuka kunqolobane yethu enezindaba ezingaphezu kuka-100 ezivela kuzwelonke." },
-      "step2": { "label": "I-AI ilungisa izinga nolimi", "desc": "Indaba iphindwa ngolimi olufunwa ngumntwana ezingeni elifanele lokufunda — amagama, uhlelo lolimi, nobude bomusho konke kulungiswa ngokuzenzakalelayo." },
-      "step3": { "label": "Umsindo wokulandisa wakhiwa", "desc": "Izwi lesimo somuntu langempela lifunda indaba ngokuzwakala, lisiza izingane zixhumanise amagama abhaliwe nokuphimisela okuvamile." },
-      "step4": { "label": "Ingane ifunda, ilalele futhi ifunda", "desc": "Ingane ilandela, ithinta amagama ukuze izizwe zikhulunywa, yakha amagama ngendaba ezijabulisa ngempela." }
-    },
+   "howItWorks": {
+  "label": "Indlela esebenza ngayo",
+  "step1": { "label": "Inganekwane ikhethiwe", "desc": "Inganekwane yase-Afrika ikhethwa embhalweni wethu wezinganekwane ezingaphezulu kuka-100." },
+  "step2": { "label": "I-AI ilungisa indaba", "desc": "Yenziwa kabusha ngolimi lwengane ezingakwazi ukufunda ezingeni elifanele." },
+  "step3": { "label": "Umsindo wokulandisa wenziwe", "desc": "Umuntu okhuluma ulimi lolo ufunda indaba ngokuvakalayo ukuze izwakale kahle." },
+  "step4": { "label": "Ingane ifunda futhi ithola ulwazi", "desc": "Izingane zilandela, zishaye amagama ukuze zizizwe futhi zakhele ulimi." }
+},
     "ctaSeeAll": "Bona zonke izici ze-AI",
     "ctaAcademy": "Hlola i-Academy"
   }

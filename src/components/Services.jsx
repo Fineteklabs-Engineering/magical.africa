@@ -31,7 +31,7 @@ const Services = () => {
     {
       title: t('services.exploreCourses.title'),
       description: t('services.exploreCourses.description'),
-      image: "/images/photorealistic-portrait-african-woman.jpg",
+      image: "/images/african-learning.png",
       action: () => navigate('/academy')
      
     }
