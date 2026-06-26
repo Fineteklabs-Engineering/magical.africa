@@ -12,7 +12,7 @@ const AuthModal = ({ isOpen, onClose }) => {
   const { login, register, loginWithGoogle } = useAuth();
   const { t } = useTranslation();
 
-  // Sign In form state
+
   const [signInEmail, setSignInEmail] = useState('');
   const [signInPassword, setSignInPassword] = useState('');
   const [signInErrors, setSignInErrors] = useState({ email: false, password: false });
