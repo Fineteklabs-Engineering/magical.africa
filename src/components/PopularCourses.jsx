@@ -79,10 +79,10 @@ const PopularCourses = () => {
         <p className="pop">{t('popularCourses.popularLabel')}</p>
       </div>
 
-      {/* ── LAYOUT ── */}
+  
       <div className="pc-layout">
 
-        {/* Big feature card — pottery */}
+       
         <div
           className="pc-feature popular1 pc-card"
           onClick={() => handleCardClick('pottery')}
@@ -96,7 +96,7 @@ const PopularCourses = () => {
           </div>
         </div>
 
-        {/* Right side — vertical list rows */}
+       
         <div className="pc-side">
           {sideItems.map((item) => (
             <div
