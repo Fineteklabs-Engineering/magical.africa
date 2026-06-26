@@ -92,32 +92,32 @@ const Marketplace = () => {
         },
       ],
     },
+   {
+  name: t('marketplace.categories.musicalInstruments'),
+  sections: [
     {
-      name: t('marketplace.categories.musicalInstruments'),
-      sections: [
-        {
-          category: 'jewellery',
-          image: '/images/ashantiGlazedPlatter.jpg',
-          title: 'Glazed Platter',
-          description: 'A wide ceremonial platter with the rich amber glaze',
-          price: '$55',
-        },
-        {
-          category: 'jewellery',
-          image: '/images/swahiliBlueGlazeJar.jpg',
-          title: 'Blue Glaze Jar',
-          description: 'Coastal - inspired jar iwth deep ocean lue glaze.',
-          price: '$45',
-        },
-        {
-          category: 'jewellery',
-          image: '/images/amharaSpeckledMug.jpg',
-          title: 'Speckled Mug',
-          description: 'A hand - thrown mug with earthy speckled finish.',
-          price: '$22',
-        },
-      ],
+      category: 'pottery',
+      image: '/images/ashantiGlazedPlatter.jpg',
+      title: 'Glazed Platter',
+      description: 'A wide ceremonial platter with the rich amber glaze',
+      price: '$55',
     },
+    {
+      category: 'pottery', 
+      image: '/images/swahiliBlueGlazeJar.jpg',
+      title: 'Blue Glaze Jar',
+      description: 'Coastal - inspired jar iwth deep ocean lue glaze.',
+      price: '$45',
+    },
+    {
+      category: 'pottery', 
+      image: '/images/amharaSpeckledMug.jpg',
+      title: 'Speckled Mug',
+      description: 'A hand - thrown mug with earthy speckled finish.',
+      price: '$22',
+    },
+  ],
+},
   ];
 
   const currentData = marketplaceData[activeCategory];

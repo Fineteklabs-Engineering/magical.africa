@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import { jewelleryData } from '../components/Jewelery';
 import { carvingsData } from '../components/Carvings';
 import { artefactsData } from '../components/Artefacts';
+import { potteryData } from '../components/Pottery';
 import PageSeo from '../components/PageSeo';
 import '../styles/product-detail.css';
 
@@ -36,7 +37,16 @@ const getAllStaticProducts = () => {
     }))
   );
 
-  return [...jewellery, ...carvings, ...artefacts];
+  const pottery = Object.values(potteryData).flatMap((category) =>
+  (category.items || []).map((item) => ({
+    ...item,
+    imageUrl: item.img,
+    description: item.desc,
+    price: parseFloat(String(item.price).replace(/[^0-9.]/g, '')),
+  }))
+);
+
+  return [...jewellery, ...carvings, ...artefacts, ...pottery];
 };
 
 const fallbackBestSellers = (t) => [
