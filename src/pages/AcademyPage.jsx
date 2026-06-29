@@ -192,7 +192,7 @@ const handleCourseShortcut = (course) => {
           </form>
 
           <div className="academy-hero-btns">
-            <button className="acad-btn-primary" onClick={goToAcademy}>
+            <button className="acad-btn-primary2" onClick={goToAcademy}>
               {t('academy.hero.getStarted')}
             </button>
             <button className="acad-btn-secondary" onClick={scrollToCourses}>
@@ -299,7 +299,7 @@ const handleCourseShortcut = (course) => {
 
             <div className="lang-chips" ref={langRef}>
               {languages.map((lang) => (
-                <button
+                <button 
                   key={lang}
                   className={`lang-chip ${activeLanguage === lang ? 'lang-chip-active' : ''}`}
                  onClick={() => {
@@ -358,7 +358,7 @@ const handleCourseShortcut = (course) => {
             <h2>{t('academy.cta.heading')}</h2>
             <span className="heading-line light" />
           </div>
-          <button className="acad-btn-primary large" onClick={goToAcademy}>
+          <button className="acad-btn-primary2 large" onClick={goToAcademy}>
             {t('academy.cta.joinNow')}
           </button>
         </div>

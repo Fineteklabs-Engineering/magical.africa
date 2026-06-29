@@ -1,11 +1,10 @@
 *{
   margin: 0;
   padding: 0;
-  box-sizing: border-box ;
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0.025rem;
 }
-
 
 html, body {
   overflow-x: hidden;
@@ -17,12 +16,12 @@ html, body {
   max-width: 100vw;
 }
 
-
-
 :root {
   --acad-brown: #3b1f0e;
-  --acad-orange: rgb(210, 123, 58);
+  --acad-orange: #D5731A;
   --acad-orange-dark: #b85e1a;
+  --acad-red: #A3070C;
+  --acad-green: #7BAE7F;
   --acad-beige: rgb(242, 239, 235);
   --acad-sand: rgb(181, 161, 145);
   --acad-white: #fff;
@@ -119,7 +118,7 @@ html, body {
 }
 
 .academy-hero-search button {
-  background-color: var(--acad-orange);
+  background-color: var(--acad-red);
   color: #ffffff;
   border: none;
   padding: 0.85rem 1.5rem;
@@ -132,7 +131,7 @@ html, body {
 }
 
 .academy-hero-search button:hover {
-  background-color: var(--acad-orange-dark);
+  background-color: var(--acad-orange);
 }
 
 .academy-hero-btns {
@@ -162,6 +161,26 @@ html, body {
   transform: translateY(-2px);
 }
 
+.acad-btn-primary2 {
+  background-color: var(--acad-red);
+  color: var(--acad-white);
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 0.95rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.acad-btn-primary2:hover{
+  background-color: var(--acad-orange);
+  transform: translateY(-2px);
+}
+
+
+
+
 .acad-btn-primary.large {
   padding: 1rem 3rem;
   font-size: 1.1rem;
@@ -182,6 +201,8 @@ html, body {
 .acad-btn-secondary:hover {
   background-color: rgba(255, 255, 255, 0.12);
 }
+
+
 
 /* ── SECTION HEADING ── */
 .section-heading {
@@ -252,7 +273,7 @@ html, body {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: rgba(210, 123, 58, 0.12);
+  background: rgba(163, 7, 12, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -261,7 +282,7 @@ html, body {
 
 .feature-icon-wrap i {
   font-size: 1.4rem;
-  color: var(--acad-orange);
+  color: var(--acad-red);
 }
 
 .academy-feature h3 {
@@ -338,11 +359,12 @@ html, body {
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
+/* course tag — was green, now our green */
 .course-tag {
   position: absolute;
   bottom: 12px;
   right: 12px;
-  background: #1f6f43;
+  background: var(--acad-green);
   color: #fff;
   font-size: 0.72rem;
   font-weight: 600;
@@ -383,8 +405,8 @@ html, body {
   margin-top: 0.8rem;
   align-self: center !important;
   background: transparent;
-  border: 1.5px solid var(--acad-orange);
-  color: var(--acad-orange);
+  border: 1.5px solid var(--acad-red);
+  color: var(--acad-red);
   font-size: 0.78rem;
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
@@ -395,7 +417,7 @@ html, body {
 }
 
 .course-enroll-btn:hover {
-  background: var(--acad-orange);
+  background: var(--acad-red);
   color: #fff;
 }
 
@@ -460,24 +482,17 @@ html, body {
   font-size: 0.85rem;
   font-family: 'Poppins', sans-serif;
   cursor: pointer;
-  opacity: 1;
-  transform: translateY(0);
   transition: opacity 0.4s ease, transform 0.4s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
-.lang-chip.chip-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .lang-chip:hover {
-  background: rgba(210, 123, 58, 0.35);
-  border-color: var(--acad-orange);
+  background: rgba(163, 7, 12, 0.35);
+  border-color: var(--acad-red);
 }
 
 .lang-chip-active {
-  background: var(--acad-orange) !important;
-  border-color: var(--acad-orange) !important;
+  background: var(--acad-red) !important;
+  border-color: var(--acad-red) !important;
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
@@ -531,7 +546,7 @@ html, body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: rgba(210, 123, 58, 0.25);
+  background: rgba(163, 7, 12, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -598,12 +613,8 @@ html, body {
     align-items: center;
     justify-content: center;
   }
-  .academy-courses-section {
-    padding: 4rem 3rem;
-  }
-  .academy-community {
-    padding: 4rem 3rem;
-  }
+  .academy-courses-section { padding: 4rem 3rem; }
+  .academy-community { padding: 4rem 3rem; }
 }
 
 @media screen and (max-width: 768px) {
@@ -631,66 +642,23 @@ html, body {
     gap: 1rem;
   }
 
-  .academy-courses-section {
-    padding: 3rem 1.5rem;
-  }
-
-  .lang-content {
-    padding: 3rem 1.5rem;
-  }
-
-  .community-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .academy-community {
-    padding: 3rem 1.5rem;
-  }
-
-  .section-heading h2 {
-    font-size: 1.2rem;
-  }
-
-  .academy-hero-search {
-    max-width: 100%;
-  }
+  .academy-courses-section { padding: 3rem 1.5rem; }
+  .lang-content { padding: 3rem 1.5rem; }
+  .community-grid { grid-template-columns: 1fr; }
+  .academy-community { padding: 3rem 1.5rem; }
+  .section-heading h2 { font-size: 1.2rem; }
+  .academy-hero-search { max-width: 100%; }
 }
 
 @media screen and (max-width: 480px) {
-  .courses-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .academy-hero-content h1 {
-    font-size: 1.8rem;
-  }
-
-  .lang-chips {
-    gap: 0.5rem;
-  }
-
-  .lang-chip {
-    font-size: 0.78rem;
-    padding: 0.4rem 0.9rem;
-  }
-
-  .community-card {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .section-heading {
-    gap: 0.5rem;
-  }
-
-  .heading-line {
-    max-width: 50px;
-  }
-
-  .academy-hero-search button {
-    padding: 0.85rem 1rem;
-    font-size: 0.78rem;
-  }
+  .courses-grid { grid-template-columns: 1fr; }
+  .academy-hero-content h1 { font-size: 1.8rem; }
+  .lang-chips { gap: 0.5rem; }
+  .lang-chip { font-size: 0.78rem; padding: 0.4rem 0.9rem; }
+  .community-card { flex-direction: column; text-align: center; }
+  .section-heading { gap: 0.5rem; }
+  .heading-line { max-width: 50px; }
+  .academy-hero-search button { padding: 0.85rem 1rem; font-size: 0.78rem; }
 }
 
 @media screen and (max-width: 380px) {
@@ -700,12 +668,7 @@ html, body {
     padding-right: 1rem;
     padding-left: 1rem;
   }
-
-  .academy-hero-search input {
-    min-width: 0;
-    width: 100%;
-  }
-
+  .academy-hero-search input { min-width: 0; width: 100%; }
   .academy-hero-search button {
     white-space: nowrap;
     flex-shrink: 0;
@@ -716,24 +679,9 @@ html, body {
 
 @media screen and (min-width: 1440px) {
   .academy-courses-section,
-  .academy-community {
-    padding: 6rem 8rem;
-  }
-
-  .lang-content {
-    padding: 5rem 8rem;
-  }
-
-  .academy-features {
-    padding: 3rem 8rem;
-  }
-
-  .courses-grid {
-    gap: 2rem;
-  }
-
-  .course-img {
-    height: 240px;
-  }
+  .academy-community { padding: 6rem 8rem; }
+  .lang-content { padding: 5rem 8rem; }
+  .academy-features { padding: 3rem 8rem; }
+  .courses-grid { gap: 2rem; }
+  .course-img { height: 240px; }
 }
-
