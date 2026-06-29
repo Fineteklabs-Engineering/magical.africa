@@ -7,7 +7,7 @@ import useAcademyNavigation from "../hooks/useAcademyNavigation";
 
 const heroSlides = [
   {
-    image: '/images/maasai-art2.png',
+    image: '/images/Igbo2.jpg',
     title: 'The Real African Story',
     subtitle: 'Welcome To Magical Africa',
     name: '(Igbo)',
