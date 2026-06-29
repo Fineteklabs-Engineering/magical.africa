@@ -5,9 +5,9 @@ import '../styles/faq.css';
 
 const TriMark = ({ isOpen }) => (
   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="faq-tri-mark" style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)' }}>
-    <rect x="4" y="4" width="16" height="16" rx="2" stroke="#A3070C" strokeWidth="1.5" fill={isOpen ? 'rgba(163,7,12,0.1)' : 'none'}/>
-    <line x1="12" y1="8" x2="12" y2="16" stroke="#A3070C" strokeWidth="1.5" strokeLinecap="round"/>
-    <line x1="8" y1="12" x2="16" y2="12" stroke="#A3070C" strokeWidth="1.5" strokeLinecap="round"/>
+    <rect x="4" y="4" width="16" height="16" rx="2" stroke="#1a7030" strokeWidth="1.5" fill={isOpen ? 'rgba(163,7,12,0.1)' : 'none'}/>
+    <line x1="12" y1="8" x2="12" y2="16" stroke="#1a7030" strokeWidth="1.5" strokeLinecap="round"/>
+    <line x1="8" y1="12" x2="16" y2="12" stroke="#1a7030" strokeWidth="1.5" strokeLinecap="round"/>
   </svg>
 );
 
@@ -36,7 +36,7 @@ const FAQ = () => {
           <h2>{t('faq.title')} <span>{t('faq.titlespan')}</span></h2>
           <div className="faq-divider">
             <span className="faq-divider-line" />
-            <HelpCircle size={22} color="#A3070C" strokeWidth={1.5} />
+            <HelpCircle size={22} color="#D5731A" strokeWidth={1.5} />
             <span className="faq-divider-line" />
           </div>
           <p>{t('faq.subtitle2')}</p>

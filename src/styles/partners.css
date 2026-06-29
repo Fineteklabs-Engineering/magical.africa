@@ -30,6 +30,7 @@
 .partners-text h2{
 font-size: 1.5rem;
 font-weight: 400;
+color: #A3070C;
 }
 
 .partners-text p{
@@ -66,7 +67,7 @@ font-weight: 400;
 .box1{
    width: 100%;
   height: 200px;
-  border: 0.5px solid #A3070C;
+  border: 0.5px solid rgb(55, 55, 55);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,7 +85,7 @@ font-weight: 400;
   justify-content: center;
   width: 100%;
   height: 200px;
-  border: 0.5px solid #A3070C;
+  border: 0.5px solid rgb(55, 55, 55);
 }
 
 

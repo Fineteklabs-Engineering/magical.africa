@@ -24,7 +24,7 @@ const heroSlides = [
     box: { icon: 'fa-solid fa-comments', label: 'Learn Language', action: 'academy' }
   },
   {
-    image: '/images/african-pottery2.jpg',
+    image: '/images/young-skills.png',
     subtitle: 'Learn African Culture & Skills',
     title: 'Discover traditions while building hands-on creative skills',
     name: '(Maasai)',
@@ -32,7 +32,7 @@ const heroSlides = [
     box: { icon: 'fa-solid fa-hands', label: 'Learn Cultural Skills', action: 'academy' }
   },
   {
-    image: '/images/african-market.png',
+    image: '/images/african-market2.png',
     subtitle: 'Exclusive African Artifacts & Material Marketplace',
     title: 'Shop rare cultural items and traditional craft materials',
     name: '(Igbo)',
@@ -90,9 +90,9 @@ useEffect(() => {
     >
 
       <Navbar />
-
+ {/* 
       <CultureCard />
-
+*/}
 
 {customContent ? (
         customContent

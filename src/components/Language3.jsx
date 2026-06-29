@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar';
 
 const Language3 = () => {
   return (
-   <>
+   <>c:\Users\hp\Downloads\Gemini_Generated_Image_fu4gddfu4gddfu4g (1).jpg
 
    <Navbar solid />
 

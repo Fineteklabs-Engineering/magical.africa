@@ -273,6 +273,7 @@ align-items: center;
     }
 
    .menu-overlay{
+
       position: fixed;
       top: 0;
       left: 0;
@@ -400,10 +401,11 @@ align-items: center;
 
 .hero-text p{
   font-size: 1.2rem;
+  color: white;
 }
 
 .hero-text h1{
-  color: #D5731A;
+  color: #e4f0e3;
 }
 
 .hero-boxes{
@@ -565,7 +567,7 @@ align-items: center;
 }
 
 .lang-btn {
-    display: flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
   gap: 8px;
@@ -582,7 +584,9 @@ align-items: center;
 
 .lang-btn i {
   font-size: 1rem;
+  
 }
+
 
 .lang-arrow {
   font-size: 0.65rem !important;
@@ -706,10 +710,11 @@ color: rgb(181, 161, 145);
   }
 
 
+
   @media screen and (max-width:1024px) {
     .item2{
       display: none;
-    }
+  }
     .menu{
       display: flex;
     }
@@ -773,6 +778,7 @@ font-size: 1.5rem;
   .hero-text h1{
     line-height: 1.7rem;
     font-size: 1.4rem;
+    
   }
   .hero-text p{
     font-size: 1rem;

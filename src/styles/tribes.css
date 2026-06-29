@@ -70,10 +70,10 @@
 .tribe1 h3, .tribe2 h3, .tribe3 h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: white;
+  color: #e4f0e3;
   position: relative;
   z-index: 2;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.)9;
 }
 
 .tribe1 p, .tribe2 p, .tribe3 p {
