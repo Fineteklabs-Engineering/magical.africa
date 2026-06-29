@@ -83,27 +83,21 @@
 
      .languages span {
       padding: 12px 22px;
-      position: relative;
-      background-color: #1f6f43;
-      /*
-      background-color: rgb(181, 161, 145) ;
-      */
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.875rem;
-      cursor: pointer;
-      transition: transform 0.3s ease, background-color 0.3s ease;
-      /*
-      white-space: nowrap;
-      flex-shrink: 0;
-      */
+  position: relative;
+   background-color: #91A585;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
     }
   
     .languages span:hover {
       /*
       transform: translateY(-5px);
       */
-      background-color: #145a34;
+    background-color: #7a9070;
+
     }
       
 

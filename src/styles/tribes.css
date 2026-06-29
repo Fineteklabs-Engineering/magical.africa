@@ -148,7 +148,7 @@
 .view-more2 hr {
   height: 0.5px;
   width: 70px;
-  
+  background-color: #A3070C;
   border: none;
 }
 
@@ -157,7 +157,7 @@
   flex-direction: row;
   font-size: 0.875rem;
   border: none;
-  background-color: transparent;
+  color: #A3070C;
   cursor: pointer;
   font-weight: 600;
 }

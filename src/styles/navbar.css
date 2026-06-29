@@ -418,12 +418,14 @@ align-items: center;
   flex-direction: row;
   align-items: center;
   gap: 10px;
-  padding: 1rem;
-  background-color: #0006;
+  padding: 1rem 1.5rem;
+ background-color: #A3070C;
+ border-left: 3px solid #D5731A;
   transition: 0.3s ease;
 }
 
 .hero-box:hover{
+  background-color: #D5731A;
   transform: translateY(-5px);
 }
 .hero-box p{
@@ -431,8 +433,11 @@ align-items: center;
 
 }
 .hero-box i{
-  color: rgb(181, 161, 145);
+  color: #D5731A;
 
+}
+.hero-box:hover i {
+  color: white;
 }
 .hero-content h1{
   font-size: 1.5rem;

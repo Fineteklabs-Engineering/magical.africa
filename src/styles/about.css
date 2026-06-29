@@ -38,18 +38,21 @@
   }
 
   .learn-more2{
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    color: white;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    font-weight: 600;
-    border: 1px solid  rgb(181, 161, 145);
-    background-color: transparent;
+     padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: white;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-weight: 600;
+  border: 1px solid #D5731A;
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.3s ease;
   }
 
   .learn-more2:hover{
-    background-color: rgb(181, 161, 145);
+    background-color: #A3070C;
+  border-color: #A3070C;
   }
 
   @media screen and (max-width:768px) {

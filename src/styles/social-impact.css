@@ -41,6 +41,12 @@
   align-items: center;
   font-weight: 600;
   cursor: pointer;
+  color: #D5731A;
+ 
+  
+}
+.text span:hover{
+   color: #A3070C;
 }
 .chevrons{
   display: flex;
@@ -112,15 +118,15 @@ opacity: 1;
   padding-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  background-color: transparent;
-  border: 1px solid  rgb(181, 161, 145); 
+  background-color: #91A585;
+  border: none;
   color: white;
   font-weight: 600;
   font-size: 0.875rem;
 }
 
 .read-more:hover{
-  background-color: rgb(181, 161, 145) ;
+  background-color: #D5731A ;
 }
 .impact2{
  background-image: url(/images/side-view-people-garage-sale2.jpg);

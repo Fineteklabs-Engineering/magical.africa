@@ -94,6 +94,17 @@ font-weight: 400;
   align-items: center;
 }
 
+.i i {
+  color: #A3070C;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.i i:hover {
+  color: #D5731A;
+}
+
 .show-all{
  display: flex;
  flex-direction: row;
@@ -116,18 +127,22 @@ font-weight: 400;
 }
 
 .learn-more{
-  padding-top: 0.5rem;
+ padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  border: 1px solid rgb(181, 161, 145);
-  background-color: transparent;
+  border: none;
+  background-color: #A3070C;
+  color: white;
   width: 100%;
   max-width: 150px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
  
  
 }
 
 .learn-more:hover{
-  background-color: rgb(181, 161, 145);
+ background-color: #D5731A;
   color: white;
 }
 

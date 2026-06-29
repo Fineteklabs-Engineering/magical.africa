@@ -7,7 +7,6 @@
   line-height: 1.5rem;
 }
 
-/* ── Section wrapper ── */
 .FAQ {
   background-image: url(/images/pattern4.jpg) !important;
   height: fit-content;
@@ -29,7 +28,6 @@
   z-index: 1;
 }
 
-/* ── Kente stripe (top & bottom) ── */
 .faq-kente-stripe {
   width: 100%;
   height: 6px;
@@ -37,25 +35,23 @@
   z-index: 3;
   background: repeating-linear-gradient(
     90deg,
-    rgb(210, 123, 53)   0px,
-    rgb(210, 123, 53)   18px,
-    #145a34             18px,
-    #145a34             36px,
-    rgb(181, 161, 145)  36px,
-    rgb(181, 161, 145)  54px,
-    #0f0f0f             54px,
-    #0f0f0f             64px
+    #D5731A  0px,
+    #D5731A  18px,
+    #A3070C  18px,
+    #A3070C  36px,
+    #91A585  36px,
+    #91A585  54px,
+    #0f0f0f  54px,
+    #0f0f0f  64px
   );
 }
 
-/* ── Inner content (above the ::before overlay) ── */
 .faq-inner {
   position: relative;
   z-index: 2;
   padding: 4rem 3rem;
 }
 
-/* ── Heading block ── */
 .faq-heading-block {
   display: flex;
   flex-direction: column;
@@ -73,7 +69,7 @@
 }
 
 .FAQ h2 span {
-  color: rgb(210, 123, 53);
+  color: #D5731A;
 }
 
 .FAQ p {
@@ -83,7 +79,6 @@
   max-width: 520px;
 }
 
-/* ── Divider with icon ── */
 .faq-divider {
   display: flex;
   align-items: center;
@@ -94,16 +89,10 @@
 .faq-divider-line {
   flex: 1;
   height: 1px;
-  background-color: rgb(181, 161, 145);
+  background-color: #A3070C;
+  opacity: 0.3;
 }
 
-/* ── Adinkra SVG divider (legacy, unused) ── */
-.faq-divider-svg {
-  width: 240px;
-  height: 36px;
-}
-
-/* ── Questions grid ── */
 .questions-section {
   display: flex;
   flex-direction: column;
@@ -115,27 +104,25 @@
   padding-right: 8rem;
 }
 
-/* ── Single question card ── */
 .question {
   width: 100%;
   max-width: 900px;
   background-color: #ffffff;
-  border: 1px solid rgba(181, 161, 145, 0.4);
-  border-left: 4px solid rgb(210, 123, 53);
+  border: 1px solid rgba(163, 7, 12, 0.2);
+  border-left: 4px solid #D5731A;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .question--open {
-  border-left-color: #145a34;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border-left-color: #A3070C;
+  box-shadow: 0 4px 20px rgba(163, 7, 12, 0.08);
 }
 
 .question:hover {
-  border-color: rgba(210, 123, 53, 0.5);
-  border-left-color: rgb(210, 123, 53);
+  border-color: rgba(163, 7, 12, 0.3);
+  border-left-color: #A3070C;
 }
 
-/* ── Question row ── */
 .question1 {
   display: flex;
   flex-direction: row;
@@ -157,7 +144,7 @@
 .question-number {
   font-size: 0.7rem;
   font-weight: 700;
-  color: rgb(210, 123, 53);
+  color: #A3070C;
   letter-spacing: 0.1em;
   opacity: 0.7;
   min-width: 20px;
@@ -170,7 +157,6 @@
   line-height: 1.4;
 }
 
-/* ── Tri-mark toggle icon ── */
 .faq-tri-mark {
   width: 24px;
   height: 24px;
@@ -178,7 +164,6 @@
   transition: transform 0.3s ease;
 }
 
-/* ── Answer panel ── */
 .answer1 {
   max-height: 0;
   overflow: hidden;
@@ -194,59 +179,28 @@
   font-size: 0.875rem;
   color: #555;
   line-height: 1.7;
-  border-top: 1px solid rgba(181, 161, 145, 0.25);
+  border-top: 1px solid rgba(163, 7, 12, 0.15);
   padding-top: 1rem;
 }
 
-/* ── Responsive ── */
 @media screen and (min-width: 1440px) {
-  .faq-inner {
-    padding: 5rem 3rem;
-  }
-
-  .FAQ h1 {
-    font-size: 2rem;
-  }
-
-  .questions-section {
-    padding-top: 4rem;
-    padding-bottom: 2rem;
-  }
-  .question{
-    max-width: 1000px;
-  }
-
-  .question1 {
-    padding: 1.5rem 1.5rem;
-  }
-
+  .faq-inner { padding: 5rem 3rem; }
+  .FAQ h1 { font-size: 2rem; }
+  .questions-section { padding-top: 4rem; padding-bottom: 2rem; }
+  .question { max-width: 1000px; }
+  .question1 { padding: 1.5rem 1.5rem; }
 }
 
 @media screen and (max-width: 1024px) {
-  .questions-section {
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
+  .questions-section { padding-left: 3rem; padding-right: 3rem; }
 }
 
 @media screen and (max-width: 768px) {
-  .questions-section {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .faq-inner {
-    padding: 3rem 1.5rem;
-  }
+  .questions-section { padding-left: 1rem; padding-right: 1rem; }
+  .faq-inner { padding: 3rem 1.5rem; }
 }
 
 @media screen and (max-width: 480px) {
-  .questions-section {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-
-  .question-number {
-    display: none;
-  }
+  .questions-section { padding-left: 0.5rem; padding-right: 0.5rem; }
+  .question-number { display: none; }
 }
