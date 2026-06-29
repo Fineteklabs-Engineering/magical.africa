@@ -161,16 +161,16 @@ const normalizeRole = (role) => {
         {/* ── ITEM 1: Logo + Hamburger ── */}
         <div className="item1">
           <div className='magical-logo' onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
-            <img
-              src="/images/magicaal-logo1-removebg-preview.png"
-              alt="Magical Africa logo dark"
-              className="logo logo-dark"
-            />
-            <img
-              src="/images/magivcal-logo2-removebg-preview.png"
-              alt="Magical Africa logo light"
-              className="logo logo-light"
-            />
+           <img
+  src="/images/magicalProfile.png"
+  alt="Magical Africa logo dark"
+  className="logo logo-dark"
+/>
+<img
+  src="/images/magicalProfile.png"
+  alt="Magical Africa logo light"
+  className="logo logo-light"
+/>
           </div>
 
           <button className="menu" onClick={() => setIsSideMenuOpen(true)}>
