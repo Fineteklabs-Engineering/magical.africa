@@ -27,6 +27,8 @@ const Lesson = () => {
   const storedId = localStorage.getItem('currentCourseId')
   const courseId = stateId || storedId
   const draftKey = courseId ? `lessonDraft:${courseId}` : ''
+  const [draggedTopicId, setDraggedTopicId] = useState(null)
+const [dragOverTopicId, setDragOverTopicId] = useState(null)
 
   const [topics, setTopics] = useState([
     {
@@ -833,6 +835,47 @@ const Lesson = () => {
     }
   }
 
+
+   const handleTopicDragStart = (e, topicId) => {
+  setDraggedTopicId(topicId)
+  e.dataTransfer.effectAllowed = 'move'
+}
+
+const handleTopicDragOver = (e, topicId) => {
+  e.preventDefault()
+  if (topicId !== draggedTopicId) {
+    setDragOverTopicId(topicId)
+  }
+}
+
+const handleTopicDrop = (e, targetTopicId) => {
+  e.preventDefault()
+  if (!draggedTopicId || draggedTopicId === targetTopicId) {
+    setDraggedTopicId(null)
+    setDragOverTopicId(null)
+    return
+  }
+
+  setTopics(prev => {
+    const next = [...prev]
+    const fromIndex = next.findIndex(t => t.id === draggedTopicId)
+    const toIndex = next.findIndex(t => t.id === targetTopicId)
+    if (fromIndex === -1 || toIndex === -1) return prev
+
+    const [moved] = next.splice(fromIndex, 1)
+    next.splice(toIndex, 0, moved)
+    return next
+  })
+
+  setDraggedTopicId(null)
+  setDragOverTopicId(null)
+}
+
+const handleTopicDragEnd = () => {
+  setDraggedTopicId(null)
+  setDragOverTopicId(null)
+}
+
   return (
     <div className='td-dashboard lesson-dashboard'>
       <div className='td-layout'>
@@ -913,9 +956,21 @@ const Lesson = () => {
                     const topicAssessmentErrors = assessmentErrors[topic.id] || {}
 
                     return (
-                      <div key={topic.id} className={`lesson-topic-block ${validation.complete ? 'is-complete' : ''}`}>
-                        <div className='lesson-topic-topbar'>
-                          <span className='drag-icon'>&#8942;&#8942;</span>
+                     <div
+  key={topic.id}
+  className={`lesson-topic-block ${validation.complete ? 'is-complete' : ''} ${draggedTopicId === topic.id ? 'is-dragging' : ''} ${dragOverTopicId === topic.id ? 'is-drag-over' : ''}`}
+  onDragOver={(e) => handleTopicDragOver(e, topic.id)}
+  onDrop={(e) => handleTopicDrop(e, topic.id)}
+>
+  <div className='lesson-topic-topbar'>
+    <span
+      className='drag-icon'
+      draggable
+      onDragStart={(e) => handleTopicDragStart(e, topic.id)}
+      onDragEnd={handleTopicDragEnd}
+    >
+      &#8942;&#8942;
+    </span>
                           <input
                             id={`topic-title-${topic.id}`}
                             type='text'

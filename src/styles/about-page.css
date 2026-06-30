@@ -6,7 +6,7 @@
   letter-spacing: 0.025rem;
 }
 
-/* ── Hero Video Section ── */
+
 .heroSection2 {
   position: relative;
   overflow: hidden;
@@ -89,7 +89,7 @@
 }
 .mission-vision h1{
   font-size: 2.5rem;
-  color: white;
+  color: #e4f0e3;
   
 }
 .mission-vision p{

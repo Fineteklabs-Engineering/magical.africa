@@ -1132,6 +1132,20 @@
   }
 }
 
+
+.drag-icon {
+  cursor: grab;
+}
+.drag-icon:active {
+  cursor: grabbing;
+}
+.lesson-topic-block.is-dragging {
+  opacity: 0.5;
+}
+.lesson-topic-block.is-drag-over {
+  border-top: 3px solid #d5731a;
+}
+
 @media screen and (max-width: 480px) {
 
   .lesson-page {
