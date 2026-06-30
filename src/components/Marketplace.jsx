@@ -137,23 +137,22 @@ const Marketplace = () => {
           </button>
         ))}
       </div>
-
-      <div className="market-section">
-        {currentData.sections.map((item, index) => (
-          <div
-            key={index}
-            className={`section section${index + 1}`}
-            style={{ backgroundImage: `url(${item.image})`, cursor: 'pointer' }}
-            onClick={() => handleNavigation(`/market/${item.category}/${toSlug(item.title)}`)}
-          >
-            <div className="description">
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
-              <span>{t('marketplace.price')}: {item.price}</span>
-            </div>
-          </div>
-        ))}
+<div className="market-section">
+  {currentData.sections.map((item, index) => (
+    <div
+      key={index}
+      className={`section section${index + 1}`}
+      style={{ backgroundImage: `url(${item.image})`, cursor: 'pointer' }}
+      onClick={() => handleNavigation(`/market/${item.category}/${toSlug(item.title)}`)}
+    >
+      <span className="price-badge">{item.price}</span>
+      <div className="description">
+        <h3>{item.title}</h3>
+        <p>{item.description}</p>
       </div>
+    </div>
+  ))}
+</div>
 
       <div className="show-all2">
         <button className="show-btn2" onClick={() => handleNavigation('/market')}>
