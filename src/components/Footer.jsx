@@ -44,7 +44,7 @@ const Footer = () => {
   <span onClick={() => window.open('https://www.instagram.com/themagicalafrica/', '_blank')}>
     <i className="fa-brands fa-instagram"></i>
   </span>
-  <span onClick={() => window.open('https://x.com/MagicalAfr23463', '_blank')}>
+  <span onClick={() => window.open('https://x.com/milazetu', '_blank')}>
     <i className="fa-brands fa-x-twitter"></i>
   </span>
   <span onClick={() => window.open('https://www.tiktok.com/@themagicalafrica', '_blank')}>
