@@ -16,7 +16,7 @@ import PopularCourses from '../components/PopularCourses';
 import PageSeo from '../components/PageSeo'
 import { SEO_CONTENT } from '../utils/seoContent'
 import HomeAiSection from '../components/HomeAiSection';
-
+import CreatorsSection from '../components/CreatorsSection';
 
 const Home = () => {
 
@@ -41,6 +41,7 @@ const Home = () => {
       <Marketplace />
       <PopularCourses />
       <TribesSection />
+      <CreatorsSection />
       <SocialImpact />
       <Culture />
       <Partners />

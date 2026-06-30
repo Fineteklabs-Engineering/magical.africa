@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.025rem;
+}
+
+.creators-cta-section {
+background: linear-gradient(225deg, #f4f5f3, #fff);
+  padding: 5rem 120px;
+}
+
+.creators-cta-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.creators-cta-text h2 {
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.creators-cta-text p {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 1rem;
+  line-height: 1.7rem;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.creators-cta-btn {
+  margin-top: 1.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  background-color: #A3070C;
+  color: white;
+  padding: 0.75rem 1.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.creators-cta-btn:hover {
+  background-color: #D5731A;
+  transform: translateY(-2px);
+}
+
+.creators-mini-row {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 3.5rem;
+}
+
+.creator-mini-card {
+  width: 220px;
+  background-color: white;
+  cursor: pointer;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.2s ease;
+}
+
+.creator-mini-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.creator-mini-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.creator-mini-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.creator-mini-info {
+  padding: 0.8rem 1rem;
+}
+
+.creator-mini-info h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.creator-mini-info span {
+  font-size: 0.78rem;
+  color: #D5731A;
+  font-weight: 600;
+}
+
+.creators-view-all-link {
+  margin-top: 2.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  background: none;
+  color: #A3070C;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 1024px) {
+  .creators-cta-section {
+    padding: 4rem 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .creators-cta-section {
+    padding: 3rem 1rem;
+  }
+  .creator-mini-card {
+    width: 100%;
+  }
+}
