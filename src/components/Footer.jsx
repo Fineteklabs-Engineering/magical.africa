@@ -7,16 +7,14 @@ import { useState } from 'react';
 import '../styles/footer.css';
 import { useNavigate } from 'react-router-dom';
 import useAcademyNavigation from "../hooks/useAcademyNavigation";
-import ContactModal from './ContactModal'; // adjust path if needed
+import ContactModal from './ContactModal'; 
 
 const Footer = () => {
   const { t } = useTranslation();
   const goToAcademy = useAcademyNavigation();
   const [contactOpen, setContactOpen] = useState(false);
 
-      const navigate = useNavigate(); // 👈 1. create navigate
-  
-    // 👈 2. define the handler
+      const navigate = useNavigate(); 
     const handleNavigation = (path) => {
       navigate(path);
     };
@@ -43,13 +41,13 @@ const Footer = () => {
   <span onClick={() => window.open('https://www.facebook.com/profile.php?id=61583415501249', '_blank')}>
     <i className="fa-brands fa-facebook-f"></i>
   </span>
-  <span onClick={() => window.open('https://www.instagram.com/africa_magical/', '_blank')}>
+  <span onClick={() => window.open('https://www.instagram.com/themagicalafrica/', '_blank')}>
     <i className="fa-brands fa-instagram"></i>
   </span>
   <span onClick={() => window.open('https://x.com/MagicalAfr23463', '_blank')}>
     <i className="fa-brands fa-x-twitter"></i>
   </span>
-  <span onClick={() => window.open('https://www.tiktok.com/@exploremagicalafr', '_blank')}>
+  <span onClick={() => window.open('https://www.tiktok.com/@themagicalafrica', '_blank')}>
     <i className="fa-brands fa-tiktok"></i>
   </span>
 </div>

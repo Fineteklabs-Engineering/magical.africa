@@ -9,6 +9,7 @@ import { FaChevronLeft } from 'react-icons/fa'
 
 const MIN_TOPIC_TITLE = 3
 const MIN_TOPIC_DESC = 10
+const MAX_LESSONS_PER_TOPIC = 10
 const DURATION_PRESETS = ['3 min', '5 min', '10 min', '15 min', '20 min', '30 min', '45 min', '60 min']
 
 const createDefaultAssessmentSettings = () => ({
@@ -387,7 +388,7 @@ const [dragOverTopicId, setDragOverTopicId] = useState(null)
     }
 
     setTopics(topics.map(t => {
-      if (t.id !== topicId || t.lessons.length >= 5) return t
+     if (t.id !== topicId || t.lessons.length >= MAX_LESSONS_PER_TOPIC) return t
       return {
         ...t,
         showQuizBuilder: false,
@@ -1158,9 +1159,9 @@ const handleTopicDragEnd = () => {
                                     </div>
                                   )
                                 })}
-                                {topic.lessons.length >= 5 && (
-                                  <p className='lesson-max-note'>Maximum 5 lessons reached for this topic.</p>
-                                )}
+                               {topic.lessons.length >= MAX_LESSONS_PER_TOPIC && (
+  <p className='lesson-max-note'>Maximum {MAX_LESSONS_PER_TOPIC} lessons reached for this topic.</p>
+)}
                               </div>
                             )}
                           </div>
@@ -1323,7 +1324,7 @@ const handleTopicDragEnd = () => {
                             <button
                               className={`lesson-action-btn ${validation.basicsValid && topic.lessons.length === 0 ? 'is-next-action' : ''}`}
                               onClick={() => addLesson(topic.id)}
-                              disabled={!validation.basicsValid || topic.lessons.length >= 5}
+                              disabled={!validation.basicsValid || topic.lessons.length >= MAX_LESSONS_PER_TOPIC}
                               type='button'
                             >
                               + Lesson
