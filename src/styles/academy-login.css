@@ -1,52 +1,101 @@
-/* signIn.css — matches academy-signIn.css style */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.025rem;
+  line-height: 1.5rem;
+}
 
-.signIn-page {
+/* ===== Layout shell ===== */
+.signIn-page{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 140px;
+  flex-direction: row;
   min-height: 100vh;
+  padding-top: 80px; /* adjust to match your fixed Navbar height */
 }
 
-.signIn-title {
+/* ===== LEFT: visual side ===== */
+.signIn-visual{
+  position: relative;
+  flex: 1.1;
+  min-height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+.signIn-image-grid{
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 4px;
+  filter: saturate(0.9);
+}
+
+.signIn-tile{
+  background-size: cover;
+  background-position: center;
+  background-color: #91A585; /* fallback while images load */
+}
+
+.signIn-visual::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+.signIn-visual-overlay{
+  position: relative;
+  z-index: 2;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  justify-content: center;
+  padding: 4rem 3.5rem;
+  color: #fff;
+}
+
+.signIn-visual-overlay h1{
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.signIn-visual-overlay h1 span{
+  color: #D5731A;
+}
+
+/* ===== RIGHT: form side ===== */
+.signIn-form-panel{
+  flex: 1;
+  display: flex;
   align-items: center;
-  height: fit-content;   
+  justify-content: center;
+  background-color: #fff;
+  padding: 2rem 1rem;
 }
 
-.signIn-title img {
-  height: 60px;
-}
-
-.signIn-title h1 {
-  font-size: 1rem;
-}
-
-.signIn-title h1 span {
-  display: block;
-  text-align: center;
-  color: #1f6f43;
-}
-
-.signIn-form {
-  width: 450px;
-  margin-top: 4rem;
- 
-  padding: 1.5rem 1rem;
+.signIn-form{
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem 1.75rem;
   height: fit-content;
   border: 1px solid #e5e3e3;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
 }
 
-.signIn-form h1 {
+.signIn-form h1{
   font-size: 1.2rem;
   font-weight: 600;
   text-align: center;
   color: rgb(48, 48, 48);
 }
 
-.signIn-form h2 {
+.signIn-form h2{
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
@@ -54,125 +103,119 @@
   margin-bottom: 1.5rem;
 }
 
-.signIn-field {
+.signIn-field{
   display: flex;
   flex-direction: column;
   gap: 5px;
   margin-top: 1rem;
 }
 
-.signIn-field label {
+.signIn-field label{
   font-size: 0.875rem;
-  font-weight: 500;
-  color: rgb(48, 48, 48);
 }
 
-.signIn-field input {
+.signIn-field input{
   font-size: 0.875rem;
-  padding: 0.3rem 0.5rem;
+  padding: 0.4rem 0.5rem;
   border: 1px solid #e5e3e3;
   outline: none;
-  font-family: 'Poppins', sans-serif;
-  transition: border-color 0.2s;
+  width: 100%;
 }
 
-.signIn-field input:focus {
-  border-color: #1f6f43;
+.signIn-field input:focus{
+  border: 1px solid #A3070C;
 }
 
-.signIn-forgot {
-  margin-top: 0.5rem;
+.signIn-forgot{
+  margin-top: 0.75rem;
   text-align: right;
 }
 
-.signIn-forgot a {
+.signIn-forgot a{
   font-size: 0.8rem;
-  color: rgb(181, 161, 145);
+  color: #D5731A;
   text-decoration: none;
 }
 
-.signIn-forgot a:hover {
+.signIn-forgot a:hover{
   text-decoration: underline;
 }
 
-.signIn-submit {
-  margin-top: 2rem;
+.signIn-submit{
+  margin-top: 1.5rem;
   width: 100%;
 }
 
-.signIn-submit button {
+.signIn-submit button{
   width: 100%;
   border: none;
   color: white;
-  background-color: rgb(48, 48, 48);
-  padding-top: 0.4rem;
-  padding-bottom: 0.4rem;
+  background-color: #000000;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
   font-weight: 600;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.875rem;
-  cursor: pointer;
-  transition: all 0.2s;
 }
 
-.signIn-submit button:hover:not(:disabled) {
-  border: 2px solid rgb(48, 48, 48);
+.signIn-submit button:hover{
+  border: 2px solid #000000;
   color: black;
   background-color: transparent;
 }
 
-.signIn-submit button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-.signIn-or {
+.signIn-or{
   display: flex;
   flex-direction: row;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   width: 100%;
   align-items: center;
   justify-content: center;
   gap: 20px;
 }
 
-.signIn-or hr {
+.signIn-or hr{
   flex: 1;
 }
 
-.signIn-register {
+.signIn-register{
   margin-top: 1rem;
 }
 
-.signIn-register p {
+.signIn-register p{
   text-align: center;
   font-size: 0.875rem;
 }
 
-.signIn-register a {
-  color: rgb(181, 161, 145);
-  text-decoration: none;
+.signIn-register a{
+  color: #D5731A;
   cursor: pointer;
 }
 
-.signIn-register a:hover {
+.signIn-register a:hover{
   text-decoration: underline;
 }
 
-@media screen and (max-width:480px) {
-
-    .signIn-form {
-    width: 100%;
-    max-width: 100%;
-    margin-top: 2rem;
-     margin-bottom: 4rem;
-     border: none;
-
+/* ===== Responsive ===== */
+@media screen and (max-width: 900px) {
+  .signIn-page{
+    flex-direction: column;
   }
+  .signIn-visual{
+    min-height: 220px;
+  }
+  .signIn-visual-overlay{
+    padding: 2rem 1.5rem;
+  }
+  .signIn-visual-overlay h1{
+    font-size: 1.8rem;
+  }
+}
 
-
+@media screen and (max-width: 480px) {
   .signIn-page{
     min-height: fit-content;
-    padding-bottom: 1rem;
   }
-
+  .signIn-form{
+    border: none;
+    box-shadow: none;
+  }
 }

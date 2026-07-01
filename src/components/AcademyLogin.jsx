@@ -108,125 +108,125 @@ const resolveLoginRole = (profile) => {
 
       <div className="signIn-page">
 
-        <div className="signIn-title">
-          <img src="/images/magivcal-logo2-removebg-preview.png" alt="" />
-          <h1>Magical Africa <span>Academy</span></h1>
-        </div>
-
-        <div className="signIn-form">
-
-          <h1>Welcome Back</h1>
-          <h2>Sign in to your account</h2>
-
-          {/*  Success Message */}
-          {success && (
-            <div style={{
-              backgroundColor: '#d4edda',
-              color: '#155724',
-              border: '1px solid #c3e6cb',
-              borderRadius: '8px',
-              padding: '12px 16px',
-              marginBottom: '16px',
-              textAlign: 'center',
-              fontWeight: '500'
-            }}>
-              🎉 Logged in successfully! Redirecting...
-            </div>
-          )}
-
-          {/* ❌ Error Message */}
-          {error && (
-            <div style={{
-              backgroundColor: '#f8d7da',
-              color: '#721c24',
-              border: '1px solid #f5c6cb',
-              borderRadius: '8px',
-              padding: '12px 16px',
-              marginBottom: '16px',
-              textAlign: 'center',
-              fontWeight: '500'
-            }}>
-              ⚠️ {error}
-            </div>
-          )}
-
-          <form onSubmit={handleSubmit}>
-
-            <div className="signIn-field">
-              <label>Email Address</label>
-              <input
-                type="email"
-                placeholder="johndoe@gmail.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-
-            
-         {/* 
-            <div className="signIn-field">
-              <label>Password</label>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            */}
-
-
-            <div className="signIn-field" style={{ position: 'relative' }}>
-  <label>Password</label>
-  <input
-    type={showPassword ? 'text' : 'password'}
-    placeholder="Enter your password"
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-    required
-  />
-  <i
-    className={`fa-regular ${showPassword ? 'fa-eye' : 'fa-eye-slash'}`}
-    onClick={() => setShowPassword(!showPassword)}
-    style={{
-      position: 'absolute',
-      right: '12px',
-      bottom: '10px',
-      cursor: 'pointer',
-      color: 'rgb(181, 161, 145)'
-    }}
-  />
-</div>
-
-
-
-            <div className="signIn-forgot">
-              <a href="#">Forgot password?</a>
-            </div>
-
-            <div className="signIn-submit">
-              <button type="submit" disabled={loading || success}>
-                {loading ? 'Signing in...' : 'Sign In'}
-              </button>
-            </div>
-
-          </form>
-
-          <div className="signIn-or">
-            <hr />
-            <p>Or</p>
-            <hr />
+        {/* LEFT: Image mosaic + overlay message */}
+        <div className="signIn-visual">
+          <div className="signIn-image-grid">
+            <div className="signIn-tile" style={{ backgroundImage: "url('/images/kitenge-latest.jpg')" }} />
+            <div className="signIn-tile" style={{ backgroundImage: "url('/images/african-spices.jpg')" }} />
+            <div className="signIn-tile" style={{ backgroundImage: "url('/images/brassJewellery.jpg')" }} />
+            <div className="signIn-tile" style={{ backgroundImage: "url('/images/maasai2.jpg')" }} />
+            <div className="signIn-tile" style={{ backgroundImage: "url('/images/african-learning.png')" }} />
+            <div className="signIn-tile" style={{ backgroundImage: "url('/images/maasai-art2.png')" }} />
+            <div className="signIn-tile" style={{ backgroundImage: "url('/images/orinkaWristCoil.jpg')" }} />
+            <div className="signIn-tile" style={{ backgroundImage: "url('/images/pottery1-image1.jpg')" }} />
+            <div className="signIn-tile" style={{ backgroundImage: "url('/images/woman-painting.png')" }} />
           </div>
 
-          <div className="signIn-register">
-            <p>Don't have an account? <a onClick={() => navigate('/join')}>Create Account</a></p>
+          <div className="signIn-visual-overlay">
+            <h1>Welcome <span>back</span><br />Login to Your Account</h1>
           </div>
-
         </div>
+
+        {/* RIGHT: Existing form, logic untouched */}
+        <div className="signIn-form-panel">
+          <div className="signIn-form">
+
+            <h1>Welcome Back</h1>
+            <h2>Sign in to your account</h2>
+
+            {/*  Success Message */}
+            {success && (
+              <div style={{
+                backgroundColor: '#d4edda',
+                color: '#155724',
+                border: '1px solid #c3e6cb',
+                borderRadius: '8px',
+                padding: '12px 16px',
+                marginBottom: '16px',
+                textAlign: 'center',
+                fontWeight: '500'
+              }}>
+                🎉 Logged in successfully! Redirecting...
+              </div>
+            )}
+
+            {/* ❌ Error Message */}
+            {error && (
+              <div style={{
+                backgroundColor: '#f8d7da',
+                color: '#721c24',
+                border: '1px solid #f5c6cb',
+                borderRadius: '8px',
+                padding: '12px 16px',
+                marginBottom: '16px',
+                textAlign: 'center',
+                fontWeight: '500'
+              }}>
+                ⚠️ {error}
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit}>
+
+              <div className="signIn-field">
+                <label>Email Address</label>
+                <input
+                  type="email"
+                  placeholder="johndoe@gmail.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="signIn-field" style={{ position: 'relative' }}>
+                <label>Password</label>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <i
+                  className={`fa-regular ${showPassword ? 'fa-eye' : 'fa-eye-slash'}`}
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{
+                    position: 'absolute',
+                    right: '12px',
+                    bottom: '10px',
+                    cursor: 'pointer',
+                    color: 'rgb(181, 161, 145)'
+                  }}
+                />
+              </div>
+
+              <div className="signIn-forgot">
+                <a href="#">Forgot password?</a>
+              </div>
+
+              <div className="signIn-submit">
+                <button type="submit" disabled={loading || success}>
+                  {loading ? 'Signing in...' : 'Sign In'}
+                </button>
+              </div>
+
+            </form>
+
+            <div className="signIn-or">
+              <hr />
+              <p>Or</p>
+              <hr />
+            </div>
+
+            <div className="signIn-register">
+              <p>Don't have an account? <a onClick={() => navigate('/join')}>Create Account</a></p>
+            </div>
+
+          </div>
+        </div>
+
       </div>
-
 
       <Footer />
     </>

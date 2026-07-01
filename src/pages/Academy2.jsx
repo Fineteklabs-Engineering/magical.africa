@@ -13,8 +13,6 @@ const Academy2 = () => {
   const [role, setRole] = useState('learner')
   const [firstName, setFirstName] = useState('')
   const [secondName, setSecondName] = useState('')
-
-  
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [subject, setSubject] = useState('')
@@ -27,10 +25,10 @@ const Academy2 = () => {
   const dateRef = useRef(null)
 
   const openDatePicker = () => {
-  if (dateRef.current) {
-    dateRef.current.showPicker()
+    if (dateRef.current) {
+      dateRef.current.showPicker()
+    }
   }
-}
 
   const navigate = useNavigate()
 
@@ -44,26 +42,22 @@ const Academy2 = () => {
       setError('Password must be at least 6 characters.')
       return
     }
-   if ((role === 'teacher' || role === 'creator') && !subject) {
-  setError('Please enter your subject or type of content.')
-  return
-}
-
+    if ((role === 'teacher' || role === 'creator') && !subject) {
+      setError('Please enter your subject or type of content.')
+      return
+    }
 
     setLoading(true)
     setError('')
 
     try {
-      // 1. Create user in Firebase Auth
       const userCredential = await createUserWithEmailAndPassword(auth, email, password)
       const user = userCredential.user
 
-      // 2. Set display name
       await updateProfile(user, {
         displayName: `${firstName} ${secondName}`
       })
 
-      // 3. Save extra details to Firestore
       await setDoc(doc(db, 'users', user.uid), {
         firstName,
         secondName,
@@ -75,19 +69,17 @@ const Academy2 = () => {
         createdAt: new Date().toISOString()
       })
 
-      // 4. Show success message
       setSuccess(true)
 
-      // 5. Redirect after 2 seconds
-     setTimeout(() => {
-  if (role === 'teacher') {
-    navigate('/teacher-dashboard')
-  } else if (role === 'creator') {
-    navigate('/creator-dashboard')  // or wherever creators go
-  } else {
-    navigate('/learner')
-  }
-}, 2000)
+      setTimeout(() => {
+        if (role === 'teacher') {
+          navigate('/teacher-dashboard')
+        } else if (role === 'creator') {
+          navigate('/creator-dashboard')
+        } else {
+          navigate('/learner')
+        }
+      }, 2000)
 
     } catch (err) {
       if (err.code === 'auth/email-already-in-use') {
@@ -106,239 +98,212 @@ const Academy2 = () => {
 
   return (
     <>
-
-
       <PageSeo {...SEO_CONTENT.academySignup} />
-
 
       <Navbar solid />
 
       <div className="academy-signIn">
 
-        <div className='academy-title'>
-          <img src="/images/magivcal-logo2-removebg-preview.png" alt="" />
-          <h1>Magical Africa <span>Academy</span></h1>
+        {/* LEFT: Image mosaic + overlay message */}
+        <div className="academy-visual">
+          <div className="academy-image-grid">
+            <div className="academy-tile" style={{ backgroundImage: "url('/images/kitenge-latest.jpg')" }} />
+            <div className="academy-tile" style={{ backgroundImage: "url('/images/african-spices.jpg')" }} />
+            <div className="academy-tile" style={{ backgroundImage: "url('/images/brassJewellery.jpg')" }} />
+            <div className="academy-tile" style={{ backgroundImage: "url('/images/maasai2.jpg')" }} />
+            <div className="academy-tile" style={{ backgroundImage: "url('/images/african-learning.png')" }} />
+            <div className="academy-tile" style={{ backgroundImage: "url('/images/maasai-art2.png')" }} />
+            <div className="academy-tile" style={{ backgroundImage: "url('/images/orinkaWristCoil.jpg')" }} />
+            <div className="academy-tile" style={{ backgroundImage: "url('/images/pottery1-image1.jpg')" }} />
+            <div className="academy-tile" style={{ backgroundImage: "url('/images/woman-painting.png')" }} />
+          </div>
+
+          <div className="academy-visual-overlay">
+            <h1>Sign up to <span>learn, teach,</span><br />and create</h1>
+          
+          </div>
         </div>
 
-        <div className='academy-form'>
+        {/* RIGHT: Existing form, logic untouched */}
+        <div className="academy-form-panel">
+          <div className='academy-form'>
 
-          <h1>Create your Account</h1>
-          <h2>Join as learner or educator</h2>
+            <h1>Create your Account</h1>
+            <h2>Join as learner or educator</h2>
 
-          {/* ✅ Success Message */}
-          {success && (
-            <div style={{
-              backgroundColor: '#d4edda',
-              color: '#155724',
-              border: '1px solid #c3e6cb',
-              borderRadius: '8px',
-              padding: '12px 16px',
-              marginBottom: '16px',
-              textAlign: 'center',
-              fontWeight: '500'
-            }}>
-              🎉 Your account has been successfully created! Redirecting...
+            {success && (
+              <div style={{
+                backgroundColor: '#d4edda',
+                color: '#155724',
+                border: '1px solid #c3e6cb',
+                borderRadius: '8px',
+                padding: '12px 16px',
+                marginBottom: '16px',
+                textAlign: 'center',
+                fontWeight: '500'
+              }}>
+                🎉 Your account has been successfully created! Redirecting...
+              </div>
+            )}
+
+            {error && (
+              <div style={{
+                backgroundColor: '#f8d7da',
+                color: '#721c24',
+                border: '1px solid #f5c6cb',
+                borderRadius: '8px',
+                padding: '12px 16px',
+                marginBottom: '16px',
+                textAlign: 'center',
+                fontWeight: '500'
+              }}>
+                ⚠️ {error}
+              </div>
+            )}
+
+            <div className='academy-category'>
+              <button
+                className={role === 'learner' ? 'active-role' : 'inactive-role'}
+                onClick={() => setRole('learner')}
+              >
+                Learner
+              </button>
+              <button
+                className={role === 'teacher' ? 'active-role' : 'inactive-role'}
+                onClick={() => setRole('teacher')}
+              >
+                Tutor
+              </button>
+              <button
+                className={role === 'creator' ? 'active-role' : 'inactive-role'}
+                onClick={() => setRole('creator')}
+              >
+                Creator
+              </button>
             </div>
-          )}
 
-          {/* ❌ Error Message */}
-          {error && (
-            <div style={{
-              backgroundColor: '#f8d7da',
-              color: '#721c24',
-              border: '1px solid #f5c6cb',
-              borderRadius: '8px',
-              padding: '12px 16px',
-              marginBottom: '16px',
-              textAlign: 'center',
-              fontWeight: '500'
-            }}>
-              ⚠️ {error}
+            <div className='academy-info1'>
+              <div className='academy-info1-a'>
+                <label>First name</label>
+                <input
+                  type="text"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  placeholder='John'
+                />
+              </div>
+              <div className='academy-info1-b'>
+                <label>Last name</label>
+                <input
+                  type="text"
+                  value={secondName}
+                  onChange={(e) => setSecondName(e.target.value)}
+                  placeholder='Doe'
+                />
+              </div>
             </div>
-          )}
 
-          <div className='academy-category'>
-  <button
-    className={role === 'learner' ? 'active-role' : 'inactive-role'}
-    onClick={() => setRole('learner')}
-  >
-    Learner
-  </button>
-  <button
-    className={role === 'teacher' ? 'active-role' : 'inactive-role'}
-    onClick={() => setRole('teacher')}
-  >
-    Tutor
-  </button>
-  <button
-    className={role === 'creator' ? 'active-role' : 'inactive-role'}
-    onClick={() => setRole('creator')}
-  >
-    Creator
-  </button>
-</div>
-
-          <div className='academy-info1'>
-            <div className='academy-info1-a'>
-              <label>First name</label>
+            <div className='academy-info2'>
+              <label>Email Address</label>
               <input
-                type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                placeholder='John'
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder='johndoe@gmail.com'
               />
             </div>
-            <div className='academy-info1-b'>
-              <label>Last name</label>
+
+            <div className='academy-info2 date-wrapper'>
+              <label>Date of Birth</label>
+
+              <div className="date-input-container" onClick={openDatePicker}>
+                <input
+                  ref={dateRef}
+                  type="date"
+                  value={dob}
+                  onChange={(e) => setDob(e.target.value)}
+                  max={new Date().toISOString().split('T')[0]}
+                />
+
+                <i
+                  className="fa-regular fa-calendar calendar-icon"
+                  onClick={openDatePicker}
+                />
+              </div>
+            </div>
+
+            <div className='academy-info2'>
+              <label>Tribe / Ethnic Group</label>
               <input
                 type="text"
-                value={secondName}
-                onChange={(e) => setSecondName(e.target.value)}
-                placeholder='Doe'
+                value={tribe}
+                onChange={(e) => setTribe(e.target.value)}
+                placeholder='e.g. Kikuyu, Luo, Maasai, Zulu...'
               />
             </div>
-          </div>
 
-          <div className='academy-info2'>
-            <label>Email Address</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder='johndoe@gmail.com'
-            />
-          </div>
-
-          {/* 
-
-          <div className='academy-info2'>
-     <label>Age</label>
-    <input
-    type="number"
-    min="10"
-    max="100"
-    value={age}
-    onChange={(e) => setAge(e.target.value)}
-  />
-</div>
-
-
-     <div className='academy-info2'>
-   <label>Date of Birth</label>
-   <input
-    type="date"
-    value={dob}
-    onChange={(e) => setDob(e.target.value)}
-    max={new Date().toISOString().split('T')[0]}
-   
-  />
-</div>
-
-*/}
-
-
-
-<div className='academy-info2 date-wrapper'>
-  <label>Date of Birth</label>
-
-  <div className="date-input-container" onClick={openDatePicker}>
-    <input
-      ref={dateRef}
-      type="date"
-      value={dob}
-      onChange={(e) => setDob(e.target.value)}
-      max={new Date().toISOString().split('T')[0]}
-    />
-
-    <i 
-      className="fa-regular fa-calendar calendar-icon"
-      onClick={openDatePicker}
-    />
-  </div>
-</div>
-
-
-
-<div className='academy-info2'>
-  <label>Tribe / Ethnic Group</label>
-  <input
-    type="text"
-    value={tribe}
-    onChange={(e) => setTribe(e.target.value)}
-    placeholder='e.g. Kikuyu, Luo, Maasai, Zulu...'
-  />
-</div>
-
-       
-
-          <div className='academy-info3' style={{ position: 'relative' }}>
-  <label>Password</label>
-  <input
-    type={showPassword ? 'text' : 'password'}
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-    placeholder='Enter your password'
-  />
-  <i
-    className={`fa-regular ${showPassword ? 'fa-eye' : 'fa-eye-slash'}`}
-    onClick={() => setShowPassword(!showPassword)}
-    style={{
-      position: 'absolute',
-      right: '12px',
-      bottom: '10px',
-      cursor: 'pointer',
-      color: 'rgb(181, 161, 145)'
-    }}
-  />
-</div>
-
-          {/* Extra field shown only for teachers */}
-          {role === 'teacher' && (
-            <div className='academy-info3'>
-              <label>Subject / Expertise</label>
+            <div className='academy-info3' style={{ position: 'relative' }}>
+              <label>Password</label>
               <input
-                type="text"
-                placeholder="e.g. Artisan, Pottery, Language, Woodwork...."
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder='Enter your password'
+              />
+              <i
+                className={`fa-regular ${showPassword ? 'fa-eye' : 'fa-eye-slash'}`}
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: 'absolute',
+                  right: '12px',
+                  bottom: '10px',
+                  cursor: 'pointer',
+                  color: 'rgb(181, 161, 145)'
+                }}
               />
             </div>
-          )}
 
+            {role === 'teacher' && (
+              <div className='academy-info3'>
+                <label>Subject / Expertise</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Artisan, Pottery, Language, Woodwork...."
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                />
+              </div>
+            )}
 
-          {role === 'creator' && (
-  <div className='academy-info3'>
-    <label>Type of Content</label>
-    <input
-      type="text"
-      placeholder="e.g. Music, Art, Storytelling, Fashion..."
-      value={subject}
-      onChange={(e) => setSubject(e.target.value)}
-    />
-  </div>
-)}
+            {role === 'creator' && (
+              <div className='academy-info3'>
+                <label>Type of Content</label>
+                <input
+                  type="text"
+                  placeholder="e.g. Music, Art, Storytelling, Fashion..."
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                />
+              </div>
+            )}
 
-          <div className='academy-create'>
-            <button onClick={handleCreate} disabled={loading || success}>
-              {loading
-                ? 'Creating Account...'
-                : role === 'learner'
-                  ? 'Create new account'
-                  : 'Create new account'
-              }
-            </button>
+            <div className='academy-create'>
+              <button onClick={handleCreate} disabled={loading || success}>
+                {loading ? 'Creating Account...' : 'Create new account'}
+              </button>
+            </div>
+
+            <div className='academy-or'>
+              <hr /><p>Or</p><hr />
+            </div>
+
+            <div className='academy-already'>
+              <p>Already have an account? <a onClick={() => navigate('/login')}>Sign In</a></p>
+            </div>
 
           </div>
-
-          <div className='academy-or'>
-          <hr /><p>Or</p><hr />
-          </div>
-
-          <div className='academy-already'>
-            <p>Already have an account? <a  onClick={() => navigate('/login')}>Sign In</a></p>
-          </div>
-
         </div>
+
       </div>
 
       <Footer />

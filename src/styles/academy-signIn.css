@@ -7,49 +7,93 @@
   line-height: 1.5rem;
 }
 
+/* ===== Layout shell ===== */
 .academy-signIn{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 140px;
+  flex-direction: row;
   min-height: 100vh;
+  padding-top: 80px; /* adjust to match your fixed Navbar height */
 }
 
-.academy-title{
+/* ===== LEFT: visual side ===== */
+.academy-visual{
+  position: relative;
+  flex: 1.1;
+  min-height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+.academy-image-grid{
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 4px;
+  filter: saturate(0.9);
+}
+
+.academy-tile{
+  background-size: cover;
+  background-position: center;
+  background-color: #91A585; /* fallback while images load */
+}
+
+/* Color-wash overlay using the Magical palette */
+.academy-visual::before{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+.academy-visual-overlay{
+  position: relative;
+  z-index: 2;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
-
-  align-items: center;
-height: fit-content;
+  justify-content: center;
+  padding: 4rem 3.5rem;
+  color: #fff;
 }
 
-.academy-title img{
-  height:60px;
+.academy-visual-overlay h1{
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.15;
 }
 
-.academy-title h1{
+.academy-visual-overlay h1 span{
+  color: #D5731A;
+}
+
+.academy-visual-overlay p{
+  margin-top: 1.25rem;
+  max-width: 380px;
   font-size: 1rem;
- 
+  color: rgba(255,255,255,0.85);
 }
 
-.academy-title h1 span{
- display: block;
- text-align: center;
- color: #1f6f43;
+/* ===== RIGHT: form side ===== */
+.academy-form-panel{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  padding: 2rem 1rem;
 }
 
 .academy-form{
- width: 100%;
+  width: 100%;
   max-width: 450px;
-  margin-top: 4rem;
-  margin-bottom: 4rem;
- padding: 1.5rem 1rem;
+  padding: 1.5rem 1rem;
   height: fit-content;
-  border: 1px solid #e5e3e3;
+    border: 1px solid #e5e3e3;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
 }
-
-
 
 .academy-form h1{
   font-size: 1.2rem;
@@ -64,12 +108,13 @@ height: fit-content;
   text-align: center;
   color: rgb(181, 161, 145);
 }
+
 .academy-category{
   display: flex;
- flex-direction: row;
- margin-top: 1rem;
- width: 100%;
- gap: 20px;
+  flex-direction: row;
+  margin-top: 1rem;
+  width: 100%;
+  gap: 20px;
 }
 
 .academy-category button{
@@ -77,7 +122,7 @@ height: fit-content;
 }
 
 .active-role {
-  background-color: #1f6f43;
+  background-color: #A3070C;
   border: none;
   color: white;
   font-size: 0.875rem;
@@ -87,7 +132,7 @@ height: fit-content;
 
 .inactive-role {
   background-color: transparent;
-  border: 1px solid rgb(181, 161, 145);
+  border: 1px solid #91A585;
   color: black;
   font-size: 0.875rem;
   font-weight: bold;
@@ -100,145 +145,75 @@ height: fit-content;
   margin-top: 1rem;
   width: 100%;
   gap: 20px;
- 
 }
-.academy-info1-a{
+
+.academy-info1-a, .academy-info1-b{
   display: flex;
-  flex-direction:column;
-  gap: 5px;
-  flex: 1;
-}
-
-.academy-info1-a label{
-  font-size: 0.875rem;
-}
-.academy-info1-a input{
-  font-size: 0.875rem;
-display: flex;
-flex-direction: row;
-padding-left: 0.5rem;
-padding-top: 0.3rem;
-padding-bottom: 0.3rem;
-border: 1px solid #e5e3e3;
-outline: none;
-width: 100%;
-}
-
-.academy-info1-a input:focus{
-  border: 1px solid #1f6f43;
-}
-
-
-
-.academy-info1-b{
-  display: flex;
-  flex-direction:column;
+  flex-direction: column;
   gap: 5px;
   flex: 1;
   width: 100%;
 }
 
-
-.academy-info1-b label{
-font-size: 0.875rem;
-}
-
-.academy-info2 label{
+.academy-info1-a label, .academy-info1-b label, .academy-info2 label, .academy-info3 label{
   font-size: 0.875rem;
 }
 
-.academy-info1-b input{
+.academy-info1-a input, .academy-info1-b input{
   font-size: 0.875rem;
-display: flex;
-flex-direction: row;
-padding-left: 0.5rem;
-padding-top: 0.3rem;
-padding-bottom: 0.3rem;
-border: 1px solid #e5e3e3;
-outline: none;
-width: 100%;
-}
-
-.academy-info1-b input:focus{
-  border: 1px solid #1f6f43;
-}
-
-
-
-
-
-.academy-info2{
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
- margin-top: 1rem;
-}
-
-
-
-
-
-.academy-info2 input{
- padding: 0.3rem 0.5rem;
- border: 1px solid #e5e3e3;
- outline: none;
- width: 100%;
-}
-
-.academy-info2 input:focus{
-  border: 1px solid #1f6f43;
-}
-
-
-.academy-info3{
-   display: flex;
-  flex-direction: column;
-  gap: 5px;
- margin-top: 1rem;
-}
-
-.academy-info3 input{
- padding: 0.3rem 0.5rem;
+  padding-left: 0.5rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
   border: 1px solid #e5e3e3;
   outline: none;
   width: 100%;
 }
 
-.academy-info3 input:focus{
-  border: 1px solid #1f6f43;
+.academy-info1-a input:focus, .academy-info1-b input:focus{
+  border: 1px solid #A3070C;
 }
 
+.academy-info2, .academy-info3{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 1rem;
+}
 
-.academy-info3 label{
-  font-size: 0.875rem;
- 
+.academy-info2 input, .academy-info3 input{
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #e5e3e3;
+  outline: none;
+  width: 100%;
+}
+
+.academy-info2 input:focus, .academy-info3 input:focus{
+  border: 1px solid #A3070C;
 }
 
 .academy-create{
-margin-top: 2rem;
-width: 100%;
-
+  margin-top: 2rem;
+  width: 100%;
 }
 
 .academy-create button{
-width: 100%;
-border: none;
-color: white;
-background-color: rgb(48, 48, 48);
-padding-top: 0.2rem;
-padding-bottom: 0.2rem;
-font-weight: 600;
+  width: 100%;
+  border: none;
+  color: white;
+  background-color: #000000;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  font-weight: 600;
 }
 
 .academy-create button:hover{
-border: 2px solid rgb(48, 48, 48);
-color: black;
-background-color: transparent;
+  border: 2px solid #000000;
+  color: black;
+  background-color: transparent;
 }
 
-
 .academy-or{
-  display: flex ;
+  display: flex;
   flex-direction: row;
   margin-top: 1rem;
   width: 100%;
@@ -248,7 +223,7 @@ background-color: transparent;
 }
 
 .academy-or hr{
- flex: 1;
+  flex: 1;
 }
 
 .academy-already{
@@ -260,7 +235,7 @@ background-color: transparent;
 }
 
 .academy-already a{
-  color: rgb(181, 161, 145);
+  color: #D5731A;
   cursor: pointer;
 }
 
@@ -275,63 +250,54 @@ background-color: transparent;
 
 .date-input-container input{
   width: 100%;
-  padding-right: 40px; /* space for icon */
+  padding-right: 40px;
 }
 
-/* Custom calendar icon */
 .calendar-icon{
   position: absolute;
   right: 12px;
   bottom: 8px;
-  color: rgb(181, 161, 145);
+  color: #91A585;
   cursor: pointer;
   font-size: 16px;
 }
 
-/* Hide the default browser calendar icon completely */
 input[type="date"]::-webkit-calendar-picker-indicator {
   opacity: 0;
   display: none;
 }
 
-/* Also remove extra spacing reserved for the icon */
 input[type="date"]::-webkit-inner-spin-button,
 input[type="date"]::-webkit-clear-button {
   display: none;
 }
 
-/* Firefox fix */
 input[type="date"] {
   appearance: none;
   -moz-appearance: textfield;
 }
 
-
-/* Hide the default browser calendar icon completely */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0;
-  display: none;
+/* ===== Responsive ===== */
+@media screen and (max-width: 900px) {
+  .academy-signIn{
+    flex-direction: column;
+  }
+  .academy-visual{
+    min-height: 260px;
+  }
+  .academy-visual-overlay{
+    padding: 2rem 1.5rem;
+  }
+  .academy-visual-overlay h1{
+    font-size: 1.8rem;
+  }
 }
 
-/* Also remove extra spacing reserved for the icon */
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-clear-button {
-  display: none;
-}
-
-/* Firefox fix */
-input[type="date"] {
-  appearance: none;
-  -moz-appearance: textfield;
-}
-
-@media screen and (max-width:480px) {
+@media screen and (max-width: 480px) {
+  .academy-signIn{
+    min-height: fit-content;
+  }
   .academy-form{
     border: none;
-    
   }
-.academy-signIn{
-  min-height: fit-content;
-  padding-bottom: 1rem;
-}
 }
