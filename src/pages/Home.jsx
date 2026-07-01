@@ -17,6 +17,7 @@ import PageSeo from '../components/PageSeo'
 import { SEO_CONTENT } from '../utils/seoContent'
 import HomeAiSection from '../components/HomeAiSection';
 import CreatorsSection from '../components/CreatorsSection';
+import CreatorsSec from '../components/CreatorsSec';
 
 const Home = () => {
 
@@ -40,8 +41,11 @@ const Home = () => {
       <AboutSection />
       <Marketplace />
       <PopularCourses />
+      <CreatorsSec />
       <TribesSection />
+      {/* 
       <CreatorsSection />
+      */}
       <SocialImpact />
       <Culture />
       <Partners />

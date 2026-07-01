@@ -8,8 +8,8 @@ import useAcademyNavigation from "../hooks/useAcademyNavigation";
 const heroSlides = [
   {
     image: '/images/Igbo2.jpg',
-    title: 'The Real African Story',
-    subtitle: 'Welcome To Magical Africa',
+    title: 'Magical Africa - The Real African Story',
+    subtitle: "Explore Africa's Culture and Heritage",
     name: '(Igbo)',
     flag: '/images/Nigeria-flag.png',
     box: { icon: 'fa-solid fa-mask', 
