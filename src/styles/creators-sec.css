@@ -190,7 +190,7 @@
   font-weight: 700;
   letter-spacing: 0.12rem;
   text-transform: uppercase;
-  color: #D5731A;
+  color: #D5731A !important;
 }
 
 .cs-card-title {
