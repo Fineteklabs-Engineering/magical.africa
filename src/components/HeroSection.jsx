@@ -117,6 +117,7 @@ useEffect(() => {
   >
     <i className={slide.box.icon}></i>
     <p>{slide.box.label}</p>
+     <i className="fa-solid fa-arrow-right hero-box-arrow"></i>
   </div>
 </div>
 

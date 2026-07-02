@@ -710,6 +710,20 @@ color: rgb(181, 161, 145);
   }
 
 
+  .hero-box-arrow {
+  color: #e4f0e3 !important;
+  animation: arrow-nudge 1.4s ease-in-out infinite;
+}
+
+@keyframes arrow-nudge {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+}
+
 
   @media screen and (max-width:1024px) {
     .item2{
