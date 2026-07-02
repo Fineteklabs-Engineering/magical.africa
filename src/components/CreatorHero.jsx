@@ -96,7 +96,7 @@ const FloatingCard = ({ card }) => {
 };
 
 const CreatorHero = ({
-  backgroundImage = '/images/pyramids2.jpg',
+  backgroundImage = '/images/woman-painting.png',
 }) => {
   return (
     <section className="ch-section">

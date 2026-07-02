@@ -31,9 +31,9 @@
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.55) 0%,
-    rgba(0, 0, 0, 0.3) 40%,
-    rgba(0, 0, 0, 0.55) 100%
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.55) 40%,
+    rgba(0, 0, 0, 0.75) 100%
   );
 }
 
@@ -74,7 +74,7 @@
 .ch-heading {
   font-size: clamp(2.4rem, 6vw, 4rem);
   font-weight: 700;
-  color: #ffffff;
+  color: #e4f0e3;
   margin: 0 0 1rem;
   line-height: 1.15;
   letter-spacing: 0.02em;
@@ -160,7 +160,7 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: rgba(210, 123, 53, 0.85);
+  background: rgba(163, 7, 12, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -169,7 +169,7 @@
 }
 
 .ch-card-play--active {
-  background: rgb(210, 123, 53);
+  background: #A3070C;
   transform: translate(-50%, -50%) scale(1.1);
 }
 
