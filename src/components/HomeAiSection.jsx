@@ -122,7 +122,7 @@ const StoryStep = ({ icon, color, label, desc }) => (
 )
 
 /* ── Main component ── */
-const HomeAiSection = ({ videoSrc = '/images/child.mp4' }) => {
+const HomeAiSection = ({ imageSrc = '/images/woman-child.png' }) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const videoRef = useRef(null)
@@ -157,16 +157,14 @@ const HomeAiSection = ({ videoSrc = '/images/child.mp4' }) => {
 
   return (
     <section className="has-section">
-      {videoSrc ? (
-        <video
-          ref={videoRef}
-          className="has-video-bg"
-          src={videoSrc}
-          autoPlay
-          muted
-          loop
-          playsInline
+     {imageSrc ? (
+        <img
+          className="has-image-bg"
+          src={imageSrc}
+          alt=""
+          aria-hidden="true"
         />
+
       ) : (
         <div className="has-video-fallback" aria-hidden="true" />
       )}

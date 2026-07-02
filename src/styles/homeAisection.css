@@ -8,8 +8,8 @@
   padding: 5rem 5rem;
 }
 
-/* ── Background video ── */
-.has-video-bg {
+
+.has-image-bg {
   position: absolute;
   inset: 0;
   width: 100%;

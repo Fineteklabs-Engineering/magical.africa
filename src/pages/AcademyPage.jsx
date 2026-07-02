@@ -168,7 +168,7 @@ const handleCourseShortcut = (course) => {
       
       <div
         className="academy-hero"
-        style={{ backgroundImage: 'url(/images/photorealistic-portrait-african-woman.jpg)' }}
+        style={{ backgroundImage: 'url(/images/african-family.png' }}
       >
         <Navbar />
         <div className="academy-hero-content">

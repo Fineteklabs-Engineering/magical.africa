@@ -16,7 +16,7 @@ const heroSlides = [
     label: 'Explore Culture', action: '/tribes' }
   },
   {
-    image: '/images/african-learning.png',
+    image: '/images/african-family.png',
     subtitle: 'Learn African Languages',
     title: 'Develop practical speaking skills from the very beginning',
     name: '(Swahili)',
