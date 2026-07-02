@@ -1,0 +1,313 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.025rem;
+}
+
+/* ── Palette ──
+   orange #D5731A  → Music
+   sage   #91A585  → Culinary
+   red    #A3070C  → Art & Heritage
+*/
+
+.culture-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 4rem 3rem;
+}
+
+.culture-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/cultural-event3.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.culture-hero-overlay {
+  position: absolute;
+  inset: 0;
+ background: rgb(0, 0, 0, 0.92);
+  z-index: 1;
+}
+
+.culture-hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10rem;
+}
+
+/* ── Left ── */
+.culture-hero-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 480px;
+}
+
+.culture-hero-eyebrow {
+  color: rgb(213, 115, 26);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.culture-hero-heading {
+  color: #fff;
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 2.2rem;
+}
+.culture-hero-heading span {
+  color: rgb(213, 115, 26);
+  font-style: italic;
+}
+
+.culture-hero-ctas {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.culture-cta {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.culture-cta--solid {
+  background: rgb(213, 115, 26);
+  border: 1px solid rgb(213, 115, 26);
+  color: #fff;
+}
+
+.culture-cta--solid:hover {
+  background: rgb(180, 96, 20);
+  box-shadow: 0 0 24px rgba(213, 115, 26, 0.35);
+  transform: translateY(-2px);
+}
+
+.culture-cta--outline {
+  background: transparent;
+  border: 1px solid rgba(145, 165, 133, 0.7);
+  color: rgb(145, 165, 133);
+}
+
+.culture-cta--outline:hover {
+  background: rgba(145, 165, 133, 0.12);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ── Right: venn cluster ── */
+.culture-hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.culture-venn {
+  position: relative;
+  width: 700px;
+  height: 700px;
+}
+
+.flip-card {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  perspective: 1400px;
+}
+
+.flip-card--music {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.flip-card--food {
+  top: 280px;
+  left: calc(50% - 347px);
+}
+
+.flip-card--art {
+  top: 280px;
+  left: calc(50% + 347px);
+  transform: translateX(-100%);
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.9s cubic-bezier(0.6, 0.05, 0.28, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card.is-flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-face--front {
+  border: 3px solid rgba(255, 255, 255, 0.15);
+}
+
+.flip-face--front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.flip-face-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+.flip-face--back {
+  transform: rotateY(180deg);
+  flex-direction: column;
+  text-align: center;
+  padding: 2.2rem;
+  color: #fff;
+}
+
+.flip-face--back h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.flip-face--back p {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.flip-face--orange { background: rgb(213, 115, 26); }
+.flip-face--sage   { background: rgb(145, 165, 133); }
+.flip-face--red    { background: rgb(163, 7, 12); }
+
+/* ── Responsive ── */
+
+@media screen and (max-width:1280px) {
+  .culture-venn {
+ 
+  width: 520px;
+  height: 520px;
+}
+
+.flip-card{
+  width: 300px;
+  height: 300px;
+}
+
+.flip-card--art{
+  top: 210px;
+  left: calc(50% + 260px);
+}
+
+.flip-card--food{
+   top: 210px;
+  left: calc(50% - 260px);
+  }
+
+  .culture-hero-heading{
+    font-size: 3.2rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .culture-hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .culture-venn {
+    width: 420px;
+    height: 420px;
+  }
+
+  .flip-card {
+    width: 240px;
+    height: 240px;
+  }
+
+  .flip-card--food {
+    top: 170px;
+    left: calc(50% - 200px);
+  }
+
+  .flip-card--art {
+    top: 170px;
+    left: calc(50% + 200px);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .culture-hero {
+    padding: 3rem 1.25rem;
+    min-height: auto;
+  }
+
+  .culture-hero-heading {
+    font-size: 2rem;
+  }
+
+  .culture-venn {
+    width: 300px;
+    height: 380px;
+  }
+
+  .flip-card {
+    width: 190px;
+    height: 190px;
+  }
+
+  .flip-card--music {
+    top: 0;
+  }
+
+  .flip-card--food {
+    top: 140px;
+    left: calc(50% - 150px);
+  }
+
+  .flip-card--art {
+    top: 140px;
+    left: calc(50% + 150px);
+  }
+}
