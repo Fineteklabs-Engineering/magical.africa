@@ -168,7 +168,7 @@ const handleCourseShortcut = (course) => {
       
       <div
         className="academy-hero"
-        style={{ backgroundImage: 'url(/images/african-family.png' }}
+        style={{ backgroundImage: 'url(/images/african-tailor.png' }}
       >
         <Navbar />
         <div className="academy-hero-content">
@@ -285,7 +285,7 @@ const handleCourseShortcut = (course) => {
       {/* ── LEARN LANGUAGES ── */}
       <section
         className="academy-languages"
-        style={{ backgroundImage: 'url(/images/Learn-Language3.jpg)' }}
+        style={{ backgroundImage: 'url(/images/african-family.png)' }}
       >
         <div className="lang-overlay" />
         <div className="lang-content">

@@ -1383,9 +1383,9 @@
     "title2": "Ɛnkɛ Eitobiro Ŋusuni e Afrika",
    "subtitle": "Magical Africa eyieta AI na enkiama e Pan-Africa enkisumo enkiama eyieta na nkishon.",
     "features": {
-      "speech": { "title": "Enkisokon Enkiama", "description": "AI eyieta enkisokon e Africa nabo enkiama yake na enkisumo yake." },
-"transcription": { "title": "Enkiwriting Enaisirik", "description": "Eyieta entoroi na enkiama eyieta nabo enkiwriting ake kuna enkiama." },
-"recommendations": { "title": "Enkiama Olayioni", "description": "AI eyieta olayioni enkiama nabo entoroi ake na nkishon yake." },
+     "speech": { "title": "Ilo Naapiro Enkutuk", "description": "Eyeu inkutuk pooki o Afrika naata ninya enkutuk enye osirikan." },
+"transcription": { "title": "Aigilikunoto Sipatan", "description": "Ejung enkishon o entoisho enkutuk naata enkitabu naa saigwana." },
+"recommendations": { "title": "Enkiyeu Naapiro", "description": "Enye eyeu entoisho naata enkitabu ol tomono e nkishon lelo." },
       "storyRegeneration": { "title": "AI Etoroto Olɔɔshi Le Ɛnkɛrai", "description": "AI eyieta entoroi e Africa ake nabo olayioni — ilayiok eyieta enkiama nabo entoroi eyieta." }
     },
     "howItWorks": {

@@ -1451,9 +1451,9 @@
     "title2": "Chekwaa Asụsụ Afrịka",
     "subtitle": "Magical Africa na-ejikọ AI na ọmọọma omenala Pan-Africa na-eme ka asụsụ ọchịchọ nwee ike ịmụ ma dị ndụ.",
     "features": {
-      "speech": { "title": "Ịnụ Ụda Okwu", "description": "AI zụzọọrọ ịnụ asụsụ Africa a na-asụ, n'agbanyeghị olu mpaghara." },
-"transcription": { "title": "Ide Ọhụrụ Ọkọlọtọ", "description": "Na-atụgharị akụkọ na mmụta a na-asụ n'olu ka ọ bụrụ ederede maka echekwa na mmụta." },
-"recommendations": { "title": "Ndụmọdụ Onye Ọ Bụla", "description": "AI na-atụ aro ihe mmụta na akụkọ dabara na ọsọ na ọganihu nwa mmụta ọ bụla." },
+     "speech": { "title": "Nghọta Olu", "description": "Na-amata asụsụ Afrịka a na-asụ n'ụdị olu dị iche iche." },
+"transcription": { "title": "Ide Ozi Nka", "description": "Na-agbanwe akụkọ na nkuzi olu ka ọ bụrụ ihe odide ziri ezi." },
+"recommendations": { "title": "Ndụmọdụ Nkeonwe", "description": "Na-atụ aro nkuzi dabere n'ọsọ mmụta onye ọ bụla." },
       "storyRegeneration": { "title": "AI Na-emepụta Akụkọ Ụmụaka Ọzọ", "description": "AI na-akọ akụkọ ifo Africa n'ụzọ kwesịrị maka nwa ọ bụla - ka ụmụaka mụọ asụsụ site n'akụkọ ha hụrụ n'anya."}
     },
     "howItWorks": {

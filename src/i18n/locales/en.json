@@ -1494,9 +1494,9 @@
     "title2": "to Preserve African Languages",
     "subtitle": "Magical Africa blends AI with Pan-African cultural knowledge making indigenous languages learnable and alive.",
     "features": {
-     "speech": { "title": "Speech Recognition", "description": "AI trained to recognize spoken African languages across regional accents and dialects." },
-"transcription": { "title": "Smart Transcription", "description": "Converts spoken stories and lessons into accurate written text for archiving and learning." },
-"recommendations": { "title": "Personalized Recommendations", "description": "AI suggests lessons and stories tailored to each learner's pace and progress." },
+    "speech": { "title": "Speech Recognition", "description": "Recognizes spoken African languages across accents and dialects." },
+"transcription": { "title": "Smart Transcription", "description": "Turns spoken lessons and stories into accurate text." },
+"recommendations": { "title": "Personalized Recommendations", "description": "Suggests lessons tailored to each learner's pace." },
       "storyRegeneration": { "title": "AI Children's Story Regeneration", "description": "AI retells African folk tales tailored to each child - so kids learn naturally through stories they love." }
     },
    "howItWorks": {

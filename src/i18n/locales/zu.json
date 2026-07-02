@@ -1446,9 +1446,9 @@
     "title2": "Ukulondoloza Izilimi Zase-Afrika",
     "subtitle": "Magical Africa ihlanganisa i-AI nolwazi lwenkultura ye-Pan-Africa — yenza izilimi zendabuko zifundeke futhi ziphile.",
     "features": {
-      "speech": { "title": "Ukubona Inkulumo", "description": "I-AI eqeqeshwe ukubona izilimi zase-Afrika ezikhulunywayo kuzo zonke izilimi zemvelo." },
-"transcription": { "title": "Ukubhala Okukhalipha", "description": "Iguqula izindaba nezifundo ezikhulunywayo zibe umbhalo ofanele wokugcina nokufunda." },
-"recommendations": { "title": "Izincomo Zokomuntu", "description": "I-AI incoma izifundo nezindaba ezilinganiselwe ithempo nentuthuko yomfundi ngamunye." },
+      "speech": { "title": "Ukuqashelwa Kwezwi", "description": "Iqonda izilimi zase-Afrika ezikhulunywayo ngezindlela ezahlukene zokuphimisela." },
+"transcription": { "title": "Ukubhalwa Okuhlakaniphile", "description": "Iguqula izifundo nezindaba ezikhulunywayo zibe umbhalo oqondile." },
+"recommendations": { "title": "Iziphakamiso Eziqondile", "description": "Iphakamisa izifundo ngokwesivinini sokufunda somuntu ngamunye." },
       "storyRegeneration": { "title": "I-AI Iyakha Kabusha Izindaba Zezingane", "description": "I-AI ixoxa izinganekwane zase-Afrika ezilinganiselwe ingane ngayinye - ukuze izingane zifunde ngokwemvelo ngezindaba ezizithandayo." }
     },
    "howItWorks": {

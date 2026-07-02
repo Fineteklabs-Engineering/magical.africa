@@ -1377,9 +1377,9 @@
     "title2": "Kũsiia Sũthyomi sya Aafrika",
     "subtitle": "Magical Africa yooa AI na ũũgi wa ũtamaduni wa Pan-Africa — ikĩumbiia ndũmi sya kale isomeke na ikorwe na ũima.",
     "features": {
-      "speech": { "title": "Kũũa Sauti", "description": "AI yatheuliwe kũũa ndũmi sya Africa syoiwa na ũvoo ũila ũila wa mbũi." },
-"transcription": { "title": "Kwandĩka kwa Ũũngu", "description": "Yoiwa nthimo na mũhũthia ũsyaiwe gũtũũrika andĩko maarũ kwa kũsũngĩa na kwĩsomia." },
-"recommendations": { "title": "Maũndũ ma Mwana", "description": "AI yoiwa mwana maũndũ ma kwĩsomia na nthimo syatheuliwe na ũvoo wake wa kwĩsomia." },
+      "speech": { "title": "Kũmanya Mĩario", "description": "Nĩyũmenyaa thyomo sya Aafrika iarĩtwe na mĩario mĩingĩ." },
+"transcription": { "title": "Kwandĩka na Ũũgĩ", "description": "Nĩyũgaũkaa masomo na ngewa sya mĩario itwĩke maandĩko maĩle." },
+"recommendations": { "title": "Mataaro ma Mũndũ Mwene", "description": "Nĩyũtaaraa masomo kũringana na ũhũthũ wa mũmanyi o wothe." },
       "storyRegeneration": { "title": "AI Gũthondeka Ngewa sya Syana Ingĩ", "description": "AI yoiwa nthimo sya Africa syatheuliwe kwa mwana ũila ũila - nĩ vana vĩsomie na njĩa ya kawaida kwa nthimo syoo syenda."}
     },
     "howItWorks": {

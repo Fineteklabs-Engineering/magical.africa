@@ -1443,9 +1443,9 @@
     "title2": "Kuhifadhi Lugha za Kiafrika",
     "subtitle": "Magical Africa inachanganya AI na maarifa ya kitamaduni ya Pan-Afrika ikifanya lugha za asili ziweze kujifunzwa na kuishi.",
     "features": {
-     "speech": { "title": "Utambuzi wa Sauti", "description": "AI iliyofunzwa kutambua lugha za Afrika zinazozungumzwa katika lahaja mbalimbali." },
-"transcription": { "title": "Uandishi Mahiri", "description": "Inabadilisha hadithi na masomo yanayosemwa kuwa maandishi sahihi kwa kuhifadhi na kujifunza." },
-"recommendations": { "title": "Mapendekezo Binafsi", "description": "AI inapendekeza masomo na hadithi kulingana na kasi na maendeleo ya kila mwanafunzi." },
+     "speech": { "title": "Utambuzi wa Sauti", "description": "Hutambua lugha za Kiafrika zinazozungumzwa katika lafudhi na lahaja mbalimbali." },
+"transcription": { "title": "Unukuzi Mahiri", "description": "Hubadilisha masomo na hadithi za sauti kuwa maandishi sahihi." },
+"recommendations": { "title": "Mapendekezo Binafsi", "description": "Hupendekeza masomo kulingana na kasi ya kila mwanafunzi." },
       "storyRegeneration": { "title": "AI Kuunda Upya Hadithi za Watoto", "description": "AI inasimula hadithi za jadi za Afrika zilizoundwa kwa kila mtoto - ili watoto wajifunze kwa njia ya asili kupitia hadithi wanazopenda."}
     },
 

@@ -1367,9 +1367,9 @@
     "title2": "Kũigana Thiomi cia Aafrika",
    "subtitle": "Magical Africa ĩkĩhũrũka AI na ũũgi wa ũtamaduni wa Pan-Africa ĩkĩringĩria ndũmi cia mbere ithomeke na ikorwo na ũima.",
     "features": {
-      "speech": { "title": "Kũmenyithia Rũgano", "description": "AI ĩthomithitwe kũmenyithia ndũmi cia Africa icio ũrĩa ũkĩaria na ũguo ũrĩa ũkĩaria." },
-"transcription": { "title": "Gũcooka Kwandĩka", "description": "Ĩkĩhũrũka ngano na mũhũthia ũrĩa ũkĩariwo gũtũũrika andĩko maarũ maka gũcookia na gũthoma." },
-"recommendations": { "title": "Ũhũrũ wa Mwana", "description": "AI ĩkĩhe mwana ũhũrũ wa gũthoma na ngano icio ĩkĩrũmĩrĩria ũguo ũkĩthoma." },
+    "speech": { "title": "Kũmenya Mĩario", "description": "Nĩĩmenyaga thiomi cia Kĩafrika irarĩtwo na mĩario mĩingĩ." },
+"transcription": { "title": "Kwandĩka na Ũũgĩ", "description": "Nĩĩgarũraga masomo na ngano cia mĩario ituĩke maandĩko magĩrĩru." },
+"recommendations": { "title": "Mataaro ma Mũndũ Mwene", "description": "Nĩĩtaaraga masomo kũringana na ũhũthũ wa mũrutwo o wothe." },
       "storyRegeneration": { "title": "AI Gũthondeka Ngewa cia Ciana Rĩngĩ", "description": "AI ĩkĩaria ngano cia Africa cia kĩĩndĩ kĩa mwana ũrĩa ũrĩ na ũrĩa - nĩguo ciana ithome na njĩra ya kamũthũ kuuma ngano icio ĩkĩenda." }
     },
     "howItWorks": {

@@ -1,19 +1,7 @@
-import { useRef, useState, useEffect, useCallback } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import '../styles/homeAisection.css'
-
-
-const SLIDES = [
-  {
-    type: 'grid',
-    id: 'main-features',
-  },
-  {
-    type: 'story',
-    id: 'story-regeneration',
-  },
-]
 
 const FEATURES = [
   {
@@ -73,98 +61,44 @@ const Icon = ({ id, size = 20 }) => {
           <line x1="12" y1="17" x2="12.01" y2="17" />
         </svg>
       )
-    case 'book':
-      return (
-        <svg {...props}>
-          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-          <path d="M9 9h6M9 13h4" />
-        </svg>
-      )
-    case 'wand':
-      return (
-        <svg {...props}>
-          <path d="M15 4V2M15 16v-2M8 9h2M20 9h2M17.8 11.8 19 13M17.8 6.2 19 5M12.2 6.2 11 5M12.2 11.8 11 13" />
-          <path d="M2 20h.01M5 17l10-10 4 4-10 10-4-4z" />
-        </svg>
-      )
-    case 'layers':
-      return (
-        <svg {...props}>
-          <polygon points="12 2 2 7 12 12 22 7 12 2" />
-          <polyline points="2 17 12 22 22 17" />
-          <polyline points="2 12 12 17 22 12" />
-        </svg>
-      )
-    case 'child':
-      return (
-        <svg {...props}>
-          <circle cx="12" cy="7" r="4" />
-          <path d="M5.5 21a9 9 0 0 1 13 0" />
-        </svg>
-      )
     default:
       return null
   }
 }
 
-/* ── Story step card ── */
-const StoryStep = ({ icon, color, label, desc }) => (
-  <div className="has-story-step">
-    <div className={`has-story-step-icon has-story-step-icon--${color}`}>
-      <Icon id={icon} size={18} />
-    </div>
-    <div>
-      <p className="has-story-step-label">{label}</p>
-      <p className="has-story-step-desc">{desc}</p>
-    </div>
-  </div>
-)
-
 /* ── Main component ── */
 const HomeAiSection = ({ imageSrc = '/images/woman-child.png' }) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const videoRef = useRef(null)
-  const [slide, setSlide] = useState(0)
-  const [animating, setAnimating] = useState(false)
-  const timerRef = useRef(null)
 
-  const goTo = useCallback((index) => {
-    if (animating) return
-    setAnimating(true)
-    setTimeout(() => {
-      setSlide(index)
-      setAnimating(false)
-    }, 320)
-  }, [animating])
+  const sectionRef = useRef(null)
+  const [visible, setVisible] = useState(false)
 
-  /* Auto-advance every 6 seconds */
   useEffect(() => {
-    timerRef.current = setInterval(() => {
-      setSlide(prev => (prev + 1) % SLIDES.length)
-    }, 6000)
-    return () => clearInterval(timerRef.current)
-  }, [])
+  const node = sectionRef.current
+  if (!node) return
 
-  const handleDot = (i) => {
-    clearInterval(timerRef.current)
-    goTo(i)
-    timerRef.current = setInterval(() => {
-      setSlide(prev => (prev + 1) % SLIDES.length)
-    }, 6000)
-  }
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      setVisible(entry.isIntersecting)
+      // no disconnect — this lets it replay every time you scroll back into view
+    },
+    { threshold: 0.25 }
+  )
+
+  observer.observe(node)
+  return () => observer.disconnect()
+}, [])
 
   return (
-    <section className="has-section">
-     {imageSrc ? (
+    <section className="has-section" ref={sectionRef}>
+      {imageSrc ? (
         <img
           className="has-image-bg"
           src={imageSrc}
           alt=""
           aria-hidden="true"
         />
-
       ) : (
         <div className="has-video-fallback" aria-hidden="true" />
       )}
@@ -184,122 +118,31 @@ const HomeAiSection = ({ imageSrc = '/images/woman-child.png' }) => {
           <span>{t('home.aiSection.title2', 'to Preserve African Languages')}</span>
         </h2>
 
-        <p className="has-sub">
-  {t(
-    'home.aiSection.subtitle',
-    'Magical Africa blends AI with Pan-African cultural knowledge - making indigenous languages learnable and alive.',
-  )}
-</p>
-
-        {/* ── Carousel viewport ── */}
+        {/* ── Feature cards ── */}
         <div className="has-carousel">
-          <div className={`has-carousel-track ${animating ? 'has-carousel-track--exit' : 'has-carousel-track--enter'}`}>
-
-            {/* ── SLIDE 0: three feature cards ── */}
-            {slide === 0 && (
-              <div className="has-cards">
-                {FEATURES.map(({ id, iconColor, stat, statUnit }) => (
-                  <article key={id} className="has-card">
-                    <div className={`has-card-icon has-card-icon--${iconColor}`}>
-                      <Icon id={id} />
-                    </div>
-                    <h3 className="has-card-title">
-                      {t(`home.aiSection.features.${id}.title`, id)}
-                    </h3>
-                    <p className="has-card-desc">
-                      {t(`home.aiSection.features.${id}.description`, '')}
-                    </p>
-                    <div className={`has-card-stat has-card-stat--${iconColor}`}>
-                      <strong>{stat}</strong>
-                      <span>{statUnit}</span>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            )}
-
-            {/* ── SLIDE 1: story regeneration ── */}
-            {slide === 1 && (
-              <div className="has-story-slide">
-
-                {/* left: explanation */}
-                <div className="has-story-left">
-                  <span className="has-card-badge">New · AI Story Engine</span>
-
-                  <h3 className="has-story-title">
-                    {t('home.aiSection.features.storyRegeneration.title', 'AI Children\'s Story Regeneration')}
-                  </h3>
-
-                 <p className="has-story-body">
-  {t(
-    'home.aiSection.features.storyRegeneration.description',
-    'AI retells African folk tales tailored to each child - so kids learn naturally through stories they love.',
-  )}
-</p>
-
-                  <div className="has-story-stats">
-                    <div className="has-card-stat has-card-stat--orange">
-                      <strong>6</strong>
-                      <span>Reading difficulty levels</span>
-                    </div>
-                    <div className="has-card-stat has-card-stat--green">
-                      <strong>100+</strong>
-                      <span>Pan-African folk tales</span>
-                    </div>
-                  </div>
+          <div className="has-cards">
+          {FEATURES.map(({ id, iconColor, stat, statUnit }, i) => (
+  <article
+    key={id}
+    className={`has-card ${visible ? 'has-card--visible' : ''}`}
+    style={{ transitionDelay: `${(FEATURES.length - 1 - i) * 450}ms` }}
+  >
+                <div className={`has-card-icon has-card-icon--${iconColor}`}>
+                  <Icon id={id} />
                 </div>
-
-        {/* right: how it works steps */}
-<div className="has-story-right">
-  <p className="has-story-steps-label">{t('home.aiSection.howItWorks.label', 'How it works')}</p>
-
-  <StoryStep
-    icon="book"
-    color="orange"
-    label={t('home.aiSection.howItWorks.step1.label')}
-    desc={t('home.aiSection.howItWorks.step1.desc')}
-  />
-  <div className="has-story-connector" />
-
-  <StoryStep
-    icon="wand"
-    color="green"
-    label={t('home.aiSection.howItWorks.step2.label')}
-    desc={t('home.aiSection.howItWorks.step2.desc')}
-  />
-  <div className="has-story-connector" />
-
-  <StoryStep
-    icon="layers"
-    color="orange"
-    label={t('home.aiSection.howItWorks.step3.label')}
-    desc={t('home.aiSection.howItWorks.step3.desc')}
-  />
-  <div className="has-story-connector" />
-
-  <StoryStep
-    icon="child"
-    color="green"
-    label={t('home.aiSection.howItWorks.step4.label')}
-    desc={t('home.aiSection.howItWorks.step4.desc')}
-  />
-</div>
-
-              </div>
-            )}
+                <h3 className="has-card-title">
+                  {t(`home.aiSection.features.${id}.title`, id)}
+                </h3>
+                <p className="has-card-desc">
+                  {t(`home.aiSection.features.${id}.description`, '')}
+                </p>
+                <div className={`has-card-stat has-card-stat--${iconColor}`}>
+                  <strong>{stat}</strong>
+                  <span>{statUnit}</span>
+                </div>
+              </article>
+            ))}
           </div>
-        </div>
-
-        {/* ── Dot indicators ── */}
-        <div className="has-dots">
-          {SLIDES.map((s, i) => (
-            <button
-              key={s.id}
-              className={`has-dot ${i === slide ? 'has-dot--active' : ''}`}
-              onClick={() => handleDot(i)}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
         </div>
 
         {/* ── CTAs ── */}
