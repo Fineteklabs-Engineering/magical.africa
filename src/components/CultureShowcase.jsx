@@ -26,7 +26,7 @@ const EVENTS = [
   },
 ];
 
-const FLIP_SHOW_MS = 2600; // how long the back stays visible
+const FLIP_SHOW_MS = 3800; // how long the back stays visible
 const GAP_MS = 500;        // pause on the front before the next card flips
 
 const CultureShowcase = () => {
