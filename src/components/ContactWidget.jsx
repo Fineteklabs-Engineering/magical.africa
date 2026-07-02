@@ -82,17 +82,16 @@ const ContactWidget = () => {
         </div>
       </div>
 
-      <button
-        className={`cw-trigger ${isOpen ? 'cw-trigger--open' : ''}`}
-        onClick={() => setIsOpen(prev => !prev)}
-        aria-label='Contact us'
-      >
-        {isOpen
-          ? <i className='fa-solid fa-xmark'></i>
-          : <i className='fa-regular fa-comments'></i>
-
-        }
-      </button>
+ <button
+  className={`cw-trigger ${isOpen ? 'cw-trigger--open' : ''}`}
+  onClick={() => setIsOpen(prev => !prev)}
+  aria-label='Contact us'
+>
+  {isOpen
+    ? <i className='fa-solid fa-xmark'></i>
+    : <img src='/images/rabbit.png' alt='Open contact' className='cw-trigger-rabbit' />
+  }
+</button>
     </>
   )
 }

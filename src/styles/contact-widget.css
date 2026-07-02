@@ -15,7 +15,7 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: #3b1f0e;
+  
   border: 2px solid #D5731A;
   color: #D5731A;
   font-size: 1.4rem;
@@ -258,6 +258,12 @@
 
 .cw-social-btn:hover i {
   color: rgb(210, 123, 58);
+}
+
+.cw-trigger-rabbit {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
 }
 
 /* ── Mobile ── */
