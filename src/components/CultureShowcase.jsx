@@ -87,7 +87,7 @@ const CultureShowcase = () => {
               className="culture-cta culture-cta--outline"
               onClick={() => navigate('/events')}
             >
-              View Events
+              Discover More
             </button>
           </div>
         </div>

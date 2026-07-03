@@ -42,7 +42,7 @@ const heroSlides = [
     action: '/market' }
   },
   {
-    image: '/images/AI-woman.png',
+    image: '/images/Ai-image.png',
     subtitle: 'AI Language Preservation',
     title: 'Using technology to safeguard Africa\'s linguistic heritage',
     name: '(Zulu)',
