@@ -16,7 +16,7 @@ const heroSlides = [
     label: 'Explore Culture', action: '/tribes' }
   },
   {
-    image: '/images/african-family.png',
+    image: '/images/family.png',
     subtitle: 'Learn African Languages',
     title: 'Develop practical speaking skills from the very beginning',
     name: '(Swahili)',
@@ -32,7 +32,7 @@ const heroSlides = [
     box: { icon: 'fa-solid fa-hands', label: 'Learn Cultural Skills', action: 'academy' }
   },
   {
-    image: '/images/african-market2.png',
+    image: '/images/african-market3.jpg',
     subtitle: 'Exclusive African Artifacts & Material Marketplace',
     title: 'Shop rare cultural items and traditional craft materials',
     name: '(Igbo)',
