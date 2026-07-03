@@ -120,7 +120,7 @@ const Footer = () => {
           rel="noreferrer"
           className="footer-powered-by"
         >
-          Powered by <span className="footer-powered-by-name">Nakkei</span>
+          Magical Africa
         </a>
       </div>
 
