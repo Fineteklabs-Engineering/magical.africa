@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
 import '../styles/academy-signIn.css'
 import { useNavigate } from 'react-router-dom'
@@ -16,25 +16,28 @@ const Academy2 = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [subject, setSubject] = useState('')
+  const [gender, setGender] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [dob, setDob] = useState('')
+  // const [dob, setDob] = useState('')
   const [success, setSuccess] = useState(false)
   const [tribe, setTribe] = useState('')
   const [showPassword, setShowPassword] = useState(false)
-  const dateRef = useRef(null)
+  // const dateRef = useRef(null)
 
-  const openDatePicker = () => {
-    if (dateRef.current) {
-      dateRef.current.showPicker()
-    }
-  }
+  // const openDatePicker = () => {
+  //   if (dateRef.current) {
+  //     dateRef.current.showPicker()
+  //   }
+  // }
 
   const navigate = useNavigate()
 
+  const roleLabel = role === 'learner' ? 'Learner' : role === 'teacher' ? 'Tutor' : 'Creator'
+
   const handleCreate = async () => {
     // Validation
-    if (!firstName || !secondName || !email || !password || !dob) {
+    if (!firstName || !secondName || !email || !password) {
       setError('Please fill in all fields.')
       return
     }
@@ -63,7 +66,8 @@ const Academy2 = () => {
         secondName,
         email,
         tribe: tribe || null,
-        dob,
+        gender: gender || null,
+        // dob,
         role,
         subject: (role === 'teacher' || role === 'creator') ? subject : null,
         createdAt: new Date().toISOString()
@@ -104,32 +108,86 @@ const Academy2 = () => {
 
       <div className="academy-signIn">
 
-        {/* LEFT: Image mosaic + overlay message */}
-        <div className="academy-visual">
-          <div className="academy-image-grid">
-            <div className="academy-tile" style={{ backgroundImage: "url('/images/kitenge-latest.jpg')" }} />
-            <div className="academy-tile" style={{ backgroundImage: "url('/images/african-spices.jpg')" }} />
-            <div className="academy-tile" style={{ backgroundImage: "url('/images/brassJewellery.jpg')" }} />
-            <div className="academy-tile" style={{ backgroundImage: "url('/images/maasai2.jpg')" }} />
-            <div className="academy-tile" style={{ backgroundImage: "url('/images/african-learning.png')" }} />
-            <div className="academy-tile" style={{ backgroundImage: "url('/images/maasai-art2.png')" }} />
-            <div className="academy-tile" style={{ backgroundImage: "url('/images/orinkaWristCoil.jpg')" }} />
-            <div className="academy-tile" style={{ backgroundImage: "url('/images/pottery1-image1.jpg')" }} />
-            <div className="academy-tile" style={{ backgroundImage: "url('/images/woman-painting.png')" }} />
-          </div>
+        {/* Full-bleed masonry background */}
+     {/* Full-bleed masonry background */}
+<div className="academy-visual">
+  <div className="academy-image-grid">
 
-          <div className="academy-visual-overlay">
-            <h1>Sign up to <span>learn, teach,</span><br />and create</h1>
-          
-          </div>
-        </div>
+    <div className="academy-grid-col">
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/kitenge-latest.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/maasai2.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/pottery1-image1.jpg')" }} />
+    </div>
 
-        {/* RIGHT: Existing form, logic untouched */}
+    <div className="academy-grid-col">
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/african-spices.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/african-learning.png')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/woman-painting.png')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/brassJewellery.jpg')" }} />
+    </div>
+
+
+     <div className="academy-grid-col">
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/maasai2.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/pottery1-image1.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/woman-painting.png')" }} />
+    </div>
+
+    <div className="academy-grid-col">
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/brassJewellery.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/maasai-art2.png')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/orinkaWristCoil.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/kitenge-latest.jpg')" }} />
+     
+    </div>
+
+   
+
+    <div className="academy-grid-col">
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/african-learning.png')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/orinkaWristCoil.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/maasai-art2.png')" }} />
+
+    
+    </div>
+
+    <div className="academy-grid-col">
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/kitenge-latest.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/african-spices.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/maasai2.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/pottery1-image1.jpg')" }} />
+     
+    </div>
+
+    <div className="academy-grid-col">
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/orinkaWristCoil.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/maasai-art2.png')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/brassJewellery.jpg')" }} />
+   
+    </div>
+
+    {/* 
+
+    <div className="academy-grid-col">
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/african-learning.png')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/kitenge-latest.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/african-spices.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/maasai2.jpg')" }} />
+    </div>
+
+    */}
+
+  </div>
+
+  <div className="academy-visual-overlay">
+    <h1>Sign up to <span>learn, teach,</span><br />and create</h1>
+  </div>
+</div>
+        {/* Floating form card */}
         <div className="academy-form-panel">
           <div className='academy-form'>
 
             <h1>Create your Account</h1>
-            <h2>Join as learner or educator</h2>
 
             {success && (
               <div style={{
@@ -160,27 +218,6 @@ const Academy2 = () => {
                 ⚠️ {error}
               </div>
             )}
-
-            <div className='academy-category'>
-              <button
-                className={role === 'learner' ? 'active-role' : 'inactive-role'}
-                onClick={() => setRole('learner')}
-              >
-                Learner
-              </button>
-              <button
-                className={role === 'teacher' ? 'active-role' : 'inactive-role'}
-                onClick={() => setRole('teacher')}
-              >
-                Tutor
-              </button>
-              <button
-                className={role === 'creator' ? 'active-role' : 'inactive-role'}
-                onClick={() => setRole('creator')}
-              >
-                Creator
-              </button>
-            </div>
 
             <div className='academy-info1'>
               <div className='academy-info1-a'>
@@ -213,9 +250,8 @@ const Academy2 = () => {
               />
             </div>
 
-            <div className='academy-info2 date-wrapper'>
+            {/* <div className='academy-info2 date-wrapper'>
               <label>Date of Birth</label>
-
               <div className="date-input-container" onClick={openDatePicker}>
                 <input
                   ref={dateRef}
@@ -224,13 +260,12 @@ const Academy2 = () => {
                   onChange={(e) => setDob(e.target.value)}
                   max={new Date().toISOString().split('T')[0]}
                 />
-
                 <i
                   className="fa-regular fa-calendar calendar-icon"
                   onClick={openDatePicker}
                 />
               </div>
-            </div>
+            </div> */}
 
             <div className='academy-info2'>
               <label>Tribe / Ethnic Group</label>
@@ -242,25 +277,49 @@ const Academy2 = () => {
               />
             </div>
 
-            <div className='academy-info3' style={{ position: 'relative' }}>
-              <label>Password</label>
-              <input
-                type={showPassword ? 'text' : 'password'}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder='Enter your password'
-              />
-              <i
-                className={`fa-regular ${showPassword ? 'fa-eye' : 'fa-eye-slash'}`}
-                onClick={() => setShowPassword(!showPassword)}
-                style={{
-                  position: 'absolute',
-                  right: '12px',
-                  bottom: '10px',
-                  cursor: 'pointer',
-                  color: 'rgb(181, 161, 145)'
-                }}
-              />
+            <div className='academy-info2'>
+              <label>Gender</label>
+              <div className="academy-gender-options">
+                <label className="radio-label">
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    checked={gender === 'female'}
+                    onChange={(e) => setGender(e.target.value)}
+                  />
+                  Female
+                </label>
+                <label className="radio-label">
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    checked={gender === 'male'}
+                    onChange={(e) => setGender(e.target.value)}
+                  />
+                  Male
+                </label>
+                <label className="radio-label">
+                  <input
+                    type="radio"
+                    name="gender"
+                    value="other"
+                    checked={gender === 'other'}
+                    onChange={(e) => setGender(e.target.value)}
+                  />
+                  Other
+                </label>
+              </div>
+            </div>
+
+            <div className='academy-info2'>
+              <label>Sign up as</label>
+              <select value={role} onChange={(e) => setRole(e.target.value)}>
+                <option value="learner">Learner</option>
+                <option value="teacher">Tutor</option>
+                <option value="creator">Creator</option>
+              </select>
             </div>
 
             {role === 'teacher' && (
@@ -287,9 +346,30 @@ const Academy2 = () => {
               </div>
             )}
 
+            <div className='academy-info3' style={{ position: 'relative' }}>
+              <label>Password</label>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder='Enter your password'
+              />
+              <i
+                className={`fa-regular ${showPassword ? 'fa-eye' : 'fa-eye-slash'}`}
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: 'absolute',
+                  right: '12px',
+                  bottom: '10px',
+                  cursor: 'pointer',
+                  color: 'rgb(181, 161, 145)'
+                }}
+              />
+            </div>
+
             <div className='academy-create'>
               <button onClick={handleCreate} disabled={loading || success}>
-                {loading ? 'Creating Account...' : 'Create new account'}
+                {loading ? 'Creating Account...' : `Create a ${roleLabel} Account`}
               </button>
             </div>
 

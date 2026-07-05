@@ -108,18 +108,55 @@ const resolveLoginRole = (profile) => {
 
       <div className="signIn-page">
 
-        {/* LEFT: Image mosaic + overlay message */}
+        {/* Full-bleed masonry background */}
         <div className="signIn-visual">
           <div className="signIn-image-grid">
-            <div className="signIn-tile" style={{ backgroundImage: "url('/images/kitenge-latest.jpg')" }} />
-            <div className="signIn-tile" style={{ backgroundImage: "url('/images/african-spices.jpg')" }} />
-            <div className="signIn-tile" style={{ backgroundImage: "url('/images/brassJewellery.jpg')" }} />
-            <div className="signIn-tile" style={{ backgroundImage: "url('/images/maasai2.jpg')" }} />
-            <div className="signIn-tile" style={{ backgroundImage: "url('/images/african-learning.png')" }} />
-            <div className="signIn-tile" style={{ backgroundImage: "url('/images/maasai-art2.png')" }} />
-            <div className="signIn-tile" style={{ backgroundImage: "url('/images/orinkaWristCoil.jpg')" }} />
-            <div className="signIn-tile" style={{ backgroundImage: "url('/images/pottery1-image1.jpg')" }} />
-            <div className="signIn-tile" style={{ backgroundImage: "url('/images/woman-painting.png')" }} />
+
+            <div className="signIn-grid-col">
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/kitenge-latest.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/maasai2.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/pottery1-image1.jpg')" }} />
+            </div>
+
+            <div className="signIn-grid-col">
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/african-spices.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/african-learning.png')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/woman-painting.png')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/brassJewellery.jpg')" }} />
+            </div>
+
+            <div className="signIn-grid-col">
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/maasai2.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/pottery1-image1.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/woman-painting.png')" }} />
+            </div>
+
+            <div className="signIn-grid-col">
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/brassJewellery.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/maasai-art2.png')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/orinkaWristCoil.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/kitenge-latest.jpg')" }} />
+            </div>
+
+            <div className="signIn-grid-col">
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/african-learning.png')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/orinkaWristCoil.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/maasai-art2.png')" }} />
+            </div>
+
+            <div className="signIn-grid-col">
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/kitenge-latest.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/african-spices.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/maasai2.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/pottery1-image1.jpg')" }} />
+            </div>
+
+            <div className="signIn-grid-col">
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/orinkaWristCoil.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/maasai-art2.png')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/brassJewellery.jpg')" }} />
+            </div>
+
           </div>
 
           <div className="signIn-visual-overlay">
@@ -127,7 +164,7 @@ const resolveLoginRole = (profile) => {
           </div>
         </div>
 
-        {/* RIGHT: Existing form, logic untouched */}
+        {/* Floating form card */}
         <div className="signIn-form-panel">
           <div className="signIn-form">
 
