@@ -397,3 +397,34 @@ top: 55%;
  
 }
 }
+
+
+@media screen and (max-width: 480px) {
+  .academy-visual{
+    display: none; 
+  }
+
+   .academy-signIn{
+    min-height: fit-content;
+  }
+
+  .academy-form-panel{
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    transform: none;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+    padding: 1.5rem 1rem;
+  }
+
+  .academy-form{
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 1rem 0.5rem;
+  }
+}

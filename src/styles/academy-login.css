@@ -249,14 +249,33 @@
 }
 
 @media screen and (max-width: 480px) {
-  .signIn-grid-col:nth-child(n+4) {
+  .signIn-visual{
     display: none;
   }
-  .signIn-image-grid{
-    margin-left: 0rem;
-    margin-right: 0rem;
+
+   .signIn-page{
+    min-height: fit-content;
+  
   }
+
+
   .signIn-form-panel{
-    top: 55%;
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    transform: none;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+    padding: 1.5rem 1rem;
+  }
+
+  .signIn-form{
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 1rem 0.5rem;
   }
 }
