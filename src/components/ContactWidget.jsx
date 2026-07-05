@@ -1,10 +1,30 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import '../styles/contact-widget.css'
 
 const ContactWidget = () => {
   const [isOpen, setIsOpen] = useState(false)
   const { t } = useTranslation()
+
+  // Auto-open after 10 seconds
+  useEffect(() => {
+    const openTimer = setTimeout(() => {
+      setIsOpen(true)
+    }, 10000)
+
+    return () => clearTimeout(openTimer)
+  }, [])
+
+  // Auto-close 5 seconds after it opens
+  useEffect(() => {
+    if (!isOpen) return
+
+    const closeTimer = setTimeout(() => {
+      setIsOpen(false)
+    }, 8000)
+
+    return () => clearTimeout(closeTimer)
+  }, [isOpen])
 
   return (
     <>
@@ -82,16 +102,16 @@ const ContactWidget = () => {
         </div>
       </div>
 
- <button
-  className={`cw-trigger ${isOpen ? 'cw-trigger--open' : ''}`}
-  onClick={() => setIsOpen(prev => !prev)}
-  aria-label='Contact us'
->
-  {isOpen
-    ? <i className='fa-solid fa-xmark'></i>
-    : <img src='/images/rabbit.png' alt='Open contact' className='cw-trigger-rabbit' />
-  }
-</button>
+      <button
+        className={`cw-trigger ${isOpen ? 'cw-trigger--open' : ''}`}
+        onClick={() => setIsOpen(prev => !prev)}
+        aria-label='Contact us'
+      >
+        {isOpen
+          ? <i className='fa-solid fa-xmark'></i>
+          : <img src='/images/rabbit.png' alt='Open contact' className='cw-trigger-rabbit' />
+        }
+      </button>
     </>
   )
 }
