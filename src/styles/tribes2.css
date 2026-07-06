@@ -724,7 +724,56 @@ margin: 0 auto;
   .tribes-hero-content h1 { font-size: 1.4rem; line-height: 1.7rem; }
   .tribes-hero-content p { font-size: 1rem; width: 90%; }
   .tribes-hero-content { bottom: 5%; }
+
+.hero-search-wrap{
+  width: 100%;
 }
+  
+
+}
+
+
+@media screen and (max-width: 480px) {
+  .tribes-grid {
+    display: flex;
+    flex-direction: row;
+    grid-template-columns: unset;
+    width: 100%; /* ← add this */
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    padding-bottom: 0.5rem;
+  }
+
+  .tribe-card {
+    flex: 0 0 100%;
+    max-width: 100%;
+    scroll-snap-align: start;
+  }
+
+  .tribe-card-image{
+    height: 250px;
+  }
+
+  .tribes-media-break {
+    flex: 0 0 100%;
+    max-width: 100%;
+    scroll-snap-align: start;
+    margin: 0;
+    height: 320px;
+  }
+  .tribes-hero-content{
+    right: 1rem;
+  }
+}
+
+
+
+
+
+
 
 
 

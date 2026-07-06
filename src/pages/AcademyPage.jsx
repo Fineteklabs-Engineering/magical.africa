@@ -28,6 +28,8 @@ const communityIcons = {
   mentorship:  'fa-handshake',
 };
 
+const courseTabs = ['All', 'Cooking', 'Pottery', 'Woodwork', 'Basketry', 'Language'];
+
 const truncateWords = (text = '', maxWords = 14) => {
   const normalizedText = String(text || '').trim();
   if (!normalizedText) return '';
@@ -58,6 +60,7 @@ const AcademyPage = () => {
   const navigate = useNavigate();
   const { user, userData } = useAuth();
   const [activeLanguage, setActiveLanguage] = useState('Swahili');
+  const [activeCourseTab, setActiveCourseTab] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [featuredCourses, setFeaturedCourses] = useState([]);
   const [coursesLoading, setCoursesLoading] = useState(true);
@@ -125,7 +128,7 @@ const AcademyPage = () => {
     coursesRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-const handleCourseShortcut = (course) => {
+  const handleCourseShortcut = (course) => {
     if (!course?.id) {
       goToAcademy();
       return;
@@ -137,7 +140,6 @@ const handleCourseShortcut = (course) => {
       return;
     }
 
-    // Logged in learners go directly to the course, not preview
     if (user && resolvedRole === 'learner') {
       navigate(buildCoursePath(course.id, course.title));
       return;
@@ -160,26 +162,32 @@ const handleCourseShortcut = (course) => {
     }
   };
 
+  const visibleCourses = activeCourseTab === 'All'
+    ? featuredCourses
+    : featuredCourses.filter(
+        (course) => String(course.courseType || '').toLowerCase() === activeCourseTab.toLowerCase()
+      );
+
   return (
     <>
       <PageSeo {...SEO_CONTENT.academy} />
 
-
-      
       <div
         className="academy-hero"
         style={{ backgroundImage: 'url(/images/african-tailor.png' }}
       >
         <Navbar />
-        <div className="academy-hero-content">
-          <p className="academy-eyebrow">{t('academy.hero.eyebrow')}</p>
-          <h1>
-            {t('academy.hero.titleStart')}<br />
-            <span>{t('academy.hero.titleAccent')}</span>
-          </h1>
-          <p className="academy-hero-sub">{t('academy.hero.description')}</p>
 
-          {/* ── SEARCH BAR ── */}
+        <div className="academy-hero-stuff">
+          <div className="academy-hero-text">
+            <p className="academy-eyebrow">{t('academy.hero.eyebrow')}</p>
+            <h1>
+              {t('academy.hero.titleStart')}<br />
+              <span>{t('academy.hero.titleAccent')}</span>
+            </h1>
+            <p className="academy-hero-sub">{t('academy.hero.description')}</p>
+          </div>
+
           <form className="academy-hero-search" onSubmit={handleSearch}>
             <i className="fa-solid fa-magnifying-glass"></i>
             <input
@@ -194,9 +202,6 @@ const handleCourseShortcut = (course) => {
           <div className="academy-hero-btns">
             <button className="acad-btn-primary2" onClick={goToAcademy}>
               {t('academy.hero.getStarted')}
-            </button>
-            <button className="acad-btn-secondary" onClick={scrollToCourses}>
-              {t('academy.hero.browseCourses')}
             </button>
           </div>
         </div>
@@ -238,9 +243,19 @@ const handleCourseShortcut = (course) => {
       {/* ── FEATURED COURSES ── */}
       <section className="academy-courses-section">
         <div className="section-heading">
-          <span className="heading-line" />
           <h2>{t('academy.courses.heading')}</h2>
-          <span className="heading-line" />
+        </div>
+
+        <div className="course-tabs">
+          {courseTabs.map((tab) => (
+            <button
+              key={tab}
+              className={`course-tab ${activeCourseTab === tab ? 'course-tab-active' : ''}`}
+              onClick={() => setActiveCourseTab(tab)}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
 
         <div className="courses-grid" ref={coursesRef}>
@@ -248,11 +263,11 @@ const handleCourseShortcut = (course) => {
             <p className="academy-empty-state">Loading featured courses...</p>
           )}
 
-          {!coursesLoading && featuredCourses.length === 0 && (
-            <p className="academy-empty-state">No featured courses yet.</p>
+          {!coursesLoading && visibleCourses.length === 0 && (
+            <p className="academy-empty-state">No courses found in this category yet.</p>
           )}
 
-          {!coursesLoading && featuredCourses.map((course) => (
+          {!coursesLoading && visibleCourses.map((course) => (
             <div
               className="course-card"
               key={course.id}

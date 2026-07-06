@@ -35,6 +35,7 @@ html, body {
   background-position: center;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
 }
 
 .academy-hero::after {
@@ -46,6 +47,7 @@ html, body {
 }
 
 .academy-hero-content {
+  display: none;
   position: relative;
   z-index: 5;
   flex: 1;
@@ -56,6 +58,49 @@ html, body {
   text-align: center;
   padding: 4rem 2rem 6rem;
   gap: 1.2rem;
+}
+
+.academy-hero-stuff {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  text-align: left;
+  padding: 0 4rem 4rem;
+  margin-top: auto;
+  
+}
+
+.academy-hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.academy-eyebrow {
+  font-size: 0.85rem;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+  color: var(--acad-sand);
+}
+
+.academy-hero-text h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--acad-white);
+  line-height: 1.25;
+}
+
+.academy-hero-text h1 span {
+  color: var(--acad-orange);
+}
+
+.academy-hero-sub {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 500px;
 }
 
 .academy-eyebrow {
@@ -139,7 +184,7 @@ html, body {
   flex-direction: row;
   gap: 1rem;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 0.5rem;
 }
 
@@ -598,6 +643,50 @@ html, body {
   padding: 3rem 2rem;
 }
 
+
+.course-tabs {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: -4rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid #ede8e8;
+  flex-wrap: wrap;
+}
+
+.course-tab {
+  background: none;
+  border: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--acad-sand);
+  padding: 0 0 0.9rem;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.course-tab:hover {
+  color: var(--acad-brown);
+}
+
+.course-tab-active {
+  color: var(--acad-brown);
+  font-weight: 600;
+}
+
+.course-tab-active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--acad-red);
+}
+
 /* ── RESPONSIVE ── */
 @media screen and (max-width: 1440px) {
   .courses-grid {
@@ -648,6 +737,10 @@ html, body {
   .academy-community { padding: 3rem 1.5rem; }
   .section-heading h2 { font-size: 1.2rem; }
   .academy-hero-search { max-width: 100%; }
+  .academy-hero-stuff{
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -659,6 +752,22 @@ html, body {
   .section-heading { gap: 0.5rem; }
   .heading-line { max-width: 50px; }
   .academy-hero-search button { padding: 0.85rem 1rem; font-size: 0.78rem; }
+  .academy-hero{
+    background-image: url(/images/african-tailor-mobile.png) !important;
+  }
+    .course-tabs {
+    gap: 1.2rem;
+    margin-top: 0;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+  }
+
+    .academy-hero-stuff{
+    padding-left: 1em;
+    padding-right: 1rem;
+  }
 }
 
 @media screen and (max-width: 380px) {
