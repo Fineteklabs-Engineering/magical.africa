@@ -269,6 +269,16 @@
     padding: 0 0.5% 0 1.5rem; /* right padding creates the "peek" of the next card */
   }
 
+  .c-bg-gradient{
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.75) 40%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+
+  
+  }
   .cs-card{
     position: relative !important;
     top: unset !important;
@@ -277,7 +287,7 @@
     bottom: unset !important;
     flex: 0 0 88%;
     max-width: 88%;
-    height: 420px !important; 
+    height: 320px !important; 
     scroll-snap-align: start;
     animation: none;
   }
