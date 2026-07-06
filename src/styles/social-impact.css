@@ -250,9 +250,9 @@ opacity: 1;
 
   .impact1,
   .impact2{
-    flex: 0 0 90%; /* was 100% — leaves room for the peek */
+    flex: 0 0 98%; /* was 100% — leaves room for the peek */
     scroll-snap-align: start;
-    height: 450px;
+    height: 400px;
   }
 }
 
