@@ -308,7 +308,7 @@
 
   .flip-face,
   .flip-face--front {
-    border-radius: 16px; /* square-ish card instead of a circle */
+    border-radius: 16px; 
   }
 }
 
@@ -320,7 +320,7 @@
     
   }
   .culture-hero-heading{
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
   .culture-cta{
     font-size: 0.85rem;
