@@ -122,9 +122,11 @@ const CreatorsSec = ({
         </button>
       </div>
 
-      {floatingCards.map((card) => (
-        <FloatingCard key={card.id} card={card} />
-      ))}
+      <div className="cs-cards-row">
+        {floatingCards.map((card) => (
+          <FloatingCard key={card.id} card={card} />
+        ))}
+      </div>
     </section>
   );
 };

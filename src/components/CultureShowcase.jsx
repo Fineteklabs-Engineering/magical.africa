@@ -26,32 +26,57 @@ const EVENTS = [
   },
 ];
 
-const FLIP_SHOW_MS = 3800; // how long the back stays visible
-const GAP_MS = 500;        // pause on the front before the next card flips
+// Desktop timing
+const DESKTOP_SLIDE_MS = 600;
+const DESKTOP_FLIP_SHOW_MS = 3800;
+const DESKTOP_GAP_MS = 500;
+
+// Mobile timing — faster turnaround
+const MOBILE_SLIDE_MS = 800;
+const MOBILE_FLIP_SHOW_MS = 3500;
+const MOBILE_GAP_MS = 1250;
 
 const CultureShowcase = () => {
   const navigate = useNavigate();
   const [flippedIndex, setFlippedIndex] = useState(-1);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const timersRef = useRef([]);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     let cardIndex = 0;
 
+    const SLIDE_MS = isMobile ? MOBILE_SLIDE_MS : DESKTOP_SLIDE_MS;
+    const FLIP_SHOW_MS = isMobile ? MOBILE_FLIP_SHOW_MS : DESKTOP_FLIP_SHOW_MS;
+    const GAP_MS = isMobile ? MOBILE_GAP_MS : DESKTOP_GAP_MS;
+
     const runCycle = () => {
-      setFlippedIndex(cardIndex);
+      setActiveIndex(cardIndex);
 
-      const flipBack = setTimeout(() => {
-        setFlippedIndex(-1);
+      const startFlip = setTimeout(() => {
+        setFlippedIndex(cardIndex);
 
-        const advance = setTimeout(() => {
-          cardIndex = (cardIndex + 1) % EVENTS.length;
-          runCycle();
-        }, GAP_MS);
+        const flipBack = setTimeout(() => {
+          setFlippedIndex(-1);
 
-        timersRef.current.push(advance);
-      }, FLIP_SHOW_MS);
+          const advance = setTimeout(() => {
+            cardIndex = (cardIndex + 1) % EVENTS.length;
+            runCycle();
+          }, GAP_MS);
 
-      timersRef.current.push(flipBack);
+          timersRef.current.push(advance);
+        }, FLIP_SHOW_MS);
+
+        timersRef.current.push(flipBack);
+      }, SLIDE_MS);
+
+      timersRef.current.push(startFlip);
     };
 
     runCycle();
@@ -60,7 +85,7 @@ const CultureShowcase = () => {
       timersRef.current.forEach(clearTimeout);
       timersRef.current = [];
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <section className="culture-hero">
@@ -68,14 +93,13 @@ const CultureShowcase = () => {
       <div className="culture-hero-overlay" />
 
       <div className="culture-hero-content">
-        {/* Left: heading + CTAs */}
         <div className="culture-hero-left">
           <span className="culture-hero-eyebrow">Experience</span>
-       <h1 className="culture-hero-heading">
-  African Cultural
-  <br />
-  <span>Events</span>
-</h1>
+          <h1 className="culture-hero-heading">
+            African Cultural
+            <br />
+            <span>Events</span>
+          </h1>
           <div className="culture-hero-ctas">
             <button
               className="culture-cta culture-cta--solid"
@@ -92,7 +116,6 @@ const CultureShowcase = () => {
           </div>
         </div>
 
-        {/* Right: flip-card venn cluster */}
         <div className="culture-hero-right">
           <div className="culture-venn">
             {EVENTS.map((event, index) => (
@@ -100,7 +123,7 @@ const CultureShowcase = () => {
                 key={event.key}
                 className={`flip-card flip-card--${event.key} ${
                   flippedIndex === index ? 'is-flipped' : ''
-                }`}
+                } ${activeIndex === index ? 'is-active' : ''}`}
               >
                 <div className="flip-card-inner">
                   <div className="flip-face flip-face--front">

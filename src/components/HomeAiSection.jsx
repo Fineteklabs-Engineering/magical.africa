@@ -67,12 +67,19 @@ const Icon = ({ id, size = 20 }) => {
 }
 
 /* ── Main component ── */
-const HomeAiSection = ({ imageSrc = '/images/woman-child.png' }) => {
+const HomeAiSection = ({ imageSrc = '/images/woman-child.png',  mobileImageSrc = '/images/woman-child-mobile.png' }) => {
   const { t } = useTranslation()
   const navigate = useNavigate()
 
   const sectionRef = useRef(null)
   const [visible, setVisible] = useState(false)
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 480)
+
+   useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 480)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useEffect(() => {
   const node = sectionRef.current
@@ -90,12 +97,14 @@ const HomeAiSection = ({ imageSrc = '/images/woman-child.png' }) => {
   return () => observer.disconnect()
 }, [])
 
+ const bgSrc = isMobile && mobileImageSrc ? mobileImageSrc : imageSrc
+
   return (
     <section className="has-section" ref={sectionRef}>
-      {imageSrc ? (
+      {bgSrc ? (
         <img
           className="has-image-bg"
-          src={imageSrc}
+          src={bgSrc}
           alt=""
           aria-hidden="true"
         />

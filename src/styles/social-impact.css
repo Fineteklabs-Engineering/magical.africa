@@ -232,13 +232,29 @@ opacity: 1;
 
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width: 480px) {
   .social-impact{
     padding-left: 1rem;
     padding-right: 1rem;
   }
-}
 
+  .impacts{
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px; 
+    padding-right: 10%; 
+  }
+
+  .impact1,
+  .impact2{
+    flex: 0 0 90%; /* was 100% — leaves room for the peek */
+    scroll-snap-align: start;
+    height: 450px;
+  }
+}
 
 
 
