@@ -126,22 +126,22 @@ const resolveLoginRole = (profile) => {
             </div>
 
             <div className="signIn-grid-col">
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/maasai2.jpg')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/pottery1-image1.jpg')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/woman-painting.png')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/cultural-event.webp')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/artisans-image.webp')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/nairobi-food-festival.webp')" }} />
             </div>
 
             <div className="signIn-grid-col">
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/brassJewellery.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/enkiamaNeckless.jpg')" }} />
               <div className="signIn-tile" style={{ backgroundImage: "url('/images/maasai-art2.png')" }} />
               <div className="signIn-tile" style={{ backgroundImage: "url('/images/orinkaWristCoil.jpg')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/kitenge-latest.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/pencilPortraits.jpg')" }} />
             </div>
 
             <div className="signIn-grid-col">
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/african-learning.png')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/orinkaWristCoil.jpg')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/maasai-art2.png')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/Oromo2.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/wood_carving.webp')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/swahiliBlueGlazeJar.jpg')" }} />
             </div>
 
             <div className="signIn-grid-col">
@@ -152,9 +152,9 @@ const resolveLoginRole = (profile) => {
             </div>
 
             <div className="signIn-grid-col">
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/orinkaWristCoil.jpg')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/maasai-art2.png')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/brassJewellery.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/silverJewellery.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/Igbo2.jpg')" }} />
+              <div className="signIn-tile" style={{ backgroundImage: "url('/images/oilPaint.jpg')" }} />
             </div>
 
           </div>

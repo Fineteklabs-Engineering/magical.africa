@@ -76,4 +76,7 @@
   .contribute-story{
     padding-bottom: 0rem;
   }
+  .contribute-btn h2{
+    text-align: center;
+  }
 }

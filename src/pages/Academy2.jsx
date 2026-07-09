@@ -128,25 +128,25 @@ const Academy2 = () => {
 
 
      <div className="academy-grid-col">
-      <div className="academy-tile" style={{ backgroundImage: "url('/images/maasai2.jpg')" }} />
-      <div className="academy-tile" style={{ backgroundImage: "url('/images/pottery1-image1.jpg')" }} />
-      <div className="academy-tile" style={{ backgroundImage: "url('/images/woman-painting.png')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/cultural-event.webp')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/artisans-image.webp')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/nairobi-food-festival.webp')" }} />
     </div>
 
     <div className="academy-grid-col">
-      <div className="academy-tile" style={{ backgroundImage: "url('/images/brassJewellery.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/enkiamaNeckless.jpg')" }} />
       <div className="academy-tile" style={{ backgroundImage: "url('/images/maasai-art2.png')" }} />
       <div className="academy-tile" style={{ backgroundImage: "url('/images/orinkaWristCoil.jpg')" }} />
-      <div className="academy-tile" style={{ backgroundImage: "url('/images/kitenge-latest.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/pencilPortraits.jpg')" }} />
      
     </div>
 
    
 
     <div className="academy-grid-col">
-      <div className="academy-tile" style={{ backgroundImage: "url('/images/african-learning.png')" }} />
-      <div className="academy-tile" style={{ backgroundImage: "url('/images/orinkaWristCoil.jpg')" }} />
-      <div className="academy-tile" style={{ backgroundImage: "url('/images/maasai-art2.png')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/Oromo2.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/wood_carving.webp')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/swahiliBlueGlazeJar.jpg')" }} />
 
     
     </div>
@@ -160,9 +160,9 @@ const Academy2 = () => {
     </div>
 
     <div className="academy-grid-col">
-      <div className="academy-tile" style={{ backgroundImage: "url('/images/orinkaWristCoil.jpg')" }} />
-      <div className="academy-tile" style={{ backgroundImage: "url('/images/maasai-art2.png')" }} />
-      <div className="academy-tile" style={{ backgroundImage: "url('/images/brassJewellery.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/silverJewellery.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/Igbo2.jpg')" }} />
+      <div className="academy-tile" style={{ backgroundImage: "url('/images/oilPaint.jpg')" }} />
    
     </div>
 

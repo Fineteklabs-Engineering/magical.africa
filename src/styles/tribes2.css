@@ -262,10 +262,10 @@ align-items: center;
   justify-content: center;
   max-width: 1400px;
 margin: 0 auto;
+
 }
 
 .tribe-card {
-  background: white;
   border: 1px solid #ede8e8;
   overflow: hidden;
   cursor: pointer;
@@ -751,6 +751,7 @@ margin: 0 auto;
     flex: 0 0 100%;
     max-width: 100%;
     scroll-snap-align: start;
+   
   }
 
   .tribe-card-image{
