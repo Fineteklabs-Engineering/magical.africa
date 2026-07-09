@@ -19,6 +19,7 @@ import HomeAiSection from '../components/HomeAiSection';
 import CreatorsSection from '../components/CreatorsSection';
 import CreatorsSec from '../components/CreatorsSec';
 import CultureShowcase from '../components/CultureShowcase';
+import OurApproach from '../components/OurApproach';
 
 const Home = () => {
 
@@ -38,6 +39,7 @@ const Home = () => {
       <img src="/images/maasai-pattern.avif" alt="" />
       <Services />
       <HomeAiSection />
+      <OurApproach />
       <Languages />
       <AboutSection />
       <Marketplace />
