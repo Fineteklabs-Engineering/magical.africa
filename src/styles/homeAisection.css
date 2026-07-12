@@ -1,4 +1,4 @@
-/* ── Section shell ── */
+
 .has-section {
   position: relative;
   overflow: hidden;
@@ -34,7 +34,7 @@
   margin: 0 auto;
 }
 
-/* ── Header ── */
+
 .has-header {
   text-align: center;
   margin-bottom: 4rem;
@@ -66,7 +66,7 @@
   font-family: 'Poppins', sans-serif;
   font-size: clamp(1.4rem, 2.1vw, 1.75rem);
   font-weight: 700;
-  color: #E8E1D6;
+  color:white;
   margin: 0;
   max-width: 520px;
   margin-inline: auto;
@@ -193,9 +193,9 @@
 }
 
 .has-btn--ghost {
-  background: transparent;
-  color: #E8E1D6;
-  border-color: rgba(232, 225, 214, 0.4);
+ border-color: #A3070C;
+  background-color: rgba(163, 7, 12, 0.15);
+  color: #ffffff;
 }
 
 .has-btn--ghost:hover {
