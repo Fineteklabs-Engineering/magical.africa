@@ -158,7 +158,7 @@ const normalizeRole = (role) => {
 
       <nav className={`navbar ${isScrolled ? 'scrolled' : ''} ${solid ? 'solid' : ''}`}>
 
-        {/* ── ITEM 1: Logo + Hamburger ── */}
+        
         <div className="item1">
           <div className='magical-logo' onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>
            <img
@@ -185,19 +185,25 @@ const normalizeRole = (role) => {
             {t('sideMenu.home')}
           </NavLink>
 
-          <AcademyDropdown />
+          
 
           <NavLink to="/about" className={({ isActive }) => isActive ? 'active-link' : ''}>
             {t('sideMenu.about')}
           </NavLink>
 
-          <MarketDropdown />
-
-
           <NavLink to="/tribes" className={({ isActive }) => isActive ? 'active-link' : ''}>
            {t('footer.links.tribes')}
           </NavLink>
         
+
+          <AcademyDropdown />
+
+          <MarketDropdown />
+
+         <NavLink to="/creator" className={({ isActive }) => isActive ? 'active-link' : ''}>
+           {t('nav.creator')}
+          </NavLink>
+
 
           <NavLink to="/blogs" className={({ isActive }) => isActive ? 'active-link' : ''}>
             {t('sideMenu.blog')}
@@ -207,9 +213,7 @@ const normalizeRole = (role) => {
            {t('nav.technology')}
           </NavLink>
 
-          <NavLink to="/creator" className={({ isActive }) => isActive ? 'active-link' : ''}>
-           {t('nav.creator')}
-          </NavLink>
+         
 
 
       
