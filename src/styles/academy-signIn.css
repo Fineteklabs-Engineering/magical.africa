@@ -41,7 +41,7 @@
   z-index: 1;
 }
 
-/* Text on the left, over the image */
+
 .academy-visual-overlay{
   position: absolute;
   z-index: 2;
@@ -349,10 +349,10 @@
 @media screen and (max-width: 1440px) {
   .academy-visual-overlay h1{ font-size: 3.2rem }
   .academy-visual-overlay{
-    left: 10%;
+    left:5%;
   }
   .academy-form-panel{
-    right: 10%;
+    right: 5%;
   }
 }
 

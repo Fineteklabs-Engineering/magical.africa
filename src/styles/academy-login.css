@@ -192,8 +192,8 @@
 
 @media screen and (max-width: 1440px) {
   .signIn-visual-overlay h1{ font-size: 3.2rem; }
-  .signIn-visual-overlay{ left: 10%; }
-  .signIn-form-panel{ right: 10%; }
+  .signIn-visual-overlay{ left: 5%; }
+  .signIn-form-panel{ right:5%; }
 }
 
 @media screen and (max-width: 1280px) {
