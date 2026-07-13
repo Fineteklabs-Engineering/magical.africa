@@ -1,6 +1,3 @@
-
-
-
 import { useEffect, useRef, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -13,22 +10,26 @@ import { SEO_CONTENT } from '../utils/seoContent'
 
 
 const aiFeatureIds = ['speech', 'transcription', 'indexing', 'recommendations', 'regeneration', 'tools']
+const aiFeatureAccents = ['red', 'orange', 'sage', 'orange', 'sage', 'red']
 const aiFeatureIcons = {
   speech: 'fa-microphone',
-  transcription: 'fa-file-audio',
-  indexing: 'fa-layer-group',
-  recommendations: 'fa-brain',
-  regeneration: 'fa-magic',
-  tools: 'fa-tools'
+  transcription: 'fa-file-lines',
+  indexing: 'fa-database',
+  recommendations: 'fa-wand-magic-sparkles',
+  regeneration: 'fa-arrows-rotate',
+  tools: 'fa-toolbox'
 }
-const aiFeatureColors = {
-  speech: 'green',
-  transcription: 'orange',
-  indexing: 'green',
-  recommendations: 'orange',
-  regeneration: 'green',
-  tools: 'orange'
+
+const aiFeatureImages = {
+  speech: '/images/african-family.png',
+  transcription: '/images/African-storytelling2.jpg',
+  indexing: '/images/cultural-event.webp',
+  recommendations: '/images/Oromo2.jpg',
+  regeneration: '/images/Rabbit.jpeg',
+  tools: '/images/Ai-image.png'
 }
+
+const collagePositions = ['tall-left', 'bottom-1', 'bottom-2', 'bottom-3', 'bottom-4', 'tall-right']
 
 const pillarIds = ['ethical', 'panAfrican', 'sovereignty', 'scalable']
 const pillarIcons = {
@@ -37,6 +38,7 @@ const pillarIcons = {
   sovereignty: 'fa-lock',
   scalable: 'fa-chart-line'
 }
+const pillarAccents = ['red', 'orange', 'sage', 'orange']
 
 const stepIds = ['capture', 'transcribe', 'index', 'deliver']
 
@@ -93,6 +95,7 @@ const Technology = () => {
         style={{ backgroundImage: 'url(/images/AI-woman.png)' }}
       >
         <div className='tech-hero-overlay' />
+
         <div className='tech-hero-content'>
           <span className='tech-eyebrow'>
             <i className='fa-solid fa-microchip'></i>
@@ -105,21 +108,41 @@ const Technology = () => {
           <p className='tech-hero-sub'>
             {t('technology.hero.subtitle')}
           </p>
-          <div className='tech-hero-stats'>
-            <div className='tech-hero-stat'>
-              <strong>{t('technology.hero.stat1Value')}</strong>
+        </div>
+
+        {/* Floating stat cards */}
+        <div className='tech-hero-floats'>
+          <div className='tech-float-card tech-float-card--red'>
+            <div className='tech-float-top'>
               <span>{t('technology.hero.stat1Label')}</span>
+              <span className='tech-float-icon tech-float-icon--red'>
+                <i className='fa-solid fa-language'></i>
+              </span>
             </div>
-            <div className='tech-hero-divider' />
-            <div className='tech-hero-stat'>
-              <strong>{t('technology.hero.stat2Value')}</strong>
+            <strong>{t('technology.hero.stat1Value')}</strong>
+            <span className='tech-float-bar tech-float-bar--red' />
+          </div>
+
+          <div className='tech-float-card tech-float-card--sage'>
+            <div className='tech-float-top'>
               <span>{t('technology.hero.stat2Label')}</span>
+              <span className='tech-float-icon tech-float-icon--sage'>
+                <i className='fa-solid fa-database'></i>
+              </span>
             </div>
-            <div className='tech-hero-divider' />
-            <div className='tech-hero-stat'>
-              <strong>{t('technology.hero.stat3Value')}</strong>
+            <strong>{t('technology.hero.stat2Value')}</strong>
+            <span className='tech-float-bar tech-float-bar--sage' />
+          </div>
+
+          <div className='tech-float-card tech-float-card--orange'>
+            <div className='tech-float-top'>
               <span>{t('technology.hero.stat3Label')}</span>
+              <span className='tech-float-icon tech-float-icon--orange'>
+                <i className='fa-solid fa-earth-africa'></i>
+              </span>
             </div>
+            <strong>{t('technology.hero.stat3Value')}</strong>
+            <span className='tech-float-bar tech-float-bar--orange' />
           </div>
         </div>
       </section>
@@ -134,44 +157,51 @@ const Technology = () => {
           <div className='tech-intro-quote'>
             <blockquote>
              <p>"{t('technology.intro.quote')}"</p>
-  <cite>Magical Africa</cite>
+  Magical Africa
             </blockquote>
           </div>
         </div>
       </section>
 
-      {/* ── AI FEATURES GRID ── */}
-      <section className='tech-features-section'>
-        <div className='tech-section-heading'>
-          <span className='tech-section-line' />
-          <h2>{t('technology.features.sectionTitle')}</h2>
-          <span className='tech-section-line' />
-        </div>
-        <p className='tech-section-sub'>
-          {t('technology.features.sectionSubtitle')}
-        </p>
+      {/* ── AI CAPABILITIES — beige photo collage ── */}
+      <section className='tech-features-section tech-features-section--collage'>
+        <div className='tech-collage-wrap'>
 
-        <div className='tech-features-grid'>
-          {aiFeatureIds.map((id, i) => (
-            <article
-              key={id}
-              ref={el => (cardRefs.current[i] = el)}
-              className={`tech-feature-card tech-feature-card--${aiFeatureColors[id]} ${visibleCards.has(i) ? 'is-visible' : ''}`}
-            >
-              <div className='tech-card-top'>
-                <div className={`tech-card-icon-wrap tech-card-icon-wrap--${aiFeatureColors[id]}`}>
-                  <i className={`fa-solid ${aiFeatureIcons[id]}`}></i>
+          <div className='tech-collage-photos'>
+            {aiFeatureIds.map((id, i) => (
+              <div
+                key={id}
+                ref={el => (cardRefs.current[i] = el)}
+                className={`tech-collage-card tech-collage-card--${collagePositions[i]} ${visibleCards.has(i) ? 'is-visible' : ''}`}
+                style={{ backgroundImage: `url(${aiFeatureImages[id]})` }}
+              >
+                <span className={`tech-collage-card-overlay tech-collage-card-overlay--${aiFeatureAccents[i]}`} />
+                <div className='tech-collage-card-content'>
+                  <span className='tech-collage-card-icon'>
+                    <i className={`fa-solid ${aiFeatureIcons[id]}`}></i>
+                  </span>
+                  <h3>{t(`technology.features.items.${id}.title`)}</h3>
+                  <span className='tech-collage-card-stat'>
+                    {t(`technology.features.items.${id}.stat`)}
+                  </span>
                 </div>
-                <span className='tech-card-tag'>{t(`technology.features.items.${id}.tag`)}</span>
               </div>
-              <h3>{t(`technology.features.items.${id}.title`)}</h3>
-              <p>{t(`technology.features.items.${id}.description`)}</p>
-              <div className={`tech-card-stat tech-card-stat--${aiFeatureColors[id]}`}>
-                <strong>{t(`technology.features.items.${id}.stat`)}</strong>
-                <span>{t(`technology.features.items.${id}.statLabel`)}</span>
-              </div>
-            </article>
-          ))}
+            ))}
+          </div>
+
+          <div className='tech-collage-center'>
+            <span className='tech-eyebrow tech-eyebrow--dark'>
+              <i className='fa-solid fa-microchip'></i>
+              {t('technology.features.sectionTitle')}
+            </span>
+            <h2 className='tech-collage-heading'>
+              {t('technology.features.sectionSubtitle')}
+            </h2>
+            <button className='tech-cta-btn tech-cta-btn--primary' onClick={goToAcademy}>
+              Visit the Academy <i className='fa-solid fa-arrow-up-right'></i>
+            </button>
+          </div>
+
         </div>
       </section>
 
@@ -190,8 +220,8 @@ const Technology = () => {
           </div>
           <div className={`tech-pillars-grid ${pillarsVisible ? 'is-visible' : ''}`}>
             {pillarIds.map((id, i) => (
-              <div key={id} className='tech-pillar' style={{ transitionDelay: `${i * 120}ms` }}>
-                <div className='tech-pillar-icon'>
+              <div key={id} className={`tech-pillar tech-pillar--${pillarAccents[i]}`} style={{ transitionDelay: `${i * 120}ms` }}>
+                <div className={`tech-pillar-icon tech-pillar-icon--${pillarAccents[i]}`}>
                   <i className={`fa-solid ${pillarIcons[id]}`}></i>
                 </div>
                 <h3>{t(`technology.pillars.items.${id}.label`)}</h3>
@@ -202,32 +232,23 @@ const Technology = () => {
         </div>
       </section>
 
-      {/* ── HOW IT WORKS TIMELINE ── */}
+      {/* ── HOW IT WORKS — staggered numbered cards, no heading dividers ── */}
       <section className='tech-how-section'>
-        <div className='tech-section-heading'>
-          <span className='tech-section-line' />
+        <div className='tech-section-heading tech-section-heading--plain'>
           <h2>{t('technology.howItWorks.sectionTitle')}</h2>
-          <span className='tech-section-line' />
         </div>
-        <div className='tech-timeline'>
+        <div className='tech-how-grid'>
           {stepIds.map((id, i) => (
-            <div key={id} className='tech-timeline-item'>
-              <div className='tech-timeline-step'
-              aria-hidden="true"
-              >
-                <span>{t(`technology.howItWorks.steps.${id}.step`)}</span>
-              </div>
-              {i < stepIds.length - 1 && <div className='tech-timeline-connector' />}
-              <div className='tech-timeline-body'>
-                <h3>{t(`technology.howItWorks.steps.${id}.title`)}</h3>
-                <p>{t(`technology.howItWorks.steps.${id}.desc`)}</p>
-              </div>
+            <div key={id} className={`tech-how-card tech-how-card--pos-${i % 2}`}>
+              <span className='tech-how-number'>{t(`technology.howItWorks.steps.${id}.step`)}</span>
+              <h3>{t(`technology.howItWorks.steps.${id}.title`)}</h3>
+              <p>{t(`technology.howItWorks.steps.${id}.desc`)}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ── CTA ── */}
+      {/* ── CTA — JOIN THE MOVEMENT ── */}
       <section
         className='tech-cta'
         style={{ backgroundImage: 'url(/images/learn-language-kids.jpg)' }}
