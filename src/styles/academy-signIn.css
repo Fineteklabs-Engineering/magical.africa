@@ -15,63 +15,39 @@
   overflow: hidden;
 }
 
-/* ===== Full-bleed masonry background ===== */
-/* ===== Full-bleed background grid ===== */
+/* ===== Rotating crossfade background ===== */
 .academy-visual{
   position: absolute;
   inset: 80px 0 0 0;
   overflow: hidden;
- 
 }
 
-.academy-image-grid{
+.academy-visual-bg{
   position: absolute;
   inset: 0;
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
-   margin-left:3rem ;
-  margin-right: 3rem;
-}
-
-.academy-grid-col{
-  flex: 1;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.academy-tile{
-  flex: 1;
-  width: 100%;
   background-size: cover;
   background-position: center;
-  background-color: #91A585; /* fallback while images load */
-  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  z-index: 0;
 }
 
-.academy-tile.h-short{ height: 140px; }
-.academy-tile.h-med{ height: 210px; }
-.academy-tile.h-tall{ height: 280px; }
-
-/* Dark wash so text/form stay legible */
+/* Dark wash so text/form stay legible — sits above the images */
 .academy-visual::before{
   content: '';
   position: absolute;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.45);
   z-index: 1;
 }
 
-/* Text on the left, over the grid */
+/* Text on the left, over the image */
 .academy-visual-overlay{
   position: absolute;
   z-index: 2;
   top: 50%;
   left: 15%;
   transform: translateY(-50%);
-
   color: #fff;
 }
 
@@ -102,7 +78,6 @@
   width: 100%;
   max-width: 420px;
   max-height: 85vh;
-
 }
 
 .academy-form{
@@ -118,43 +93,6 @@
   font-weight: 600;
   text-align: center;
   color: rgb(48, 48, 48);
-}
-
-.academy-form h2{
-  font-size: 1rem;
-  font-weight: 600;
-  text-align: center;
-  color: rgb(181, 161, 145);
-}
-
-.academy-category{
-  display: flex;
-  flex-direction: row;
-  margin-top: 1rem;
-  width: 100%;
-  gap: 20px;
-}
-
-.academy-category button{
-  width: 100%;
-}
-
-.active-role {
-  background-color: #A3070C;
-  border: none;
-  color: white;
-  font-size: 0.875rem;
-  font-weight: bold;
-  padding: 0.5rem;
-}
-
-.inactive-role {
-  background-color: transparent;
-  border: 1px solid #91A585;
-  color: black;
-  font-size: 0.875rem;
-  font-weight: bold;
-  padding: 0.5rem;
 }
 
 .academy-info1{
@@ -206,20 +144,6 @@
 }
 
 .academy-info2 input:focus, .academy-info3 input:focus{
-  border: 1px solid #A3070C;
-}
-
-.academy-info2 select{
-  padding: 0.3rem 0.5rem;
-  border: 1px solid #e5e3e3;
-  outline: none;
-  width: 100%;
-  font-size: 0.875rem;
-  background-color: #fff;
-  color: #303030;
-}
-
-.academy-info2 select:focus{
   border: 1px solid #A3070C;
 }
 
@@ -295,6 +219,123 @@
   text-decoration: underline;
 }
 
+/* ===== Step 2: role picker — white page, centered card ===== */
+.academy-role-page{
+  min-height: 100vh;
+  padding-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+
+.academy-role-card{
+  width: 100%;
+  max-width: 420px;
+  margin: 2rem;
+  padding: 2.5rem 2rem;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+  text-align: center;
+}
+
+.academy-role-card h2{
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: rgb(48, 48, 48);
+}
+
+.academy-role-card p{
+  font-size: 0.95rem;
+  color: #6b6b6b;
+  margin-bottom: 1.5rem;
+}
+
+.academy-role-error{
+  background-color: #f8d7da;
+  color: #721c24;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.academy-role-options{
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.academy-role-btn{
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background-color: transparent;
+  border: 1px solid #91A585;
+  color: rgb(48, 48, 48);
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.academy-role-btn:hover{
+  background-color: rgba(163, 7, 12, 0.05);
+}
+
+.academy-role-btn.active{
+  background-color: #A3070C;
+  border-color: #A3070C;
+  color: #fff;
+}
+
+.academy-role-extra{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.academy-role-extra label{
+  font-size: 0.875rem;
+  color: rgb(48, 48, 48);
+}
+
+.academy-role-extra input{
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #e5e3e3;
+  outline: none;
+  border-radius: 6px;
+  font-size: 0.875rem;
+}
+
+.academy-role-extra input:focus{
+  border-color: #A3070C;
+}
+
+.academy-role-continue{
+  width: 100%;
+  border: none;
+  color: white;
+  background-color: #A3070C;
+  padding: 0.75rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.academy-role-continue:hover{
+  background-color: #8a0509;
+}
+
+.academy-role-continue:disabled{
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 .date-input-container{
   position: relative;
   width: 100%;
@@ -305,32 +346,7 @@
   padding-right: 40px;
 }
 
-.calendar-icon{
-  position: absolute;
-  right: 12px;
-  bottom: 8px;
-  color: #91A585;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0;
-  display: none;
-}
-
-input[type="date"]::-webkit-inner-spin-button,
-input[type="date"]::-webkit-clear-button {
-  display: none;
-}
-
-input[type="date"] {
-  appearance: none;
-  -moz-appearance: textfield;
-}
-
 @media screen and (max-width: 1440px) {
-  .academy-image-grid{ column-count: 6; }
   .academy-visual-overlay h1{ font-size: 3.2rem }
   .academy-visual-overlay{
     left: 10%;
@@ -341,70 +357,44 @@ input[type="date"] {
 }
 
 @media screen and (max-width:1280px) {
-    .academy-visual-overlay{
+  .academy-visual-overlay{
     left: 5%;
   }
   .academy-form-panel{
     right: 5%;
     top: 60%;
-     max-width: 420px;
-  max-height: 75vh;
-  overflow-y: scroll;
+    max-width: 420px;
+    max-height: 75vh;
+    overflow-y: scroll;
   }
-  
   .academy-visual-overlay h1{
     font-size: 2.5rem;
-  }
-   .academy-grid-col:nth-child(n+7) {
-    display: none;
-  }
-}
-
-@media screen and (max-width:1024px) {
-    .academy-grid-col:nth-child(n+6) {
-    display: none;
   }
 }
 
 @media screen and (max-width:900px) {
-     .academy-grid-col:nth-child(n+5) {
-    display: none;
-  }
-
   .academy-visual-overlay h1{
     display: none;
   }
-   .academy-form-panel{
+  .academy-form-panel{
     left: 0;
     right: 0;
     margin: 0 auto;
   }
 }
 
-
 @media screen and (max-width:480px) {
-      .academy-grid-col:nth-child(n+4) {
-    display: none;
-
+  .academy-form-panel{
+    top: 55%;
   }
-  .academy-image-grid{
- 
-   margin-left:0rem ;
-  margin-right: 0rem;
 }
-.academy-form-panel{
-top: 55%;
- 
-}
-}
-
 
 @media screen and (max-width: 480px) {
   .academy-visual{
-    display: none; 
+    display: none;
   }
 
-   .academy-signIn{
+  .academy-signIn{
     min-height: fit-content;
   }
 
@@ -426,5 +416,10 @@ top: 55%;
     border-radius: 0;
     box-shadow: none;
     padding: 1rem 0.5rem;
+  }
+
+  .academy-role-card{
+    margin: 1rem;
+    padding: 2rem 1.25rem;
   }
 }

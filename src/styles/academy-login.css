@@ -15,41 +15,24 @@
   overflow: hidden;
 }
 
-/* ===== Full-bleed background grid ===== */
+/* ===== Rotating crossfade background ===== */
 .signIn-visual{
   position: absolute;
   inset: 80px 0 0 0;
   overflow: hidden;
 }
 
-.signIn-image-grid{
+.signIn-visual-bg{
   position: absolute;
   inset: 0;
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
-  margin-left: 3rem;
-  margin-right: 3rem;
-}
-
-.signIn-grid-col{
-  flex: 1;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.signIn-tile{
-  flex: 1;
-  width: 100%;
   background-size: cover;
   background-position: center;
-  background-color: #91A585; /* fallback while images load */
-  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  z-index: 0;
 }
 
-/* Dark wash so text/form stay legible */
+/* Dark wash so text/form stay legible — sits above the images */
 .signIn-visual::before{
   content: '';
   position: absolute;
@@ -222,22 +205,9 @@
   overflow-y: scroll;
   }
   .signIn-visual-overlay h1{ font-size: 2.5rem; }
-  .signIn-grid-col:nth-child(n+7) {
-    display: none;
-  }
-
-}
-
-@media screen and (max-width: 1024px) {
-  .signIn-grid-col:nth-child(n+6) {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 900px) {
-  .signIn-grid-col:nth-child(n+5) {
-    display: none;
-  }
   .signIn-visual-overlay h1{
     display: none;
   }

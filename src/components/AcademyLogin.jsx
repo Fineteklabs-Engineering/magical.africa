@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import '../styles/academy-login.css'
 import { useNavigate } from 'react-router-dom'
@@ -18,6 +18,26 @@ const AcademyLogin = () => {
   const [success, setSuccess] = useState(false)  
   
    const [showPassword, setShowPassword] = useState(false)
+
+ 
+  const bgImages = [
+    '/images/zulu2.jpg',
+    '/images/cultural-event.png',
+    '/images/maasai2.jpg',
+    '/images/african-family.png',
+    '/images/cultural-event.webp',
+    '/images/benga.webp',
+    
+  ]
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % bgImages.length)
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [])
 
   const navigate = useNavigate()
 
@@ -108,57 +128,18 @@ const resolveLoginRole = (profile) => {
 
       <div className="signIn-page">
 
-        {/* Full-bleed masonry background */}
+        {/* Rotating crossfade background */}
         <div className="signIn-visual">
-          <div className="signIn-image-grid">
-
-            <div className="signIn-grid-col">
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/kitenge-latest.jpg')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/maasai2.jpg')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/pottery1-image1.jpg')" }} />
-            </div>
-
-            <div className="signIn-grid-col">
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/african-spices.jpg')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/african-learning.png')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/woman-painting.png')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/brassJewellery.jpg')" }} />
-            </div>
-
-            <div className="signIn-grid-col">
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/cultural-event.webp')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/artisans-image.webp')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/nairobi-food-festival.webp')" }} />
-            </div>
-
-            <div className="signIn-grid-col">
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/enkiamaNeckless.jpg')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/maasai-art2.png')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/orinkaWristCoil.jpg')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/pencilPortraits.jpg')" }} />
-            </div>
-
-            <div className="signIn-grid-col">
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/Oromo2.jpg')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/wood_carving.webp')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/swahiliBlueGlazeJar.jpg')" }} />
-            </div>
-
-            <div className="signIn-grid-col">
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/kitenge-latest.jpg')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/african-spices.jpg')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/maasai2.jpg')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/pottery1-image1.jpg')" }} />
-            </div>
-
-            <div className="signIn-grid-col">
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/silverJewellery.jpg')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/Igbo2.jpg')" }} />
-              <div className="signIn-tile" style={{ backgroundImage: "url('/images/oilPaint.jpg')" }} />
-            </div>
-
-          </div>
-
+          {bgImages.map((img, index) => (
+            <div
+              key={img}
+              className="signIn-visual-bg"
+              style={{
+                backgroundImage: `url('${img}')`,
+                opacity: index === currentIndex ? 1 : 0
+              }}
+            />
+          ))}
           <div className="signIn-visual-overlay">
             <h1>Welcome <span>back</span><br />Login to Your Account</h1>
           </div>
