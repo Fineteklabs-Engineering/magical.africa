@@ -1,4 +1,3 @@
-
 .has-section {
   position: relative;
   overflow: hidden;
@@ -134,13 +133,21 @@
   box-shadow: 0 28px 60px rgba(0, 0, 0, 0.5);
 }
 
-.has-card-number {
-  font-family: 'Poppins', sans-serif;
-  font-size: 2.6rem;
-  font-weight: 700;
-  color: #191919;
-  line-height: 1;
+.has-card-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(213, 115, 26, 0.14);
+  border: 1.5px solid rgba(213, 115, 26, 0.35);
   margin-bottom: 1.4rem;
+}
+
+.has-card-icon i {
+  font-size: 1.35rem;
+  color: #D5731A;
 }
 
 .has-card-title {

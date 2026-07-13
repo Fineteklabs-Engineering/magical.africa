@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next'
 import '../styles/homeAisection.css'
 
 const FEATURES = [
-  { id: 'speech', number: '1' },
-  { id: 'transcription', number: '2' },
-  { id: 'recommendations', number: '3' },
+  { id: 'speech', icon: 'fa-microphone' },
+  { id: 'transcription', icon: 'fa-file-lines' },
+  { id: 'recommendations', icon: 'fa-wand-magic-sparkles' },
 ]
 
 const HomeAiSection = ({ imageSrc = '/images/woman-child.png' }) => {
@@ -48,7 +48,7 @@ const HomeAiSection = ({ imageSrc = '/images/woman-child.png' }) => {
         </div>
 
         <div className="has-cards-row">
-          {FEATURES.map(({ id, number }, i) => (
+          {FEATURES.map(({ id, icon }, i) => (
             <article
               key={id}
               className={[
@@ -61,7 +61,9 @@ const HomeAiSection = ({ imageSrc = '/images/woman-child.png' }) => {
               onMouseEnter={() => setHovered(id)}
               onMouseLeave={() => setHovered(null)}
             >
-              <span className="has-card-number">{number}</span>
+              <span className="has-card-icon">
+                <i className={`fa-solid ${icon}`}></i>
+              </span>
               <h3 className="has-card-title">
                 {t(`home.aiSection.features.${id}.title`, id)}
               </h3>
