@@ -33,7 +33,7 @@ const Academy2 = () => {
     'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image2_uwvtnt',
     'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image3_gnlpqp',
    
-    'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image5_vtsmwk',
+'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image5_vtsmwk',
     'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image6_ajkvsx',
   ]
   const [currentIndex, setCurrentIndex] = useState(0)

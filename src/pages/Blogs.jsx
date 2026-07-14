@@ -55,7 +55,7 @@ const Blogs = () => {
     fetchPosts()
   }, [])
 
- 
+
   const staticPosts = latestPostKeys.map(key => ({ key, ...blogData[key] }))
   const allPosts = [...firestorePosts, ...staticPosts]
 
@@ -87,42 +87,41 @@ const Blogs = () => {
       <PageSeo {...SEO_CONTENT.blogs} />
       <div className="blogs-page">
 
-        <Navbar />
+        <Navbar solid />
 
-      
-        <div className="blogs-header">
-          <div className="blogs-header-decor top" />
-          <div className="blogs-header-content">
-            <h1 className="blogs-title">
-              {t('blogs.header.titleStart')} <span>{t('blogs.header.titleAccent')}</span>
-            </h1>
-            <div className="blogs-title-divider" />
-            <p className="blogs-tagline">{t('blogs.header.tagline')}</p>
-          </div>
-          <div className="blogs-header-decor bottom" />
-        </div>
+        {/* ── HERO ── */}
+        <div className="blogs-hero">
+          <span className="blogs-hero-eyebrow">{t('blogs.header.eyebrow', 'Blog')}</span>
+          <h1 className="blogs-title">
+            {t('blogs.header.titleStart')} <span>{t('blogs.header.titleAccent')}</span>
+          </h1>
+          <p className="blogs-tagline">{t('blogs.header.tagline')}</p>
 
-        {/* ── SEARCH & WRITE STRIP ── */}
-        <div className="blogs-action-strip">
-          <button className="blogs-write-btn" onClick={() => navigate('/blogs/create-blog')}>
-            <FiEdit2 size={15} />
-            Write a Blog
-          </button>
-          <div className="blogs-search-bar">
-            <FiSearch size={15} className="blogs-search-icon" />
-            <input
-              type="text"
-              placeholder="Search stories..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            {searchQuery && (
-              <button className="blogs-search-clear" onClick={() => setSearchQuery('')}>
-                <FiX size={14} />
-              </button>
-            )}
+          <div className="blogs-hero-toolbar">
+            <div className="blogs-hero-search-group">
+              <div className="blogs-search-bar">
+                <FiSearch size={15} className="blogs-search-icon" />
+                <input
+                  type="text"
+                  placeholder="Search stories..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                {searchQuery && (
+                  <button className="blogs-search-clear" onClick={() => setSearchQuery('')}>
+                    <FiX size={14} />
+                  </button>
+                )}
+              </div>
+              <button className="blogs-hero-find-btn">Find Now</button>
+            </div>
+            <button className="blogs-write-btn" onClick={() => navigate('/blogs/create-blog')}>
+              <FiEdit2 size={15} />
+              Write a Blog
+            </button>
           </div>
         </div>
+
 
         {/* ── MAIN LAYOUT ── */}
         <div className="blogs-layout">
@@ -173,12 +172,13 @@ const Blogs = () => {
                         className="blogs-card-img"
                         style={{ backgroundImage: `url('${post.image}')` }}
                       >
-                        <div className="blogs-card-overlay" />
-                        <div className="blogs-card-body">
-                       
-                          <h3>{post.title}</h3>
-                          <p>{post.subtitle}</p>
-                        </div>
+                        {(post.category || post.tags?.[0]) && (
+                          <span className="blogs-card-tag">{post.category || post.tags?.[0]}</span>
+                        )}
+                      </div>
+                      <div className="blogs-card-body">
+                        <h3>{post.title}</h3>
+                        <p>{post.subtitle}</p>
                       </div>
                     </div>
                   ))}
@@ -190,53 +190,56 @@ const Blogs = () => {
 
           </main>
 
-          
+
           <aside className="blogs-sidebar">
 
-            {/* Recent Posts */}
-            <div className="sidebar-section">
-              {sidebarPosts.map((post) => (
-                <div
-                  className="sidebar-post"
-                  key={post.key}
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => goToPost(post.key)}
-                >
-                  <div className="sidebar-post-img" style={{ backgroundImage: `url('${post.image}')` }} />
-                  <div className="sidebar-post-info">
-                    <h4>{t(`blogs.sidebar.recent.${post.key}.title`)}</h4>
-                    <p className="sidebar-post-date">{post.date}</p>
-                    <p className="sidebar-post-sub">{t(`blogs.sidebar.recent.${post.key}.subtitle`)}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
             {/* Categories */}
-            <div className="sidebar-section">
+            <div className="sidebar-feature-block">
               <h3 className="sidebar-heading">{t('blogs.sidebar.categories.heading')}</h3>
-              <ul className="sidebar-categories">
+              <div className="sidebar-category-list">
                 {categoryKeys.map(({ key, tag }) => (
-                  <li
+                  <button
                     key={key}
+                    className={`blogs-filter-btn ${activeCategory === tag ? 'active' : ''}`}
                     onClick={() => handleCategoryClick(tag)}
-                    className={activeCategory === tag ? 'sidebar-cat-active' : ''}
                   >
-                    <span className="sidebar-cat-arrow">▶</span>
                     {t(`blogs.sidebar.categories.items.${key}`)}
-                  </li>
+                  </button>
                 ))}
-              </ul>
+              </div>
             </div>
 
-            {/* Popular Posts */}
-            <div className="sidebar-section">
+            {/* Featured list */}
+            <div className="sidebar-feature-block">
+              <h3 className="sidebar-heading">{t('blogs.sidebar.recent.heading', 'Featured')}</h3>
+              <div className="sidebar-feature-list">
+                {sidebarPosts.map((post) => (
+                  <div
+                    className="sidebar-feature-item"
+                    key={post.key}
+                    onClick={() => goToPost(post.key)}
+                  >
+                    <div className="sidebar-feature-thumb" style={{ backgroundImage: `url('${post.image}')` }} />
+                    <div className="sidebar-feature-meta">
+                      <span className="sidebar-feature-date">{post.date}</span>
+                      <h4>{t(`blogs.sidebar.recent.${post.key}.title`)}</h4>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Latest list */}
+            <div className="sidebar-feature-block">
               <h3 className="sidebar-heading">{t('blogs.sidebar.popular.heading')}</h3>
-              <div className="sidebar-popular">
+              <div className="sidebar-feature-list">
                 {popularPosts.map((post) => (
-                  <div className="sidebar-popular-item" key={post.key} onClick={() => goToPost(post.key)}>
-                    <div className="sidebar-popular-img" style={{ backgroundImage: `url('${post.image}')` }} />
-                    <p>{t(`blogs.sidebar.popular.posts.${post.key}`)}</p>
+                  <div className="sidebar-feature-item" key={post.key} onClick={() => goToPost(post.key)}>
+                    <div className="sidebar-feature-thumb" style={{ backgroundImage: `url('${post.image}')` }} />
+                    <div className="sidebar-feature-meta">
+                      <span className="sidebar-feature-date">{post.date}</span>
+                      <h4>{t(`blogs.sidebar.popular.posts.${post.key}`)}</h4>
+                    </div>
                   </div>
                 ))}
               </div>
