@@ -188,7 +188,7 @@
   text-decoration: underline;
 }
 
-/* ===== Responsive ===== */
+
 
 @media screen and (max-width: 1440px) {
   .signIn-visual-overlay h1{ font-size: 3.2rem; }

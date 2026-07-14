@@ -10,7 +10,7 @@ import PageSeo from '../components/PageSeo'
 import { SEO_CONTENT } from '../utils/seoContent'
 
 const Academy2 = () => {
-  // 'signup' = the account details form, 'role' = the post-signup role picker
+  
   const [step, setStep] = useState('signup')
 
   const [firstName, setFirstName] = useState('')
@@ -29,12 +29,12 @@ const Academy2 = () => {
   const [roleError, setRoleError] = useState('')
 
   const bgImages = [
-    '/images/zulu2.jpg',
-    '/images/cultural-event.png',
-    '/images/maasai2.jpg',
-    '/images/african-family.png',
-    '/images/cultural-event.webp',
-    '/images/benga.webp'
+   '/images/art-image1.jpg',
+    '/images/art-image2.jpg',
+    '/images/art-image3.jpg',
+    '/images/art-image4.jpg',
+    '/images/art-image5.jpg',
+    '/images/art-image6.jpg',
   ]
   const [currentIndex, setCurrentIndex] = useState(0)
 

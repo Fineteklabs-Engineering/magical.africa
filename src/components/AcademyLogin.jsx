@@ -21,12 +21,12 @@ const AcademyLogin = () => {
 
  
   const bgImages = [
-    '/images/zulu2.jpg',
-    '/images/cultural-event.png',
-    '/images/maasai2.jpg',
-    '/images/african-family.png',
-    '/images/cultural-event.webp',
-    '/images/benga.webp',
+    '/images/art-image1.jpg',
+    '/images/art-image2.jpg',
+    '/images/art-image3.jpg',
+    '/images/art-image4.jpg',
+    '/images/art-image5.jpg',
+    '/images/art-image6.jpg',
     
   ]
   const [currentIndex, setCurrentIndex] = useState(0)
