@@ -21,13 +21,12 @@ const AcademyLogin = () => {
 
  
   const bgImages = [
-    '/images/art-image1.jpg',
-    '/images/art-image2.jpg',
-    '/images/art-image3.jpg',
-    '/images/art-image4.jpg',
-    '/images/art-image5.jpg',
-    '/images/art-image6.jpg',
+   'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image1_vctfmx',
+    'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image2_uwvtnt',
+    'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image3_gnlpqp',
     
+    'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image5_vtsmwk',
+    'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image6_ajkvsx',
   ]
   const [currentIndex, setCurrentIndex] = useState(0)
 
