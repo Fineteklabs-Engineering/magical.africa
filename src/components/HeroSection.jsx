@@ -8,7 +8,7 @@ import useAcademyNavigation from "../hooks/useAcademyNavigation";
 const heroSlides = [
   {
     image: '/images/Igbo2.jpg',
-    mobileImage: '/images/Igbo2-mobile.png', // add a mobile-cropped version
+    mobileImage: '/images/Igbo2-mobile.png', 
     title: 'Magical Africa - The Real African Story',
     subtitle: "Explore Africa's Culture and Heritage",
     name: '(Igbo)',
@@ -42,6 +42,21 @@ const heroSlides = [
     flag: '/images/Nigeria-flag.png',
     box: { icon: 'fa-solid fa-basket-shopping', label: 'Visit Cultural Market', action: '/market' }
   },
+
+  
+  {
+  image: 'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image1_vctfmx',
+  mobileImage: 'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image1_vctfmx',
+  subtitle: 'Empowering African Creators',
+  title: 'Discover inspiring storytellers, artists, musicians, and creators shaping Africa’s creative future',
+  name: '(Yoruba)',
+  flag: '/images/Nigeria-flag.png',
+  box: {
+    icon: 'fa-solid fa-camera-retro',
+    label: 'Meet African Creators',
+    action: '/creators'
+  }
+},
   {
     image: '/images/Ai-image.png',
     mobileImage: '/images/Ai-image-mobile.png',
@@ -50,7 +65,8 @@ const heroSlides = [
     name: '(Zulu)',
     flag: '/images/South-African-flag.png',
     box: { icon: 'fa-solid fa-microchip', label: 'Preserve Africa with AI', action: '/technology' }
-  }
+  },
+
 ];
 
 const HeroSection = ({ children, customContent, backgroundImage, mobileBackgroundImage }) => {

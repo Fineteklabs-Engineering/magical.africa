@@ -1,18 +1,18 @@
-/* ── PAGE ── */
+
 .cp-page {
   min-height: 100vh;
   background-color: #faf8f5;
   font-family: 'Georgia', serif;
 }
 
-/* ── SINGLE CONTAINER — everything lives inside this ── */
+
 .cp-container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 2.5rem 2rem 5rem;
 }
 
-/* ── NOT FOUND ── */
+
 .cp-not-found {
   min-height: 100vh;
   display: flex;
