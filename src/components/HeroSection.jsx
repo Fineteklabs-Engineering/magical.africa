@@ -96,7 +96,7 @@ const HeroSection = ({ children, customContent, backgroundImage, mobileBackgroun
     return () => clearInterval(interval);
   }, [backgroundImage]);
 
-  // Preload both desktop and mobile versions so the carousel doesn't flash/lag
+  
   useEffect(() => {
     heroSlides.forEach((slide) => {
       const img = new Image();
