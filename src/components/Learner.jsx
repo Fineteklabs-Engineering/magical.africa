@@ -599,6 +599,17 @@ const Learner = () => {
 
   const completedCourses = useMemo(() => completedLearningCourses.filter((course) => (progressMap[course.id]?.completion || 0) >= 100).map((course) => ({ id: course.id, title: course.title || 'Untitled Course', teacherName: course.teacherName || 'Tutor', completedAt: progressMap[course.id]?.updatedAt || progressMap[course.id]?.lastActiveAt || new Date().toISOString() })), [completedLearningCourses, progressMap])
 
+  const upcomingSessionsCount = continueLearningCourses.length
+  const confirmedSessionsCount = completedLearningCourses.length
+  const sessionSummary = `${upcomingSessionsCount} upcoming · ${confirmedSessionsCount} confirmed`
+  const nextSession = quickResumeCourses[0] || null
+  const blogPosts = [
+    { title: 'Small Habits, Big Changes: Building a Healthier Mindset' },
+    { title: 'Healthy Relationships Start with Healthy Boundaries' },
+    { title: 'Coping with Anxiety: Finding Calm in Difficult Moments' }
+  ]
+  const greetingMessage = `Hi, ${learnerName}`
+
   const courseViewMeta = useMemo(() => {
     if (courseView === 'in-progress') return { title: 'Continue Learning', subtitle: 'Pick up from where you left off and protect your streak.', emptyText: 'No in-progress courses yet.' }
     if (courseView === 'completed') return { title: 'Completed Courses', subtitle: 'Only finished courses appear here.', emptyText: 'No completed courses yet.' }
@@ -905,11 +916,10 @@ const Learner = () => {
             </div>
             <button type='button' className='learner-sidebar-close' onClick={() => setSidebarOpen(false)}>Close</button>
           </div>
-          <button className='learner-back-btn' onClick={() => navigate('/')}>
-            <FiChevronLeft aria-hidden='true' /><span>Back to Website</span>
-          </button>
           <div className='learner-sidebar-brand'>
-            <img src='/images/magicaal-logo1-removebg-preview.png' alt='Magical Africa logo' />
+            <a href='/' className='learner-sidebar-logo' aria-label='Visit Magical Africa website'>
+              <img src='/images/magicalProfile.png' alt='Magical Africa logo' />
+            </a>
             <h2>Learner Dashboard</h2>
           </div>
           <div className='learner-nav-groups'>
@@ -933,37 +943,32 @@ const Learner = () => {
           </div>
         </aside>
 
-        <main className='learner-main'>
-          {!loading && myArtSyncError && (
-            <div className='learner-panel' role='status' aria-live='polite' style={{ borderColor: 'rgba(179, 38, 30, 0.35)', backgroundColor: 'rgba(179, 38, 30, 0.08)', marginBottom: 12 }}>
-              <p style={{ margin: 0, color: '#9b1b1b', fontWeight: 700 }}>{myArtSyncError}</p>
+        <div className='learner-shell-main'>
+          {!loading && (
+            <div className='learner-page-topbar'>
+              <div className='learner-topbar-left'>
+                <span className='learner-topbar-label'>Purchased courses</span>
+                <strong className='learner-topbar-count'>{purchasedCourses.length} course{purchasedCourses.length === 1 ? '' : 's'}</strong>
+              </div>
+              <label htmlFor='learner-global-search' className='learner-topbar-search learner-search-field'>
+               
+                <input id='learner-global-search' type='text' value={courseSearchTerm} onChange={(e) => setCourseSearchTerm(e.target.value)} placeholder='Search courses, art, notifications...' />
+                 <FiSearch aria-hidden='true' />
+              </label>
+              <div className='learner-topbar-right'>
+                <button className='learner-alert-bell' type='button' onClick={() => openSection('notifications')} aria-label='Notifications'>
+                  <FiBell aria-hidden='true' />{unseenAnnouncementsCount > 0 && <span>{unseenAnnouncementsCount}</span>}
+                </button>
+                <div className='learner-greeting-text'>Hi, {learnerName}</div>
+              </div>
             </div>
           )}
 
-          {!loading && (
-            <div className='learner-greeting'>
-              <div className='learner-greeting-top'>
-                <div><h3>Welcome, <span className='learner-name-highlight'>{learnerName}</span></h3></div>
-                <div className='learner-top-actions'>
-                  <button className='learner-top-stat' type='button' onClick={() => openSection('courses', { courseView: 'all' })}>{purchasedCourses.length} course{purchasedCourses.length === 1 ? '' : 's'} in your library</button>
-                  <button className='learner-alert-bell' type='button' onClick={() => openSection('notifications')}>
-                    <FiBell aria-hidden='true' />{unseenAnnouncementsCount > 0 && <span>{unseenAnnouncementsCount}</span>}
-                  </button>
-                  <div className='learner-profile-menu' ref={profileMenuRef}>
-                    <button className='Account-icon learner-profile-trigger' type='button' onClick={() => setProfileMenuOpen((prev) => !prev)} aria-expanded={profileMenuOpen}>
-                      {profileDraft.photoURL ? <img src={profileDraft.photoURL} alt='Profile avatar' className='learner-avatar-thumb' /> : <span className='learner-avatar-fallback'>{avatarInitials || 'L'}</span>}
-                    </button>
-                    {profileMenuOpen && (
-                      <div className='learner-profile-dropdown'>
-                        <p className='learner-profile-name'>{learnerName}</p>
-                        <p className='learner-profile-email'>{user?.email || 'No email on file'}</p>
-                        <button type='button' onClick={() => { openSection('profile'); setProfileMenuOpen(false) }}><strong>Profile</strong><small>View your account details</small></button>
-                        <button type='button' onClick={() => { openSection('settings'); setProfileMenuOpen(false) }}><strong>Settings</strong><small>Security, sync, notifications, and appearance</small></button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
+          <div className='learner-body-grid'>
+            <main className='learner-main'>
+          {!loading && myArtSyncError && (
+            <div className='learner-panel' role='status' aria-live='polite' style={{ borderColor: 'rgba(179, 38, 30, 0.35)', backgroundColor: 'rgba(179, 38, 30, 0.08)', marginBottom: 12 }}>
+              <p style={{ margin: 0, color: '#9b1b1b', fontWeight: 700 }}>{myArtSyncError}</p>
             </div>
           )}
 
@@ -1355,8 +1360,71 @@ const Learner = () => {
             </div>
           )}
         </main>
+
+            <aside className='learner-right-panel'>
+             <div className='learner-widget-card learner-widget-card--streak'>
+  <div className='learner-widget-card-header'>
+    <h2>Heritage Streak</h2>
+    <span className='learner-widget-icon learner-widget-icon--streak'>
+      <FiActivity aria-hidden='true' />
+    </span>
+  </div>
+  {summary.streak > 0 ? (
+    <div className='learner-widget-content'>
+      <p className='learner-widget-streak-count'>{summary.streak} day{summary.streak === 1 ? '' : 's'}</p>
+      <p className='learner-widget-meta'>You're keeping your heritage journey alive. Don't break the chain!</p>
+      {nextSession ? (
+        <button type='button' className='learner-widget-link' onClick={() => handleResumeCourse(nextSession.id)}>
+          Continue {nextSession.title || 'your course'}
+        </button>
+      ) : (
+        <button type='button' className='learner-widget-link' onClick={() => openSection('store', { storeView: 'all' })}>
+          Find your next lesson
+        </button>
+      )}
+    </div>
+  ) : (
+    <div className='learner-widget-content'>
+      <p className='learner-widget-empty'>Start a lesson today to begin your streak.</p>
+      <button type='button' className='learner-widget-link' onClick={() => openSection('store', { storeView: 'all' })}>
+        Browse courses
+      </button>
+    </div>
+  )}
+</div>
+          <div className='learner-widget-card learner-widget-card--quick-actions'>
+            <h2>Quick actions</h2>
+            <div className='learner-widget-actions'>
+              <button type='button' onClick={() => openSection('courses', { courseView: 'in-progress' })}><FiPlayCircle aria-hidden='true' />Continue Learning</button>
+              <button type='button' onClick={() => openSection('store', { storeView: 'all' })}><FiSearch aria-hidden='true' />Browse courses</button>
+              <button type='button' onClick={() => openSection('notifications')}><FiBell aria-hidden='true' />View announcements</button>
+            </div>
+          </div>
+
+          <div className='learner-widget-card learner-widget-card--profile'>
+            <h2>My profile</h2>
+            <div className='learner-profile-summary'>
+              <div className='learner-profile-avatar'>
+                {profileDraft.photoURL ? <img src={profileDraft.photoURL} alt='Profile avatar' /> : <span>{avatarInitials || 'L'}</span>}
+              </div>
+              <div>
+                <p className='learner-profile-name-summary'>{learnerName}</p>
+                <p className='learner-profile-email-summary'>{user?.email || 'No email'}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className='learner-widget-card learner-widget-card--updates'>
+            <h2>Learning updates</h2>
+            <div className='learner-widget-content'>
+              <p className='learner-widget-empty'>No recent updates yet.</p>
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
+  </div>
+  </div>
   )
 }
 
