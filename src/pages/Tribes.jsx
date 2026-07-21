@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PageSeo from '../components/PageSeo';
@@ -9,11 +9,12 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/tribes2.css';
 import '../styles/contribute.css';
+import { getTribes } from '../api/tribesApi';
 
 const Tribes = () => {
   const [selectedRegion, setSelectedRegion] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
-  
+  const [loadingTribes, setLoadingTribes] = useState(false);
   const [hoveredPin, setHoveredPin] = useState(null);
   const communitiesSectionRef = useRef(null);
   const heroRef = useRef(null);
@@ -48,36 +49,62 @@ const breakVideos = [
 ];
 
 
-  const communitiesData = [
+  const regionColors = {
+    'East Africa': '#1B5E20',
+    'West Africa': '#E65100',
+    'North Africa': '#4E342E',
+    'Southern Africa': '#C62828',
+  };
+
+  useEffect(() => {
+    const fetchTribesData = async () => {
+      setLoadingTribes(true);
+      try {
+        const data = await getTribes({ page: 1, elementPerPage: 100, direction: 'asc', key: 'publicId' });
+        console.log('getTribes response:', data);
+        if (data?.tribes && data.tribes.length > 0) {
+          const mapped = data.tribes.map((t) => ({
+            name: t.name || t.publicId || 'Unknown',
+            imageUrl: t.imageUrl || t.mediaUrl || '',
+            image: '',
+            region: t.ethnicGroup || 'Unknown',
+            location: t.otherNames || '',
+            population: t.population || '—',
+            language: t.ethnicGroup || '',
+            desc: t.summary || t.description || '',
+            color: regionColors[t.ethnicGroup] || '#B5A191',
+            raw: t,
+          }));
+          setCommunitiesData(mapped);
+          console.log('mapped tribes:', mapped);
+        }
+      } catch (err) {
+        console.error('Failed fetching tribes', err);
+      } finally {
+        setLoadingTribes(false);
+      }
+    };
+
+    fetchTribesData();
+  }, []);
+
+  const staticCommunities = [
     { name: t('tribesPage.communities.maasai.name'), image: 'maasai', region: 'East Africa', location: t('tribesPage.communities.maasai.location'), population: t('tribesPage.communities.maasai.population'), language: t('tribesPage.communities.maasai.language'), desc: t('tribesPage.communities.maasai.desc'), color: '#8B4513' },
-     { name: t('tribesPage.communities.kikuyu.name'), image: 'kikuyu', region: 'East Africa', location: t('tribesPage.communities.kikuyu.location'), population: t('tribesPage.communities.kikuyu.population'), language: t('tribesPage.communities.kikuyu.language'), desc: t('tribesPage.communities.kikuyu.desc'), color: '#1565C0' },
-
+    { name: t('tribesPage.communities.kikuyu.name'), image: 'kikuyu', region: 'East Africa', location: t('tribesPage.communities.kikuyu.location'), population: t('tribesPage.communities.kikuyu.population'), language: t('tribesPage.communities.kikuyu.language'), desc: t('tribesPage.communities.kikuyu.desc'), color: '#1565C0' },
     { name: t('tribesPage.communities.zulu.name'), image: 'zulu', region: 'Southern Africa', location: t('tribesPage.communities.zulu.location'), population: t('tribesPage.communities.zulu.population'), language: t('tribesPage.communities.zulu.language'), desc: t('tribesPage.communities.zulu.desc'), color: '#C62828' },
-
     { name: t('tribesPage.communities.yoruba.name'), image: 'yoruba', region: 'West Africa', location: t('tribesPage.communities.yoruba.location'), population: t('tribesPage.communities.yoruba.population'), language: t('tribesPage.communities.yoruba.language'), desc: t('tribesPage.communities.yoruba.desc'), color: '#6A1B9A' },
-
-
     { name: t('tribesPage.communities.luo.name'), image: 'luo', region: 'East Africa', location: t('tribesPage.communities.yoruba.location'), population: t('tribesPage.communities.luo.population'), language: t('tribesPage.communities.luo.language'), desc: t('tribesPage.communities.luo.desc'), color: '#E65100' },
- 
     { name: t('tribesPage.communities.swahili.name'), image: 'swahili', region: 'East Africa', location: t('tribesPage.communities.swahili.location'), population: t('tribesPage.communities.swahili.population'), language: t('tribesPage.communities.swahili.language'), desc: t('tribesPage.communities.swahili.desc'), color: '#1B5E20' },
-   
     { name: t('tribesPage.communities.igbo.name'), image: 'igbo', region: 'West Africa', location: t('tribesPage.communities.igbo.location'), population: t('tribesPage.communities.igbo.population'), language: t('tribesPage.communities.igbo.language'), desc: t('tribesPage.communities.igbo.desc'), color: '#00695C' },
-
-
     { name: t('tribesPage.communities.ashanti.name'), image: 'ashanti', region: 'West Africa', location: t('tribesPage.communities.ashanti.location'), population: t('tribesPage.communities.ashanti.population'), language: t('tribesPage.communities.ashanti.language'), desc: t('tribesPage.communities.ashanti.desc'), color: '#D4A017' },
-
     { name: t('tribesPage.communities.hausa.name'), image: 'hausa', region: 'West Africa', location: t('tribesPage.communities.hausa.location'), population: t('tribesPage.communities.hausa.population'), language: t('tribesPage.communities.hausa.language'), desc: t('tribesPage.communities.hausa.desc'), color: '#2E7D32' },
-   
-    
-    
     { name: t('tribesPage.communities.amhara.name'), image: 'amhara', region: 'East Africa', location: t('tribesPage.communities.amhara.location'), population: t('tribesPage.communities.amhara.population'), language: t('tribesPage.communities.amhara.language'), desc: t('tribesPage.communities.amhara.desc'), color: '#E65100' },
     { name: t('tribesPage.communities.berber.name'), image: 'berber', region: 'North Africa', location: t('tribesPage.communities.berber.location'), population: t('tribesPage.communities.berber.population'), language: t('tribesPage.communities.berber.language'), desc: t('tribesPage.communities.berber.desc'), color: '#4E342E' },
-
     { name: t('tribesPage.communities.fulani.name'), image: 'fulani', region: 'West Africa', location: t('tribesPage.communities.fulani.location'), population: t('tribesPage.communities.fulani.population'), language: t('tribesPage.communities.fulani.language'), desc: t('tribesPage.communities.fulani.desc'), color: '#283593' },
- 
     { name: t('tribesPage.communities.wolof.name'), image: 'wolof', region: 'West Africa', location: t('tribesPage.communities.wolof.location'), population: t('tribesPage.communities.wolof.population'), language: t('tribesPage.communities.wolof.language'), desc: t('tribesPage.communities.wolof.desc'), color: '#BF360C' },
-  
   ];
+
+  const [communitiesData, setCommunitiesData] = useState(staticCommunities);
 
   const regions = ['All', 'East Africa', 'West Africa', 'North Africa', 'Southern Africa', 'Central Africa'];
 
@@ -89,12 +116,6 @@ const breakVideos = [
     return matchRegion && matchSearch;
   });
 
-  const regionColors = {
-    'East Africa': '#1B5E20',
-    'West Africa': '#E65100',
-    'North Africa': '#4E342E',
-    'Southern Africa': '#C62828',
-  };
 
   // Pin positions corrected to match actual SVG map rendering
   const mapPins = [
@@ -118,7 +139,7 @@ const breakVideos = [
 
       {/*  HERO  */}
       <div className="heroSection2" ref={heroRef}>
-        <video autoPlay muted loop playsInline className="hero-video" src="/images/african-tribes-video.mp4" />
+        <video autoPlay muted loop playsInline preload="metadata" crossOrigin="anonymous" className="hero-video" src="/images/african-tribes-video.mp4" />
         <Navbar />
         <div className="tribes-hero-content">
           <div className="tribes-hero-content-text">
@@ -209,9 +230,12 @@ const breakVideos = [
         <div key={index} className="tribe-card"
           onClick={() => navigate(`/tribes/${community.name.toLowerCase()}`)}>
           {/* ...your existing card JSX unchanged... */}
-          <div className={`tribe-card-image community-image ${community.image}`}>
-                  <div className="tribe-card-region-badge">{community.region}</div>
-                </div>
+          <div
+            className={`tribe-card-image community-image ${community.image}`}
+            style={community.imageUrl ? { backgroundImage: `url(${community.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
+          >
+            <div className="tribe-card-region-badge">{community.region}</div>
+          </div>
                 <div className="tribe-card-body">
                   <div className="tribe-card-accent" style={{ background: community.color }} />
                   <h3 className="tribe-card-name">{community.name}</h3>
@@ -233,7 +257,7 @@ const breakVideos = [
   const video = breakVideos[breakIndex % breakVideos.length];
   return (
     <div key={`break-${index}`} className="tribes-media-break">
-      <video autoPlay muted loop playsInline src={video.src} className="tribes-break-video" />
+      <video autoPlay muted loop playsInline preload="metadata" crossOrigin="anonymous" src={video.src} className="tribes-break-video" />
       <div className="tribes-break-overlay">
         <div className="tribes-break-content">
           <div className="tribes-break-play" />
