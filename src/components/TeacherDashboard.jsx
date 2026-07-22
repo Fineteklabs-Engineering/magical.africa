@@ -1,5 +1,6 @@
 import React, { useMemo, useState, useEffect, useRef } from 'react'
-import { FaBell, FaChevronLeft, FaStar } from 'react-icons/fa'
+import { FaBell, FaStar } from 'react-icons/fa'
+import { FiActivity, FiPlus, FiSearch, FiUsers } from 'react-icons/fi'
 import {
   Bar,
   BarChart,
@@ -1368,13 +1369,10 @@ const TeacherDashboard = () => {
             </div>
             <button type='button' className='td-sidebar-close' onClick={() => setSidebarOpen(false)}>Close</button>
           </div>
-          <button className='td-back-btn' onClick={() => navigate('/')}>
-            <FaChevronLeft aria-hidden='true' />
-            <span>Back to Website</span>
-          </button>
-
           <div className='td-sidebar-brand'>
-            <img src='/images/magicaal-logo1-removebg-preview.png' alt='Magical Africa logo' />
+            <a href='/' className='td-sidebar-logo' aria-label='Visit Magical Africa website'>
+              <img src='/images/magicaal-logo1-removebg-preview.png' alt='Magical Africa logo' />
+            </a>
             <h2>Tutor Dashboard</h2>
           </div>
 
@@ -1433,19 +1431,29 @@ const TeacherDashboard = () => {
           </div>
         </aside>
 
-        <main className='td-main'>
+        <div className='td-shell-main'>
           {!loading && (
-            <div className='td-top-alert-row'>
-              <button className='td-theme-toggle' type='button' onClick={toggleThemeMode}>
-                {themeMode === 'dark' ? 'Light Mode' : 'Dark Mode'}
-              </button>
-              <button className='td-alert-bell' type='button' onClick={() => openTeacherSection('reviews')}>
-                <FaBell aria-hidden='true' />
-                {unseenReviewsCount > 0 && <span>{unseenReviewsCount}</span>}
-              </button>
+            <div className='td-page-topbar'>
+              <div className='td-topbar-left'>
+                <span className='td-topbar-label'>Active courses</span>
+                <strong className='td-topbar-count'>{analytics.totalCourses} course{analytics.totalCourses === 1 ? '' : 's'}</strong>
+              </div>
+              <label htmlFor='td-global-search' className='td-topbar-search td-search-field'>
+                <input id='td-global-search' type='text' placeholder='Search courses, students, reviews...' />
+                <FiSearch aria-hidden='true' />
+              </label>
+              <div className='td-topbar-right'>
+                <button className='td-alert-bell' type='button' onClick={() => openTeacherSection('reviews')} aria-label='Reviews'>
+                  <FaBell aria-hidden='true' />
+                  {unseenReviewsCount > 0 && <span>{unseenReviewsCount}</span>}
+                </button>
+                <div className='td-greeting-text'>Hi, {profileDraft.firstName || userData?.firstName || 'Tutor'}</div>
+              </div>
             </div>
           )}
 
+          <div className='td-body-grid'>
+            <main className='td-main'>
           {loading && (
             <div className='app-loading-wrap'>
               <div className='app-loading-text' role='status' aria-live='polite' aria-label='Loading tutor dashboard'>
@@ -2221,7 +2229,66 @@ const TeacherDashboard = () => {
               </div>
             </section>
           )}
-        </main>
+            </main>
+
+            <aside className='td-right-panel'>
+              <div className='td-widget-card td-widget-card--streak'>
+                <div className='td-widget-card-header'>
+                  <h2>Teaching Snapshot</h2>
+                  <span className='td-widget-icon td-widget-icon--streak'>
+                    <FiActivity aria-hidden='true' />
+                  </span>
+                </div>
+                <div className='td-widget-content'>
+                  <p className='td-widget-streak-count'>{analytics.totalStudents} student{analytics.totalStudents === 1 ? '' : 's'}</p>
+                  <p className='td-widget-meta'>{analytics.avgCompletion}% average completion across your published courses.</p>
+                  <button type='button' className='td-widget-link' onClick={() => openTeacherSection('analytics')}>
+                    View analytics
+                  </button>
+                </div>
+              </div>
+
+              <div className='td-widget-card td-widget-card--quick-actions'>
+                <h2>Quick actions</h2>
+                <div className='td-widget-actions'>
+                  <button type='button' onClick={() => openTeacherSection('builder')}><FiPlus aria-hidden='true' />New Course</button>
+                  <button type='button' onClick={() => openTeacherSection('students')}><FiUsers aria-hidden='true' />View Students</button>
+                  <button type='button' onClick={() => openTeacherSection('reviews')}><FaBell aria-hidden='true' />Check Reviews</button>
+                </div>
+              </div>
+
+              <div
+                className='td-widget-card td-widget-card--profile'
+                role='button'
+                tabIndex={0}
+                onClick={() => openTeacherSection('profile')}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openTeacherSection('profile') }}
+              >
+                <h2>My profile</h2>
+                <div className='td-profile-summary'>
+                  <div className='td-profile-avatar'>
+                    {profileDraft.photoURL ? <img src={profileDraft.photoURL} alt='Profile avatar' /> : <span>{(profileDraft.firstName || 'T').charAt(0).toUpperCase()}</span>}
+                  </div>
+                  <div>
+                    <p className='td-profile-name-summary'>{`${profileDraft.firstName} ${profileDraft.lastName}`.trim() || 'Tutor'}</p>
+                    <p className='td-profile-email-summary'>{auth.currentUser?.email || 'No email'}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className='td-widget-card td-widget-card--updates'>
+                <h2>Latest reviews</h2>
+                <div className='td-widget-content'>
+                  {unseenReviewsCount > 0 ? (
+                    <p className='td-widget-meta'>{unseenReviewsCount} new review{unseenReviewsCount === 1 ? '' : 's'} waiting for you.</p>
+                  ) : (
+                    <p className='td-widget-empty'>No recent updates yet.</p>
+                  )}
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
       </div>
     </div>
   )

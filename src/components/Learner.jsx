@@ -1035,11 +1035,11 @@ const Learner = () => {
                         <div className='learner-store-body'>
                           <h3>{course.title || 'Untitled Course'}</h3>
                           {isOwned && <span className='learner-course-state-pill'>{isCompleted ? 'Completed' : hasStarted ? 'In Progress' : 'Already Purchased'}</span>}
-                          <p>{truncateWords(course.description, 20)}</p>
+                          <p>{truncateWords(course.description, 10)}</p>
                           <div className='learner-course-meta'>
-                            <span>{course.courseType || 'General'}</span>
-                            <span>{isPaid ? `Price: $${price}` : 'Free Course'}</span>
-                            <span>Offered by <button type='button' className='learner-tutor-link' onClick={() => handleViewTutorProfile(course)}>{course.teacherName || 'Tutor'}</button></span>
+                           {/*  <span>{course.courseType || 'General'}</span> */}
+                           {/*  <span>{isPaid ? `Price: $${price}` : 'Free Course'}</span> */}
+                           {/* <span>Offered by <button type='button' className='learner-tutor-link' onClick={() => handleViewTutorProfile(course)}>{course.teacherName || 'Tutor'}</button></span> */}
                           </div>
                           <div className='learner-suggested-actions'>
                             <button className='learner-details-btn' onClick={() => handleViewCourseDetails(course.id)}>View Details</button>
@@ -1401,18 +1401,24 @@ const Learner = () => {
             </div>
           </div>
 
-          <div className='learner-widget-card learner-widget-card--profile'>
-            <h2>My profile</h2>
-            <div className='learner-profile-summary'>
-              <div className='learner-profile-avatar'>
-                {profileDraft.photoURL ? <img src={profileDraft.photoURL} alt='Profile avatar' /> : <span>{avatarInitials || 'L'}</span>}
-              </div>
-              <div>
-                <p className='learner-profile-name-summary'>{learnerName}</p>
-                <p className='learner-profile-email-summary'>{user?.email || 'No email'}</p>
-              </div>
-            </div>
-          </div>
+        <div
+  className='learner-widget-card learner-widget-card--profile'
+  role='button'
+  tabIndex={0}
+  onClick={() => openSection('profile')}
+  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openSection('profile') }}
+>
+  <h2>My profile</h2>
+  <div className='learner-profile-summary'>
+    <div className='learner-profile-avatar'>
+      {profileDraft.photoURL ? <img src={profileDraft.photoURL} alt='Profile avatar' /> : <span>{avatarInitials || 'L'}</span>}
+    </div>
+    <div>
+      <p className='learner-profile-name-summary'>{learnerName}</p>
+      <p className='learner-profile-email-summary'>{user?.email || 'No email'}</p>
+    </div>
+  </div>
+</div>
 
           <div className='learner-widget-card learner-widget-card--updates'>
             <h2>Learning updates</h2>
