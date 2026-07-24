@@ -1371,7 +1371,7 @@ const TeacherDashboard = () => {
           </div>
           <div className='td-sidebar-brand'>
             <a href='/' className='td-sidebar-logo' aria-label='Visit Magical Africa website'>
-              <img src='/images/magicaal-logo1-removebg-preview.png' alt='Magical Africa logo' />
+              <img src='/images/magicalProfile.png' alt='Magical Africa logo' />
             </a>
             <h2>Tutor Dashboard</h2>
           </div>
