@@ -26,16 +26,16 @@ const creators = [
   },
   {
     id: 2,
-    name: 'Kofi Mensah',
-    slug: 'kofi-mensah',
-    category: 'Woodwork',
-    tribe: 'Ashanti',
-    image: '/images/African2.jpg',
-    bio: 'Kofi is a master woodworker from the Ashanti region of Ghana. He transforms raw timber into living art — furniture, totems, and ceremonial pieces that carry the weight of Akan heritage and the warmth of African forests.',
-    followers: 890,
+    name: 'William Munyira',
+    slug: 'william-munyira',
+    category: 'Art',
+    tribe: 'Kikuyu',
+    image: '/images/william-photo.jpeg',
+    bio: 'William Munyira is a gifted portrait artist whose pencil and pen drawings bring people to life with remarkable detail and emotion. His work captures the unique character and expressions of each subject, transforming simple sketches into timeless works of art.',
+    followers: 0,
     video: 'https://www.youtube.com/shorts/qf0gvfIjP3c',
     social: { instagram: 'https://instagram.com', youtube: 'https://youtube.com' },
-    gallery: ['/images/African2.jpg', '/images/artisan-gloria.jpeg', '/images/Joel-Makori.jpeg', '/images/cheru.jpeg'],
+    gallery: ['/images/william-potrait1.jpeg', '/images/william-potrait2.jpeg', '/images/william-potrait3.jpeg', '/images/william-potrait4.jpeg', '/images/william-potrait5.jpeg', '/images/william-potrait6.jpeg', '/images/william-potrait7.jpeg', '/images/william-potrait8.jpeg', '/images/william-potrait9.jpeg', '/images/william-potrait10.jpeg'], 
     products: [
       { id: 'p1', name: 'Akan Stool', price: 120, image: '/images/African2.jpg' },
       { id: 'p2', name: 'Hand-carved Totem', price: 95, image: '/images/Joel-Makori.jpeg' },
@@ -139,7 +139,7 @@ const creators = [
   },
 ]
 
-// ── slug helper (same one used in ProductDetail) ──
+
 const toSlug = (name = '') =>
   name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')
 
@@ -183,7 +183,7 @@ const CreatorProfile = () => {
   const navigate = useNavigate()
   const [followed, setFollowed] = useState(false)
   const [followers, setFollowers] = useState(0)
-  const [activeTab, setActiveTab] = useState('products')
+  const [activeTab, setActiveTab] = useState('gallery')
   const [lightboxImg, setLightboxImg] = useState(null)
 
   const creator = creators.find(
@@ -199,7 +199,7 @@ const CreatorProfile = () => {
         <div className="cp-not-found-body">
           <h1>Creator not found</h1>
           <p>We couldn't find a creator matching that name.</p>
-          <button onClick={() => navigate('/creators')} className="cp-back-link">
+          <button onClick={() => navigate('/creator')} className="cp-back-link">
             <BackIcon /> Back to Creators
           </button>
         </div>
@@ -282,44 +282,19 @@ const CreatorProfile = () => {
 
         {/* ── TABS ── */}
         <div className="cp-tabs">
-          {['products', 'gallery', 'story'].map((tab) => (
+          {['gallery', 'products', 'story'].map((tab) => (
             <button
               key={tab}
               className={`cp-tab ${activeTab === tab ? 'cp-tab--active' : ''}`}
               onClick={() => setActiveTab(tab)}
             >
-              {tab === 'products' ? 'Products' : tab === 'gallery' ? 'Gallery' : 'Story'}
+              {tab === 'gallery' ? 'Gallery' : tab === 'products' ? 'Products' : 'Story'}
             </button>
           ))}
         </div>
 
-        {/* ── PRODUCTS ── */}
-        {activeTab === 'products' && (
-          <div className="cp-products-grid">
-            {creator.products.length === 0
-              ? <p className="cp-empty">No products listed yet.</p>
-              : creator.products.map((product) => (
-                <article key={product.id} className="cp-product-card">
-                  <div className="cp-product-img-wrap">
-                    <img src={product.image} alt={product.name} className="cp-product-img" />
-                  </div>
-                  <div className="cp-product-body">
-                    <h3 className="cp-product-name">{product.name}</h3>
-                    <p className="cp-product-price">${product.price}</p>
-                    {/* ── THIS IS THE KEY CHANGE — navigates to product detail ── */}
-                    <button
-                      className="cp-product-btn"
-                      onClick={() => handleViewProduct(product)}
-                    >
-                      View Product
-                    </button>
-                  </div>
-                </article>
-              ))}
-          </div>
-        )}
 
-        {/* ── GALLERY ── */}
+         {/* ── GALLERY ── */}
         {activeTab === 'gallery' && (
           <div className="cp-gallery-grid">
             {creator.gallery.map((img, i) => (
@@ -337,6 +312,34 @@ const CreatorProfile = () => {
             ))}
           </div>
         )}
+
+        {/* ── PRODUCTS ── */}
+        {activeTab === 'products' && (
+          <div className="cp-products-grid">
+            {creator.products.length === 0
+              ? <p className="cp-empty">No products listed yet.</p>
+              : creator.products.map((product) => (
+                <article key={product.id} className="cp-product-card">
+                  <div className="cp-product-img-wrap">
+                    <img src={product.image} alt={product.name} className="cp-product-img" />
+                  </div>
+                  <div className="cp-product-body">
+                    <h3 className="cp-product-name">{product.name}</h3>
+                    <p className="cp-product-price">${product.price}</p>
+                   
+                    <button
+                      className="cp-product-btn"
+                      onClick={() => handleViewProduct(product)}
+                    >
+                      View Product
+                    </button>
+                  </div>
+                </article>
+              ))}
+          </div>
+        )}
+
+       
 
         {/* ── STORY ── */}
         {activeTab === 'story' && (

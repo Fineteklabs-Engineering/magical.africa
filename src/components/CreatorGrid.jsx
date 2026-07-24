@@ -5,9 +5,9 @@ import '../styles/creator-grid.css'
 const categories = ['All', 'Art', 'Pottery', 'Woodwork', 'Fashion']
 
 const creators = [
+   { id: 2, name: 'William Munyira', category: 'Art', tribe: 'Kikuyu', image: '/images/william-photo.jpeg' },
   { id: 1, name: 'Gloria Machoka', category: 'Art', tribe: 'Kisii', image: '/images/artisan-gloria.jpeg' },
-  { id: 2, name: 'Kofi Mensah', category: 'Woodwork', tribe: 'Ashanti', image: '/images/African2.jpg' },
-  { id: 3, name: 'Naledi Dlamini', category: 'Pottery', tribe: 'Zulu', image: '/images/lorna2.jpeg' },
+ { id: 3, name: 'Naledi Dlamini', category: 'Pottery', tribe: 'Zulu', image: '/images/lorna2.jpeg' },
   { id: 4, name: 'Tariq Osei', category: 'Fashion', tribe: 'Fante', image: '/images/Steve.jpeg' },
   { id: 5, name: 'Zawadi Achieng', category: 'Art', tribe: 'Luo', image: '/images/Edwait.jpeg' },
   { id: 6, name: 'Emeka Eze', category: 'Woodwork', tribe: 'Igbo', image: '/images/Joel-Makori.jpeg' },
