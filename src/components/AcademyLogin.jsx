@@ -2,29 +2,29 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import '../styles/academy-login.css'
 import { useNavigate } from 'react-router-dom'
-import { auth, db } from '../context/AuthContext'
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import { doc, getDoc, setDoc } from 'firebase/firestore'
+import api from '../api/axiosConfig' 
+import { login, getLocalRole } from '../api/authApi'
 import { buildLearnerDashboardPath, buildTeacherDashboardPath } from '../utils/dashboardRoute'
 import PageSeo from './PageSeo'
 import { SEO_CONTENT } from '../utils/seoContent'
 import Footer from '../components/Footer';
 
 const AcademyLogin = () => {
-  const [email, setEmail] = useState('')
+
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const [success, setSuccess] = useState(false)  
-  
+  const [success, setSuccess] = useState(false)
+
    const [showPassword, setShowPassword] = useState(false)
 
- 
+
   const bgImages = [
    'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image1_vctfmx',
     'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image2_uwvtnt',
     'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image3_gnlpqp',
-    
+
     'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image5_vtsmwk',
     'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image6_ajkvsx',
   ]
@@ -40,78 +40,46 @@ const AcademyLogin = () => {
 
   const navigate = useNavigate()
 
-const normalizeRole = (role) => {
-  const value = String(role || '').trim().toLowerCase()
-  if (!value) return ''
-  if (value.includes('teacher') || value.includes('tutor') || value.includes('educator')) return 'teacher'
-  if (value.includes('creator')) return 'creator'
-  if (value.includes('learner') || value.includes('student')) return 'learner'
-  return ''
-}
-
-const resolveLoginRole = (profile) => {
-  const normalized = normalizeRole(profile?.role)
-  if (normalized) return normalized
-  if (String(profile?.subject || '').trim()) return 'teacher'
-  return 'learner'
-}
- 
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
     setError('')
 
     try {
-      // 1. Sign in with Firebase Auth
-      const userCredential = await signInWithEmailAndPassword(auth, email, password)
-      const user = userCredential.user
+      // 1. Sign in via Milazetu
+      const { token, refresh_token } = await login(username, password)
 
-      // 2. Get user details from Firestore to check their role
-      const userDoc = await getDoc(doc(db, 'users', user.uid))
+      // 2. Persist the session the same way axiosConfig.js expects on reload
+      localStorage.setItem('ma_token', token)
+      localStorage.setItem('ma_refresh_token', refresh_token)
+      localStorage.setItem('ma_username', username)
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
-      if (userDoc.exists()) {
-        const userData = userDoc.data()
-        const role = resolveLoginRole(userData)
+      // 3. Role isn't returned by the backend yet — pull it from local storage
+      //    (saved during the signup role-picker step). Defaults to learner
+      //    if nothing was ever saved for this username.
+      const role = getLocalRole(username) || 'learner'
 
-        // Keep a canonical role in Firestore so future sign-ins route consistently.
-        if (normalizeRole(userData?.role) !== role) {
-          await setDoc(doc(db, 'users', user.uid), {
-            role,
-            updatedAt: new Date().toISOString()
-          }, { merge: true })
+      setSuccess(true)
+      setTimeout(() => {
+        if (role === 'teacher') {
+          navigate(buildTeacherDashboardPath('courses'))
+        } else if (role === 'creator') {
+          navigate('/creator-dashboard')
+        } else {
+          navigate(buildLearnerDashboardPath('store'))
         }
-
-        // 3. Show success message then redirect based on role
-        setSuccess(true)
-       setTimeout(() => {
-  if (role === 'teacher') {
-    navigate(buildTeacherDashboardPath('courses'))
-  } else if (role === 'creator') {
-    navigate('/creator-dashboard')  // ✅ add this
-  } else {
-    navigate(buildLearnerDashboardPath('store'))
-  }
-}, 2000)
-
-      } else {
-        // User exists in Auth but not Firestore
-        setSuccess(true)
-        setTimeout(() => navigate(buildLearnerDashboardPath('store')), 2000)
-      }
+      }, 2000)
 
     } catch (err) {
-      console.log('Login error:', err.code, err.message)
-      if (err.code === 'auth/user-not-found') {
-        setError('No account found with this email.')
-      } else if (err.code === 'auth/wrong-password') {
-        setError('Incorrect password. Please try again.')
-      } else if (err.code === 'auth/invalid-email') {
-        setError('Please enter a valid email address.')
-      } else if (err.code === 'auth/too-many-requests') {
+      console.log('Login error:', err?.response?.status, err?.message)
+      const status = err?.response?.status
+      if (status === 401 || status === 403) {
+        setError('Invalid username or password. Please try again.')
+      } else if (status === 404) {
+        setError('No account found with this username.')
+      } else if (status === 429) {
         setError('Too many failed attempts. Please try again later.')
-      } else if (err.code === 'auth/invalid-credential') {
-        setError('Invalid email or password. Please try again.')
       } else {
         setError('Something went wrong. Please try again.')
       }
@@ -186,12 +154,12 @@ const resolveLoginRole = (profile) => {
             <form onSubmit={handleSubmit}>
 
               <div className="signIn-field">
-                <label>Email Address</label>
+                <label>Username</label>
                 <input
-                  type="email"
-                  placeholder="johndoe@gmail.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  type="text"
+                  placeholder="johndoe"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
                   required
                 />
               </div>

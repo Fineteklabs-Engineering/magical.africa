@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import '../styles/academy-signIn.css'
 import { useNavigate } from 'react-router-dom'
-import { auth, db } from '../context/AuthContext'
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
-import { doc, setDoc, updateDoc } from 'firebase/firestore'
+import api from '../api/axiosConfig' 
+import { signup, saveLocalRole } from '../api/authApi'
 import Footer from '../components/Footer'
 import PageSeo from '../components/PageSeo'
 import { SEO_CONTENT } from '../utils/seoContent'
 
 const Academy2 = () => {
-  
+
   const [step, setStep] = useState('signup')
 
   const [firstName, setFirstName] = useState('')
@@ -32,7 +31,7 @@ const Academy2 = () => {
    'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image1_vctfmx',
     'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image2_uwvtnt',
     'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image3_gnlpqp',
-   
+
 'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image5_vtsmwk',
     'https://res.cloudinary.com/gjpfbvzb/image/upload/f_auto,q_auto/art-image6_ajkvsx',
   ]
@@ -62,22 +61,19 @@ const Academy2 = () => {
     setError('')
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-      const user = userCredential.user
-
-      await updateProfile(user, {
-        displayName: `${firstName} ${secondName}`
-      })
-
-      await setDoc(doc(db, 'users', user.uid), {
+      const { token, refresh_token, username } = await signup({
         firstName,
         secondName,
         email,
-        gender: gender || null,
-        role: null,
-        subject: null,
-        createdAt: new Date().toISOString()
+        password,
+        gender,
       })
+
+     
+      localStorage.setItem('ma_token', token)
+      localStorage.setItem('ma_refresh_token', refresh_token)
+      localStorage.setItem('ma_username', username)
+      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
       setSuccess(true)
 
@@ -86,12 +82,11 @@ const Academy2 = () => {
       }, 1800)
 
     } catch (err) {
-      if (err.code === 'auth/email-already-in-use') {
+      const status = err?.response?.status
+      if (status === 409) {
         setError('This email is already registered. Try signing in.')
-      } else if (err.code === 'auth/invalid-email') {
-        setError('Please enter a valid email address.')
-      } else if (err.code === 'auth/weak-password') {
-        setError('Password must be at least 6 characters.')
+      } else if (status === 400) {
+        setError('Please check your details and try again.')
       } else {
         setError('Something went wrong. Please try again.')
       }
@@ -114,10 +109,8 @@ const Academy2 = () => {
     setRoleError('')
 
     try {
-      await updateDoc(doc(db, 'users', auth.currentUser.uid), {
-        role,
-        subject: (role === 'teacher' || role === 'creator') ? subject : null
-      })
+      const username = localStorage.getItem('ma_username')
+      saveLocalRole(username, role, subject)
 
       if (role === 'teacher') {
         navigate('/teacher-dashboard')
@@ -142,7 +135,7 @@ const Academy2 = () => {
       {step === 'signup' && (
         <div className="academy-signIn">
 
-          {/* Rotating crossfade background */}
+         
           <div className="academy-visual">
             {bgImages.map((img, index) => (
               <div

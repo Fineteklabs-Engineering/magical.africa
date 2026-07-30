@@ -1,4 +1,3 @@
-/* contact-modal.css — matches magical.africa theme */
 
 .cm-backdrop {
   position: fixed;
@@ -191,6 +190,14 @@
 .cm-success strong {
   color: rgb(210, 123, 58);
 }
+
+
+.cm-error {
+  color: #b91c1c;
+  font-size: 0.8rem;
+  margin: -0.4rem 0 0;
+}
+
 
 /* Responsive */
 @media screen and (max-width: 480px) {

@@ -1,44 +1,87 @@
 import { useState, useEffect } from 'react';
+import { createInquiry } from '../api/inquiryApi';
+import { getInquiryTypes } from '../api/inquiryTypeApi';
 import '../styles/contact-modal.css';
 
 const ContactModal = ({ isOpen, onClose }) => {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({
+    title: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    telephone: '',
+    message: '',
+    inquiryTypeId: '',
+  });
+  const [inquiryTypes, setInquiryTypes] = useState([]);
+  const [loadingTypes, setLoadingTypes] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  // Close on Escape key
   useEffect(() => {
     const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
     if (isOpen) document.addEventListener('keydown', handleKey);
     return () => document.removeEventListener('keydown', handleKey);
   }, [isOpen, onClose]);
 
-  // Prevent background scroll when modal is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    setLoadingTypes(true);
+    getInquiryTypes()
+      .then((data) => setInquiryTypes(Array.isArray(data) ? data : data?.content || []))
+      .catch(() => setInquiryTypes([]))
+      .finally(() => setLoadingTypes(false));
   }, [isOpen]);
 
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.message) return;
+    if (!form.firstName || !form.lastName || !form.email || !form.message || !form.inquiryTypeId) return;
+
     setLoading(true);
-    // Simulate sending — wire to EmailJS or Formspree later
-    setTimeout(() => {
-      setLoading(false);
+    setError(null);
+    try {
+      await createInquiry({
+        title: form.title,
+        firstName: form.firstName,
+        lastName: form.lastName,
+        email: form.email,
+        telephone: form.telephone,
+        message: form.message,
+        status: 'OPEN',
+        inquiryTypeId: form.inquiryTypeId,
+      });
       setSubmitted(true);
-    }, 1200);
+    } catch (err) {
+      setError('Something went wrong sending your message. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleClose = () => {
     onClose();
     setTimeout(() => {
       setSubmitted(false);
-      setForm({ name: '', email: '', message: '' });
+      setError(null);
+      setForm({
+        title: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        telephone: '',
+        message: '',
+        inquiryTypeId: '',
+      });
     }, 300);
   };
 
@@ -47,8 +90,6 @@ const ContactModal = ({ isOpen, onClose }) => {
   return (
     <div className="cm-backdrop" onClick={handleClose}>
       <div className="cm-modal" onClick={(e) => e.stopPropagation()}>
-
-        {/* Close button */}
         <button className="cm-close" onClick={handleClose}>×</button>
 
         {!submitted ? (
@@ -61,13 +102,26 @@ const ContactModal = ({ isOpen, onClose }) => {
 
             <form className="cm-form" onSubmit={handleSubmit}>
               <div className="cm-field">
-                <label htmlFor="name">Your Name</label>
+                <label htmlFor="firstName">First Name</label>
                 <input
-                  id="name"
-                  name="name"
+                  id="firstName"
+                  name="firstName"
                   type="text"
-                  placeholder="e.g. Amina Osei"
-                  value={form.name}
+                  placeholder="e.g. Amina"
+                  value={form.firstName}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className="cm-field">
+                <label htmlFor="lastName">Last Name</label>
+                <input
+                  id="lastName"
+                  name="lastName"
+                  type="text"
+                  placeholder="e.g. Osei"
+                  value={form.lastName}
                   onChange={handleChange}
                   required
                 />
@@ -87,6 +141,39 @@ const ContactModal = ({ isOpen, onClose }) => {
               </div>
 
               <div className="cm-field">
+                <label htmlFor="telephone">Phone (optional)</label>
+                <input
+                  id="telephone"
+                  name="telephone"
+                  type="tel"
+                  placeholder="+254 7xx xxx xxx"
+                  value={form.telephone}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div className="cm-field">
+                <label htmlFor="inquiryTypeId">Inquiry Type</label>
+                <select
+                  id="inquiryTypeId"
+                  name="inquiryTypeId"
+                  value={form.inquiryTypeId}
+                  onChange={handleChange}
+                  required
+                  disabled={loadingTypes}
+                >
+                  <option value="">
+                    {loadingTypes ? 'Loading...' : 'Select a type'}
+                  </option>
+                  {inquiryTypes.map((type) => (
+                    <option key={type.publicId || type.id} value={type.publicId || type.id}>
+                      {type.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="cm-field">
                 <label htmlFor="message">Message</label>
                 <textarea
                   id="message"
@@ -98,6 +185,8 @@ const ContactModal = ({ isOpen, onClose }) => {
                   required
                 />
               </div>
+
+              {error && <p className="cm-error">{error}</p>}
 
               <button className="cm-submit" type="submit" disabled={loading}>
                 {loading ? 'Sending...' : 'Send Message'}
@@ -112,7 +201,6 @@ const ContactModal = ({ isOpen, onClose }) => {
             <button className="cm-submit" onClick={handleClose}>Close</button>
           </div>
         )}
-
       </div>
     </div>
   );
