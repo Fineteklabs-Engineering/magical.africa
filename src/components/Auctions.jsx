@@ -1,6 +1,10 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+
+
 import { useTranslation } from 'react-i18next'
+import { useNavigate, useLocation } from 'react-router-dom'
+import PageSeo from '../components/PageSeo'
+import { SEO_CONTENT } from '../utils/seoContent'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import '../styles/auctions-page.css'
@@ -58,6 +62,16 @@ const Auctions = () => {
 
   return (
     <>
+
+    {isLive
+        ? <PageSeo {...SEO_CONTENT.auctionsLive} />
+        : <PageSeo
+            title="African Art Auctions | Magical Africa"
+            description="Browse African art and artefact auctions on Magical Africa."
+            path={location.pathname}
+            image="/images/kitenge-latest.jpg"
+            noIndex
+          />}
       <div className='ap-page'>
         <Navbar  />
 

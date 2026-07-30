@@ -2,15 +2,20 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import '../styles/academy-login.css'
 import { useNavigate } from 'react-router-dom'
-import api from '../api/axiosConfig' 
-import { login, getLocalRole } from '../api/authApi'
+import api from '../api/axiosConfig'
+import { login, getLocalRole } from '../api/authApi' // ⬅️ adjust path to match your project
 import { buildLearnerDashboardPath, buildTeacherDashboardPath } from '../utils/dashboardRoute'
+import { useAuth } from '../context/AuthContext'
 import PageSeo from './PageSeo'
 import { SEO_CONTENT } from '../utils/seoContent'
 import Footer from '../components/Footer';
 
 const AcademyLogin = () => {
-
+  // NOTE: renamed conceptually to "username" since Milazetu's /authenticate
+  // endpoint takes userName + password, not email. Firebase let people log in
+  // by email — Milazetu doesn't have that option in what's been shared so far,
+  // so this field now collects the username created at signup
+  // (firstName + secondName, lowercased, no spaces).
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -39,6 +44,7 @@ const AcademyLogin = () => {
   }, [])
 
   const navigate = useNavigate()
+  const { refreshAuth } = useAuth()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -59,6 +65,10 @@ const AcademyLogin = () => {
       //    (saved during the signup role-picker step). Defaults to learner
       //    if nothing was ever saved for this username.
       const role = getLocalRole(username) || 'learner'
+
+      // Tell AuthContext to re-read localStorage right now, so
+      // ProtectedRoute sees a logged-in user before we navigate.
+      refreshAuth()
 
       setSuccess(true)
       setTimeout(() => {

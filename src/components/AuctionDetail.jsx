@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useTranslation } from 'react-i18next'
+import PageSeo from '../components/PageSeo'
 import '../styles/auction-detail.css'
 
 const AUCTION_DATA = [
@@ -63,6 +64,13 @@ const AuctionDetail = () => {
   if (!auction) {
     return (
       <>
+      <PageSeo
+          title="Auction Not Found | Magical Africa"
+          description="This auction could not be found."
+          path={`/market/auctions/live/${slug}`}
+          noIndex
+        />
+
         <Navbar solid />
         <div className='ad-not-found'>
           <h1>Auction not found</h1>
@@ -76,6 +84,16 @@ const AuctionDetail = () => {
 
   return (
     <>
+
+    <PageSeo
+          title={`${t(auction.keyName)} | African Art Auction | Magical Africa`}
+          description={`${t(auction.keyDescription)}`.slice(0, 155)}
+          path={`/market/auctions/live/${slug}`}
+          image={auction.image}
+          type="product"
+          schemaType="Product"
+        />
+        
       <div className='ad-page'>
         <Navbar solid />
 

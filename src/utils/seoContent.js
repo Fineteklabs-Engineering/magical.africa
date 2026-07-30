@@ -119,10 +119,8 @@ export const SEO_CONTENT = {
           { '@type': 'ListItem', position: 6,  name: 'Kikuyu',  url: 'https://magical.africa/tribes/kikuyu' },
           { '@type': 'ListItem', position: 7,  name: 'Igbo',    url: 'https://magical.africa/tribes/igbo' },
           { '@type': 'ListItem', position: 8,  name: 'Amhara',  url: 'https://magical.africa/tribes/amhara' },
-          { '@type': 'ListItem', position: 9,  name: 'Berber',  url: 'https://magical.africa/tribes/berber' },
-          { '@type': 'ListItem', position: 10, name: 'Swahili', url: 'https://magical.africa/tribes/swahili' },
-          { '@type': 'ListItem', position: 11, name: 'Wolof',   url: 'https://magical.africa/tribes/wolof' },
-          { '@type': 'ListItem', position: 12, name: 'Fulani',  url: 'https://magical.africa/tribes/fulani' },
+          { '@type': 'ListItem', position: 9,  name: 'Swahili', url: 'https://magical.africa/tribes/swahili' },
+          { '@type': 'ListItem', position: 10, name: 'Luo',     url: 'https://magical.africa/tribes/luo' },
         ]
       }
     ]
@@ -274,7 +272,7 @@ ashanti: {
     title: 'Login | Magical Africa',
     description: 'Sign in to your Magical Africa Academy account to access your learner or tutor dashboard.',
     keywords: 'Magical Africa login, academy sign in, learner login, tutor login',
-    path: '/academy-signIn',
+    path: '/jlogin',
     image: '/images/magivcal-logo2-removebg-preview.png',
     noIndex: true
   },
@@ -282,7 +280,7 @@ ashanti: {
     title: 'Create Account | Magical Africa',
     description: 'Create a Magical Africa Academy account to join as a learner or educator.',
     keywords: 'Magical Africa Academy signup, create account, African courses, African learning platform',
-    path: '/academy-signUp',
+    path: '/join',
     image: '/images/photorealistic-portrait-african-woman.jpg',
     noIndex: true
   },
@@ -290,10 +288,26 @@ ashanti: {
   title: 'African Creators & Artisans | Magical Africa',
   description: 'Meet the artisans, weavers, carvers, and fashion designers behind Magical Africa — each telling their community\'s story through handcrafted work.',
   keywords: 'African artisans, African creators, African craftspeople, handmade African art, African weavers, African carvers',
-  path: '/creators',
+  path: '/creator',
   image: '/images/artisan-gloria.jpeg',
   schemaType: 'CollectionPage',
 },
+  auctions: {
+    title: 'African Art Auctions | Live & Upcoming Bids | Magical Africa',
+    description: 'Bid on rare, authentic African art, artefacts, and handcrafted treasures. Browse live auctions, upcoming lots, and past sales on Magical Africa.',
+    keywords: 'African art auction, African artefacts auction, bid African art, live auctions, African antiques, tribal art auction',
+    path: '/market/auctions',
+    image: '/images/kitenge-latest.jpg',
+    schemaType: 'CollectionPage',
+  },
+  auctionsLive: {
+    title: 'Live African Art Auctions | Bid Now | Magical Africa',
+    description: 'Place bids on live African art and artefact auctions ending soon. Authentic handcrafted pieces from across the continent, each one of a kind.',
+    keywords: 'live African art auction, bid now, African artefacts, tribal art, African antiques auction',
+    path: '/market/auctions/live',
+    image: '/images/kitenge-latest.jpg',
+    schemaType: 'CollectionPage',
+  },
 }
 
 export const SEO_ROUTE_LIST = [
@@ -309,12 +323,11 @@ export const SEO_ROUTE_LIST = [
   SEO_CONTENT.kikuyu,
   SEO_CONTENT.igbo,
   SEO_CONTENT.amhara,
-  SEO_CONTENT.berber,
   SEO_CONTENT.swahili,
-  SEO_CONTENT.wolof,
-  SEO_CONTENT.fulani,
   SEO_CONTENT.events,
   SEO_CONTENT.market,
+  SEO_CONTENT.auctions,
+  SEO_CONTENT.auctionsLive,
   SEO_CONTENT.academy,
   SEO_CONTENT.blogs,
   SEO_CONTENT.music,
@@ -325,9 +338,8 @@ export const SEO_ROUTE_LIST = [
 ]
 
 
-// Add this near the bottom of seoContent.js, after SEO_ROUTE_LIST
 
-const TRIBE_SLUGS = ['maasai', 'zulu', 'yoruba', 'luo', 'ashanti', 'hausa', 'kikuyu', 'igbo', 'amhara', 'berber', 'swahili', 'wolof', 'fulani']
+const TRIBE_SLUGS = ['maasai', 'zulu', 'yoruba', 'luo', 'ashanti', 'hausa', 'kikuyu', 'igbo', 'amhara', 'swahili']
 
 const CULTURE_SECTIONS = {
   taboos: 'Taboos',

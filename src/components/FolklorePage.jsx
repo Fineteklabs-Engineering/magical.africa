@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/folklore-page.css';
 
-/* ─── All tribe folklore data lives here so this page is self-contained ─── */
+
 const folkloreData = {
   maasai: {
     tribeName: 'Maasai',
@@ -738,17 +738,25 @@ const FolklorePage = () => {
 
   const { originStory, stories, culturalContext, narrator, bookCover } = data;
 
+  const folkloreDescription =
+    `${originStory.theme} — a ${data.tribeName} origin story. ` +
+    originStory.story.replace(/\s+/g, ' ').trim().slice(0, 150).trim() + '…'
+
   return (
     <>
 
-        <PageSeo
-      title={`${data.tribeName} Origin Story — ${originStory.title}`}
-      path={`/tribes/${tribeName}/folklore/${storySlug}`}
-    />
+    <PageSeo
+          title={`${originStory.title} — ${data.tribeName} Origin Story | Magical Africa`}
+          description={folkloreDescription}
+          path={`/tribes/${tribeName}/folklore/${storySlug}`}
+          image={originStory.image}
+          type="article"
+          schemaType="Article"
+          keywords={`${data.tribeName} folklore, ${data.tribeName} mythology, ${originStory.title}, ${originStory.theme}, African folklore, African myths, African oral tradition`}
+        />
       <div className="fl-page">
         <Navbar />
 
-        {/* ── CINEMATIC HERO ── */}
         <div className="fl-hero" style={{ backgroundImage: `url(${originStory.image})` }}>
           <div className="fl-hero-overlay" />
           <div className="fl-hero-content">

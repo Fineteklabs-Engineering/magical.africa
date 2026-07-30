@@ -30,7 +30,7 @@ import {
   updateDoc,
   where
 } from 'firebase/firestore'
-import { deleteUser, EmailAuthProvider, reauthenticateWithCredential, signOut, updatePassword, updateProfile } from 'firebase/auth'
+import { deleteUser, EmailAuthProvider, reauthenticateWithCredential, updatePassword } from 'firebase/auth'
 import { useAuth } from '../context/AuthContext'
 import '../styles/teacher-dashboard.css'
 import { buildTeacherDashboardPath, normalizeTeacherSection } from '../utils/dashboardRoute'
@@ -44,7 +44,7 @@ const TeacherDashboard = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const { section: routeSection } = useParams()
-  const { user, userData } = useAuth()
+  const { user, userData, logout, refreshAuth } = useAuth()
   const [activeSection, setActiveSection] = useState('courses')
   const [menuOpen, setMenuOpen] = useState({
     teaching: true,
@@ -246,13 +246,13 @@ const TeacherDashboard = () => {
   }, [activeSection])
 
   useEffect(() => {
-    const uid = auth.currentUser?.uid
+    const uid = user?.uid
     if (!uid) return
     const localPhoto = localStorage.getItem(getTeacherProfilePhotoKey(uid)) || ''
     setProfileDraft({
       firstName: userData?.firstName || '',
       lastName: userData?.lastName || userData?.secondName || '',
-      photoURL: localPhoto || userData?.photoURL || auth.currentUser?.photoURL || ''
+      photoURL: localPhoto || userData?.photoURL || user?.photoURL || ''
     })
 
     const tp = userData?.tutorProfile || {}
@@ -420,7 +420,7 @@ const TeacherDashboard = () => {
   }, [activeSection, user?.uid, courses])
 
   const markReviewsSeen = () => {
-    const uid = auth.currentUser?.uid
+    const uid = user?.uid
     if (!uid) return
     const now = new Date().toISOString()
     setReviewsSeenAt(now)
@@ -596,7 +596,7 @@ const TeacherDashboard = () => {
   }
 
   const saveCourse = async () => {
-    if (!auth.currentUser) {
+    if (!user?.uid) {
       setBuilderMessage('You must be logged in to save a course.')
       return null
     }
@@ -628,14 +628,14 @@ const TeacherDashboard = () => {
 
       const teacherName = userData
         ? `${userData.firstName || ''} ${userData.secondName || userData.lastName || ''}`.trim()
-        : auth.currentUser.displayName || 'Tutor'
+        : (user?.displayName || 'Tutor')
       const cloudSafePhoto = String(profileDraft.photoURL || '').startsWith('data:')
         ? ''
         : (profileDraft.photoURL || '')
       const teacherProfileSnapshot = buildTutorProfileSnapshot({
         firstName: profileDraft.firstName || userData?.firstName || '',
         lastName: profileDraft.lastName || userData?.lastName || userData?.secondName || '',
-        photoUrl: cloudSafePhoto || userData?.photoURL || auth.currentUser.photoURL || ''
+        photoUrl: cloudSafePhoto || userData?.photoURL || user?.photoURL || ''
       })
 
       const payload = {
@@ -657,7 +657,7 @@ const TeacherDashboard = () => {
         certificateDownloadUrl: certificateDownloadUrl.trim(),
         certificateFileName: certificateFileName.trim(),
         teacherName,
-        teacherId: auth.currentUser.uid,
+        teacherId: user.uid,
         teacherProfileSnapshot,
         updatedAt: new Date().toISOString()
       }
@@ -704,7 +704,7 @@ const TeacherDashboard = () => {
   const handlePostAnnouncement = async () => {
     if (announcementPosting) return
 
-    const currentUser = auth.currentUser
+    const currentUser = user
     if (!currentUser?.uid) {
       setAnnouncementStatus({ type: 'error', text: 'You are not signed in. Please sign in again and retry.' })
       return
@@ -1142,7 +1142,7 @@ const TeacherDashboard = () => {
   }
 
   const handleProfilePhotoUpload = async (event) => {
-    const uid = auth.currentUser?.uid
+    const uid = user?.uid
     if (!uid) return
 
     const selectedFile = event.target.files?.[0]
@@ -1175,7 +1175,7 @@ const TeacherDashboard = () => {
   }
 
   const handleProfilePhotoDelete = () => {
-    const uid = auth.currentUser?.uid
+    const uid = user?.uid
     if (!uid) return
 
     const confirmed = window.confirm('Remove your profile picture and keep initials avatar instead?')
@@ -1187,68 +1187,54 @@ const TeacherDashboard = () => {
   }
 
   const handleProfileSave = async () => {
-    const uid = auth.currentUser?.uid
-    if (!uid) return
-
+    if (!user?.uid) return
+    const uid = user.uid
     const firstName = profileDraft.firstName.trim()
     const lastName = profileDraft.lastName.trim()
     const publicDisplayName = `${firstName} ${lastName}`.trim()
 
-    const languages = tutorProfileDraft.languages
-      .split(',')
-      .map((item) => item.trim())
-      .filter(Boolean)
+    if (!firstName) { setProfileMessage('First name is required.'); return }
 
-    const expertiseTags = tutorProfileDraft.expertiseTags
-      .split(',')
-      .map((item) => item.trim())
-      .filter(Boolean)
+    setProfileSaving(true)
+    const isLocalPhoto = String(profileDraft.photoURL || '').startsWith('data:')
+    const cloudSafePhoto = isLocalPhoto ? '' : (profileDraft.photoURL || '')
+    const publicTutorProfile = buildTutorProfileSnapshot({ firstName, lastName, photoUrl: cloudSafePhoto })
 
-    if (!firstName) {
-      setProfileMessage('First name is required.')
-      return
-    }
-
+    // 1. Real save — the localStorage profile the context reads name/photo/tutorProfile from.
+    let existingProfile = {}
     try {
-      setProfileSaving(true)
-      const isLocalPhoto = String(profileDraft.photoURL || '').startsWith('data:')
-      const cloudSafePhoto = isLocalPhoto ? '' : (profileDraft.photoURL || '')
-      const publicTutorProfile = buildTutorProfileSnapshot({
-        firstName,
-        lastName,
-        photoUrl: cloudSafePhoto
-      })
+      const raw = localStorage.getItem(`ma_profile_${user.username}`)
+      existingProfile = raw ? JSON.parse(raw) : {}
+    } catch { existingProfile = {} }
+    localStorage.setItem(`ma_profile_${user.username}`, JSON.stringify({
+      ...existingProfile, firstName, lastName, secondName: lastName,
+      photoURL: cloudSafePhoto, tutorProfile: publicTutorProfile,
+    }))
 
+    // 2. Refresh context so the new name/photo show now.
+    if (typeof refreshAuth === 'function') refreshAuth()
+
+    // 3. Best-effort Firestore sync — rejected without a Firebase login, and that's fine; never blocks.
+    try {
       await setDoc(doc(db, 'users', uid), {
-        firstName, lastName, secondName: lastName,
-        photoURL: cloudSafePhoto,
-        tutorProfile: publicTutorProfile,
-        updatedAt: new Date().toISOString()
+        firstName, lastName, secondName: lastName, photoURL: cloudSafePhoto,
+        tutorProfile: publicTutorProfile, updatedAt: new Date().toISOString(),
       }, { merge: true })
 
-      const teacherCoursesSnapshot = await getDocs(
-        query(collection(db, 'courses'), where('teacherId', '==', uid))
-      )
-      await Promise.all(
-        teacherCoursesSnapshot.docs.map((courseDoc) => updateDoc(doc(db, 'courses', courseDoc.id), {
-          teacherName: publicDisplayName,
-          teacherProfileSnapshot: publicTutorProfile,
-          updatedAt: new Date().toISOString()
-        }))
-      )
-
-      const displayName = `${firstName} ${lastName}`.trim()
-      await updateProfile(auth.currentUser, { displayName, photoURL: cloudSafePhoto })
-      setProfileMessage('Profile and public tutor page details updated successfully.')
-    } catch {
-      setProfileMessage('Could not save profile details right now.')
-    } finally {
-      setProfileSaving(false)
+      const teacherCoursesSnapshot = await getDocs(query(collection(db, 'courses'), where('teacherId', '==', uid)))
+      await Promise.all(teacherCoursesSnapshot.docs.map((courseDoc) => updateDoc(doc(db, 'courses', courseDoc.id), {
+        teacherName: publicDisplayName, teacherProfileSnapshot: publicTutorProfile, updatedAt: new Date().toISOString(),
+      })))
+    } catch (err) {
+      console.warn('Firestore profile sync skipped/failed:', err)
     }
+
+    setProfileMessage('Profile updated successfully.')
+    setProfileSaving(false)
   }
 
   const handlePreviewTutorPage = () => {
-    const uid = auth.currentUser?.uid
+    const uid = user?.uid
     if (!uid) return
     navigate(`/tutor-preview/${uid}`, { state: { previewFrom: 'teacher' } })
   }
@@ -1286,7 +1272,7 @@ const TeacherDashboard = () => {
   const handleLogoutClick = async () => {
     const confirmed = window.confirm('Are you sure you want to log out?')
     if (!confirmed) return
-    await signOut(auth)
+    await logout()
     navigate('/')
   }
 
@@ -2166,7 +2152,7 @@ const TeacherDashboard = () => {
                 <div className='td-account-group'>
                   <h3>Contact email</h3>
                   <p>Manage your account email used for communication and login.</p>
-                  <div className='td-account-email'>{auth.currentUser?.email || 'No email on file'}</div>
+                  <div className='td-account-email'>{userData?.email || 'No email on file'}</div>
                 </div>
 
                 <div className='td-account-group'>
@@ -2271,7 +2257,7 @@ const TeacherDashboard = () => {
                   </div>
                   <div>
                     <p className='td-profile-name-summary'>{`${profileDraft.firstName} ${profileDraft.lastName}`.trim() || 'Tutor'}</p>
-                    <p className='td-profile-email-summary'>{auth.currentUser?.email || 'No email'}</p>
+                    <p className='td-profile-email-summary'>{userData?.email || 'No email'}</p>
                   </div>
                 </div>
               </div>

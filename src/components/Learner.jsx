@@ -101,7 +101,7 @@ const Learner = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const { section: routeSection, view: routeView } = useParams()
-  const { user, userData, getFullName, getInitials, logout } = useAuth()
+  const { user, userData, getFullName, getInitials, logout, refreshAuth  } = useAuth()
 
   const [activeSection, setActiveSection] = useState('store')
   const [storeView, setStoreView] = useState('all')
@@ -726,7 +726,7 @@ const Learner = () => {
       setProfileSaving(true)
       localStorage.removeItem(getProfilePhotoKey(user.uid))
       await setDoc(doc(db, 'users', user.uid), { photoURL: '', updatedAt: new Date().toISOString() }, { merge: true })
-      await updateProfile(auth.currentUser, { photoURL: '' })
+     
       setProfileDraft((prev) => ({ ...prev, photoURL: '' }))
       setProfileMessage('Profile picture removed.')
     } catch { setProfileMessage('Could not remove profile picture right now.') }
@@ -734,20 +734,43 @@ const Learner = () => {
   }
 
   const handleProfileSave = async () => {
-    if (!user?.uid) return
-    const firstName = profileDraft.firstName.trim(); const lastName = profileDraft.lastName.trim()
-    if (!firstName) { setProfileMessage('First name is required.'); return }
-    try {
-      setProfileSaving(true)
-      const isLocalPhoto = String(profileDraft.photoURL || '').startsWith('data:')
-      const cloudSafePhoto = isLocalPhoto ? '' : (profileDraft.photoURL || '')
-      await setDoc(doc(db, 'users', user.uid), { firstName, lastName, secondName: lastName, photoURL: cloudSafePhoto, updatedAt: new Date().toISOString() }, { merge: true })
-      await updateProfile(auth.currentUser, { displayName: `${firstName} ${lastName}`.trim(), photoURL: cloudSafePhoto })
-      setProfileMessage('Profile updated successfully.')
-    } catch { setProfileMessage('Could not save profile details right now.') }
-    finally { setProfileSaving(false) }
+  if (!user?.uid) return
+  const firstName = profileDraft.firstName.trim()
+  const lastName = profileDraft.lastName.trim()
+  if (!firstName) { setProfileMessage('First name is required.'); return }
+
+  setProfileSaving(true)
+  const isLocalPhoto = String(profileDraft.photoURL || '').startsWith('data:')
+  const cloudSafePhoto = isLocalPhoto ? '' : (profileDraft.photoURL || '')
+
+  // 1. The real save — update the cache the app actually reads name/photo from.
+  let existingProfile = {}
+  try {
+    const raw = localStorage.getItem(`ma_profile_${user.username}`)
+    existingProfile = raw ? JSON.parse(raw) : {}
+  } catch { existingProfile = {} }
+  localStorage.setItem(`ma_profile_${user.username}`, JSON.stringify({
+    ...existingProfile, firstName, lastName, secondName: lastName, photoURL: cloudSafePhoto,
+  }))
+
+  // 2. Refresh context so the new name/photo show now.
+  //    Guarded in case refreshAuth wasn't added to the useAuth() line.
+  if (typeof refreshAuth === 'function') refreshAuth()
+
+  // 3. Best-effort Firestore sync — rejected without a Firebase login, and
+  //    that's fine; the local save above is what the app uses. Never blocks.
+  try {
+    await setDoc(doc(db, 'users', user.uid), {
+      firstName, lastName, secondName: lastName,
+      photoURL: cloudSafePhoto, updatedAt: new Date().toISOString(),
+    }, { merge: true })
+  } catch (err) {
+    console.warn('Firestore profile sync skipped/failed:', err)
   }
 
+  setProfileMessage('Profile updated successfully.')
+  setProfileSaving(false)
+}
   const handlePasswordUpdate = async () => {
     if (!auth.currentUser) return
     const providerId = auth.currentUser.providerData?.[0]?.providerId || ''

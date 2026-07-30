@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import '../styles/academy-signIn.css'
 import { useNavigate } from 'react-router-dom'
-import api from '../api/axiosConfig' 
-import { signup, saveLocalRole } from '../api/authApi'
+import api from '../api/axiosConfig' // ⬅️ adjust path to match your project
+import { signup, saveLocalRole } from '../api/authApi' // ⬅️ adjust path to match your project
+import { useAuth } from '../context/AuthContext'
 import Footer from '../components/Footer'
 import PageSeo from '../components/PageSeo'
 import { SEO_CONTENT } from '../utils/seoContent'
@@ -46,6 +47,7 @@ const Academy2 = () => {
   }, [])
 
   const navigate = useNavigate()
+  const { refreshAuth } = useAuth()
 
   const handleCreate = async () => {
     if (!firstName || !secondName || !email || !password) {
@@ -69,11 +71,25 @@ const Academy2 = () => {
         gender,
       })
 
-     
+      // Persist the session the same way axiosConfig.js expects on reload
       localStorage.setItem('ma_token', token)
       localStorage.setItem('ma_refresh_token', refresh_token)
       localStorage.setItem('ma_username', username)
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+
+      // Save first/last name + email so getInitials()/getFullName() in
+      // AuthContext have something to work with — Milazetu's response
+      // doesn't hand these back, so we keep our own copy here.
+      localStorage.setItem(`ma_profile_${username}`, JSON.stringify({
+        firstName,
+        lastName: secondName,
+        email,
+      }))
+
+      // Tell AuthContext to re-read localStorage right now, so ProtectedRoute
+      // (and anything else using useAuth()) knows we're logged in immediately
+      // instead of waiting for a page reload.
+      refreshAuth()
 
       setSuccess(true)
 
@@ -111,6 +127,7 @@ const Academy2 = () => {
     try {
       const username = localStorage.getItem('ma_username')
       saveLocalRole(username, role, subject)
+      refreshAuth()
 
       if (role === 'teacher') {
         navigate('/teacher-dashboard')
@@ -135,7 +152,7 @@ const Academy2 = () => {
       {step === 'signup' && (
         <div className="academy-signIn">
 
-         
+          {/* Rotating crossfade background */}
           <div className="academy-visual">
             {bgImages.map((img, index) => (
               <div

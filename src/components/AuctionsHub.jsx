@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import PageSeo from '../components/PageSeo'
+import { SEO_CONTENT } from '../utils/seoContent'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import '../styles/auctions-hub.css'
@@ -99,6 +101,8 @@ const AuctionsHub = () => {
 
   return (
     <>
+    <PageSeo {...SEO_CONTENT.auctions} />
+    
       <div className='ah-page'>
         <Navbar solid />
 

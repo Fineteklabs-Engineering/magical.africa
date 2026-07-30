@@ -48,7 +48,7 @@ const ContactWidget = () => {
         <div className='cw-modal-body'>
 
           <div className='cw-section'>
-            <p className='cw-section-label'>Get in Touch</p>
+            <p className='cw-section-label'>Get int Touch</p>
             <a href='mailto:gloria@magical.africa' className='cw-contact-row'>
               <span className='cw-contact-icon'><i className='fa-regular fa-envelope'></i></span>
               <div>

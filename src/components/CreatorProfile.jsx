@@ -228,10 +228,15 @@ const CreatorProfile = () => {
     
     <div className="cp-page">
 
-      <PageSeo
-  title={`Creator — ${creator.name} `}
-
-/>
+    <PageSeo
+        title={`${creator.name} — ${creator.category} Creator | Magical Africa`}
+        description={creator.bio}
+        path={`/creator/${creator.slug}`}
+        image={creator.image}
+        type="profile"
+        schemaType="ProfilePage"
+        keywords={`${creator.name}, ${creator.tribe} ${creator.category.toLowerCase()}, African ${creator.category.toLowerCase()}, African artisan, Magical Africa creator`}
+      />
       <Navbar solid />
 
       <div className="cp-container">

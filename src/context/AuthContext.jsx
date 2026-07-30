@@ -1,31 +1,19 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { initializeApp } from 'firebase/app';
-import { getStorage } from 'firebase/storage'
-import { 
-  getAuth, 
-  onAuthStateChanged, 
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
-  signOut 
-} from 'firebase/auth';
-import { getFirestore, doc, onSnapshot, setDoc, getDoc } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
+import { getFirestore } from 'firebase/firestore';
 
-{/*
+import { getAuth } from 'firebase/auth';
+
+// ---------------------------------------------------------------------
+// Firebase is kept here ONLY for Firestore (db) and Storage — other parts
+// of the app (blog posts, image uploads, etc.) may still depend on those.
+// AUTH itself no longer runs through Firebase at all — signup/login now
+// happen through the Milazetu API (see authApi.js), and this context just
+// reads the resulting token/profile/role out of localStorage.
+// ---------------------------------------------------------------------
+
 const firebaseConfig = {
-  apiKey: "AIzaSyB2hbVH3VO0d8iVW1aI30cS2mZ2B-RtsjI",
-  authDomain: "magical-africa.firebaseapp.com",
-  projectId: "magical-africa",
-  storageBucket: "magical-africa.firebasestorage.app",
-  messagingSenderId: "558663634344",
-  appId: "1:558663634344:web:beb8bb91f23fb19b80e19d",
-  measurementId: "G-QQVLZH6BW6"
-};
- */}
-
-
- const firebaseConfig = {
   apiKey: "AIzaSyCqbsYKijJzA97DT4G1t9VxzVG_1P0mK7U",
   authDomain: "magical-africa2.firebaseapp.com",
   projectId: "magical-africa2",
@@ -36,101 +24,87 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-export const db = getFirestore(app);
-export const storage = getStorage(app)
 
-const googleProvider = new GoogleAuthProvider();
+export const db = getFirestore(app);
+export const storage = getStorage(app);
+
 const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
+
+// Reads everything auth-related out of localStorage and assembles it into
+// the same { user, userData } shape components already expect.
+const readAuthFromStorage = () => {
+  const token = localStorage.getItem('ma_token');
+  const username = localStorage.getItem('ma_username');
+
+  if (!token || !username) {
+    return { user: null, userData: null };
+  }
+
+  const profileRaw = localStorage.getItem(`ma_profile_${username}`);
+  let profile = {};
+  try {
+    profile = profileRaw ? JSON.parse(profileRaw) : {};
+  } catch (e) {
+    profile = {};
+  }
+
+  const role = localStorage.getItem(`ma_role_${username}`) || null;
+  const subject = localStorage.getItem(`ma_subject_${username}`) || null;
+
+  const firstName = profile.firstName || '';
+  const lastName = profile.lastName || profile.secondName || '';
+  const displayName = `${firstName} ${lastName}`.trim();
+
+  return {
+ 
+    user: {
+      uid: username,
+      username,
+      token,
+      email: profile.email || '',
+      displayName,
+      photoURL: profile.photoURL || '',
+    },
+    userData: { ...profile, username, role, subject },
+  };
+};
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    let unsubscribeUserDoc = null
 
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      // Clean up previous listener if user switched accounts
-      if (unsubscribeUserDoc) {
-        unsubscribeUserDoc()
-        unsubscribeUserDoc = null
-      }
-
-      setUser(currentUser)
-
-      if (currentUser) {
-        const userDocRef = doc(db, 'users', currentUser.uid)
-
-        // FIX: removed getDoc — onSnapshot fires immediately on connect
-        // so we get the data in one read instead of two
-        unsubscribeUserDoc = onSnapshot(
-          userDocRef,
-          (snapshot) => {
-            if (snapshot.exists()) {
-              setUserData(snapshot.data())
-            } else {
-              setUserData(null)
-            }
-            // Only set loading false after we have the user data
-            setLoading(false)
-          },
-          (error) => {
-            console.log('User profile listener error:', error)
-            setUserData(null)
-            setLoading(false)
-          }
-        )
-      } else {
-        setUserData(null)
-        setLoading(false)
-      }
-    })
-
-    return () => {
-      if (unsubscribeUserDoc) unsubscribeUserDoc()
-      unsubscribe()
-    }
+  const refreshAuth = useCallback(() => {
+    const { user: u, userData: ud } = readAuthFromStorage();
+    setUser(u);
+    setUserData(ud);
   }, []);
 
-  const login = async (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
-  };
+  useEffect(() => {
+    refreshAuth();
+    setLoading(false);
 
-  const register = async (email, password, additionalData) => {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
-    await setDoc(doc(db, 'users', user.uid), {
-      ...additionalData,
-      email: email,
-      authProvider: 'email',
-      createdAt: new Date().toISOString()
-    });
-    return userCredential;
-  };
+   
+    const handleStorage = () => refreshAuth();
+    window.addEventListener('storage', handleStorage);
+    return () => window.removeEventListener('storage', handleStorage);
+  }, [refreshAuth]);
 
-  const loginWithGoogle = async () => {
-    const result = await signInWithPopup(auth, googleProvider);
-    const user = result.user;
-    const userDoc = await getDoc(doc(db, 'users', user.uid));
-    if (!userDoc.exists()) {
-      const names = user.displayName ? user.displayName.split(' ') : ['', ''];
-      await setDoc(doc(db, 'users', user.uid), {
-        firstName: names[0] || '',
-        lastName: names.slice(1).join(' ') || '',
-        email: user.email,
-        photoURL: user.photoURL || '',
-        authProvider: 'google',
-        createdAt: new Date().toISOString()
-      });
+  const logout = () => {
+    const username = localStorage.getItem('ma_username');
+    localStorage.removeItem('ma_token');
+    localStorage.removeItem('ma_refresh_token');
+    localStorage.removeItem('ma_username');
+    if (username) {
+      localStorage.removeItem(`ma_profile_${username}`);
+      // NOTE: intentionally NOT clearing ma_role_<username> here — this
+      // means if the same person logs back in later, their previously
+      // picked role (learner/teacher/creator) is remembered.
     }
-    return result;
-  };
-  
-
-  const logout = async () => {
-    return signOut(auth);
+    setUser(null);
+    setUserData(null);
   };
 
   const getInitials = () => {
@@ -139,10 +113,6 @@ export const AuthProvider = ({ children }) => {
       const lastName = userData.lastName || userData.secondName || '';
       return (firstName.charAt(0) + lastName.charAt(0)).toUpperCase();
     }
-    if (user?.displayName) {
-      const names = user.displayName.split(' ');
-      return names.map(n => n.charAt(0)).join('').toUpperCase().slice(0, 2);
-    }
     return '';
   };
 
@@ -150,16 +120,14 @@ export const AuthProvider = ({ children }) => {
     if (userData) {
       return `${userData.firstName || ''} ${userData.lastName || userData.secondName || ''}`.trim();
     }
-    return user?.displayName || '';
+    return '';
   };
 
   const value = {
     user,
     userData,
     loading,
-    login,
-    register,
-    loginWithGoogle,
+    refreshAuth,
     logout,
     getInitials,
     getFullName
