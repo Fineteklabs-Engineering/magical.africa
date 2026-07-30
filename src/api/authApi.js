@@ -1,7 +1,7 @@
 import api from './axiosConfig';
-import publicApi from './publicAxiosConfig';
+import publicApi from './publicaxiosConfig';
 // ⬆️ adjust these import paths to match wherever axiosConfig.js and
-// publicAxiosConfig.js actually live in your project (same folder as
+// publicaxiosConfig.js actually live in your project (same folder as
 // tribeApi.js, based on what you shared)
 //
 // signup/login/refresh use publicApi (no token attached) — if a token
