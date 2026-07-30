@@ -1,4 +1,4 @@
-import publicApi from './publicAxiosConfig';
+import publicApi from './publicaxiosConfig';
 
 
 export const getTribes = async (settings = { page: 1, elementPerPage: 20, direction: 'asc', key: 'publicId' }) => {
