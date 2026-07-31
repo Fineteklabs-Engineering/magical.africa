@@ -70,6 +70,12 @@ const buildSeoBlock = (route) => {
   const description = escapeHtml(route.description)
   const keywords = escapeHtml(route.keywords)
 
+  // Extra page-specific schemas defined in seoContent.js (e.g. home Organization, tribes ItemList).
+  // Emitted IN ADDITION to the default schema so they actually reach the prerendered HTML.
+  const extraSchemas = (Array.isArray(route.jsonLd) ? route.jsonLd : route.jsonLd ? [route.jsonLd] : [])
+    .map((schema) => `<script type="application/ld+json">${JSON.stringify(schema)}</script>`)
+    .join('\n    ')
+
   return `
     <title>${title}</title>
     <meta name="description" content="${description}" />
@@ -86,6 +92,7 @@ const buildSeoBlock = (route) => {
     <meta name="twitter:description" content="${description}" />
     <meta name="twitter:image" content="${image}" />
     <script type="application/ld+json">${buildSchema(route)}</script>
+    ${extraSchemas}
   `
 }
 

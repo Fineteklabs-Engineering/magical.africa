@@ -83,7 +83,19 @@ export const SEO_CONTENT = {
         name: 'Magical Africa',
         url: 'https://magical.africa',
         logo: 'https://magical.africa/images/magical-colored-fav.png',
-        sameAs: []
+        description: 'A pan-African platform preserving African languages, culture, and heritage through storytelling, education, marketplace, and technology.',
+        sameAs: [
+          'https://www.instagram.com/themagicalafrica/',
+          'https://web.facebook.com/themagicalafrica/',
+          'https://x.com/milazetu',
+          'https://www.tiktok.com/@themagicalafrica',
+          'https://www.linkedin.com/company/magical-africa/'
+        ],
+        contactPoint: {
+          '@type': 'ContactPoint',
+          contactType: 'Customer Service',
+          email: 'gloria@magical.africa'
+        }
       }
     ]
   },
@@ -104,20 +116,6 @@ export const SEO_CONTENT = {
     image: '/images/maasai-women2.jpg',
     schemaType: 'CollectionPage',
     jsonLd: [
-      {
-        '@context': 'https://schema.org',
-        '@type': 'CollectionPage',
-        name: 'African Tribes & Communities | Magical Africa',
-        description: 'Explore African tribes and communities across East, West, North and Southern Africa.',
-        url: 'https://magical.africa/tribes',
-        image: 'https://magical.africa/images/maasai-women2.jpg',
-        publisher: {
-          '@type': 'Organization',
-          name: 'Magical Africa',
-          url: 'https://magical.africa',
-          logo: 'https://magical.africa/images/magical-colored-fav.png'
-        }
-      },
       {
         '@context': 'https://schema.org',
         '@type': 'ItemList',
