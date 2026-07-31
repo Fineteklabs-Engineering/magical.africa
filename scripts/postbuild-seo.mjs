@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { SEO_ROUTE_LIST, buildTribeTabRoutes, buildBlogRoutes, buildMarketCategoryRoutes, buildCreatorRoutes } from '../src/utils/seoContent.js'
+import { SEO_ROUTE_LIST, buildTribeTabRoutes, buildBlogRoutes, buildMarketCategoryRoutes, buildCreatorRoutes, buildFolkloreRoutes } from '../src/utils/seoContent.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const projectRoot = path.resolve(__dirname, '..')
@@ -18,6 +18,7 @@ const routes = [
   ...buildBlogRoutes(),
   ...buildMarketCategoryRoutes(),
   ...buildCreatorRoutes(),
+  ...buildFolkloreRoutes(),
 ]
 
 const escapeHtml = (str = '') =>

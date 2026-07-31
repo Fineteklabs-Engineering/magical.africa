@@ -1,5 +1,6 @@
 import { blogData } from '../data/blogData.js'
 import { creators } from '../data/creatorsData.js'
+import { folkloreData } from '../data/folkloreData.js'
 
 
 const MARKET_CATEGORIES = {
@@ -435,4 +436,26 @@ export const buildTribeTabRoutes = () => {
   }
 
   return routes
+}
+
+
+export const buildFolkloreRoutes = () => {
+  const slugify = (s) => String(s || '').toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+  return TRIBE_SLUGS
+    .filter((slug) => folkloreData[slug])
+    .map((slug) => {
+      const data = folkloreData[slug]
+      const origin = data.originStory
+      const originSlug = slugify(origin.title)
+      const description = `${origin.theme} \u2014 a ${data.tribeName} origin story. ` +
+        origin.story.replace(/\s+/g, ' ').trim().slice(0, 150).trim() + '\u2026'
+      return {
+        title: `${origin.title} \u2014 ${data.tribeName} Origin Story | Magical Africa`,
+        description,
+        keywords: `${data.tribeName} folklore, ${data.tribeName} mythology, ${origin.title}, ${origin.theme}, African folklore, African myths, African oral tradition`,
+        path: `/tribes/${slug}/folklore/${originSlug}`,
+        image: origin.image,
+        schemaType: 'Article',
+      }
+    })
 }

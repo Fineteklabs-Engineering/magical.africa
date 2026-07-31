@@ -687,7 +687,7 @@ const dynamicSeo = tribeSeo ? {
                   {tribeFolklore.stories.map((story, i) => (
                     <div key={i} className="tp-folklore-story-card"
                       style={{ cursor: 'pointer' }}
-                      onClick={() => navigate(`/tribes/${tribeName}/folklore/story`)}
+                    onClick={() => navigate(`/tribes/${tribeName}/folklore/${tribeFolklore.originStory.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`)}
                     >
                       <div className="tp-folklore-story-img-wrap">
                         <img src={story.image} alt={story.title} />
