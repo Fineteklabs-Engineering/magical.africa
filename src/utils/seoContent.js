@@ -1,4 +1,5 @@
 import { blogData } from '../data/blogData.js'
+import { creators } from '../data/creatorsData.js'
 
 
 const MARKET_CATEGORIES = {
@@ -54,6 +55,17 @@ export const buildBlogRoutes = () => {
     schemaType: 'Article',
   }))
 }
+
+
+export const buildCreatorRoutes = () =>
+  creators.map((creator) => ({
+    title: `${creator.name} — ${creator.category} Creator | Magical Africa`,
+    description: creator.bio,
+    keywords: `${creator.name}, ${creator.tribe} ${creator.category.toLowerCase()}, African ${creator.category.toLowerCase()}, African artisan, Magical Africa creator`,
+    path: `/creator/${creator.slug}`,
+    image: creator.image,
+    schemaType: 'ProfilePage',
+  }))
 
 
 export const SEO_CONTENT = {
@@ -272,7 +284,7 @@ ashanti: {
     title: 'Login | Magical Africa',
     description: 'Sign in to your Magical Africa Academy account to access your learner or tutor dashboard.',
     keywords: 'Magical Africa login, academy sign in, learner login, tutor login',
-    path: '/jlogin',
+    path: '/login',
     image: '/images/magivcal-logo2-removebg-preview.png',
     noIndex: true
   },
