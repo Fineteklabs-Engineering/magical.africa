@@ -1,6 +1,7 @@
 import { blogData } from '../data/blogData.js'
 import { creators } from '../data/creatorsData.js'
 import { folkloreData } from '../data/folkloreData.js'
+import { tribeData } from '../data/tribesData.js'
 
 
 const MARKET_CATEGORIES = {
@@ -458,4 +459,27 @@ export const buildFolkloreRoutes = () => {
         schemaType: 'Article',
       }
     })
+}
+
+
+export const buildLeaderRoutes = () => {
+  const slugify = (s) => String(s || '').toLowerCase().replace(/\s+/g, '-')
+  const routes = []
+  for (const slug of TRIBE_SLUGS) {
+    const tribe = tribeData[slug]
+    if (!tribe || !Array.isArray(tribe.leaders)) continue
+    for (const leader of tribe.leaders) {
+      const description = leader.fullBio || leader.description ||
+        `${leader.name} was a prominent ${tribe.name} ${leader.role} known for ${leader.legacy}.`
+      routes.push({
+        title: `${leader.name} | ${tribe.name} Prominent People | Magical Africa`,
+        description,
+        keywords: `${leader.name}, ${tribe.name} prominent people, ${tribe.name} leaders, African heritage, Magical Africa`,
+        path: `/tribes/${slug}/leaders/${slugify(leader.name)}`,
+        image: leader.image,
+        schemaType: 'Person',
+      })
+    }
+  }
+  return routes
 }

@@ -1,7 +1,6 @@
-
-import { swahiliTribeData } from "./swahiliTribeData";
-import { igboTribeData } from "./igboTribeData";
-import { amharaTribeData } from "./amharaTribeData";
+import { swahiliTribeData } from "./swahiliTribeData.js";
+import { igboTribeData } from "./igboTribeData.js";
+import { amharaTribeData } from "./amharaTribeData.js";
 
 
 export const tribeData = {
@@ -767,5 +766,3 @@ export const tribeData = {
   },
 
 };
-
-

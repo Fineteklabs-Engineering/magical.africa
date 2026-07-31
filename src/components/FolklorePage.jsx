@@ -36,10 +36,6 @@ const FolklorePage = () => {
   }
 
   const { originStory, stories, culturalContext, narrator, bookCover } = data;
-
-  // Stable canonical slug from the origin-story title (matches the link TribesPage generates),
-  // so every folklore URL for this tribe — including the literal ".../folklore/story" variant —
-  // consolidates onto this one canonical instead of self-referencing.
   const originSlug = originStory.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
   const folkloreDescription =
     `${originStory.theme} — a ${data.tribeName} origin story. ` +
@@ -60,7 +56,7 @@ const FolklorePage = () => {
       <div className="fl-page">
         <Navbar />
 
-        {/* ── CINEMATIC HERO ── */}
+        {/* CINEMATIC HERO  */}
         <div className="fl-hero" style={{ backgroundImage: `url(${originStory.image})` }}>
           <div className="fl-hero-overlay" />
           <div className="fl-hero-content">

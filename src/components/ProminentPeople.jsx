@@ -23,6 +23,7 @@ const { tribeName, leaderName } = useParams();
   if (!tribe || !leader) {
     return (
       <>
+        <PageSeo title="Person Not Found | Magical Africa" description="This person could not be found." path="/tribes" noIndex />
         <Navbar />
         <div className="pp-not-found">
           <h1>Person not found</h1>
@@ -41,10 +42,12 @@ const { tribeName, leaderName } = useParams();
       <div className="pp-page">
 
         <PageSeo
-  title={`${leader.name}`}
+  title={`${leader.name} | ${tribe.name} Prominent People | Magical Africa`}
   description={leader.fullBio || leader.description || `${leader.name} was a prominent ${tribe.name} ${leader.role} known for ${leader.legacy}.`}
-  path={`/tribes/${tribeName}/leaders/${leaderName}`}
+  path={`/tribes/${tribeName?.toLowerCase()}/leaders/${leaderName}`}
   image={leader.image}
+  type="profile"
+  schemaType="Person"
   keywords={`${leader.name}, ${tribe.name} prominent people, ${tribe.name} leaders, African heritage, Magical Africa`}
 />
 

@@ -7,6 +7,7 @@ export const folkloreData = {
   maasai: {
     tribeName: 'Maasai',
     heroImage: '/images/drums-latest.jpg',
+    bookCover: '/images/storybook.png',
     originStory: {
       title: 'How Enkai Gave Cattle to the Maasai',
       image: '/images/maasai-land2.jpg',

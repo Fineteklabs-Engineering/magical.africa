@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { SEO_ROUTE_LIST, buildTribeTabRoutes, buildBlogRoutes, buildMarketCategoryRoutes, buildCreatorRoutes, buildFolkloreRoutes } from '../src/utils/seoContent.js'
+import { SEO_ROUTE_LIST, buildTribeTabRoutes, buildBlogRoutes, buildMarketCategoryRoutes, buildCreatorRoutes, buildFolkloreRoutes, buildLeaderRoutes } from '../src/utils/seoContent.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const projectRoot = path.resolve(__dirname, '..')
@@ -19,6 +19,7 @@ const routes = [
   ...buildMarketCategoryRoutes(),
   ...buildCreatorRoutes(),
   ...buildFolkloreRoutes(),
+  ...buildLeaderRoutes(),
 ]
 
 const escapeHtml = (str = '') =>
@@ -71,8 +72,7 @@ const buildSeoBlock = (route) => {
   const description = escapeHtml(route.description)
   const keywords = escapeHtml(route.keywords)
 
-  // Extra page-specific schemas defined in seoContent.js (e.g. home Organization, tribes ItemList).
-  // Emitted IN ADDITION to the default schema so they actually reach the prerendered HTML.
+ 
   const extraSchemas = (Array.isArray(route.jsonLd) ? route.jsonLd : route.jsonLd ? [route.jsonLd] : [])
     .map((schema) => `<script type="application/ld+json">${JSON.stringify(schema)}</script>`)
     .join('\n    ')
