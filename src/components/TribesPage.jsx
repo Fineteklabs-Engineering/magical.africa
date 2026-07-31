@@ -185,6 +185,7 @@ const handleStationClick = (station) => {
     setTabPlaying(false);
   }
   setActiveStation(station);
+  navigate(`/tribes/${tribeName}/radio/${station.id}`);
   setTimeout(() => {
     if (tabAudioRef.current) {
       tabAudioRef.current.play().catch(() => {});
@@ -197,6 +198,7 @@ const handleStationClose = () => {
   if (tabAudioRef.current) tabAudioRef.current.pause();
   setTabPlaying(false);
   setActiveStation(null);
+  navigate(`/tribes/${tribeName}/radio`);
 };
 
 const tribeStations = TRIBE_RADIO_STATIONS[tribeName?.toLowerCase()] || [];
@@ -212,6 +214,15 @@ const tribeStations = TRIBE_RADIO_STATIONS[tribeName?.toLowerCase()] || [];
       navigate(`/tribes/${tribeName}/history`, { replace: true });
     }
   }, [tab, tribeName, navigate]);
+
+  // Select the station in the URL (/tribes/<tribe>/radio/<stationId>) on direct load /
+  // back-forward, without auto-playing (browsers block autoplay without a user gesture).
+  useEffect(() => {
+    if (activeTab !== 'radio') return;
+    if (!section) { if (activeStation) setActiveStation(null); return; }
+    const match = tribeStations.find((s) => s.id === section);
+    if (match && match.id !== activeStation?.id) setActiveStation(match);
+  }, [section, activeTab, tribeName]);
 
   const handleTabClick = (t) => {
     if (t === 'culture') {
@@ -262,10 +273,16 @@ const tribeStations = TRIBE_RADIO_STATIONS[tribeName?.toLowerCase()] || [];
 
 const dynamicSeo = tribeSeo ? {
   ...tribeSeo,
+  ...(activeTab === 'radio' && activeStation ? {
+    description: activeStation.description || `Listen to ${activeStation.name} live \u2014 a radio station connected to the ${tribe?.name} community.`,
+    keywords: `${activeStation.name}, ${tribe?.name} radio, listen ${activeStation.name} live, African radio, Magical Africa`,
+    image: activeStation.image,
+    schemaType: 'RadioStation',
+  } : {}),
   title: activeTab === 'culture'
     ? `The ${tribe?.name} ${cultureSectionTitles[activeAccordion] || 'Culture'}`
     : activeTab === 'radio'
-    ? `Stream Online ${tribe?.name} Radio`
+    ? (activeStation ? `${activeStation.name} \u2014 ${tribe?.name} Radio | Magical Africa` : `Stream Online ${tribe?.name} Radio`)
     : activeTab === 'language' && languageTab === 'dictionary'
     ? `The ${tribe?.name} Dictionary`
     : activeTab === 'language' && languageTab === 'translation'
@@ -273,6 +290,8 @@ const dynamicSeo = tribeSeo ? {
     : `The ${tribe?.name} ${tabTitles[activeTab]}`,
   path: activeTab === 'culture'
     ? `/tribes/${tribeName}/culture/${activeAccordion}`
+    : activeTab === 'radio'
+    ? (activeStation ? `/tribes/${tribeName}/radio/${activeStation.id}` : `/tribes/${tribeName}/radio`)
     : activeTab === 'language'
     ? `/tribes/${tribeName}/language/${languageTab}`
     : `/tribes/${tribeName}/${activeTab}`,

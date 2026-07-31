@@ -42,7 +42,7 @@
     },
   ],
  
-  // ── add more tribes below as you expand ──
+
   luo: [
     {
       id: 'ramogi',

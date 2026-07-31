@@ -2,6 +2,7 @@ import { blogData } from '../data/blogData.js'
 import { creators } from '../data/creatorsData.js'
 import { folkloreData } from '../data/folkloreData.js'
 import { tribeData } from '../data/tribesData.js'
+import { TRIBE_RADIO_STATIONS } from '../data/tribeRadioStations.js'
 
 
 const MARKET_CATEGORIES = {
@@ -482,4 +483,20 @@ export const buildLeaderRoutes = () => {
     }
   }
   return routes
+}
+
+
+export const buildRadioRoutes = () => {
+  return TRIBE_SLUGS.flatMap((slug) => {
+    const stations = TRIBE_RADIO_STATIONS[slug] || []
+    const tribeName = (tribeData[slug] && tribeData[slug].name) || slug
+    return stations.map((station) => ({
+      title: `${station.name} \u2014 ${tribeName} Radio | Magical Africa`,
+      description: station.description || `Listen to ${station.name} live \u2014 a radio station connected to the ${tribeName} community.`,
+      keywords: `${station.name}, ${tribeName} radio, listen ${station.name} live, African radio, Magical Africa`,
+      path: `/tribes/${slug}/radio/${station.id}`,
+      image: station.image,
+      schemaType: 'RadioStation',
+    }))
+  })
 }
