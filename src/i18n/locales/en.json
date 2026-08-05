@@ -797,6 +797,11 @@
           "role": "User Experience Engineer",
           "bio" : "Designs intuitive and engaging user experiences that make learning African languages and exploring culture simple, accessible, and enjoyable."
         },
+        "alice": {
+  "name": "Prof. Alice Ondigi",
+  "role": "Human Development Expert",
+  "bio": "A human development specialist dedicated to advancing education, community empowerment, and Africa's cultural heritage."
+},
         "ian": {
           "name": "Ian Cheruiyot",
           "role" : "Technical Cofounder",
@@ -807,6 +812,7 @@
           "role": "Machine Learning Engineer",
           "bio": "Builds intelligent systems that power personalized learning, recommendations, and AI-driven features across the Magical Africa platform."
         }
+
         
       }
     },

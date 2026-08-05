@@ -204,6 +204,13 @@ useEffect(() => {
       bio: t('about.team.members.lorna.bio'),
     },
 
+      { 
+      name: t('about.team.members.alice.name'), 
+      role: t('about.team.members.alice.role'), 
+      image: '/images/Proff2.jpeg',
+      bio: t('about.team.members.alice.bio'),
+    },
+
     /*
     { 
       name: t('about.team.members.steve.name'), 
@@ -228,14 +235,18 @@ useEffect(() => {
     },
  
  
-
+/*
     { 
       name: t('about.team.members.collins.name'), 
       role: t('about.team.members.collins.role'), 
       image: '/images/collins.jpg',
       bio: t('about.team.members.collins.bio'),
     },
+*/
 
+  
+
+  
 
   ];
 

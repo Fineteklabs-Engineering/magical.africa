@@ -376,7 +376,7 @@ const AcademyPage = () => {
           <button className="acad-btn-primary2 large" onClick={goToAcademy}>
             {t('academy.cta.joinNow')}
           </button>
-        </div>
+        </div>a
       </section>
 
       <Footer />

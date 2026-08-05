@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import '../styles/academy-signIn.css'
 import { useNavigate } from 'react-router-dom'
-import api from '../api/axiosConfig' // ⬅️ adjust path to match your project
-import { signup, saveLocalRole } from '../api/authApi' // ⬅️ adjust path to match your project
+import api from '../api/axiosConfig' 
+import { signup, saveLocalRole } from '../api/authApi' 
 import { useAuth } from '../context/AuthContext'
 import Footer from '../components/Footer'
 import PageSeo from '../components/PageSeo'

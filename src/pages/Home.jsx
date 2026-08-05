@@ -46,7 +46,7 @@ const Home = () => {
       <PopularCourses />
       <CreatorsSec />
       <TribesSection />
-      {/* 
+      {/* PC
       <CreatorsSection />
       */}
       <SocialImpact />
