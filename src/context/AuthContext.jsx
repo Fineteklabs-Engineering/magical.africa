@@ -31,8 +31,7 @@ export const storage = getStorage(app);
 const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
-// Reads everything auth-related out of localStorage and assembles it into
-// the same { user, userData } shape components already expect.
+
 const readAuthFromStorage = () => {
   const token = localStorage.getItem('ma_token');
   const username = localStorage.getItem('ma_username');

@@ -1,7 +1,6 @@
 import publicApi from './publicaxiosConfig';
 
-
-export const getTribes = async (settings = { page: 1, elementPerPage: 20, direction: 'asc', key: 'publicId' }) => {
+export const getTribes = async (settings = { page: 0, elementPerPage: 100, direction: 'asc', key: 'id' }) => {
   const params = settings;
   const res = await publicApi.get('/api/v1/tribes', { params });
   return res.data;

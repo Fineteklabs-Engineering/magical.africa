@@ -22,32 +22,31 @@ const Tribes = () => {
   const { t } = useTranslation();
 
   const handleSearchFocus = () => {
-  heroRef.current?.scrollIntoView({ behavior: 'smooth' });
-};
+    heroRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
-const handleHeroSearch = (e) => {
-  const value = e.target.value;
-  setSearchQuery(value);
+  const handleHeroSearch = (e) => {
+    const value = e.target.value;
+    setSearchQuery(value);
 
-  if (value.trim() === '') return; // stop here if input is cleared
+    if (value.trim() === '') return; // stop here if input is cleared
 
-  const hasMatch = communitiesData.some(
-    (c) =>
-      c.name.toLowerCase().includes(value.toLowerCase()) ||
-      c.location.toLowerCase().includes(value.toLowerCase())
-  );
+    const hasMatch = communitiesData.some(
+      (c) =>
+        c.name.toLowerCase().includes(value.toLowerCase()) ||
+        c.location.toLowerCase().includes(value.toLowerCase())
+    );
 
-  if (hasMatch) {
-    communitiesSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }
-};
+    if (hasMatch) {
+      communitiesSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
-const breakVideos = [
-  { src: '/images/afrcan-events-video.mp4', title: 'Voices of the Continent', sub: 'How traditions are kept alive across generations' },
-  { src: '/images/pottery-video.mp4', title: 'Rhythms of Africa', sub: 'Music and dance that tell the story of a people' },
-  { src: '/images/your-third-video.mp4', title: 'Sacred Traditions', sub: 'Ancient rituals passed down through generations' },
-];
-
+  const breakVideos = [
+    { src: '/images/afrcan-events-video.mp4', title: 'Voices of the Continent', sub: 'How traditions are kept alive across generations' },
+    { src: '/images/pottery-video.mp4', title: 'Rhythms of Africa', sub: 'Music and dance that tell the story of a people' },
+    { src: '/images/your-third-video.mp4', title: 'Sacred Traditions', sub: 'Ancient rituals passed down through generations' },
+  ];
 
   const regionColors = {
     'East Africa': '#1B5E20',
@@ -60,20 +59,21 @@ const breakVideos = [
     const fetchTribesData = async () => {
       setLoadingTribes(true);
       try {
-        const data = await getTribes({ page: 1, elementPerPage: 100, direction: 'asc', key: 'publicId' });
+        const data = await getTribes({ page: 0, elementPerPage: 100, direction: 'asc', key: 'id' });
         console.log('getTribes response:', data);
         if (data?.tribes && data.tribes.length > 0) {
-          const mapped = data.tribes.map((t) => ({
-            name: t.name || t.publicId || 'Unknown',
-            imageUrl: t.imageUrl || t.mediaUrl || '',
+          const mapped = data.tribes.map((tribe) => ({
+            name: tribe.name || tribe.publicId || 'Unknown',
+            imageUrl: tribe.imageUrl || tribe.mediaUrl || '',
             image: '',
-            region: t.ethnicGroup || 'Unknown',
-            location: t.otherNames || '',
-            population: t.population || '—',
-            language: t.ethnicGroup || '',
-            desc: t.summary || t.description || '',
-            color: regionColors[t.ethnicGroup] || '#B5A191',
-            raw: t,
+            region: tribe.ethnicGroup || 'Unknown',
+            location: tribe.otherNames || '',
+            population: tribe.population ? tribe.population.toLocaleString() : '—',
+            language: tribe.ethnicGroup || '',
+            desc: tribe.summary || tribe.description || '',
+            color: regionColors[tribe.ethnicGroup] || '#B5A191',
+            publicId: tribe.publicId,
+            raw: tribe,
           }));
           setCommunitiesData(mapped);
           console.log('mapped tribes:', mapped);
@@ -116,21 +116,20 @@ const breakVideos = [
     return matchRegion && matchSearch;
   });
 
-
   // Pin positions corrected to match actual SVG map rendering
   const mapPins = [
-    { name: 'Berber',  region: 'North Africa',    top: '12%', left: '38%' }, // Algeria/Morocco — north of map
-    { name: 'Wolof',   region: 'West Africa',     top: '33%', left: '26%' }, // Senegal — far west coast
-    { name: 'Fulani',  region: 'West Africa',     top: '38%', left: '36%' }, // Guinea/Mali — inland west
-    { name: 'Hausa',   region: 'West Africa',     top: '36%', left: '43%' }, // Nigeria north / Niger
-    { name: 'Ashanti', region: 'West Africa',     top: '40%', left: '34%' }, // Ghana — south west
-    { name: 'Yoruba',  region: 'West Africa',     top: '43%', left: '40%' }, // Nigeria south west
-    { name: 'Igbo',    region: 'West Africa',     top: '46%', left: '42%' }, // Nigeria south east
-    { name: 'Amhara',  region: 'East Africa',     top: '36%', left: '64%' }, // Ethiopia highlands
-    { name: 'Kikuyu',  region: 'East Africa',     top: '50%', left: '75%' }, // Central Kenya
-    { name: 'Maasai',  region: 'East Africa',     top: '53%', left: '73%' }, // Kenya/Tanzania border
-    { name: 'Swahili', region: 'East Africa',     top: '55%', left: '78%' }, // Tanzania coast
-    { name: 'Zulu',    region: 'Southern Africa', top: '82%', left: '58%' }, // South Africa
+    { name: 'Berber',  region: 'North Africa',    top: '12%', left: '38%' },
+    { name: 'Wolof',   region: 'West Africa',     top: '33%', left: '26%' },
+    { name: 'Fulani',  region: 'West Africa',     top: '38%', left: '36%' },
+    { name: 'Hausa',   region: 'West Africa',     top: '36%', left: '43%' },
+    { name: 'Ashanti', region: 'West Africa',     top: '40%', left: '34%' },
+    { name: 'Yoruba',  region: 'West Africa',     top: '43%', left: '40%' },
+    { name: 'Igbo',    region: 'West Africa',     top: '46%', left: '42%' },
+    { name: 'Amhara',  region: 'East Africa',     top: '36%', left: '64%' },
+    { name: 'Kikuyu',  region: 'East Africa',     top: '50%', left: '75%' },
+    { name: 'Maasai',  region: 'East Africa',     top: '53%', left: '73%' },
+    { name: 'Swahili', region: 'East Africa',     top: '55%', left: '78%' },
+    { name: 'Zulu',    region: 'Southern Africa', top: '82%', left: '58%' },
   ];
 
   return (
@@ -147,33 +146,27 @@ const breakVideos = [
             <p>{t('tribesPage.hero.subtitle')}</p>
           </div>
 
-          {/* inside .tribes-hero-content, after the text div */}
-<div className="hero-search-wrap">
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
-    <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2"/>
-    <path d="M16.5 16.5L21 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-  </svg>
-  <input
-    type="text"
-    placeholder="Search communities..."
-    value={searchQuery}
-    
-    onChange={handleHeroSearch}
-    className="hero-search-input"
-  />
-
- <span className="hero-count">{filtered.length} communities</span>
-  
-</div>
+          <div className="hero-search-wrap">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2"/>
+              <path d="M16.5 16.5L21 21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+            <input
+              type="text"
+              placeholder="Search communities..."
+              value={searchQuery}
+              onChange={handleHeroSearch}
+              className="hero-search-input"
+            />
+            <span className="hero-count">{filtered.length} communities</span>
+          </div>
         </div>
       </div>
 
       <img src="/images/maasai-pattern.avif" alt="" />
 
       {/* COMMUNITIES SECTION  */}
-      <section className="tribes-communities-section"
-      ref={communitiesSectionRef}
-      >
+      <section className="tribes-communities-section" ref={communitiesSectionRef}>
         <div className="tribes-section-header">
           <p className="tribes-section-label">ACROSS THE CONTINENT</p>
           <h2 className="tribes-section-title">{t('tribesPage.section.title')}</h2>
@@ -192,88 +185,85 @@ const breakVideos = [
               placeholder="Search communities..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-               onFocus={handleSearchFocus}   // ← add this
+              onFocus={handleSearchFocus}
               className="tribes-search-input"
             />
           </div>
 
           <div className="tribes-tabs">
-  {regions.map((r) => (
-    <button
-      key={r}
-      className={`tribes-tab ${selectedRegion === r ? 'active' : ''}`}
-      onClick={() => setSelectedRegion(r)}
-    >
-      {r !== 'All' && (
-        <span
-          className="tribes-tab-dot"
-          style={{ background: regionColors[r] || '#B5A191' }}
-        />
-      )}
-      {r}
-    </button>
-  ))}
-</div>
+            {regions.map((r) => (
+              <button
+                key={r}
+                className={`tribes-tab ${selectedRegion === r ? 'active' : ''}`}
+                onClick={() => setSelectedRegion(r)}
+              >
+                {r !== 'All' && (
+                  <span
+                    className="tribes-tab-dot"
+                    style={{ background: regionColors[r] || '#B5A191' }}
+                  />
+                )}
+                {r}
+              </button>
+            ))}
+          </div>
 
           <span className="tribes-count">{filtered.length} communities</span>
         </div>
 
-      
-<div className="tribes-grid">
-  {filtered.length === 0 ? (
-    <div className="tribes-empty">
-      <p>No communities found. <button onClick={() => { setSearchQuery(''); setSelectedRegion('All'); }}>Clear filters</button></p>
-    </div>
-  ) : (
-    filtered.map((community, index) => (
-      <>
-        <div key={index} className="tribe-card"
-          onClick={() => navigate(`/tribes/${community.name.toLowerCase()}`)}>
-          {/* ...your existing card JSX unchanged... */}
-          <div
-            className={`tribe-card-image community-image ${community.image}`}
-            style={community.imageUrl ? { backgroundImage: `url(${community.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
-          >
-            <div className="tribe-card-region-badge">{community.region}</div>
-          </div>
-                <div className="tribe-card-body">
-                  <div className="tribe-card-accent" style={{ background: community.color }} />
-                  <h3 className="tribe-card-name">{community.name}</h3>
-                  <p className="tribe-card-desc">{community.desc}</p>
-                  <div className="tribe-card-meta">
-                    <span>📍 {community.location}</span>
-                    <span>👥 {community.population}</span>
-                    <span>📖 {community.language}</span>
+        <div className="tribes-grid">
+          {filtered.length === 0 ? (
+            <div className="tribes-empty">
+              <p>No communities found. <button onClick={() => { setSearchQuery(''); setSelectedRegion('All'); }}>Clear filters</button></p>
+            </div>
+          ) : (
+            filtered.map((community, index) => (
+              <>
+                <div key={index} className="tribe-card"
+                  onClick={() => navigate(`/tribes/${community.publicId || community.name.toLowerCase()}`)}>
+                  <div
+                    className={`tribe-card-image community-image ${community.image}`}
+                    style={community.imageUrl ? { backgroundImage: `url(${community.imageUrl})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
+                  >
+                    <div className="tribe-card-region-badge">{community.region}</div>
                   </div>
-                  <button className="tribe-card-btn"
-                  onClick={() => navigate(`/tribes/${community.name.toLowerCase()}`)}
-                  >{t('tribesPage.exploreCulture')} →</button>
+                  <div className="tribe-card-body">
+                    <div className="tribe-card-accent" style={{ background: community.color }} />
+                    <h3 className="tribe-card-name">{community.name}</h3>
+                    <p className="tribe-card-desc">{community.desc}</p>
+                    <div className="tribe-card-meta">
+                      <span>📍 {community.location}</span>
+                      <span>👥 {community.population}</span>
+                      <span>📖 {community.language}</span>
+                    </div>
+                    <button className="tribe-card-btn"
+                      onClick={() => navigate(`/tribes/${community.publicId || community.name.toLowerCase()}`)}
+                    >{t('tribesPage.exploreCulture')} →</button>
+                  </div>
                 </div>
-        </div>
 
-        {/* Media break after every 4th card */}
-       {(index + 1) % 5 === 0 && index !== filtered.length - 1 && (() => {
-  const breakIndex = Math.floor((index + 1) / 4) - 1;
-  const video = breakVideos[breakIndex % breakVideos.length];
-  return (
-    <div key={`break-${index}`} className="tribes-media-break">
-      <video autoPlay muted loop playsInline preload="metadata" crossOrigin="anonymous" src={video.src} className="tribes-break-video" />
-      <div className="tribes-break-overlay">
-        <div className="tribes-break-content">
-          <div className="tribes-break-play" />
-          <p className="tribes-break-label">FEATURED STORY</p>
-          <h3 className="tribes-break-title">{video.title}</h3>
-          <p className="tribes-break-sub">{video.sub}</p>
+                {/* Media break after every 4th card */}
+                {(index + 1) % 5 === 0 && index !== filtered.length - 1 && (() => {
+                  const breakIndex = Math.floor((index + 1) / 4) - 1;
+                  const video = breakVideos[breakIndex % breakVideos.length];
+                  return (
+                    <div key={`break-${index}`} className="tribes-media-break">
+                      <video autoPlay muted loop playsInline preload="metadata" crossOrigin="anonymous" src={video.src} className="tribes-break-video" />
+                      <div className="tribes-break-overlay">
+                        <div className="tribes-break-content">
+                          <div className="tribes-break-play" />
+                          <p className="tribes-break-label">FEATURED STORY</p>
+                          <h3 className="tribes-break-title">{video.title}</h3>
+                          <p className="tribes-break-sub">{video.sub}</p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+              </>
+            ))
+          )}
         </div>
-      </div>
-    </div>
-  );
-})()}
-      </>
-    ))
-  )}
-</div>
-        
       </section>
 
       {/* ── AFRICA MAP ── */}
@@ -286,8 +276,6 @@ const breakVideos = [
 
         <div className="tribes-map-outer">
           <div className="tribes-map-container">
-
-            {/* Map + pins */}
             <div className="tribes-map-wrap">
               <img
                 src="/images/africa-map.svg"
@@ -320,7 +308,6 @@ const breakVideos = [
               ))}
             </div>
 
-            {/* Legend */}
             <div className="tribes-map-legend">
               <p className="legend-title">Regions</p>
               {Object.entries(regionColors).map(([label, color]) => (
@@ -332,7 +319,6 @@ const breakVideos = [
               <div className="legend-divider" />
               <p className="legend-note">Hover a pin to identify the community</p>
             </div>
-
           </div>
         </div>
       </section>
@@ -346,7 +332,7 @@ const breakVideos = [
         </div>
       </section>
 
-<img src="/images/maasai-pattern.avif" alt="" />
+      <img src="/images/maasai-pattern.avif" alt="" />
       <Footer />
     </>
   );

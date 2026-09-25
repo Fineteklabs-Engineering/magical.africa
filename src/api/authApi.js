@@ -7,7 +7,7 @@ export const buildUsername = (firstName, secondName) => {
 
 
 export const signup = async ({ firstName, secondName, email, password, gender, telephone }) => {
-  const username = buildUsername(firstName, secondName);
+  const username = email.trim().toLowerCase();
 
   const payload = {
     firstName,
@@ -33,7 +33,8 @@ export const signup = async ({ firstName, secondName, email, password, gender, t
 
 
 export const login = async (userName, password) => {
-  const res = await publicApi.post('/api/v1/auth/authenticate', { userName, password });
+  const normalized = userName.trim().toLowerCase();
+  const res = await publicApi.post('/api/v1/auth/authenticate', { userName: normalized, password });
   return res.data;
 };
 

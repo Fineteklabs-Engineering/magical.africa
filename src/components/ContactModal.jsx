@@ -34,7 +34,7 @@ const ContactModal = ({ isOpen, onClose }) => {
     if (!isOpen) return;
     setLoadingTypes(true);
     getInquiryTypes()
-      .then((data) => setInquiryTypes(Array.isArray(data) ? data : data?.content || []))
+      .then((data) => setInquiryTypes(data?.['inquiry-types'] || []))
       .catch(() => setInquiryTypes([]))
       .finally(() => setLoadingTypes(false));
   }, [isOpen]);

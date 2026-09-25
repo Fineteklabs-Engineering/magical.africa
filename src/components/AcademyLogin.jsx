@@ -11,11 +11,10 @@ import { SEO_CONTENT } from '../utils/seoContent'
 import Footer from '../components/Footer';
 
 const AcademyLogin = () => {
-  // NOTE: renamed conceptually to "username" since Milazetu's /authenticate
-  // endpoint takes userName + password, not email. Firebase let people log in
-  // by email — Milazetu doesn't have that option in what's been shared so far,
-  // so this field now collects the username created at signup
-  // (firstName + secondName, lowercased, no spaces).
+  // Milazetu's /authenticate endpoint takes userName + password. We use the
+  // user's EMAIL as the username (unique, unlike firstName+secondName),
+  // normalized to lowercase so it matches what signup stored. The field below
+  // collects the email; the `username` state variable holds it.
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
@@ -51,20 +50,25 @@ const AcademyLogin = () => {
     setLoading(true)
     setError('')
 
+    // Normalize once and use everywhere below, so the value sent to the backend
+    // matches the localStorage key used by getLocalRole (otherwise the role
+    // lookup misses and the user silently lands on the learner dashboard).
+    const uname = username.trim().toLowerCase()
+
     try {
       // 1. Sign in via Milazetu
-      const { token, refresh_token } = await login(username, password)
+      const { token, refresh_token } = await login(uname, password)
 
       // 2. Persist the session the same way axiosConfig.js expects on reload
       localStorage.setItem('ma_token', token)
       localStorage.setItem('ma_refresh_token', refresh_token)
-      localStorage.setItem('ma_username', username)
+      localStorage.setItem('ma_username', uname)
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
       // 3. Role isn't returned by the backend yet — pull it from local storage
       //    (saved during the signup role-picker step). Defaults to learner
       //    if nothing was ever saved for this username.
-      const role = getLocalRole(username) || 'learner'
+      const role = getLocalRole(uname) || 'learner'
 
       // Tell AuthContext to re-read localStorage right now, so
       // ProtectedRoute sees a logged-in user before we navigate.
@@ -85,9 +89,9 @@ const AcademyLogin = () => {
       console.log('Login error:', err?.response?.status, err?.message)
       const status = err?.response?.status
       if (status === 401 || status === 403) {
-        setError('Invalid username or password. Please try again.')
+        setError('Invalid email or password. Please try again.')
       } else if (status === 404) {
-        setError('No account found with this username.')
+        setError('No account found with this email.')
       } else if (status === 429) {
         setError('Too many failed attempts. Please try again later.')
       } else {
@@ -164,10 +168,10 @@ const AcademyLogin = () => {
             <form onSubmit={handleSubmit}>
 
               <div className="signIn-field">
-                <label>Username</label>
+                <label>Email</label>
                 <input
-                  type="text"
-                  placeholder="johndoe"
+                  type="email"
+                  placeholder="johndoe@gmail.com"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   required
