@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import '../styles/academy-signIn.css'
-import { useNavigate } from 'react-router-dom'
-import api from '../api/axiosConfig' 
-import { signup, saveLocalRole } from '../api/authApi' 
+import { useNavigate, useLocation } from 'react-router-dom'
+import api from '../api/axiosConfig'
+import {
+  signup,
+  saveLocalRole,
+  getCustomerCategories,
+  getCustomerByUsername,
+  updateCustomer,
+  findCategoryIdForRole,
+} from '../api/authApi'
 import { useAuth } from '../context/AuthContext'
 import Footer from '../components/Footer'
 import PageSeo from '../components/PageSeo'
@@ -47,7 +54,23 @@ const Academy2 = () => {
   }, [])
 
   const navigate = useNavigate()
+  const location = useLocation()
   const { refreshAuth } = useAuth()
+
+  // If sent here from login as a roleless user, jump straight to the role picker
+  // and preload the first name for the greeting.
+  useEffect(() => {
+    if (location.state?.pickRole) {
+      setStep('role')
+      const uname = localStorage.getItem('ma_username')
+      if (uname) {
+        try {
+          const profile = JSON.parse(localStorage.getItem(`ma_profile_${uname}`) || '{}')
+          if (profile.firstName) setFirstName(profile.firstName)
+        } catch { /* ignore */ }
+      }
+    }
+  }, [location.state])
 
   const handleCreate = async () => {
     if (!firstName || !secondName || !email || !password) {
@@ -126,6 +149,46 @@ const Academy2 = () => {
 
     try {
       const username = localStorage.getItem('ma_username')
+      if (!username) {
+        setRoleError('Your session expired. Please sign in again.')
+        setRoleLoading(false)
+        return
+      }
+
+      // 1. Map the picked role to its category (match on CODE, not name).
+      const categories = await getCustomerCategories()
+      const categoryId = findCategoryIdForRole(categories, role)
+      if (!categoryId) {
+        setRoleError('That role is not available right now. Please try again shortly.')
+        setRoleLoading(false)
+        return
+      }
+
+      // 2. Fetch the just-created (roleless) customer for its id + current fields.
+      const customer = await getCustomerByUsername(username)
+      if (!customer?.publicId) {
+        setRoleError('Could not find your account. Please try again.')
+        setRoleLoading(false)
+        return
+      }
+
+      // 3. PUT the customer back with the category set (full-object update).
+      await updateCustomer(customer.publicId, {
+        firstName: customer.firstName,
+        lastName: customer.lastName,
+        otherNames: customer.otherNames,
+        code: customer.code,
+        passportNumber: customer.passportNumber,
+        governmentNumber: customer.governmentNumber,
+        dob: customer.dob,
+        telephone: customer.telephone,
+        email: customer.email,
+        customerCategoryId: categoryId,
+        gender: customer.gender,
+        active: customer.active,
+      })
+
+      // 4. Cache the role locally (AuthContext reads this), refresh, route.
       saveLocalRole(username, role, subject)
       refreshAuth()
 
@@ -137,7 +200,7 @@ const Academy2 = () => {
         navigate('/learner')
       }
     } catch (err) {
-      setRoleError('Something went wrong setting up your account. Please try again.')
+      setRoleError('Something went wrong setting up your role. Please try again.')
     } finally {
       setRoleLoading(false)
     }

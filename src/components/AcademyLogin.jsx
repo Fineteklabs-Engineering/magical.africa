@@ -3,7 +3,14 @@ import Navbar from '../components/Navbar'
 import '../styles/academy-login.css'
 import { useNavigate } from 'react-router-dom'
 import api from '../api/axiosConfig'
-import { login, getLocalRole } from '../api/authApi' // ⬅️ adjust path to match your project
+import {
+  login,
+  getLocalRole,
+  saveLocalRole,
+  getCustomerByUsername,
+  getCustomerCategories,
+  findRoleForCategoryId,
+} from '../api/authApi'
 import { buildLearnerDashboardPath, buildTeacherDashboardPath } from '../utils/dashboardRoute'
 import { useAuth } from '../context/AuthContext'
 import PageSeo from './PageSeo'
@@ -51,8 +58,7 @@ const AcademyLogin = () => {
     setError('')
 
     // Normalize once and use everywhere below, so the value sent to the backend
-    // matches the localStorage key used by getLocalRole (otherwise the role
-    // lookup misses and the user silently lands on the learner dashboard).
+    // matches the localStorage key used by the role lookup.
     const uname = username.trim().toLowerCase()
 
     try {
@@ -65,10 +71,24 @@ const AcademyLogin = () => {
       localStorage.setItem('ma_username', uname)
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
-      // 3. Role isn't returned by the backend yet — pull it from local storage
-      //    (saved during the signup role-picker step). Defaults to learner
-      //    if nothing was ever saved for this username.
-      const role = getLocalRole(uname) || 'learner'
+     
+      let role = null
+      try {
+        const [customer, categories] = await Promise.all([
+          getCustomerByUsername(uname),
+          getCustomerCategories(),
+        ])
+        localStorage.setItem(`ma_profile_${uname}`, JSON.stringify({
+          firstName: customer.firstName || '',
+          lastName: customer.lastName || '',
+          email: customer.email || '',
+        }))
+        role = findRoleForCategoryId(categories, customer.customerCategoryId)
+      } catch {
+        // Couldn't fetch — fall back to any cached role below.
+      }
+      if (!role) role = getLocalRole(uname) || null
+      if (role) saveLocalRole(uname, role)
 
       // Tell AuthContext to re-read localStorage right now, so
       // ProtectedRoute sees a logged-in user before we navigate.
@@ -76,7 +96,10 @@ const AcademyLogin = () => {
 
       setSuccess(true)
       setTimeout(() => {
-        if (role === 'teacher') {
+        if (!role) {
+          // Roleless (never finished picking a role) — send to the picker.
+          navigate('/join', { state: { pickRole: true } })
+        } else if (role === 'teacher') {
           navigate(buildTeacherDashboardPath('courses'))
         } else if (role === 'creator') {
           navigate('/creator-dashboard')
