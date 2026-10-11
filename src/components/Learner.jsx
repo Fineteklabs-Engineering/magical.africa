@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import {
   FiShoppingBag,
@@ -15,9 +15,11 @@ import {
   FiSearch,
   FiChevronDown,
 } from 'react-icons/fi'
+import { getCustomerByUsername } from '../api/authApi'
+import ProfileSection from './ProfileSection'
 import '../styles/learner.css'
 
-// Sections the dashboard will hold. Content comes later — this is just the frame.
+// Sections the dashboard will hold. Profile is live; the rest are still frames.
 const SECTIONS = {
   store: 'All Courses',
   'courses-mine': 'My Courses',
@@ -31,12 +33,49 @@ const SECTIONS = {
   settings: 'Settings',
 }
 
-const WIDGETS = ['Heritage Streak', 'Quick actions', 'My profile', 'Learning updates']
+// "My profile" and "Quick actions" are real widgets (rendered below); these stay placeholders.
+const PLACEHOLDER_WIDGETS = ['Heritage Streak', 'Learning updates']
+
+// Right-panel shortcuts — each just switches the active dashboard section.
+const QUICK_ACTIONS = [
+  { section: 'store', label: 'Browse courses', Icon: FiShoppingBag },
+  { section: 'courses-progress', label: 'Continue learning', Icon: FiPlayCircle },
+  { section: 'my-art', label: 'My art', Icon: FiImage },
+  { section: 'profile', label: 'Edit profile', Icon: FiUser },
+]
 
 export default function Learner() {
   const [activeSection, setActiveSection] = useState('store')
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [learningOpen, setLearningOpen] = useState(true)
+
+  // The logged-in customer — fetched once, used for the greeting and Profile.
+  const [customer, setCustomer] = useState(null)
+  const [customerLoading, setCustomerLoading] = useState(true)
+  const [customerError, setCustomerError] = useState('')
+
+  const loadCustomer = useCallback(async () => {
+    const username = localStorage.getItem('ma_username')
+    if (!username) {
+      setCustomerError('You are not signed in.')
+      setCustomerLoading(false)
+      return
+    }
+    setCustomerLoading(true)
+    setCustomerError('')
+    try {
+      const data = await getCustomerByUsername(username)
+      setCustomer(data)
+    } catch {
+      setCustomerError('Could not load your profile. Please try again.')
+    } finally {
+      setCustomerLoading(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    loadCustomer()
+  }, [loadCustomer])
 
   // Lock body scroll while the mobile drawer is open
   useEffect(() => {
@@ -71,6 +110,11 @@ export default function Learner() {
       <span>{label}</span>
     </button>
   )
+
+  const firstName = customer?.firstName || ''
+  const fullName = [customer?.firstName, customer?.lastName].filter(Boolean).join(' ')
+  const initials =
+    ((customer?.firstName?.[0] || '') + (customer?.lastName?.[0] || '')).toUpperCase() || '?'
 
   return (
     <div className="learner-dashboard">
@@ -159,22 +203,78 @@ export default function Learner() {
               >
                 <FiBell aria-hidden="true" />
               </button>
-              <span className="learner-greeting">Hi, Learner</span>
+              <span className="learner-greeting">Hi, {firstName || 'there'}</span>
             </div>
           </div>
 
           <div className="learner-body-grid">
-            {/* Active section placeholder */}
+            {/* Active section */}
             <main className="learner-main">
-              <section className="learner-panel">
-                <h1>{SECTIONS[activeSection]}</h1>
-                <p className="learner-empty">Content for this section comes next.</p>
-              </section>
+              {activeSection === 'profile' ? (
+                <ProfileSection
+                  customer={customer}
+                  loading={customerLoading}
+                  error={customerError}
+                  onRetry={loadCustomer}
+                  onCustomerUpdate={setCustomer}
+                />
+              ) : (
+                <section className="learner-panel">
+                  <h1>{SECTIONS[activeSection]}</h1>
+                  <p className="learner-empty">Content for this section comes next.</p>
+                </section>
+              )}
             </main>
 
             {/* Right widgets */}
             <aside className="learner-right-panel">
-              {WIDGETS.map((title) => (
+              {/* My profile — real data: name + avatar + a jump to the Profile section */}
+              <div className="learner-widget-card">
+                <h2>My profile</h2>
+                {customerLoading ? (
+                  <p className="learner-empty">Loading…</p>
+                ) : customer ? (
+                  <div className="lw-profile-body">
+                    <div className="lp-avatar lw-profile-avatar">
+                      {customer.imageUrl ? (
+                        <img src={customer.imageUrl} alt="Profile" />
+                      ) : (
+                        <span className="lp-avatar-fallback">{initials}</span>
+                      )}
+                    </div>
+                    <div className="lw-profile-meta">
+                      <span className="lw-profile-name">{fullName || '—'}</span>
+                      {customer.email && <span className="lw-profile-email">{customer.email}</span>}
+                    </div>
+                    <button type="button" className="lw-profile-link" onClick={() => go('profile')}>
+                      View profile
+                    </button>
+                  </div>
+                ) : (
+                  <p className="learner-empty">—</p>
+                )}
+              </div>
+
+              {/* Quick actions — shortcuts into the main sections */}
+              <div className="learner-widget-card">
+                <h2>Quick actions</h2>
+                <div className="lw-actions">
+                  {QUICK_ACTIONS.map(({ section, label, Icon }) => (
+                    <button
+                      key={section}
+                      type="button"
+                      className="lw-action"
+                      onClick={() => go(section)}
+                    >
+                      <span className="lw-action-icon"><Icon aria-hidden="true" /></span>
+                      <span>{label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Still placeholders */}
+              {PLACEHOLDER_WIDGETS.map((title) => (
                 <div key={title} className="learner-widget-card">
                   <h2>{title}</h2>
                   <p className="learner-empty">—</p>

@@ -276,3 +276,192 @@
   .td-panel { padding: 1.25rem; }
   .td-page-topbar { padding: 1rem; }
 }
+
+/* ============================================================
+   Profile section (reused learner ProfileSection component) +
+   right-panel widgets. Scoped under .td-dashboard; uses the
+   palette tokens defined on .td-dashboard above.
+   NOTE: these lp-/lw- rules mirror learner.css — see the delivery
+   note about optionally sharing them in one stylesheet.
+   ============================================================ */
+
+/* ---------- Profile header ---------- */
+.td-dashboard .lp-head { margin-bottom: 1.25rem; }
+.td-dashboard .lp-head h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ma-ink);
+  margin: 0 0 .25rem;
+  padding: 0;
+  border: none;
+}
+.td-dashboard .lp-sub { color: var(--ma-muted); font-size: .92rem; margin: 0; }
+
+/* ---------- Tab bar ---------- */
+.td-dashboard .lp-tabs {
+  display: flex;
+  gap: .4rem;
+  border-bottom: 1px solid var(--ma-line);
+  margin-bottom: 1.5rem;
+}
+.td-dashboard .lp-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .7rem 1rem;
+  margin-bottom: -1px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  font: inherit;
+  font-size: .92rem;
+  font-weight: 600;
+  color: var(--ma-body);
+  cursor: pointer;
+  transition: color var(--t-fast), border-color var(--t-fast);
+}
+.td-dashboard .lp-tab:hover { color: var(--ma-primary); }
+.td-dashboard .lp-tab.is-active { color: var(--ma-primary); border-bottom-color: var(--ma-primary); }
+.td-dashboard .lp-tab svg { font-size: 1rem; flex-shrink: 0; }
+
+.td-dashboard .lp-tab-body { max-width: 640px; }
+
+/* ---------- Form ---------- */
+.td-dashboard .lp-form { display: grid; gap: 1.1rem; }
+.td-dashboard .lp-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+.td-dashboard .lp-field { display: flex; flex-direction: column; gap: .35rem; }
+.td-dashboard .lp-field label { font-size: .8rem; font-weight: 600; color: var(--ma-ink); }
+.td-dashboard .lp-input {
+  padding: .6rem .75rem;
+  border: 1px solid var(--ma-line);
+  border-radius: var(--r-sm);
+  background: var(--ma-surface);
+  font: inherit;
+  font-size: .92rem;
+  color: var(--ma-ink);
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+.td-dashboard .lp-input:focus {
+  outline: none;
+  border-color: var(--ma-red-light);
+  box-shadow: 0 0 0 3px var(--ma-red-bg);
+}
+.td-dashboard .lp-input:disabled,
+.td-dashboard .lp-input[readonly] {
+  background: var(--ma-bg);
+  color: var(--ma-muted);
+  cursor: not-allowed;
+}
+.td-dashboard .lp-hint { font-size: .78rem; color: var(--ma-muted); }
+
+/* ---------- Actions ---------- */
+.td-dashboard .lp-actions { display: flex; align-items: center; gap: .75rem; margin-top: .5rem; }
+.td-dashboard .lp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .65rem 1.25rem;
+  border: none;
+  border-radius: var(--r-sm);
+  background: var(--ma-primary);
+  color: #fff;
+  font: inherit;
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--t-fast), opacity var(--t-fast);
+}
+.td-dashboard .lp-btn:hover:not(:disabled) { background: var(--ma-primary-dark); }
+.td-dashboard .lp-btn:disabled { opacity: .55; cursor: not-allowed; }
+.td-dashboard .lp-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .65rem 1.1rem;
+  border: 1px solid var(--ma-line);
+  border-radius: var(--r-sm);
+  background: var(--ma-surface);
+  color: var(--ma-body);
+  font: inherit;
+  font-size: .9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--t-fast), border-color var(--t-fast);
+}
+.td-dashboard .lp-btn-ghost:hover { background: var(--ma-bg); border-color: var(--ma-muted); }
+
+/* ---------- Inline messages / states ---------- */
+.td-dashboard .lp-msg { padding: .6rem .85rem; border-radius: var(--r-sm); font-size: .85rem; font-weight: 500; }
+.td-dashboard .lp-msg--ok { background: var(--ma-green-bg); color: var(--ma-green); }
+.td-dashboard .lp-msg--err { background: var(--ma-red-bg); color: var(--ma-primary); }
+.td-dashboard .lp-state { display: flex; flex-direction: column; gap: .75rem; align-items: flex-start; }
+.td-dashboard .lp-state-error { color: var(--ma-primary); font-size: .9rem; }
+
+/* ---------- Photo tab ---------- */
+.td-dashboard .lp-photo { display: flex; flex-direction: column; gap: 1.25rem; }
+.td-dashboard .lp-photo-row { display: flex; align-items: center; gap: 1.25rem; }
+.td-dashboard .lp-avatar {
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--ma-line);
+  background: var(--ma-red-bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.td-dashboard .lp-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.td-dashboard .lp-avatar-fallback { font-size: 1.8rem; font-weight: 700; color: var(--ma-primary); }
+.td-dashboard .lp-photo-meta { display: flex; flex-direction: column; gap: .4rem; }
+.td-dashboard .lp-photo-name { font-weight: 700; color: var(--ma-ink); }
+.td-dashboard .lp-file-name { font-size: .82rem; color: var(--ma-muted); word-break: break-all; }
+.td-dashboard .lp-photo-actions { display: flex; gap: .6rem; flex-wrap: wrap; }
+
+/* ---------- Right-panel "My profile" widget ---------- */
+.td-dashboard .lw-profile-body { display: flex; flex-direction: column; align-items: flex-start; gap: .75rem; margin-top: .85rem; }
+.td-dashboard .lw-profile-avatar { width: 56px; height: 56px; }
+.td-dashboard .lw-profile-avatar .lp-avatar-fallback { font-size: 1.15rem; }
+.td-dashboard .lw-profile-meta { display: flex; flex-direction: column; gap: .15rem; }
+.td-dashboard .lw-profile-name { font-weight: 700; color: var(--ma-ink); font-size: .95rem; }
+.td-dashboard .lw-profile-email { font-size: .8rem; color: var(--ma-muted); word-break: break-all; }
+.td-dashboard .lw-profile-link {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--ma-primary);
+  font: inherit;
+  font-size: .85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.td-dashboard .lw-profile-link:hover { text-decoration: underline; }
+
+/* ---------- Right-panel "Quick actions" widget ---------- */
+.td-dashboard .lw-actions { display: flex; flex-direction: column; gap: .4rem; margin-top: .85rem; }
+.td-dashboard .lw-action {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  width: 100%;
+  padding: .55rem .65rem;
+  border: 1px solid var(--ma-line);
+  border-radius: var(--r-sm);
+  background: var(--ma-surface);
+  color: var(--ma-body);
+  font: inherit;
+  font-size: .88rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--t-fast), border-color var(--t-fast), color var(--t-fast);
+}
+.td-dashboard .lw-action:hover { background: var(--ma-red-bg); border-color: var(--ma-red-light); color: var(--ma-primary); }
+.td-dashboard .lw-action-icon { display: inline-flex; color: var(--ma-primary); font-size: 1rem; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 560px) {
+  .td-dashboard .lp-grid-2 { grid-template-columns: 1fr; }
+  .td-dashboard .lp-photo-row { flex-direction: column; align-items: flex-start; }
+}
